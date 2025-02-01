@@ -1,0 +1,539 @@
+/* ======================== RESET BÁSICO ======================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    /* Paleta de cores */
+    --color-azul-noturno: #1A1A2E;
+    --color-roxo-dark: #6A0572;
+    --color-preto: #121212;
+    --color-branco: #ffffff;
+    --color-cinza-escuro: #2E2E2E;
+  
+    /* Fonte padrão */
+    --font-principal: 'Poppins', sans-serif;
+  }
+  
+  body {
+    font-family: var(--font-principal);
+    background-color: var(--color-azul-noturno);
+    color: var(--color-branco);
+    line-height: 1.5;
+    overflow-x: hidden; /* evita scroll horizontal se algo passar */
+  }
+  
+  /* ======================== CONTAINER GERAL ======================== */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* ======================== HEADER FIXO NO TOPO ======================== */
+  .header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: rgba(26, 26, 46, 0.95); /* fundo levemente transparente */
+    backdrop-filter: blur(4px);         /* efeito de “vidro fosco” se quiser */
+    transition: background 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    height: 70px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo a {
+    font-size: 1.7rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .logo span {
+    color: var(--color-roxo-dark);
+  }
+  
+  .nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+  }
+  
+  .nav ul li a:hover {
+    color: var(--color-roxo-dark);
+  }
+
+
+  
+  /* ======================== HERO SECTION ======================== */
+  .hero {
+    height: 100vh;
+    background: linear-gradient(to bottom right, #1A1A2E 50%, #6A0572);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .hero .overlay {
+    position: absolute;
+    top: 0; left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.3);
+  }
+  
+  .hero-content {
+    position: relative; /* para ficar acima do overlay */
+    max-width: 700px;
+    margin-top: 65px;  /* pois o header tem 70px de altura */
+  }
+  
+  /* Título maior e impactante */
+  .hero-title {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Botão principal (CTA) com efeito de brilho */
+  .btn-primario,
+  .cta-button {
+    background: linear-gradient(90deg, #6A0572, #8A0A94);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+  }
+  
+  .cta-button:hover {
+    box-shadow: 0px 0px 10px #6A0572;
+    transform: scale(1.05);
+  }
+  
+  /* ======================== SEÇÕES (PADDING) ======================== */
+  section {
+    padding: 80px 0;
+    margin-top: 70px; /* para não ficar escondido atrás do header */
+  }
+  
+  .sobre,
+  .servicos,
+  .projetos,
+  .depoimentos,
+  .contato {
+    position: relative;
+  }
+  
+  /* ======================== SEÇÃO SOBRE ======================== */
+  .sobre {
+    background-color: var(--color-preto);
+  }
+  .sobre .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+  
+  .sobre-texto {
+    flex: 1;
+    min-width: 300px;
+}
+  .sobre-texto h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: var(--color-roxo-dark);
+  }
+  .sobre-texto p {
+    margin-bottom: 1rem;
+  }
+  .sobre-lista {
+    margin-bottom: 1rem;
+    list-style: none;
+    line-height: 1.6;
+  }
+  .sobre-lista li {
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+  }
+  .sobre-lista li i {
+    color: var(--color-roxo-dark);
+    margin-right: 8px;
+  }
+  
+  .sobre-imagem {
+    flex: 1;
+    text-align: center;
+}
+  .sobre-imagem img {
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+  
+  /* ======================== SEÇÃO SERVIÇOS ======================== */
+  .servicos {
+    background-color: var(--color-azul-noturno);
+    text-align: center;
+  }
+  .servicos h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--color-roxo-dark);
+  }
+  .servicos-cards {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .servico-card {
+    background-color: var(--color-preto);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .servico-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+  .servico-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.servico-card {
+    background: #121212;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.servico-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+  
+  /* ======================== CARROSSEL GERAL ======================== */
+  .carousel-container {
+    position: relative;
+    overflow: hidden;
+    margin-top: 2rem;
+  }
+  .carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  .carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Botões do carrossel */
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--color-roxo-dark);
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+  .carousel-btn:hover {
+    background-color: #500459;
+  }
+  .prev { left: 14px; }
+  .next { right: 14px; }
+  
+  /* ======================== PROJETOS ======================== */
+  .projetos {
+    background-color: var(--color-preto);
+    text-align: center;
+  }
+  .projetos h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-roxo-dark);
+  }
+  .projetos .carousel-item img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+  }
+  .projetos .carousel-item h4 {
+    color: var(--color-roxo-dark);
+    margin-bottom: 0.5rem;
+  }
+  .projetos .carousel-item p {
+    color: #ccc;
+    max-width: 350px;
+  }
+  .projetos .carousel-item h3 {
+    color: var(--color-roxo-dark);
+    margin-bottom: 0.5rem;
+  }
+  /* ======================== DEPOIMENTOS ======================== */
+  .depoimentos {
+    background: var(--color-azul-noturno);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Fundo degradê sutil */
+  .depoimentos-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(106,5,114,0.2), rgba(26,26,46,0.2));
+    pointer-events: none;
+    z-index: 0;
+  }
+  .depoimentos .container {
+    position: relative;
+    z-index: 1;
+  }
+  .depoimentos h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-roxo-dark);
+  }
+  .depo-content {
+    background-color: var(--color-preto);
+    border-radius: 8px;
+    padding: 2rem;
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .depo-foto {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  .depo-stars {
+    margin-top: 0.5rem;
+    color: #FFD700; /* cor de estrela (dourado) */
+  }
+  .depo-stars i {
+    margin: 0 2px;
+  }
+  
+  /* ======================== CONTATO ======================== */
+  .contato {
+    background-color: var(--color-preto);
+    text-align: center;
+  }
+  .contato .contato-chamada {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  .contato-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  .form-contato {
+    background-color: var(--color-azul-noturno);
+    padding: 2rem;
+    border-radius: 8px;
+    flex: 1;
+    max-width: 400px;
+  }
+  .form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+  .form-group input,
+.form-group textarea {
+    background: #1A1A2E;
+    border: 1px solid #6A0572;
+    color: #fff;
+    padding: 0.8rem;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.btn-enviar {
+    background: linear-gradient(90deg, #6A0572, #8A0A94);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-enviar:hover {
+    box-shadow: 0px 0px 10px #6A0572;
+    transform: scale(1.05);
+}
+
+  .contato-info {
+    flex: 1;
+    max-width: 400px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contato-info h3 {
+    margin-bottom: 1rem;
+    color: var(--color-roxo-dark);
+  }
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #28a155;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  .btn-whatsapp:hover {
+    background-color: #1ac159;
+  }
+  .btn-whatsapp img, .btn-whatsapp svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* ======================== FOOTER ======================== */
+  .footer {
+    background-color: var(--color-cinza-escuro);
+    text-align: center;
+    padding: 1.5rem 0;
+  }
+  .footer-content p {
+    margin: 0.5rem 0;
+  }
+  .footer-content a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    margin: 0 0.5rem;
+  }
+  .footer-content a:hover {
+    color: var(--color-roxo-dark);
+  }
+  
+  /* ======================== BOTÃO FLUTUANTE DO WHATSAPP ======================== */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  .whatsapp-float img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* ======================== RESPONSIVIDADE ======================== */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+    .sobre .container {
+      flex-direction: column;
+      text-align: center;
+    }
+    .sobre-imagem {
+      margin-top: 1rem;
+    }
+    .servicos-cards {
+      grid-template-columns: 1fr;
+    }
+    .contato-box {
+      flex-direction: column;
+      align-items: center;
+    }
+    .carousel-btn {
+      font-size: 1.5rem;
+    }
+  }
+  
+
+  .carousel-container {
+    width: 100%;
+    overflow: hidden; /* Evita que os itens saiam da tela */
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.carousel-item {
+    min-width: 100%;
+}
