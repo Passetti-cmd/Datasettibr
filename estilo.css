@@ -496,44 +496,58 @@
   
   /* ======================== RESPONSIVIDADE ======================== */
   @media (max-width: 768px) {
-    .hero-title {
-      font-size: 2rem;
-    }
-    .hero-subtitle {
-      font-size: 1rem;
-    }
-    .sobre .container {
-      flex-direction: column;
-      text-align: center;
-    }
-    .sobre-imagem {
-      margin-top: 1rem;
-    }
-    .servicos-cards {
-      grid-template-columns: 1fr;
-    }
-    .contato-box {
-      flex-direction: column;
-      align-items: center;
-    }
-    .carousel-btn {
-      font-size: 1.5rem;
-    }
+  /* Faz o header acomodar melhor logo e menu empilhados */
+  .header .container {
+    flex-wrap: wrap;               /* permite quebrar linha no mobile */
+    justify-content: center;       /* centraliza caso quebre linha */
+    padding: 0 1rem;               /* se quiser reduzir espaço lateral */
+  }
+
+  /* Diminui o tamanho da logo no mobile */
+  .logo a {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;         /* dá um espacinho entre logo e menu */
   }
   
+  /* Deixa o menu em coluna no celular */
+  .nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    /* Se quiser esconder/mostrar via “hamburger” teria que fazer mais ajustes */
+  }
+  
+  /* Evita forçar o header ficar muito alto no mobile */
+  .header {
+    height: auto;
+    padding: 1rem 0;
+  }
 
-  .carousel-container {
-    width: 100%;
-    overflow: hidden; /* Evita que os itens saiam da tela */
-    position: relative;
-}
+  /* Garante que imagens no "Sobre" e "Projetos" não estourem a tela */
+  .sobre-imagem img,
+  .projetos .carousel-item img {
+    max-width: 100%;
+    height: auto;
+  }
 
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-}
+  /* Ajusta o tamanho dos botões do carrossel para ficarem menores */
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    padding: 0;
+  }
 
-.carousel-item {
-    min-width: 100%;
+  /* Se quiser reposicionar os botões para baixo ao invés de ficarem no meio */
+  .carousel-btn.prev {
+    left: 10px;
+    top: auto;
+    bottom: 10px;
+    transform: none;
+  }
+  .carousel-btn.next {
+    right: 10px;
+    top: auto;
+    bottom: 10px;
+    transform: none;
+  }
 }
