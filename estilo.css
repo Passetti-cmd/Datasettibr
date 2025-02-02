@@ -551,3 +551,230 @@
     transform: none;
   }
 }
+/* Mantém apenas UMA definição de .servico-card */
+
+.servico-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza tudo no eixo horizontal */
+  text-align: center; /* Centraliza o texto */
+}
+
+.servico-card img {
+  display: block;
+  max-width: 80px; /* Ajuste conforme necessário */
+  height: auto;
+  margin: 0 auto 6rem; /* Centraliza e adiciona espaçamento inferior */
+}
+
+
+.servico-card {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: flex-start; /* items em coluna */
+  /* O resto do seu CSS permanece */
+}
+
+/* A imagem e o texto ficam no topo, o botão “desce” */
+.servico-card img {
+  margin-bottom: 1rem;
+}
+
+.servico-card h3 {
+  margin-bottom: 0.8rem;
+}
+
+/* Faz o texto “ocupar” o espaço que restar */
+.servico-card p {
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+  flex: 1; 
+}
+
+.btn-saiba-mais {
+  margin-top: auto; 
+  /* “empurra” o botão para baixo, mesmo que o p seja curto ou longo */
+}
+
+
+/*ESTOQUE
+/* ===== Hero Serviço com vídeo/GIF de fundo ===== */
+.hero-servico {
+  position: relative;
+  width: 100%;
+  height: 60vh; /* Ajuste conforme desejar */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* O vídeo ocupa o container inteiro */
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Overlay escuro levemente */
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 2;
+}
+
+/* Conteúdo por cima do overlay */
+.hero-content-servico {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: #fff;
+}
+.hero-content-servico h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+.hero-content-servico p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Destaques ===== */
+.destaques-servico {
+  background-color: #121212; /* escuro */
+  padding: 60px 0;
+  text-align: center;
+}
+.destaques-servico h2 {
+  color: var(--color-roxo-dark);
+  margin-bottom: 2rem;
+}
+.cards-destaque {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+.card-item {
+  background: #1A1A2E;
+  border-radius: 8px;
+  width: 250px; /* ou flex: 1 1 250px */
+  padding: 1.5rem;
+}
+.card-item img {
+  width: 60px;
+  margin-bottom: 1rem;
+}
+.card-item h3 {
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+.card-item p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #ccc;
+}
+
+/* ===== Portfolio ===== */
+.portfolio-servico {
+  background-color: var(--color-azul-noturno);
+  padding: 60px 0;
+  text-align: center;
+}
+.portfolio-servico h2 {
+  color: var(--color-roxo-dark);
+  margin-bottom: 1rem;
+}
+.portfolio-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.portfolio-card {
+  background: #121212;
+  border-radius: 8px;
+  width: 280px;
+  padding: 1.5rem;
+  text-align: left;
+}
+.portfolio-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+.portfolio-card h4 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.portfolio-card p {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* ===== CTA Final ===== */
+.cta-final-servico {
+  background: linear-gradient(135deg, #6A0572 30%, #1A1A2E 70%);
+  text-align: center;
+  padding: 60px 0;
+  color: #fff;
+}
+.cta-final-servico h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.cta-final-servico p {
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+
+/* ===== Responsividade simples ===== */
+@media (max-width: 768px) {
+  .hero-servico {
+    height: 50vh;
+  }
+  .hero-content-servico h1 {
+    font-size: 1.8rem;
+  }
+  .cards-destaque, .portfolio-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.bloco-funciona {
+  max-width: 300px;
+  background: #1A1A2E;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;       /* Centraliza texto e ícone */
+  display: flex;
+  flex-direction: column;   /* Ícone, título, parágrafo em coluna */
+  align-items: center;      /* Centraliza horizontalmente o ícone */
+}
+.bloco-funciona img {
+  margin-bottom: 1rem;
+}
+/**** Remove estilo padrão de lista e usa setinha ou outro caractere ****/
+.bloco-solucoes ul {
+  list-style: none;         /* remove bolinhas */
+  padding-left: 0;
+}
+.bloco-solucoes ul li {
+  position: relative;
+  padding-left: 1.5rem;     /* dá espaço para o ícone “antes” do texto */
+  margin-bottom: 0.5rem;
+}
+.bloco-solucoes ul li::before {
+  content: "▹";             /* caractere ou ícone que preferir */
+  color: #6A0572;           /* cor do “bullet” */
+  position: absolute;
+  left: 0;
+}
