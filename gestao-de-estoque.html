@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Gestão de Estoque Inteligente - Data Setti">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Estoque - Data Setti</title>
+
+  <!-- CSS principal (estilo.css) -->
+  <link rel="stylesheet" href="estilo.css">
+
+  <!-- CSS complementar (opcional), se quiser -->
+  <link rel="stylesheet" href="estoque.css">
+
+  <!-- (Opcional) Biblioteca de animação on-scroll, ex.: AOS -->
+  <!-- 
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  -->
+
+</head>
+<body>
+
+<!-- ====================== HEADER ====================== -->
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <a href="index.html">Data <span>Setti</span></a>
+    </div>
+    <nav class="nav">
+      <ul>
+        <li><a href="index.html#sobre">Sobre</a></li>
+        <li><a href="index.html#servicos">Serviços</a></li>
+        <li><a href="index.html#projetos">Projetos</a></li>
+        <li><a href="index.html#depoimentos">Depoimentos</a></li>
+        <li><a href="index.html#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ====================== HERO COM VÍDEO DE FUNDO ====================== -->
+<section class="hero-servico">
+  <video class="hero-video" autoplay muted loop>
+    <source src="videos/estoquee.mp4" type="video/mp4">
+    <!-- fallback se o vídeo não carregar -->
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content-servico container">
+    <h1 data-aos="fade-up">Gestão de Estoque Inteligente</h1>
+    <p data-aos="fade-up" data-aos-delay="100">
+      Tenha controle total do seu inventário, reduza perdas e aumente vendas.  
+      Tudo isso com análises avançadas e automação, sem complicações.
+    </p>
+    <a href="index.html#contato" class="btn-primario" data-aos="fade-up" data-aos-delay="200">
+      Quero otimizar meu estoque
+    </a>
+  </div>
+</section>
+
+<!-- ====================== SEÇÃO: O QUE É ====================== -->
+<section id="o-que-e" style="padding: 60px 0; background: #121212;">
+  <div class="container">
+    <h2 
+      style="color: var(--color-roxo-dark); margin-bottom:1.5rem; text-align:center;"
+      data-aos="fade-right">
+      O que é a Gestão de Estoque Inteligente?
+    </h2>
+    <p 
+      style="max-width: 800px; margin: 0 auto; text-align: center; color: #ccc;"
+      data-aos="fade-left"
+    >
+      Nossa solução une <strong>análise de dados</strong>, <strong>inteligência artificial</strong> 
+      e <strong>automação</strong> para garantir que seus produtos estejam sempre disponíveis, 
+      sem excessos e sem perdas por validade. Ao contrário de sistemas tradicionais, 
+      fazemos uma sincronização em tempo real com suas vendas, fornecedores e histórico, 
+      permitindo que você tome decisões **baseadas em dados concretos** e não em suposições.
+    </p>
+  </div>
+</section>
+
+<!-- ====================== SEÇÃO: COMO FUNCIONA ====================== -->
+<section id="como-funciona" style="padding: 60px 0; background: var(--color-azul-noturno);">
+  <div class="container">
+    <h2 f
+      style="color: var(--color-roxo-dark); margin-bottom:1.5rem; text-align:center;"
+      data-aos="fade-up"
+    >
+      Como Funciona?
+    </h2>
+    <div 
+      style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;"
+    >
+      <!-- ETAPA 1 -->
+      <div 
+        class="bloco-funciona" 
+        style="max-width: 300px; background:#1A1A2E; border-radius:8px; padding:1.5rem;"
+        data-aos="zoom-in"
+      >
+        <img src="img/inventory-management.svg" alt="Coleta de Dados" style="width:60px; margin-bottom:1rem;">
+        <h3 style="margin-bottom:0.5rem;">Coleta de Dados</h3>
+        <p style="font-size:0.95rem; color:#ccc;">
+          Integramos seu ERP, planilhas e sistemas para consolidar todo o histórico de compras, 
+          vendas e estoque em um só lugar.
+        </p>
+      </div>
+
+      <!-- ETAPA 2 -->
+      <div 
+        class="bloco-funciona" 
+        style="max-width: 300px; background:#1A1A2E; border-radius:8px; padding:1.5rem;"
+        data-aos="zoom-in"
+        data-aos-delay="200"
+      >
+        <img src="img/Ia_chip.png" alt="Análise e IA" style="width:60px; margin-bottom:1rem;">
+        <h3 style="margin-bottom:0.5rem;">Análise e IA</h3>
+        <p style="font-size:0.95rem; color:#ccc;">
+          Modelos de IA para prever demanda, identificar sazonalidades e sugerir 
+          quantidades ideais de compra.
+        </p>
+      </div>
+
+      <!-- ETAPA 3 -->
+      <div 
+        class="bloco-funciona" 
+        style="max-width: 300px; background:#1A1A2E; border-radius:8px; padding:1.5rem;"
+        data-aos="zoom-in"
+        data-aos-delay="400"
+      >
+        <img src="img/sos.svg" alt="Automação e Alertas" style="width:60px; margin-bottom:1rem;">
+        <h3 style="margin-bottom:0.5rem;">Automação e Alertas</h3>
+        <p style="font-size:0.95rem; color:#ccc;">
+          Receba alertas de produtos abaixo do nível mínimo, validades próximas ou 
+          vendas acima do previsto — tudo em tempo real.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== SEÇÃO: BENEFÍCIOS ====================== -->
+<section id="beneficios" style="padding: 60px 0; background:#121212;">
+  <div class="container">
+    <h2 
+      style="color: var(--color-roxo-dark); margin-bottom:1.5rem; text-align:center;"
+      data-aos="fade-up"
+    >
+      Benefícios para sua Empresa
+    </h2>
+    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
+      
+      <!-- BENEFÍCIO 1 -->
+      <div 
+        style="flex:1; min-width:280px; max-width:380px; background:#1A1A2E; border-radius:8px; padding:1.5rem;"
+        data-aos="fade-right"
+      >
+        <h3 style="margin-bottom:1rem; color:#fff;">Reduza Desperdícios</h3>
+        <p style="color:#ccc;">
+          Produtos encalhados ou vencidos representam prejuízo. Com nossa solução, 
+          você antecipa demandas e elimina o excesso de estoque.
+        </p>
+      </div>
+      
+      <!-- BENEFÍCIO 2 -->
+      <div 
+        style="flex:1; min-width:280px; max-width:380px; background:#1A1A2E; border-radius:8px; padding:1.5rem;"
+        data-aos="fade-up"
+      >
+        <h3 style="margin-bottom:1rem; color:#fff;">Aumente a Satisfação</h3>
+        <p style="color:#ccc;">
+          Tenha o item certo, na hora certa. Clientes felizes voltam a comprar e 
+          ainda recomendam sua loja ou serviço.
+        </p>
+      </div>
+      
+      <!-- BENEFÍCIO 3 -->
+      <div 
+        style="flex:1; min-width:280px; max-width:380px; background:#1A1A2E; border-radius:8px; padding:1.5rem;"
+        data-aos="fade-left"
+      >
+        <h3 style="margin-bottom:1rem; color:#fff;">Decisões Conscientes</h3>
+        <p style="color:#ccc;">
+          Dashboards preditivos e relatórios facilitam a tomada de decisão, 
+          diminuindo riscos e maximizando lucros.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== SEÇÃO: NOSSOS SERVIÇOS POSSÍVEIS ====================== -->
+<section id="servicos-possiveis" style="padding:60px 0; background: var(--color-azul-noturno);">
+  <div class="container">
+    <h2 
+      style="text-align:center; color: var(--color-roxo-dark); margin-bottom:1.5rem;"
+      data-aos="fade-up"
+    >
+      Soluções Principais em Gestão de Estoque
+    </h2>
+    <p 
+      style="max-width: 800px; margin: 0 auto 2rem; text-align:center; color:#fff;"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      A Data Setti oferece um pacote completo de recursos para otimizar cada etapa da sua operação:
+    </p>
+
+    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
+      <!-- ITEM 1 -->
+      <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;"
+        data-aos="fade-right"
+      >
+        <h3 style="color:#fff; margin-bottom:0.5rem;">1. Monitoramento em Tempo Real</h3>
+        <ul style="color:#ccc; line-height:1.6;">
+          <li>Dashboards dinâmicos para acompanhar o nível de cada SKU.</li>
+          <li>Alertas automáticos via SMS, e-mail ou apps integrados.</li>
+        </ul>
+      </div>
+      <!-- ITEM 2 -->
+      <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;"
+        data-aos="fade-up"
+      >
+        <h3 style="color:#fff; margin-bottom:0.5rem;">2. Previsão de Demanda com IA</h3>
+        <ul style="color:#ccc; line-height:1.6;">
+          <li>Modelos preditivos com base em histórico de vendas e tendências de mercado.</li>
+          <li>Ajuste automático de níveis de reposição conforme sazonalidade.</li>
+        </ul>
+      </div>
+      <!-- ITEM 3 -->
+      <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;"
+        data-aos="fade-left"
+      >
+        <h3 style="color:#fff; margin-bottom:0.5rem;">3. Otimização de Logística e Distribuição</h3>
+        <ul style="color:#ccc; line-height:1.6;">
+          <li>Integração com ERPs e sistemas de gestão para sincronizar toda a cadeia de suprimentos.</li>
+          <li>Análise de rotas e estratégias de distribuição para evitar rupturas e reduzir custos.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; margin-top:2rem;">
+      <!-- ITEM 4 -->
+      <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;"
+        data-aos="fade-right"
+        data-aos-delay="200"
+      >
+        <h3 style="color:#fff; margin-bottom:0.5rem;">4. Análise de Desperdícios e Validade</h3>
+        <ul style="color:#ccc; line-height:1.6;">
+          <li>Detecção de produtos próximos ao vencimento, com alertas antecipados.</li>
+          <li>Relatórios de perdas e sugestões de ações preventivas.</li>
+        </ul>
+      </div>
+      <!-- ITEM 5 -->
+      <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        <h3 style="color:#fff; margin-bottom:0.5rem;">5. Integração Multicanal</h3>
+        <ul style="color:#ccc; line-height:1.6;">
+          <li>Gerencie estoques de lojas físicas, e-commerces e marketplaces em um só painel.</li>
+          <li>Sincronização em tempo real para vendas online e offline.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CASOS DE SUCESSO ====================== -->
+<section id="casos-sucesso" style="padding:60px 0; background: var(--color-preto);">
+  <div class="container" style="text-align:center;">
+    <h2 
+      style="color: var(--color-roxo-dark); margin-bottom:1.5rem;"
+      data-aos="fade-up"
+    >
+      Casos de Sucesso
+    </h2>
+    <p 
+      style="max-width:700px; margin: 0 auto 2rem; color:#ccc;"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      Empresas que implementaram nossa solução reduziram desperdícios, otimizaram a gestão de estoque e aumentaram sua rentabilidade. Confira alguns exemplos de impacto real:
+    </p>
+
+    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
+      
+      <!-- CARD 1 - Controle de Estoque -->
+      <div 
+        style="background:#1A1A2E; border-radius:8px; padding:1.5rem; max-width:300px;"
+        data-aos="fade-right"
+      >
+        <h4 style="color:#fff; margin-bottom:0.5rem;">📈 Controle Eficiente de Estoque</h4>
+        <p style="color:#ccc; font-size:0.95rem;">
+          Implementamos um sistema de rastreamento em tempo real para um grande varejista. Com isso, reduziram em 30% as perdas de produtos perecíveis** e aumentaram em 20% a satisfação dos clientes, garantindo que os produtos estivessem sempre disponíveis no momento certo.
+        </p>
+      </div>
+
+      <!-- CARD 2 - Antecipação de Perdas -->
+      <div 
+        style="background:#1A1A2E; border-radius:8px; padding:1.5rem; max-width:300px;"
+        data-aos="fade-up"
+      >
+        <h4 style="color:#fff; margin-bottom:0.5rem;">📊 Previsão Inteligente de Demanda</h4>
+        <p style="color:#ccc; font-size:0.95rem;">
+          Utilizando **inteligência artificial**, uma rede de supermercados conseguiu prever variações sazonais e ajustar sua reposição de produtos. Com isso, reduziu em R$ 150 mil os custos com estoque parado e aumentou a margem de lucro ao eliminar excessos e evitar falta de produtos essenciais.
+        </p>
+      </div>
+
+      <!-- CARD 3 - Monitoramento de Entrada e Saída -->
+      <div 
+        style="background:#1A1A2E; border-radius:8px; padding:1.5rem; max-width:300px;"
+        data-aos="fade-left"
+      >
+        <h4 style="color:#fff; margin-bottom:0.5rem;">📦 Monitoramento de Movimentação de Produtos</h4>
+        <p style="color:#ccc; font-size:0.95rem;">
+          Implementamos dashboards interativos para uma distribuidora, permitindo um controle preciso das entradas e saídas do estoque. A empresa viu um aumento de 25% no faturamento, garantindo que os produtos de maior demanda fossem sempre priorizados, evitando rupturas e melhorando a experiência do consumidor.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================== ANTES E DEPOIS ====================== -->
+<section id="antes-depois" style="padding:60px 0; background:#121212;">
+  <div class="container" style="text-align:center;">
+    <h2 
+      style="color: var(--color-roxo-dark); margin-bottom:1.5rem;"
+      data-aos="fade-up"
+    >
+      Antes & Depois
+    </h2>
+    <p 
+      style="color:#ccc; max-width:700px; margin: 0 auto 2rem;"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      Veja a diferença entre um estoque “às cegas” e um estoque gerenciado pela Data Setti:
+    </p>
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+      <div data-aos="fade-right">
+        <h4 style="color:#fff; margin-bottom:0.5rem;">Antes</h4>
+        <img src="img/warehouse.png" alt="Antes" style="width:300px; border-radius:8px;">
+      </div>
+      <div data-aos="fade-left">
+        <h4 style="color:#fff; margin-bottom:0.5rem;">Depois</h4>
+        <img src="img/iawerehouse.png" alt="Depois" style="width:300px; border-radius:8px;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CTA FINAL ====================== -->
+<section id="cta-final" style="padding:60px 0; background: linear-gradient(135deg, #6A0572, #1A1A2E); text-align:center;">
+  <div class="container">
+    <h2 style="color:#fff; margin-bottom:1rem;">Pronto para transformar seu estoque?</h2>
+    <p style="color:#fff; max-width:600px; margin:0 auto 1.5rem;">
+      Fale agora com um de nossos especialistas e descubra como a Data Setti 
+      pode reduzir custos, aumentar suas vendas e trazer total visibilidade ao seu inventário.
+    </p>
+    <a href="index.html#contato" class="btn-primario" style="background: #fff; color:#6A0572;">
+      Fale com a Data Setti
+    </a>
+  </div>
+</section>
+<!-- ====================== FOOTER ====================== -->
+<footer class="footer">
+  <div class="container footer-content">
+    <p>Data Setti – Inteligência em Dados &copy; 2025. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- Se quiser usar AOS (Animation On Scroll), descomente -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800
+  });
+</script>
+</body>
+</html>
