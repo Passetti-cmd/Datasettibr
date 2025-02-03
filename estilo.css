@@ -778,3 +778,70 @@
   position: absolute;
   left: 0;
 }
+
+/* Exemplo de animação de gradiente */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Banner gradiente animado */
+.hero-animado {
+  /* Define o gradiente desejado */
+  background: linear-gradient(135deg, #6A0572, #1A1A2E, #8A0A94);
+  
+  /* Aumenta o tamanho do fundo para permitir o movimento */
+  background-size: 200% 200%;
+  
+  /* Aplica a animação: duração 10s, easing "ease", e infinita */
+  animation: gradientAnimation 15s ease infinite;
+  
+  /* Outros estilos do seu banner */
+  height: 60vh; /* ou o que desejar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero-animado {
+  background: linear-gradient(135deg, #6A0572, #1A1A2E, #8A0A94);
+  background-size: 200% 200%;
+  animation: gradientAnimation 20s ease infinite;  /* Animação mais lenta (20s) */
+  height: 75vh;  /* Banner maior (80% da altura da viewport) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+/* Se estiver usando a classe .hero-animado com o container .hero-content */
+.hero-animado .hero-content h1 {
+  font-size: 2.5rem; /* Tamanho maior para o título */
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hero-animado .hero-content p {
+  font-size: 1.9=rem; /* Tamanho maior para o subtítulo */
+  margin-bottom: 1.0rem;
+}
