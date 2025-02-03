@@ -2,23 +2,21 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Painéis e Insights Estratégicos - Data Setti">
+  <meta name="description" content="Estratégias Baseadas em Inteligência Artificial - Data Setti">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painéis e Insights Estratégicos | Data Setti</title>
+  <title>Estratégias Baseadas em IA | Data Setti</title>
 
-  <!-- CSS principal (estilo.css) -->
+  <!-- CSS principal -->
   <link rel="stylesheet" href="estilo.css">
-  <!-- CSS complementar (opcional) -->
-  <link rel="stylesheet" href="insights.css">
+  <!-- CSS extra (opcional) -->
+  <link rel="stylesheet" href="ia.css">
 
-  <!-- (Opcional) Biblioteca de animação on-scroll -->
-  <!--
+  <!-- AOS (opcional) 
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   -->
 </head>
 <body>
 
-<!-- ========== HEADER ========== -->
 <header class="header">
   <div class="container">
     <div class="logo">
@@ -36,245 +34,220 @@
   </div>
 </header>
 
-<!-- ========== HERO COM VÍDEO DE FUNDO ========== -->
 <section class="hero-servico">
   <video class="hero-video" autoplay muted loop>
-    <source src="videos/data.mp4" type="video/mp4">
-    <!-- fallback se o vídeo não carregar -->
+    <source src="videos/IA.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content-servico container">
-    <h1 data-aos="fade-up">Painéis e Insights Estratégicos</h1>
+    <h1 data-aos="fade-up">Estratégias Baseadas em Inteligência Artificial</h1>
     <p data-aos="fade-up" data-aos-delay="100">
-      Transforme dados em decisões inteligentes. Visualize oportunidades, antecipe tendências e 
-      leve seu negócio a outro nível de competitividade.
+      Tome decisões mais precisas, acelere processos e descubra oportunidades ocultas com modelos de IA 
+      projetados para o seu negócio.
     </p>
     <a href="index.html#contato" class="btn-primario" data-aos="fade-up" data-aos-delay="200">
-      Quero revolucionar meus dados
+      Quero inovar com IA
     </a>
   </div>
 </section>
 
-<!-- ========== O QUE É ========== -->
-<section id="o-que-e" style="padding:60px 0; background:#121212;">
+<!-- O que é IA -->
+<section style="padding:60px 0; background:#121212;">
   <div class="container">
-    <h2 style="color: var(--color-roxo-dark); margin-bottom:1.5rem; text-align:center;" data-aos="fade-right">
-      O que são Painéis e Insights Estratégicos?
+    <h2 style="text-align:center; color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-right">
+      O que é IA para Negócios?
     </h2>
     <p style="max-width:800px; margin:0 auto; text-align:center; color:#ccc;" data-aos="fade-left">
-      É a capacidade de unir <strong>Business Intelligence (BI)</strong> e <strong>Análise de Dados</strong> 
-      para extrair informações valiosas de diversas fontes. Imagine ter <em>todos</em> os KPIs da sua empresa 
-      em um só lugar, atualizados em tempo real, ajudando você a enxergar oportunidades e se adaptar 
-      rapidamente às mudanças do mercado.
+      Inteligência Artificial (IA) é a ciência de criar sistemas capazes de aprender, prever e 
+      tomar decisões baseadas em dados. Ela está revolucionando todos os setores — do varejo 
+      às indústrias — permitindo automações mais sofisticadas, análises preditivas e 
+      recomendações altamente personalizadas.
     </p>
   </div>
 </section>
 
-<!-- ========== COMO FUNCIONA ========== -->
-<section id="como-funciona" style="padding:60px 0; background: var(--color-azul-noturno);">
+<!-- Como Funciona -->
+<section style="padding:60px 0; background: var(--color-azul-noturno);">
   <div class="container">
     <h2 style="text-align:center; color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-up">
       Como Funciona?
     </h2>
     <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
 
-      <!-- ETAPA 1 -->
       <div style="max-width:300px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="zoom-in">
-        <img src="img/icones/data-integration.svg" alt="Integração de Dados" style="width:60px; margin-bottom:1rem;">
-        <h3>Integração de Dados</h3>
+        <img src="img/icones/data-collection.svg" alt="Coleta de Dados" style="width:60px; margin-bottom:1rem;">
+        <h3>Coleta & Preparação</h3>
         <p style="color:#ccc; font-size:0.95rem;">
-          Coletamos e unificamos informações de ERPs, CRMs, planilhas e fontes externas para ter 
-          uma visão completa do seu negócio.
+          Reunimos dados de sistemas internos e fontes externas, limpando e organizando para alimentar os modelos de IA.
         </p>
       </div>
-
-      <!-- ETAPA 2 -->
       <div style="max-width:300px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="zoom-in" data-aos-delay="200">
-        <img src="img/icones/bi.svg" alt="Business Intelligence" style="width:60px; margin-bottom:1rem;">
-        <h3>Business Intelligence</h3>
+        <img src="img/icones/ml.svg" alt="Modelagem Preditiva" style="width:60px; margin-bottom:1rem;">
+        <h3>Modelagem Preditiva</h3>
         <p style="color:#ccc; font-size:0.95rem;">
-          Transformamos esses dados em painéis interativos, relatórios dinâmicos e análises avançadas.
+          Criamos e treinamos modelos de machine learning para prever comportamentos, demandas e riscos.
         </p>
       </div>
-
-      <!-- ETAPA 3 -->
       <div style="max-width:300px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="zoom-in" data-aos-delay="400">
-        <img src="img/icones/insights.svg" alt="Insights Estratégicos" style="width:60px; margin-bottom:1rem;">
-        <h3>Insights Estratégicos</h3>
+        <img src="img/icones/deployment.svg" alt="Deployment e Integração" style="width:60px; margin-bottom:1rem;">
+        <h3>Integração & Adoção</h3>
         <p style="color:#ccc; font-size:0.95rem;">
-          Indicamos tendências, riscos e oportunidades, permitindo uma tomada de decisão 
-          mais acertada e rápida.
+          Implementamos as soluções de IA nos seus processos, criando interfaces amigáveis e treinando equipes para extrair valor real.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== BENEFÍCIOS ========== -->
-<section id="beneficios" style="padding:60px 0; background:#121212;">
+<!-- Benefícios -->
+<section style="padding:60px 0; background:#121212;">
   <div class="container">
     <h2 style="text-align:center; color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-up">
       Benefícios para sua Empresa
     </h2>
     <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
       
-      <!-- BENEFÍCIO 1 -->
       <div style="flex:1; min-width:280px; max-width:380px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="fade-right">
-        <h3 style="color:#fff; margin-bottom:1rem;">Decisões Baseadas em Fatos</h3>
+        <h3 style="color:#fff; margin-bottom:1rem;">Decisões Mais Inteligentes</h3>
         <p style="color:#ccc;">
-          Saia do “achismo”. Use dados confiáveis para planejar ações, estabelecer metas 
-          e acompanhar resultados.
+          Preveja demandas, detecte fraudes e identifique oportunidades que humanos podem não enxergar de imediato.
         </p>
       </div>
-
-      <!-- BENEFÍCIO 2 -->
       <div style="flex:1; min-width:280px; max-width:380px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="fade-up">
-        <h3 style="color:#fff; margin-bottom:1rem;">Agilidade e Produtividade</h3>
+        <h3 style="color:#fff; margin-bottom:1rem;">Personalização</h3>
         <p style="color:#ccc;">
-          Relatórios que antes levavam horas ou dias para serem criados, agora surgem em poucos cliques, 
-          atualizados em tempo real.
+          Recomende produtos ou serviços com base no perfil de cada cliente, aumentando vendas e retenção.
         </p>
       </div>
-
-      <!-- BENEFÍCIO 3 -->
       <div style="flex:1; min-width:280px; max-width:380px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="fade-left">
-        <h3 style="color:#fff; margin-bottom:1rem;">Visão de Futuro</h3>
+        <h3 style="color:#fff; margin-bottom:1rem;">Automação Avançada</h3>
         <p style="color:#ccc;">
-          Identifique tendências de mercado, antecipe mudanças e planeje estratégias de crescimento 
-          sustentadas por dados.
+          Chatbots e sistemas de visão computacional para agilizar suporte, inspeções de qualidade e muito mais.
         </p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ========== SEÇÃO: SERVIÇOS POSSÍVEIS (Painéis & Insights) ========== -->
-<section id="servicos-possiveis" style="padding:60px 0; background: var(--color-azul-noturno);">
+<!-- Serviços Possíveis (IA) -->
+<section style="padding:60px 0; background: var(--color-azul-noturno);">
   <div class="container">
     <h2 style="text-align:center; color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-up">
-      Principais Soluções de Insights
+      Principais Estratégias em IA
     </h2>
-    <p style="max-width: 800px; margin: 0 auto 2rem; text-align:center; color:#fff;" data-aos="fade-up" data-aos-delay="100">
-      A Data Setti oferece um leque de serviços para você explorar todo o potencial dos seus dados:
+    <p style="max-width:800px; margin:0 auto 2rem; text-align:center; color:#fff;" data-aos="fade-up" data-aos-delay="100">
+      Descubra como aplicamos IA para resolver diferentes desafios de negócio:
     </p>
-
     <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
-      <!-- ITEM 1 -->
+
       <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;" data-aos="fade-right">
-        <h3 style="color:#fff; margin-bottom:0.5rem;">1. Dashboards Personalizados</h3>
+        <h3 style="color:#fff; margin-bottom:0.5rem;">1. Modelagem Preditiva & Análise de Dados</h3>
         <ul style="color:#ccc; line-height:1.6;">
-          <li>Criação de painéis interativos com KPIs específicos de vendas, finanças ou operações.</li>
-          <li>Visualizações customizadas para cada departamento.</li>
+          <li>Previsão de demanda, comportamento do consumidor e tendências de mercado.</li>
+          <li>Análises avançadas para otimização de processos e identificação de padrões.</li>
         </ul>
       </div>
-      <!-- ITEM 2 -->
       <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;" data-aos="fade-up">
-        <h3 style="color:#fff; margin-bottom:0.5rem;">2. Business Intelligence (BI)</h3>
+        <h3 style="color:#fff; margin-bottom:0.5rem;">2. Implementação de Machine Learning</h3>
         <ul style="color:#ccc; line-height:1.6;">
-          <li>Integração de dados de múltiplas fontes (ERP, CRM, web, etc.).</li>
-          <li>Relatórios dinâmicos e automatizados para decisões estratégicas.</li>
+          <li>Algoritmos para melhorar a precisão em previsões e decisões.</li>
+          <li>Personalização de recomendações e estratégias baseadas em dados de clientes.</li>
         </ul>
       </div>
-      <!-- ITEM 3 -->
       <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;" data-aos="fade-left">
-        <h3 style="color:#fff; margin-bottom:0.5rem;">3. Análise Preditiva</h3>
+        <h3 style="color:#fff; margin-bottom:0.5rem;">3. Chatbots & NLP</h3>
         <ul style="color:#ccc; line-height:1.6;">
-          <li>Ferramentas para identificar oportunidades de mercado e antecipar mudanças.</li>
-          <li>Simulações “what-if” para planejar cenários futuros.</li>
+          <li>Automação de suporte ao cliente com chatbots inteligentes.</li>
+          <li>Análise de sentimentos e linguagem natural para feedback e redes sociais.</li>
         </ul>
       </div>
     </div>
-
+    
     <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; margin-top:2rem;">
-      <!-- ITEM 4 -->
+
       <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;" data-aos="fade-right" data-aos-delay="200">
-        <h3 style="color:#fff; margin-bottom:0.5rem;">4. Consultoria em Estratégia de Dados</h3>
+        <h3 style="color:#fff; margin-bottom:0.5rem;">4. Visão Computacional</h3>
         <ul style="color:#ccc; line-height:1.6;">
-          <li>Auxílio para estruturar métricas e definir KPIs relevantes.</li>
-          <li>Treinamentos para equipes utilizarem as ferramentas de BI com eficiência.</li>
+          <li>Reconhecimento de imagens e vídeos para varejo, segurança e manufatura.</li>
+          <li>Análise automática de qualidade em linhas de produção.</li>
         </ul>
       </div>
-      <!-- ITEM 5 -->
       <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;" data-aos="fade-up" data-aos-delay="200">
-        <h3 style="color:#fff; margin-bottom:0.5rem;">5. Integração e Governança</h3>
+        <h3 style="color:#fff; margin-bottom:0.5rem;">5. Consultoria & Implementação</h3>
         <ul style="color:#ccc; line-height:1.6;">
-          <li>Soluções para consolidar dados dispersos e otimizar a qualidade das informações.</li>
-          <li>Boas práticas de governança e segurança de dados.</li>
+          <li>Mapeamento de oportunidades de IA em processos internos.</li>
+          <li>Workshops e treinamentos para equipes adotarem e dominarem as novas tecnologias.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== CASOS DE SUCESSO ========== -->
-<section id="casos-sucesso" style="padding:60px 0; background: var(--color-preto);">
+<!-- Casos de Sucesso -->
+<section style="padding:60px 0; background: var(--color-preto);">
   <div class="container" style="text-align:center;">
     <h2 style="color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-up">
       Casos de Sucesso
     </h2>
     <p style="max-width:700px; margin:0 auto 2rem; color:#ccc;" data-aos="fade-up" data-aos-delay="100">
-      Veja como nossos painéis e insights já transformaram diversos negócios:
+      Confira exemplos de empresas que adotaram IA e conquistaram resultados expressivos:
     </p>
-
     <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
-      <!-- CARD 1 -->
       <div style="background:#1A1A2E; border-radius:8px; padding:1.5rem; max-width:300px;" data-aos="fade-right">
-        <img src="img/insights_case1.jpg" alt="Case 1" style="width:100%; border-radius:6px; margin-bottom:1rem;">
-        <h4 style="color:#fff; margin-bottom:0.5rem;">Rede de Franquias</h4>
+        <img src="img/ia_case1.jpg" alt="Case 1" style="width:100%; border-radius:6px; margin-bottom:1rem;">
+        <h4 style="color:#fff; margin-bottom:0.5rem;">E-commerce de Eletrônicos</h4>
         <p style="color:#ccc; font-size:0.95rem;">
-          Padronização de KPIs em mais de 30 unidades, reduzindo custos de operação e aumentando as vendas em 18%.
+          Algoritmos de recomendação aumentaram as vendas cruzadas em 30% e a satisfação do cliente em 15%.
         </p>
       </div>
-      <!-- CARD 2 -->
       <div style="background:#1A1A2E; border-radius:8px; padding:1.5rem; max-width:300px;" data-aos="fade-up">
-        <img src="img/insights_case2.jpg" alt="Case 2" style="width:100%; border-radius:6px; margin-bottom:1rem;">
-        <h4 style="color:#fff; margin-bottom:0.5rem;">E-commerce de Moda</h4>
+        <img src="img/ia_case2.jpg" alt="Case 2" style="width:100%; border-radius:6px; margin-bottom:1rem;">
+        <h4 style="color:#fff; margin-bottom:0.5rem;">Instituição Financeira</h4>
         <p style="color:#ccc; font-size:0.95rem;">
-          Análises preditivas de comportamento do consumidor resultaram em 25% de aumento na taxa de conversão online.
+          Modelos preditivos de risco reduziram fraudes em 40%, economizando milhões em prejuízos.
         </p>
       </div>
-      <!-- CARD 3 -->
       <div style="background:#1A1A2E; border-radius:8px; padding:1.5rem; max-width:300px;" data-aos="fade-left">
-        <img src="img/insights_case3.jpg" alt="Case 3" style="width:100%; border-radius:6px; margin-bottom:1rem;">
-        <h4 style="color:#fff; margin-bottom:0.5rem;">Fábrica de Alimentos</h4>
+        <img src="img/ia_case3.jpg" alt="Case 3" style="width:100%; border-radius:6px; margin-bottom:1rem;">
+        <h4 style="color:#fff; margin-bottom:0.5rem;">Fábrica Automotiva</h4>
         <p style="color:#ccc; font-size:0.95rem;">
-          Dashboards unificados de produção, vendas e logística, otimizando processos e reduzindo desperdícios em 20%.
+          Visão computacional para inspeção de peças diminuiu rejeições falsas, aumentando a eficiência na linha de montagem.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== ANTES & DEPOIS (OPCIONAL) ========== -->
-<section id="antes-depois" style="padding:60px 0; background:#121212;">
+<!-- Antes & Depois (opcional) -->
+<section style="padding:60px 0; background:#121212;">
   <div class="container" style="text-align:center;">
     <h2 style="color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-up">
       Antes & Depois
     </h2>
     <p style="color:#ccc; max-width:700px; margin:0 auto 2rem;" data-aos="fade-up" data-aos-delay="100">
-      Compare a rotina de relatórios manuais e pouca visibilidade com a automação e clareza que nossos painéis oferecem.
+      Compare decisões intuitivas versus decisões respaldadas por IA e aprenda como a adoção de algoritmos 
+      faz toda a diferença.
     </p>
-    <div style="display: flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
+    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
       <div data-aos="fade-right">
         <h4 style="color:#fff; margin-bottom:0.5rem;">Antes</h4>
-        <img src="img/antes-insights.jpg" alt="Antes" style="width:300px; border-radius:8px;">
+        <img src="img/antes-ia.jpg" alt="Antes" style="width:300px; border-radius:8px;">
       </div>
       <div data-aos="fade-left">
         <h4 style="color:#fff; margin-bottom:0.5rem;">Depois</h4>
-        <img src="img/depois-insights.jpg" alt="Depois" style="width:300px; border-radius:8px;">
+        <img src="img/depois-ia.jpg" alt="Depois" style="width:300px; border-radius:8px;">
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== CTA FINAL ========== -->
-<section id="cta-final" style="padding:60px 0; background: linear-gradient(135deg, #6A0572, #1A1A2E); text-align:center;">
+<!-- CTA Final -->
+<section style="padding:60px 0; background: linear-gradient(135deg, #6A0572, #1A1A2E); text-align:center;">
   <div class="container">
-    <h2 style="color:#fff; margin-bottom:1rem;">Pronto para transformar seus dados?</h2>
+    <h2 style="color:#fff; margin-bottom:1rem;">Pronto para adotar IA?</h2>
     <p style="color:#fff; max-width:600px; margin:0 auto 1.5rem;">
-      Entre em contato e descubra como a Data Setti pode criar soluções de BI e painéis 
-      personalizados para o seu negócio.
+      Fale com nossos especialistas e descubra como a Inteligência Artificial 
+      pode revolucionar seu negócio, do atendimento ao cliente à produção.
     </p>
     <a href="index.html#contato" class="btn-primario" style="background:#fff; color:#6A0572;">
       Fale com a Data Setti
@@ -282,21 +255,17 @@
   </div>
 </section>
 
-<!-- ========== FOOTER ========== -->
 <footer class="footer">
   <div class="container footer-content">
     <p>Data Setti – Inteligência em Dados &copy; 2025. Todos os direitos reservados.</p>
   </div>
 </footer>
 
-<!-- Se quiser usar AOS (Animation On Scroll), descomente
+<!-- Se quiser usar AOS:
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init({
-    duration: 800
-  });
+  AOS.init({ duration:800 });
 </script>
 -->
-
 </body>
 </html>
