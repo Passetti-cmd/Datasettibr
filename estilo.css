@@ -3,37 +3,37 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  :root {
+}
+
+:root {
     /* Paleta de cores */
     --color-azul-noturno: #1A1A2E;
     --color-roxo-dark: #6A0572;
     --color-preto: #121212;
     --color-branco: #ffffff;
     --color-cinza-escuro: #2E2E2E;
-  
+
     /* Fonte padrão */
     --font-principal: 'Poppins', sans-serif;
-  }
-  
-  body {
+}
+
+body {
     font-family: var(--font-principal);
     background-color: var(--color-azul-noturno);
     color: var(--color-branco);
     line-height: 1.5;
-    overflow-x: hidden; /* evita scroll horizontal se algo passar */
-  }
-  
-  /* ======================== CONTAINER GERAL ======================== */
-  .container {
+    overflow-x: hidden; /* evita scroll horizontal */
+}
+
+/* ======================== CONTAINER GERAL ======================== */
+.container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-  }
-  
-  /* ======================== HEADER FIXO NO TOPO ======================== */
-  .header {
+}
+
+/* ======================== HEADER FIXO NO TOPO ======================== */
+.header {
     position: fixed;
     width: 100%;
     top: 0;
@@ -46,85 +46,78 @@
     height: 70px;
     display: flex;
     align-items: center;
-  }
-  
-  .header .container {
+}
+.header .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-  
-  .logo a {
+}
+
+.logo a {
     font-size: 1.7rem;
     color: #fff;
     text-decoration: none;
     font-weight: 600;
-  }
-  
-  .logo span {
+}
+.logo span {
     color: var(--color-roxo-dark);
-  }
-  
-  .nav ul {
+}
+
+.nav ul {
     list-style: none;
     display: flex;
     gap: 1.5rem;
-  }
-  
-  .nav ul li a {
+}
+.nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: 400;
     transition: color 0.3s ease;
-  }
-  
-  .nav ul li a:hover {
+}
+.nav ul li a:hover {
     color: var(--color-roxo-dark);
-  }
+}
 
+/* ======================== HERO (TOPO) COM ANIMAÇÃO DE GRADIENTE ======================== */
+.hero-animado {
+    /* Gradiente animado */
+    background: linear-gradient(135deg, #6A0572, #1A1A2E, #8A0A94);
+    background-size: 200% 200%;
+    animation: gradientAnimation 20s ease infinite;
 
-  
-  /* ======================== HERO SECTION ======================== */
-  .hero {
-    height: 100vh;
-    background: linear-gradient(to bottom right, #1A1A2E 50%, #6A0572);
-    position: relative;
+    height: 75vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-  }
-  
-  .hero .overlay {
-    position: absolute;
-    top: 0; left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0,0,0,0.3);
-  }
-  
-  .hero-content {
-    position: relative; /* para ficar acima do overlay */
-    max-width: 700px;
-    margin-top: 65px;  /* pois o header tem 70px de altura */
-  }
-  
-  /* Título maior e impactante */
-  .hero-title {
-    font-size: 3rem;
+    position: relative;
+    margin-top: 70px; /* Para não ficar embaixo do header fixo */
+}
+/* Keyframes para o gradiente animado */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-content {
+    max-width: 900px; /* Aumenta um pouco a largura */
+    text-align: center; /* Centraliza todo o conteúdo */
+    margin: 0 auto; /* Centraliza no container */
+}
+.hero-content h1 {
+    font-size: 2.5rem; /* Diminui o tamanho da fonte */
     line-height: 1.2;
     margin-bottom: 1.2rem;
-  }
-  
-  .hero-subtitle {
+}
+
+.hero-content p {
     font-size: 1.3rem;
     margin-bottom: 2rem;
-  }
-  
-  /* Botão principal (CTA) com efeito de brilho */
-  .btn-primario,
-  .cta-button {
-    background: linear-gradient(90deg, #6A0572, #8A0A94);
+}
+.btn-primario,
+.cta-button {
+    background: linear-gradient(90deg, #a40eb0, #8A0A94);
     color: white;
     padding: 14px 24px;
     border-radius: 30px;
@@ -132,132 +125,136 @@
     text-decoration: none;
     transition: 0.3s;
     display: inline-block;
-  }
-  
-  .cta-button:hover {
+}
+.cta-button:hover {
     box-shadow: 0px 0px 10px #6A0572;
     transform: scale(1.05);
-  }
-  
-  /* ======================== SEÇÕES (PADDING) ======================== */
-  section {
+}
+#typed-text {
+    white-space: nowrap; /* Impede que o texto quebre */
+    display: inline-block; /* Mantém a estrutura alinhada */
+    font-size: 3rem; /* Ajusta o tamanho da fonte */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* ======================== SEÇÕES (PADDING) ======================== */
+section {
     padding: 80px 0;
-    margin-top: 70px; /* para não ficar escondido atrás do header */
-  }
-  
-  .sobre,
-  .servicos,
-  .projetos,
-  .depoimentos,
-  .contato {
+    /* margin-top: 70px;  Cuidado para não duplicar se já tiver offset do header */
+}
+
+.sobre,
+.servicos,
+.projetos,
+.depoimentos,
+.contato {
     position: relative;
-  }
-  
-  /* ======================== SEÇÃO SOBRE ======================== */
-  .sobre {
+}
+
+/* ======================== SEÇÃO SOBRE ======================== */
+.sobre {
     background-color: var(--color-preto);
-  }
-  .sobre .container {
+}
+.sobre .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
     flex-wrap: wrap;
 }
-  
-  .sobre-texto {
+.sobre-texto {
     flex: 1;
     min-width: 300px;
 }
-  .sobre-texto h2 {
+.sobre-texto h2 {
     margin-bottom: 1rem;
     font-size: 2rem;
     color: var(--color-roxo-dark);
-  }
-  .sobre-texto p {
+}
+.sobre-texto p {
     margin-bottom: 1rem;
-  }
-  .sobre-lista {
+}
+.sobre-lista {
     margin-bottom: 1rem;
     list-style: none;
     line-height: 1.6;
-  }
-  .sobre-lista li {
+}
+.sobre-lista li {
     margin-bottom: 0.5rem;
     font-weight: 300;
-  }
-  .sobre-lista li i {
+}
+.sobre-lista li i {
     color: var(--color-roxo-dark);
     margin-right: 8px;
-  }
-  
-  .sobre-imagem {
+}
+.sobre-imagem {
     flex: 1;
     text-align: center;
 }
-  .sobre-imagem img {
+.sobre-imagem img {
     max-width: 400px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-  
-  /* ======================== SEÇÃO SERVIÇOS ======================== */
-  .servicos {
+
+/* ======================== SEÇÃO SERVIÇOS ======================== */
+.servicos {
     background-color: var(--color-azul-noturno);
     text-align: center;
-  }
-  .servicos h2 {
+}
+.servicos h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
     color: var(--color-roxo-dark);
-  }
-  .servicos-cards {
+}
+.servicos-cards {
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  }
-  .servico-card {
-    background-color: var(--color-preto);
-    border-radius: 8px;
-    padding: 1.5rem;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .servico-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  }
-  .servico-card img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    margin-bottom: 1rem;
 }
-
 .servico-card {
     background: #121212;
     border-radius: 12px;
     padding: 1.5rem;
-    transition: transform 0.3s, box-shadow 0.3s;
     text-align: center;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-
 .servico-card:hover {
     transform: translateY(-5px);
     box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
 }
+.servico-card img {
+    display: block;
+    max-width: 80px;
+    height: auto;
+    margin: 0 auto 1rem; 
+}
+.servico-card h3 {
+    margin-bottom: 0.8rem;
+}
+.servico-card p {
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+    flex: 1; 
+}
+.btn-saiba-mais {
+    margin-top: auto; 
+}
 
-  
-  /* ======================== CARROSSEL GERAL ======================== */
-  .carousel-container {
+/* ======================== CARROSSEL GERAL (PROJETOS/DEPOIMENTOS) ======================== */
+.carousel-container {
     position: relative;
     overflow: hidden;
     margin-top: 2rem;
-  }
-  .carousel-wrapper {
+}
+.carousel-wrapper {
     display: flex;
     transition: transform 0.5s ease;
-  }
-  .carousel-item {
+}
+.carousel-item {
     min-width: 100%;
     box-sizing: border-box;
     text-align: center;
@@ -266,10 +263,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  
-  /* Botões do carrossel */
-  .carousel-btn {
+}
+/* Botões do carrossel */
+.carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -282,68 +278,117 @@
     font-size: 1.2rem;
     z-index: 10;
     transition: background-color 0.3s;
-  }
-  .carousel-btn:hover {
+}
+.carousel-btn:hover {
     background-color: #500459;
-  }
-  .prev { left: 14px; }
-  .next { right: 14px; }
-  
-  /* ======================== PROJETOS ======================== */
-  .projetos {
+}
+.prev { left: 14px; }
+.next { right: 14px; }
+
+/* ======================== PROJETOS ======================== */
+.projetos {
     background-color: var(--color-preto);
     text-align: center;
-  }
-  .projetos h2 {
+}
+.projetos h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
     color: var(--color-roxo-dark);
-  }
-  .projetos .carousel-item img {
+}
+.projetos .carousel-item img {
     max-width: 300px;
     width: 100%;
     height: auto;
     margin-bottom: 1rem;
     border-radius: 8px;
-  }
-  .projetos .carousel-item h4 {
+}
+.projetos .carousel-item h3 {
     color: var(--color-roxo-dark);
     margin-bottom: 0.5rem;
-  }
-  .projetos .carousel-item p {
+}
+.projetos .carousel-item p {
     color: #ccc;
     max-width: 350px;
-  }
-  .projetos .carousel-item h3 {
-    color: var(--color-roxo-dark);
-    margin-bottom: 0.5rem;
-  }
-  /* ======================== DEPOIMENTOS ======================== */
-  .depoimentos {
+    line-height: 1.4;
+}
+
+/* ======================== BANNER NO MEIO (NOVO) ======================== */
+.banner-meio {
+   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(106,5,114,1) 50%, rgba(26,26,46,1) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.banner-meio-title {
+    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Ajusta a fonte conforme o tamanho da tela */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.banner-meio-title {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.banner-meio-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+.banner-meio .btn-primario {
+    background: linear-gradient(90deg, #B554FF, #470457);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(138, 10, 148, 0.5);
+    display: inline-block;
+}
+
+.banner-meio .btn-primario:hover {
+    background: linear-gradient(90deg, #8A0A94, #D774FF);
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(138, 10, 148, 0.7);
+}
+
+#banner-text {
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+
+/* ======================== DEPOIMENTOS ======================== */
+.depoimentos {
     background: var(--color-azul-noturno);
     text-align: center;
     position: relative;
     overflow: hidden;
-  }
-  /* Fundo degradê sutil */
-  .depoimentos-overlay {
+}
+.depoimentos-overlay {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: linear-gradient(135deg, rgba(106,5,114,0.2), rgba(26,26,46,0.2));
     pointer-events: none;
     z-index: 0;
-  }
-  .depoimentos .container {
+}
+.depoimentos .container {
     position: relative;
     z-index: 1;
-  }
-  .depoimentos h2 {
+}
+.depoimentos h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
     color: var(--color-roxo-dark);
-  }
-  .depo-content {
+}
+.depo-content {
     background-color: var(--color-preto);
     border-radius: 8px;
     padding: 2rem;
@@ -352,91 +397,165 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  .depo-foto {
+}
+.depo-foto {
     width: 150px;
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
     margin-bottom: 1rem;
-  }
-  .depo-stars {
+}
+.depo-stars {
     margin-top: 0.5rem;
     color: #FFD700; /* cor de estrela (dourado) */
-  }
-  .depo-stars i {
+}
+.depo-stars i {
     margin: 0 2px;
-  }
-  
-  /* ======================== CONTATO ======================== */
-  .contato {
+}
+
+/* ======================== CONTATO ======================== */
+/* ======================== CONTATO ======================== */
+.contato {
     background-color: var(--color-preto);
     text-align: center;
-  }
-  .contato .contato-chamada {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-  }
-  .contato-box {
+    padding: 50px 20px;
+}
+
+.contato-box {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 4rem;
     justify-content: center;
-    margin-top: 2rem;
-  }
-  .form-contato {
+    align-items: flex-start;
+    max-width: 1500px;
+    margin: auto;
+}
+
+.form-contato {
     background-color: var(--color-azul-noturno);
     padding: 2rem;
     border-radius: 8px;
     flex: 1;
-    max-width: 400px;
-  }
-  .form-group {
-    margin-bottom: 1rem;
-    text-align: left;
-  }
-  .form-group label {
-    display: block;
-    margin-bottom: 0.4rem;
-    font-weight: 600;
-  }
-  .form-group input,
+    min-width: 320px; /* Ajustado */
+    max-width: 420px; /* Ajustado */
+    box-shadow: 0px 4px 15px rgba(138, 10, 148, 0.3);
+}
+
+/* Ajuste para os inputs e textarea */
+.form-group input,
 .form-group textarea {
-    background: #1A1A2E;
-    border: 1px solid #6A0572;
-    color: #fff;
-    padding: 0.8rem;
+    background: #1A1A2E !important; /* Fundo escuro */
+    border: 1px solid #6A0572; /* Borda roxa */
+    color: #fff !important; /* Texto branco */
+    padding: 12px;
     border-radius: 6px;
     width: 100%;
+    font-size: 16px;
+    box-shadow: none;
+    outline: none;
 }
 
-.btn-enviar {
-    background: linear-gradient(90deg, #6A0572, #8A0A94);
+/* Remove a borda branca quando focado */
+.form-group input:focus,
+.form-group textarea:focus {
+    border: 1px solid #B554FF;
+}
+
+/* Ajuste do botão Enviar */
+.btn-contato {
+  font-size: 16px;
+  background: linear-gradient(90deg, #8A0A94, #B554FF);
+  color: white;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 30px;
+  width: 180px;
+  max-width: 100%;
+  margin: 20px auto;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(138, 10, 148, 0.4);
+}
+
+.btn-contato svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn-contato:hover svg {
+  transform: translateX(5px) rotate(45deg);
+}
+
+.btn-contato:hover span {
+  transform: translateX(3px);
+}
+
+.btn-contato:active {
+  transform: scale(0.95);
+}
+
+/* Ajustando a parte do contato */
+.contato-info {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Ajustando o botão do WhatsApp */
+.btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25D366;
     color: white;
     padding: 12px 24px;
-    border-radius: 8px;
+    border-radius: 30px;
+    text-decoration: none;
     font-weight: bold;
     transition: 0.3s;
+    width: fit-content;
 }
 
-.btn-enviar:hover {
-    box-shadow: 0px 0px 10px #6A0572;
-    transform: scale(1.05);
+.btn-whatsapp:hover {
+    background-color: #1EBE5D;
 }
 
-  .contato-info {
+.btn-whatsapp img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+  to {
+    transform: translateY(-0.1em);
+  }
+}
+
+.contato-info {
     flex: 1;
     max-width: 400px;
     text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-  .contato-info h3 {
+}
+.contato-info h3 {
     margin-bottom: 1rem;
     color: var(--color-roxo-dark);
-  }
-  .btn-whatsapp {
+}
+.btn-whatsapp {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -448,36 +567,36 @@
     font-weight: 600;
     margin-top: 1rem;
     transition: background-color 0.3s ease;
-  }
-  .btn-whatsapp:hover {
+}
+.btn-whatsapp:hover {
     background-color: #1ac159;
-  }
-  .btn-whatsapp img, .btn-whatsapp svg {
+}
+.btn-whatsapp img, .btn-whatsapp svg {
     width: 24px;
     height: 24px;
-  }
-  
-  /* ======================== FOOTER ======================== */
-  .footer {
+}
+
+/* ======================== FOOTER ======================== */
+.footer {
     background-color: var(--color-cinza-escuro);
     text-align: center;
     padding: 1.5rem 0;
-  }
-  .footer-content p {
+}
+.footer-content p {
     margin: 0.5rem 0;
-  }
-  .footer-content a {
+}
+.footer-content a {
     color: #fff;
     text-decoration: none;
     font-weight: 400;
     margin: 0 0.5rem;
-  }
-  .footer-content a:hover {
+}
+.footer-content a:hover {
     color: var(--color-roxo-dark);
-  }
-  
-  /* ======================== BOTÃO FLUTUANTE DO WHATSAPP ======================== */
-  .whatsapp-float {
+}
+
+/* ======================== BOTÃO FLUTUANTE DO WHATSAPP ======================== */
+.whatsapp-float {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -487,361 +606,86 @@
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  }
-  .whatsapp-float img {
+}
+.whatsapp-float img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  
-  /* ======================== RESPONSIVIDADE ======================== */
-  @media (max-width: 768px) {
-  /* Faz o header acomodar melhor logo e menu empilhados */
-  .header .container {
-    flex-wrap: wrap;               /* permite quebrar linha no mobile */
-    justify-content: center;       /* centraliza caso quebre linha */
-    padding: 0 1rem;               /* se quiser reduzir espaço lateral */
-  }
-
-  /* Diminui o tamanho da logo no mobile */
-  .logo a {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;         /* dá um espacinho entre logo e menu */
-  }
-  
-  /* Deixa o menu em coluna no celular */
-  .nav ul {
-    flex-direction: column;
-    gap: 1rem;
-    /* Se quiser esconder/mostrar via “hamburger” teria que fazer mais ajustes */
-  }
-  
-  /* Evita forçar o header ficar muito alto no mobile */
-  .header {
-    height: auto;
-    padding: 1rem 0;
-  }
-
-  /* Garante que imagens no "Sobre" e "Projetos" não estourem a tela */
-  .sobre-imagem img,
-  .projetos .carousel-item img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* Ajusta o tamanho dos botões do carrossel para ficarem menores */
-  .carousel-btn {
-    width: 36px;
-    height: 36px;
-    font-size: 1rem;
-    padding: 0;
-  }
-
-  /* Se quiser reposicionar os botões para baixo ao invés de ficarem no meio */
-  .carousel-btn.prev {
-    left: 10px;
-    top: auto;
-    bottom: 10px;
-    transform: none;
-  }
-  .carousel-btn.next {
-    right: 10px;
-    top: auto;
-    bottom: 10px;
-    transform: none;
-  }
-}
-/* Mantém apenas UMA definição de .servico-card */
-
-.servico-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centraliza tudo no eixo horizontal */
-  text-align: center; /* Centraliza o texto */
 }
 
-.servico-card img {
-  display: block;
-  max-width: 80px; /* Ajuste conforme necessário */
-  height: auto;
-  margin: 0 auto 6rem; /* Centraliza e adiciona espaçamento inferior */
-}
-
-
-.servico-card {
-  display: flex; 
-  flex-direction: column; 
-  justify-content: flex-start; /* items em coluna */
-  /* O resto do seu CSS permanece */
-}
-
-/* A imagem e o texto ficam no topo, o botão “desce” */
-.servico-card img {
-  margin-bottom: 1rem;
-}
-
-.servico-card h3 {
-  margin-bottom: 0.8rem;
-}
-
-/* Faz o texto “ocupar” o espaço que restar */
-.servico-card p {
-  margin-bottom: 1.2rem;
-  line-height: 1.5;
-  flex: 1; 
-}
-
-.btn-saiba-mais {
-  margin-top: auto; 
-  /* “empurra” o botão para baixo, mesmo que o p seja curto ou longo */
-}
-
-
-/*ESTOQUE
-/* ===== Hero Serviço com vídeo/GIF de fundo ===== */
-.hero-servico {
-  position: relative;
-  width: 100%;
-  height: 60vh; /* Ajuste conforme desejar */
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* O vídeo ocupa o container inteiro */
-.hero-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  z-index: 1;
-}
-
-/* Overlay escuro levemente */
-.hero-overlay {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.4);
-  z-index: 2;
-}
-
-/* Conteúdo por cima do overlay */
-.hero-content-servico {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  color: #fff;
-}
-.hero-content-servico h1 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-}
-.hero-content-servico p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-}
-
-/* ===== Destaques ===== */
-.destaques-servico {
-  background-color: #121212; /* escuro */
-  padding: 60px 0;
-  text-align: center;
-}
-.destaques-servico h2 {
-  color: var(--color-roxo-dark);
-  margin-bottom: 2rem;
-}
-.cards-destaque {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-.card-item {
-  background: #1A1A2E;
-  border-radius: 8px;
-  width: 250px; /* ou flex: 1 1 250px */
-  padding: 1.5rem;
-}
-.card-item img {
-  width: 60px;
-  margin-bottom: 1rem;
-}
-.card-item h3 {
-  margin-bottom: 0.5rem;
-  color: #fff;
-}
-.card-item p {
-  font-size: 0.95rem;
-  line-height: 1.4;
-  color: #ccc;
-}
-
-/* ===== Portfolio ===== */
-.portfolio-servico {
-  background-color: var(--color-azul-noturno);
-  padding: 60px 0;
-  text-align: center;
-}
-.portfolio-servico h2 {
-  color: var(--color-roxo-dark);
-  margin-bottom: 1rem;
-}
-.portfolio-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
-.portfolio-card {
-  background: #121212;
-  border-radius: 8px;
-  width: 280px;
-  padding: 1.5rem;
-  text-align: left;
-}
-.portfolio-card img {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-}
-.portfolio-card h4 {
-  color: #fff;
-  margin-bottom: 0.5rem;
-}
-.portfolio-card p {
-  color: #ccc;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-/* ===== CTA Final ===== */
-.cta-final-servico {
-  background: linear-gradient(135deg, #6A0572 30%, #1A1A2E 70%);
-  text-align: center;
-  padding: 60px 0;
-  color: #fff;
-}
-.cta-final-servico h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-.cta-final-servico p {
-  max-width: 600px;
-  margin: 0 auto 1.5rem;
-}
-
-/* ===== Responsividade simples ===== */
+/* ======================== RESPONSIVIDADE ======================== */
 @media (max-width: 768px) {
-  .hero-servico {
-    height: 50vh;
-  }
-  .hero-content-servico h1 {
-    font-size: 1.8rem;
-  }
-  .cards-destaque, .portfolio-cards {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-.bloco-funciona {
-  max-width: 300px;
-  background: #1A1A2E;
-  border-radius: 8px;
-  padding: 1.5rem;
-  text-align: center;       /* Centraliza texto e ícone */
-  display: flex;
-  flex-direction: column;   /* Ícone, título, parágrafo em coluna */
-  align-items: center;      /* Centraliza horizontalmente o ícone */
-}
-.bloco-funciona img {
-  margin-bottom: 1rem;
-}
-/**** Remove estilo padrão de lista e usa setinha ou outro caractere ****/
-.bloco-solucoes ul {
-  list-style: none;         /* remove bolinhas */
-  padding-left: 0;
-}
-.bloco-solucoes ul li {
-  position: relative;
-  padding-left: 1.5rem;     /* dá espaço para o ícone “antes” do texto */
-  margin-bottom: 0.5rem;
-}
-.bloco-solucoes ul li::before {
-  content: "▹";             /* caractere ou ícone que preferir */
-  color: #6A0572;           /* cor do “bullet” */
-  position: absolute;
-  left: 0;
+    /* Faz o header acomodar melhor logo e menu empilhados */
+    .header .container {
+        flex-wrap: wrap;               
+        justify-content: center;       
+        padding: 0 1rem;              
+    }
+    /* Diminui o tamanho da logo no mobile */
+    .logo a {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;         
+    }
+    /* Deixa o menu em coluna no celular */
+    .nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    /* Evita forçar o header ficar muito alto no mobile */
+    .header {
+        height: auto;
+        padding: 1rem 0;
+    }
+    /* Garante que imagens no "Sobre" e "Projetos" não estourem a tela */
+    .sobre-imagem img,
+    .projetos .carousel-item img {
+        max-width: 100%;
+        height: auto;
+    }
+    /* Ajusta o tamanho dos botões do carrossel para ficarem menores */
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+        padding: 0;
+    }
+    /* Se quiser reposicionar os botões para baixo */
+    .carousel-btn.prev {
+        left: 10px;
+        top: auto;
+        bottom: 10px;
+        transform: none;
+    }
+    .carousel-btn.next {
+        right: 10px;
+        top: auto;
+        bottom: 10px;
+        transform: none;
+    }
+    /* HERO menor no mobile */
+    .hero-animado {
+        height: 60vh;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
 }
 
-/* Exemplo de animação de gradiente */
-@keyframes gradientAnimation {
+/*BOTAO BANNER*/
+
+.cta-button:hover {
+  box-shadow: 0 0 15px rgba(164, 14, 176, 0.6), 0 0 5px rgba(164, 14, 176, 0.8);
+  animation: pulse 1.2s infinite; /* efeito de pulsar */
+}
+
+@keyframes pulse {
   0% {
-    background-position: 0% 50%;
+    transform: scale(1.05);
   }
   50% {
-    background-position: 100% 50%;
+    transform: scale(1.1);
   }
   100% {
-    background-position: 0% 50%;
+    transform: scale(1.05);
   }
-}
-
-/* Banner gradiente animado */
-.hero-animado {
-  /* Define o gradiente desejado */
-  background: linear-gradient(135deg, #6A0572, #1A1A2E, #8A0A94);
-  
-  /* Aumenta o tamanho do fundo para permitir o movimento */
-  background-size: 200% 200%;
-  
-  /* Aplica a animação: duração 10s, easing "ease", e infinita */
-  animation: gradientAnimation 15s ease infinite;
-  
-  /* Outros estilos do seu banner */
-  height: 60vh; /* ou o que desejar */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-}
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.hero-animado {
-  background: linear-gradient(135deg, #6A0572, #1A1A2E, #8A0A94);
-  background-size: 200% 200%;
-  animation: gradientAnimation 20s ease infinite;  /* Animação mais lenta (20s) */
-  height: 75vh;  /* Banner maior (80% da altura da viewport) */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-}
-/* Se estiver usando a classe .hero-animado com o container .hero-content */
-.hero-animado .hero-content h1 {
-  font-size: 2.5rem; /* Tamanho maior para o título */
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-.hero-animado .hero-content p {
-  font-size: 1.9=rem; /* Tamanho maior para o subtítulo */
-  margin-bottom: 1.0rem;
 }
