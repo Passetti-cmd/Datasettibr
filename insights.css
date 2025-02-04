@@ -1,12 +1,179 @@
-.hero-video {
-  position: absolute;
-  top: 48%; /* Centraliza verticalmente */
-  left: 50%;
-  transform: translate(-50%, -50%); /* Garante que o centro do vídeo esteja alinhado */
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: cover;
+/* ===================== ESTILOS GERAIS ===================== */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 0;
 }
 
+h1, h2, h3 {
+    font-weight: 600;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #B554FF;
+    margin-bottom: 1.5rem;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ===================== HERO COM VÍDEO ===================== */
+.hero-servico {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.hero-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 46, 0.7);
+    z-index: 1;
+}
+
+.hero-content-servico {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+.hero-content-servico h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.hero-content-servico p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* ===================== BOTÃO CTA ===================== */
+.btn-primario {
+    background: linear-gradient(90deg, #a40eb0, #8A0A94);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.btn-primario:hover {
+    box-shadow: 0px 0px 10px #6A0572;
+    transform: scale(1.05);
+}
+
+/* ===================== SEÇÕES ===================== */
+.section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.section-dark {
+    background: #1A1A2E;
+}
+
+.section-light {
+    background: #121212;
+}
+
+/* ===================== CARDS ===================== */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.card {
+    max-width: 340px;
+    background: #1A1A2E;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+.card img {
+    width: 60px;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    font-size: 1.4rem;
+    color: #B554FF;
+    margin-bottom: 0.5rem;
+}
+
+/* ===================== CASOS DE SUCESSO ===================== */
+.caso-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.caso {
+    max-width: 350px;
+    background: #1A1A2E;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.caso img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.caso h4 {
+    color: #B554FF;
+    margin-bottom: 0.5rem;
+}
+
+/* ===================== RESPONSIVIDADE ===================== */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 2rem;
+    }
+
+    .hero-content-servico h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content-servico p {
+        font-size: 1rem;
+    }
+}
