@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data Setti - Inteligência em Dados</title>
   
-  <!-- Fonte Google (Poppins ou Montserrat) -->
+  <!-- Fonte Google (Poppins) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
 
-  <!-- Ícones do Font Awesome (para adicionar ícones facilmente) -->
+  <!-- Ícones do Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -23,17 +23,22 @@
 
   <!-- Link para o nosso CSS -->
   <link rel="stylesheet" href="estilo.css" />
-<!-- js email -->
+
+  <!-- GSAP para animações -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- EmailJS -->
   <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script type="text/javascript">
-  (function(){
-      emailjs.init("SEU_USER_ID"); // Substitua pelo seu User ID do EmailJS
-  })();
-</script>
+  <script>
+    (function(){
+        emailjs.init("SEU_USER_ID"); // Substitua pelo seu User ID do EmailJS
+    })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
 </head>
 <body>
-
   <!-- Header -->
   <header class="header" id="header">
     <div class="container">
@@ -52,13 +57,31 @@
     </div>
   </header>
 
+  <!-- Banner (Hero) no topo, com gradiente animado -->
 <section class="hero-animado">
   <div class="container hero-content">
-    <h1>Transforme seus Dados em Decisões Estratégicas</h1>
+    <!-- Decor: se usar as formas flutuantes, insira aqui ou fora -->
+    
+    <h1 id="typed-text"></h1> <!-- Título gerado via JS -->
     <p>A Data Setti impulsiona o crescimento da sua empresa unindo IA, automação e análise de dados.</p>
     <a href="#contato" class="btn-primario cta-button">Solicitar Diagnóstico Gratuito</a>
   </div>
 </section>
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    var typed = new Typed("#typed-text", {
+      strings: [
+        "Lucre Mais Com Nossos Serviços",
+        "Tenha Melhor Gestao e Reduza Gastos",
+        "Desfrute de Insights e Inove com IA"
+      ],
+      typeSpeed: 50,   // velocidade para “digitar”
+      backSpeed: 70,   // velocidade para “apagar”
+      loop: false,      // repetir indefinidamente
+      showCursor: false
+    });
+  });
+</script>
 
 
   <!-- Sobre a Empresa -->
@@ -67,7 +90,7 @@
       <div class="sobre-texto">
         <h2>Sobre a Data Setti</h2>
         <p>
-          Somos especialistas em <strong>inteligência de dados</strong> e <strong>automação</strong>, ajudando empresas a tomar decisões estratégicas com base em dados reais.  
+          Somos especialistas em <strong>inteligência de dados</strong> e <strong>automação</strong>, ajudando empresas a tomar decisões estratégicas com base em dados reais.
         </p>
         <ul class="sobre-lista">
           <li><i class="fas fa-chart-line"></i> Gestão de Estoque Inteligente</li>
@@ -82,85 +105,95 @@
     </div>
   </section>
 
-<!-- Serviços -->
-<section id="servicos" class="servicos">
-  <div class="container">
-    <h2>Nossos Serviços</h2>
-    <div class="servicos-cards">
-
-      <!-- 1. Gestão de Estoque Inteligente -->
-      <div class="servico-card">
-        <img src="img/estoque.svg" alt="Gestão de Estoque" />
-        <h3>Gestão de Estoque Inteligente</h3>
-        <p>
-          Reduza perdas e aumente a eficiência do seu estoque! Monitoramos seus produtos em tempo real, enviamos alertas automáticos de reposição e utilizamos IA para prever demanda e otimizar suas vendas.
-        </p>
-        <!-- Botão para a página específica -->
-        <a href="gestao-de-estoque.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
+  <!-- Serviços -->
+  <section id="servicos" class="servicos">
+    <div class="container">
+      <h2>Nossos Serviços</h2>
+      <div class="servicos-cards">
+        <!-- 1. Gestão de Estoque Inteligente -->
+        <div class="servico-card">
+          <img src="img/estoque.svg" alt="Gestão de Estoque" />
+          <h3>Gestão de Estoque Inteligente</h3>
+          <p>
+            Reduza perdas e aumente a eficiência do seu estoque! Monitoramos seus produtos em tempo real, enviamos alertas automáticos de reposição e utilizamos IA para prever demanda e otimizar suas vendas.
+          </p>
+          <a href="gestao-de-estoque.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
+        </div>
+        <!-- 2. Painéis e Insights Estratégicos -->
+        <div class="servico-card">
+          <img src="img/insight.svg" alt="Insights Estratégicos" />
+          <h3>Painéis e Insights Estratégicos</h3>
+          <p>
+            Transforme dados em decisões estratégicas! Criamos dashboards interativos que ajudam sua empresa a visualizar métricas essenciais, identificar oportunidades de crescimento e reduzir custos.
+          </p>
+          <a href="paineis-e-insights.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
+        </div>
+        <!-- 3. Desenvolvimento de Software -->
+        <div class="servico-card">
+          <img src="img/software.svg" alt="Desenvolvimento de Software" />
+          <h3>Desenvolvimento de Software</h3>
+          <p>
+            Automação sob medida para sua empresa! Desenvolvemos soluções personalizadas para integrar dados, otimizar processos e aumentar a produtividade do seu negócio com tecnologia de ponta.
+          </p>
+          <a href="desenvolvimento-software.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
+        </div>
+        <!-- 4. Estratégias Baseadas em IA -->
+        <div class="servico-card">
+          <img src="img/artificial.png" alt="Inteligência Artificial" />
+          <h3>Estratégias Baseadas em IA</h3>
+          <p>
+            Decisões mais inteligentes com Inteligência Artificial! Reduza erros humanos e aprimore sua estratégia com tecnologias avançadas de IA, proporcionando insights valiosos e automação eficiente.
+          </p>
+          <a href="estrategias-ia.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
+        </div>
       </div>
-
-      <!-- 2. Painéis e Insights Estratégicos -->
-      <div class="servico-card">
-        <img src="img/insight.svg" alt="Insights Estratégicos" />
-        <h3>Painéis e Insights Estratégicos</h3>
-        <p>
-          Transforme dados em decisões estratégicas! Criamos dashboards interativos que ajudam sua empresa a visualizar métricas essenciais, identificar oportunidades de crescimento e reduzir custos.
-        </p>
-        <a href="paineis-e-insights.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
-      </div>
-
-      <!-- 3. Desenvolvimento de Software -->
-      <div class="servico-card">
-        <img src="img/software.svg" alt="Desenvolvimento de Software" />
-        <h3>Desenvolvimento de Software</h3>
-        <p>
-          Automação sob medida para sua empresa! Desenvolvemos soluções personalizadas para integrar dados, otimizar processos e aumentar a produtividade do seu negócio com tecnologia de ponta.
-        </p>
-        <a href="desenvolvimento-software.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
-      </div>
-
-      <!-- 4. Estratégias Baseadas em IA -->
-      <div class="servico-card">
-        <img src="img/artificial.png" alt="Inteligência Artificial" />
-        <h3>Estratégias Baseadas em IA</h3>
-        <p>
-          Decisões mais inteligentes com Inteligência Artificial! Reduza erros humanos e aprimore sua estratégia com tecnologias avançadas de IA, proporcionando insights valiosos e automação eficiente.
-        </p>
-        <a href="estrategias-ia.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
-      </div>
-      
     </div>
-  </div>
-</section>
+  </section>
 
-
-  <!-- Projetos (Carrossel) -->
+  <!-- Seção Projetos (Carrossel) -->
   <section id="projetos" class="projetos">
     <div class="container">
-      <h2>Projetos / Experiências</h2>
+      <h2 class="animate">Projetos / Experiências</h2>
       <div class="carousel-container">
         <button class="carousel-btn prev" id="prevProj">&#10094;</button>
         <div class="carousel-wrapper" id="carouselProj">
-          <!-- Cada item do carrossel -->
+          <!-- Slides de Projetos -->
           <div class="carousel-item">
             <h3>Otimização de Estoque</h3>
             <img src="img/Sesi.jpg" alt="Projeto 1">
-            <p> Indicadores em tempo real para decisões assertivas! Desenvolvemos dashboards personalizados que ajudam a visualizar métricas de vendas, otimizando a tomada de decisão.</p><br> SESI - Rede de 28 Instituições Paraestatais Brasileiras
+            <p>
+              Indicadores em tempo real para decisões assertivas! Desenvolvemos dashboards personalizados para visualizar métricas de vendas e otimizar sua operação.
+              <br>SESI - Rede de Instituições Paraestatais Brasileiras
+            </p>
           </div>
           <div class="carousel-item">
             <h3>Automação Financeira</h3>
             <img src="img/emene_turismo.png" alt="Projeto 2">
-            <p>Redução de custos com inteligência de dados! Implementamos IA para prever demanda e reduzir desperdícios no setor, garantindo maior eficiência operacional.</p><br>Emene Turismo - Viagens 
+            <p>
+              Redução de custos com inteligência de dados! Implementamos IA para prever demanda e reduzir desperdícios, aumentando a eficiência operacional.
+              <br>Emene Turismo - Viagens
+            </p>
           </div>
           <div class="carousel-item">
             <h3>Dashboard de Vendas</h3>
             <img src="img/precolandia.png" alt="Projeto 3">
-            <p>Menos tempo com burocracia, mais tempo para crescer! Criamos soluções que integram relatórios financeiros automaticamente, reduzindo trabalho manual e aumentando a produtividade.</p> <br>Preçolandia - 50 Lojas no Brasil Setor de Varejo
+            <p>
+              Menos burocracia e mais crescimento! Integramos relatórios financeiros automaticamente, aumentando a produtividade.
+              <br>Preçolandia - 50 Lojas no Brasil (Varejo)
+            </p>
           </div>
           <div class="carousel-item">
             <h3>IA para Previsão</h3>
             <img src="img/acceptimidia.png" alt="Projeto 4">
-            <p> Antecipação de tendências para um mercado mais competitivo! Aplicamos modelos preditivos para analisar tendências e gerar insights estratégicos para empresas do setor.</p><br>Accept Mídia - Tecnologia em Marketing e Publicidade
+            <p>
+              Antecipe tendências e fique à frente do mercado! Aplicamos modelos preditivos para gerar insights estratégicos.
+              <br>Accept Mídia - Marketing e Publicidade
+            </p>
+          </div>
+          <div class="carousel-item">
+            <h3>Estategias para Crescimento</h3>
+            <img src="img/smartec.png" alt="Projeto 5">
+            <p> Auxilio nas campanhas para alcançar numeros maiores com estatiscas e estrategias baseado nos dados das empresas</p><br>Smartec Metalurgica - Metalurgica  
           </div>
         </div>
         <button class="carousel-btn next" id="nextProj">&#10095;</button>
@@ -168,67 +201,67 @@
     </div>
   </section>
 
-  <!-- Depoimentos (Carrossel) -->
+  <!-- (NOVO) BANNER NO MEIO -->
+<section class="banner-meio">
+  <div class="banner-meio-content">
+    <h2 class="banner-meio-title">
+      <span id="banner-text">Maximize Suas Oportunidades</span>
+    </h2>
+    <p class="banner-meio-subtitle">
+      Obtenha insights estratégicos e fique à frente da concorrência!
+    </p>
+    <a href="#contato" class="btn-primario">Venha aumentar seus lucros!<a>
+  </div>
+</section>
+
+  <!-- Seção Depoimentos (Carrossel) -->
   <section id="depoimentos" class="depoimentos">
     <div class="depoimentos-overlay"></div>
     <div class="container">
-      <h2>O que dizem nossos clientes</h2>
+      <h2 class="animate">O que dizem nossos clientes</h2>
       <div class="carousel-container">
         <button class="carousel-btn prev" id="prevDepo">&#10094;</button>
         <div class="carousel-wrapper" id="carouselDepo">
-          <!-- Depoimento 1 -->
+          <!-- Slides de Depoimentos -->
           <div class="carousel-item">
-            <div class="depo-content">
+            <div class="depo-content animate">
               <img src="img/depoimento_maria.jpg" alt="Foto da Maria" class="depo-foto">
-              <p>
-                "A Data Setti revolucionou nossa gestão de estoque! Agora temos mais controle, menos desperdício e conseguimos aumentar nossas vendas em 20%!"
-              </p>
+              <p>"A Data Setti revolucionou nossa gestão de estoque! Temos mais controle, menos desperdício e as vendas cresceram 20%!"</p>
               <span><strong>Camila</strong> - Gerente de Loja</span>
               <div class="depo-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
               </div>
             </div>
           </div>
-          <!-- Depoimento 2 -->
           <div class="carousel-item">
-            <div class="depo-content">
+            <div class="depo-content animate">
               <img src="img/depoimento_joao.jpg" alt="Foto do João" class="depo-foto">
-              <p>
-                "As automações e relatórios inteligentes da Data Setti nos ajudaram a reduzir custos operacionais e otimizar nossos processos. Ganhamos tempo e eficiência!"
-              </p>
+              <p>"As automações e relatórios inteligentes reduziram nossos custos operacionais e aumentaram a eficiência!"</p>
               <span><strong>Lucas</strong> - Diretor Financeiro</span>
               <div class="depo-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
               </div>
             </div>
           </div>
-          <!-- Depoimento 3 -->
           <div class="carousel-item">
-            <div class="depo-content">
+            <div class="depo-content animate">
               <img src="img/depoimento_ana.jpg" alt="Foto da Ana" class="depo-foto">
-              <p>
-                "A implementação de IA na nossa empresa fez toda a diferença! Agora conseguimos prever demandas com precisão, tornando nossa operação muito mais estratégica."
-              </p>
+              <p>"A implementação de IA nos permitiu prever demandas com precisão, transformando nossa operação!"</p>
               <span><strong>Ana</strong> - CEO de Startup</span>
               <div class="depo-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <!-- Depoimento 4 -->
-          <div class="carousel-item">
-            <div class="depo-content">
-              <img src="img/depoimento_carlos.jpg" alt="Foto do João" class="depo-foto">
-              <p>
-                "Excelente parceria! Nossa gestão de estoque foi automatizada, reduzimos perdas e otimizamos nosso abastecimento. Recomendo!"
-              </p>
-              <span><strong>Marcos</strong> - Dono de Rede de Supermercados</span>
-              <div class="depo-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
               </div>
             </div>
           </div>
@@ -245,8 +278,9 @@
       <p class="contato-chamada">
         "Entre em contato e veja como podemos <strong>transformar</strong> seus dados em <strong>crescimento</strong>!"
       </p>
-      <p>Oferecemos diagnóstico gratuito para mostrar como nossos insights podem turbinar o seu negócio!</p>
-      <div class="contato-box">
+      <p>Oferecemos diagnóstico gratuito para mostrar como nossos insights podem turbinar o seu negócio!</p><br><br>
+
+     <div class="contato-box">
         <form action="#" method="post" class="form-contato">
           <div class="form-group">
             <label for="nome">Nome</label>
@@ -264,8 +298,14 @@
             <label for="mensagem">Mensagem</label>
             <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
           </div>
-          <button type="submit" class="btn-primario btn-enviar">
-            <i class="fas fa-paper-plane"></i> Enviar
+          <!-- From Uiverse.io by adamgiebl --> 
+           <button class="btn-contato">
+             <div class="svg-wrapper">
+           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="white"/>
+        </svg>
+         </div>
+          <span>Enviar</span>
           </button>
         </form>
         <div class="contato-info">
@@ -311,7 +351,23 @@
     <img src="img/whatsapp_float.svg" alt="WhatsApp" />
   </a>
 
-  <!-- Script JS -->
+  <!-- Script JS principal -->
   <script src="script.js"></script>
+
+  <!-- Animação do banner-meio (GSAP) -->
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from(".banner-meio-content", {
+      scrollTrigger: {
+        trigger: ".banner-meio",
+        start: "top 80%",
+      },
+      duration: 1,
+      opacity: 0,
+      y: 50,
+      ease: "power2.out"
+    });
+  </script>
 </body>
 </html>
