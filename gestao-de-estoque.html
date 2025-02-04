@@ -6,14 +6,537 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestão de Estoque - Data Setti</title>
 
-  <!-- CSS principal (ex.: estilo.css) -->
-  <link rel="stylesheet" href="estilo.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- CSS específico para esta página -->
-  <link rel="stylesheet" href="estoque.css">
+  <!-- Estilos Integrados -->
+  <style>
+    /************************************
+      RESET E VARIÁVEIS
+    ************************************/
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --color-azul-noturno: #1A1A2E;
+      --color-roxo-dark: #6A0572;
+      --color-preto: #121212;
+      --color-branco: #ffffff;
+      --color-cinza-escuro: #2E2E2E;
+      --font-principal: 'Poppins', sans-serif;
+    }
+    body {
+      font-family: var(--font-principal);
+      background-color: var(--color-azul-noturno);
+      color: var(--color-branco);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-  <!-- AOS (Animation On Scroll) -->
+    /************************************
+      HEADER
+    ************************************/
+    .header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      background: rgba(26,26,46,0.95);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      height: 70px;
+      display: flex;
+      align-items: center;
+    }
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo a {
+      font-size: 1.7rem;
+      color: var(--color-branco);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .logo span {
+      color: var(--color-roxo-dark);
+    }
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    .nav ul li a {
+      color: var(--color-branco);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+    .nav ul li a:hover {
+      color: var(--color-roxo-dark);
+    }
+
+    /************************************
+      SECTIONS
+    ************************************/
+    section {
+      margin-top: 70px; /* Para não ficar atrás do header fixo */
+    }
+    .sec-escura {
+      background: var(--color-preto);
+      padding: 60px 0;
+    }
+    .sec-clara {
+      background: var(--color-azul-noturno);
+      padding: 60px 0;
+    }
+    .sec-gradient {
+      background: linear-gradient(135deg, #6A0572, #1A1A2E);
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    /************************************
+      HERO SERVIÇO
+    ************************************/
+    .hero-servico {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .hero-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(26,26,46,0.7);
+      z-index: 1;
+    }
+    .hero-content-servico {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+    .hero-content-servico h1 {
+      font-size: 3rem;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .hero-content-servico p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .btn-primario {
+      background: var(--color-roxo-dark);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .btn-primario:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 10px var(--color-roxo-dark);
+    }
+
+    /************************************
+      TÍTULOS E TEXTOS
+    ************************************/
+    .titulo-secao {
+      color: var(--color-roxo-dark);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 2rem;
+    }
+    .texto-centro {
+      text-align: center;
+      color: #ccc;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    /************************************
+      COMO FUNCIONA
+    ************************************/
+    .grid-funciona {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .bloco-funciona {
+      background: #1A1A2E;
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: 0.3s;
+      flex: 1 1 250px;
+      max-width: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .bloco-funciona img {
+      width: 60px;
+      margin-bottom: 1rem;
+    }
+    .bloco-funciona h3 {
+      margin-bottom: 0.5rem;
+      color: var(--color-branco);
+      font-size: 1.1rem;
+    }
+    .bloco-funciona p {
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+    .bloco-funciona:hover {
+      background: #24244E;
+    }
+
+    /************************************
+      BENEFÍCIOS
+    ************************************/
+    .grid-beneficios {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .bloco-beneficio {
+      background: #1A1A2E;
+      border-radius: 8px;
+      padding: 1.5rem;
+      flex: 1 1 280px;
+      max-width: 380px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .bloco-beneficio h3 {
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    .bloco-beneficio p {
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+    .bloco-beneficio:hover {
+      background: #2c2c44;
+    }
+
+    /************************************
+      SOLUÇÕES PRINCIPAIS
+    ************************************/
+    .solucoes-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .solucoes-card {
+      background: #121212;
+      border-radius: 8px;
+      padding: 1.5rem;
+      flex: 1 1 300px;
+      max-width: 400px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: left;
+    }
+    .solucoes-card h3 {
+      color: #fff;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    .solucoes-card ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      color: #ccc;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .solucoes-card ul li {
+      position: relative;
+      margin-bottom: 0.5rem;
+      padding-left: 1.2rem;
+    }
+    .solucoes-card ul li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: var(--color-roxo-dark);
+    }
+    .solucoes-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /************************************
+      CASOS DE SUCESSO
+    ************************************/
+    .grid-casos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .caso-card {
+      background: #1A1A2E;
+      border-radius: 8px;
+      padding: 1.5rem;
+      color: #ccc;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: left;
+      width: 100%;
+    }
+    .caso-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+    .caso-card h4 {
+      color: #fff;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+    @media (max-width: 1024px) {
+      .grid-casos {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .grid-casos {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /************************************
+      DASHBOARD DE ESTOQUE
+    ************************************/
+    #dashboard-inteligente {
+      padding: 60px 0;
+      position: relative;
+    }
+    .dashboard-ia {
+      background: rgba(255,255,255,0.07);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+      margin-top: 2rem;
+      width: 85%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .dashboard-ia .grid {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .dashboard-ia .box {
+      background: #1A1A2E;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+      width: 300px;
+    }
+    .dashboard-ia .box:hover {
+      transform: scale(1.05);
+    }
+    .dashboard-ia .glow {
+      box-shadow: 0 0 15px rgba(164,14,176,0.5);
+    }
+    .dashboard-ia .progress-bar {
+      background: #262649;
+      border-radius: 8px;
+      height: 12px;
+      width: 100%;
+    }
+    .dashboard-ia .progress {
+      height: 100%;
+      background: linear-gradient(90deg, #a40eb0, #6A0572);
+      width: 87%;
+      transition: width 1s ease-in-out;
+    }
+    /* Lista de Alertas com Scroll Customizado */
+    #alertas-estoque {
+      list-style: none;
+      margin: 10px 0 0;
+      padding: 0 10px;
+      height: 100px;
+      overflow-y: auto;
+      text-align: left;
+      font-size: 0.85rem;
+      color: #ccc;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      background: rgba(0,0,0,0.2);
+      scrollbar-width: thin;
+      scrollbar-color: rgba(164,14,176,0.5) rgba(255,255,255,0.1);
+    }
+    #alertas-estoque::-webkit-scrollbar {
+      width: 6px;
+    }
+    #alertas-estoque::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+    }
+    #alertas-estoque::-webkit-scrollbar-thumb {
+      background-color: rgba(164,14,176,0.5);
+      border-radius: 3px;
+    }
+    #alertas-estoque li {
+      margin-bottom: 5px;
+      padding: 3px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.2);
+    }
+    #alertas-estoque li:last-child {
+      border-bottom: none;
+    }
+    /* Em telas maiores, forçar os 4 boxes em linha */
+    @media (min-width: 1024px) {
+      .dashboard-ia .grid {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+      }
+      .dashboard-ia .box {
+        width: 23%;
+      }
+    }
+
+    /************************************
+      CTA FINAL
+    ************************************/
+    #cta-final {
+      background: linear-gradient(135deg, #6A0572, #1A1A2E);
+      text-align: center;
+      padding: 60px 0;
+      color: #fff;
+    }
+    #cta-final h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    #cta-final p {
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      font-size: 1rem;
+      color: #fff;
+      line-height: 1.5;
+    }
+    /* Botão personalizado para a CTA final */
+    .btn-primario {
+      background: var(--color-roxo-dark);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .btn-primario:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 10px var(--color-roxo-dark);
+    }
+
+    /************************************
+      FOOTER
+    ************************************/
+    .footer {
+      background-color: var(--color-cinza-escuro);
+      text-align: center;
+      padding: 1.5rem 0;
+      margin-top: 0;
+    }
+    .footer-content p {
+      margin: 0.5rem 0;
+    }
+    .footer-content a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+    .footer-content a:hover {
+      color: var(--color-roxo-dark);
+    }
+
+    /************************************
+      RESPONSIVIDADE GERAL
+    ************************************/
+    @media (max-width: 768px) {
+      .header .container {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 1rem;
+      }
+      .header {
+        height: auto;
+        padding: 1rem 0;
+      }
+      .logo a {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+      .nav ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .hero-servico {
+        height: 50vh;
+      }
+      .hero-content-servico h1 {
+        font-size: 1.6rem;
+      }
+      .hero-content-servico p {
+        font-size: 1rem;
+      }
+      .grid-funciona,
+      .grid-beneficios,
+      .solucoes-grid,
+      .grid-casos {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+      .bloco-funciona,
+      .bloco-beneficio,
+      .solucoes-card,
+      .caso-card {
+        max-width: 100%!important;
+        margin: 0 auto;
+      }
+    }
+  </style>
+
+  <!-- AOS CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <!-- Chart.js já incluso no head acima -->
 </head>
 <body>
 
@@ -39,7 +562,7 @@
   <section class="hero-servico">
     <video class="hero-video" autoplay muted loop>
       <source src="videos/estoquee.mp4" type="video/mp4">
-      <!-- fallback se o vídeo não carregar -->
+      <!-- Fallback se o vídeo não carregar -->
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content-servico container">
@@ -73,7 +596,6 @@
     <div class="container">
       <h2 class="titulo-secao">Como Funciona?</h2>
       <div class="grid-funciona">
-        <!-- Bloco 1 -->
         <div class="bloco-funciona">
           <img src="img/inventory-management.svg" alt="Coleta de Dados">
           <h3>Coleta de Dados</h3>
@@ -82,7 +604,6 @@
             vendas e estoque em um só lugar.
           </p>
         </div>
-        <!-- Bloco 2 -->
         <div class="bloco-funciona">
           <img src="img/Ia_chip.png" alt="Análise e IA">
           <h3>Análise e IA</h3>
@@ -91,7 +612,6 @@
             quantidades ideais de compra.
           </p>
         </div>
-        <!-- Bloco 3 -->
         <div class="bloco-funciona">
           <img src="img/validade.png" alt="Avisos de Validade">
           <h3>Avisos de Validade</h3>
@@ -99,7 +619,6 @@
             Alertas automáticos de produtos próximos ao vencimento, evitando perdas por descuido.
           </p>
         </div>
-        <!-- Bloco 4 -->
         <div class="bloco-funciona">
           <img src="img/sos.svg" alt="Automação e Alertas">
           <h3>Automação e Alertas</h3>
@@ -145,9 +664,7 @@
       <p class="texto-centro">
         A Data Setti oferece um pacote completo de recursos para otimizar cada etapa da sua operação:
       </p>
-
       <div class="solucoes-grid">
-        <!-- Card 1 -->
         <div class="solucoes-card">
           <h3>Monitoramento em Tempo Real</h3>
           <ul>
@@ -155,7 +672,6 @@
             <li>Alertas automáticos via SMS, e-mail ou apps integrados.</li>
           </ul>
         </div>
-        <!-- Card 2 -->
         <div class="solucoes-card">
           <h3>Previsão de Demanda com IA</h3>
           <ul>
@@ -163,7 +679,6 @@
             <li>Ajuste automático de níveis de reposição conforme sazonalidade.</li>
           </ul>
         </div>
-        <!-- Card 3 -->
         <div class="solucoes-card">
           <h3>Otimização de Logística e Distribuição</h3>
           <ul>
@@ -171,7 +686,6 @@
             <li>Análise de rotas e estratégias de distribuição para evitar rupturas.</li>
           </ul>
         </div>
-        <!-- Card 4 -->
         <div class="solucoes-card">
           <h3>Análise de Desperdícios e Validade</h3>
           <ul>
@@ -179,7 +693,6 @@
             <li>Relatórios de perdas e sugestões de ações preventivas.</li>
           </ul>
         </div>
-        <!-- Card 5 -->
         <div class="solucoes-card">
           <h3>Integração Multicanal</h3>
           <ul>
@@ -199,67 +712,79 @@
         Empresas que implementaram nossa solução reduziram desperdícios, otimizaram a gestão de estoque 
         e aumentaram sua rentabilidade. Confira alguns exemplos de impacto real:
       </p>
-
-      <!-- Grid de 3 cards em linha no desktop -->
       <div class="grid-casos">
         <div class="caso-card">
           <h4>📈 Controle Eficiente de Estoque</h4>
           <p>
-            Implementamos rastreamento em tempo real para um grande varejista, 
-            reduzindo em 30% as perdas de produtos perecíveis e aumentando em 20% a satisfação dos clientes.
+            Implementamos rastreamento em tempo real para um grande varejista, reduzindo em 30% as perdas de produtos perecíveis e aumentando em 20% a satisfação dos clientes.
           </p>
         </div>
         <div class="caso-card">
           <h4>📊 Previsão Inteligente de Demanda</h4>
           <p>
-            Uma rede de supermercados utilizou IA para prever sazonalidades, 
-            reduzindo R$ 150 mil em estoque parado e evitando falta de produtos essenciais.
+            Uma rede de supermercados utilizou IA para prever sazonalidades, reduzindo R$ 150 mil em estoque parado e evitando falta de produtos essenciais.
           </p>
         </div>
         <div class="caso-card">
           <h4>📦 Movimentação de Produtos</h4>
           <p>
-            Dashboards interativos para uma distribuidora aumentaram o faturamento em 25%, 
-            priorizando produtos de maior demanda e evitando rupturas.
+            Dashboards interativos para uma distribuidora aumentaram o faturamento em 25%, priorizando produtos de maior demanda e evitando rupturas.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ====================== ANTES & DEPOIS ====================== -->
-  <section id="antes-depois" class="sec-escura">
-    <div class="container texto-centro">
-      <h2 class="titulo-secao">Antes & Depois</h2>
+  <!-- ====================== DASHBOARD DE ESTOQUE ====================== -->
+  <section id="dashboard-inteligente" class="sec-escura">
+    <div class="container">
+      <h2 class="titulo-secao">IA Gerenciando Estoques em Tempo Real</h2>
       <p class="texto-centro">
-        Veja a diferença entre um estoque “às cegas” e um estoque gerenciado pela Data Setti:
+        Monitore operações com automação inteligente e dados preditivos.
       </p>
-      <!-- Grid de 2 imagens maiores lado a lado -->
-      <div class="antes-depois-grid">
-        <div class="antes-depois-bloco">
-          <h4>Antes</h4>
-          <img src="img/warehouse.png" alt="Antes">
-        </div>
-        <div class="antes-depois-bloco">
-          <h4>Depois</h4>
-          <img src="img/iawerehouse.png" alt="Depois">
+      <div class="dashboard-ia">
+        <div class="grid">
+          <!-- Nível de Estoque -->
+          <div class="box glow">
+            <h3>📦 Nível de Estoque</h3>
+            <p><span id="nivel-estoque">87%</span> Capacidade Atual</p>
+            <div class="progress-bar">
+              <div class="progress" id="barra-estoque"></div>
+            </div>
+          </div>
+          <!-- Alertas Inteligentes -->
+          <div class="box glow">
+            <h3>🚨 Alertas Inteligentes</h3>
+            <!-- Mensagem principal -->
+            <p id="alerta-ia" style="font-size: 0.95rem;">Análise de estoque inicial...</p>
+            <!-- Lista de alertas com scroll customizado -->
+            <ul id="alertas-estoque"></ul>
+          </div>
+          <!-- Previsão de Demanda -->
+          <div class="box glow">
+            <h3>📊 Previsão de Demanda</h3>
+            <canvas id="graficoIA"></canvas>
+          </div>
+          <!-- Performance de Vendas -->
+          <div class="box glow">
+            <h3>📈 Performance de Vendas</h3>
+            <canvas id="graficoVendas"></canvas>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ====================== CTA FINAL ====================== -->
-  <!-- Aqui vamos usar AOS APENAS para esta seção -->
-  <section id="cta-final" class="sec-gradient"> 
+  <section id="cta-final" class="sec-gradient">
     <div class="container">
-      
       <h2>Pronto para transformar seu estoque?</h2>
       <p class="texto-centro" data-aos="slide-up" data-aos-delay="100">
-        Fale agora com um de nossos especialistas e descubra como a Data Setti pode reduzir custos, 
-        aumentar suas vendas e trazer total visibilidade ao seu inventário.
+        Fale agora com um de nossos especialistas e descubra como a Data Setti pode reduzir custos, aumentar suas vendas e trazer total visibilidade ao seu inventário.
       </p>
+      <!-- Botão CTA personalizado -->
       <a href="index.html#contato" class="btn-primario" data-aos="slide-up" data-aos-delay="200">
-        Fale com a Data Setti
+        QUERO RECEBER ANÁLISES SOBRE MEU ESTOQUE!!
       </a>
     </div>
   </section>
@@ -271,10 +796,114 @@
     </div>
   </footer>
 
-  <!-- Script AOS (somente CTA tem animação) -->
+  <!-- ====================== SCRIPTS ====================== -->
+  <!-- AOS (Animation On Scroll) -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 800 });
+  </script>
+  
+  <!-- Script do Dashboard -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      console.log("Dashboard script iniciado.");
+      let estoque = 87;
+      const estoqueElement = document.getElementById("nivel-estoque");
+      const barraEstoque = document.getElementById("barra-estoque");
+      const alertaIA = document.getElementById("alerta-ia");
+      const ulAlertas = document.getElementById("alertas-estoque");
+
+      function atualizarEstoque() {
+        // Simulação: decrementa o estoque gradualmente para demonstração
+        if (estoque > 30) {
+          estoque -= Math.random() * 1.2;
+          if (estoque < 0) estoque = 0;
+        }
+
+        // Atualiza o texto e a barra de progresso
+        estoqueElement.innerText = estoque.toFixed(1) + "%";
+        barraEstoque.style.width = estoque + "%";
+
+        // Define a mensagem principal de alerta conforme o nível do estoque
+        if (estoque >= 80) {
+          alertaIA.innerText = "✅ Estoque em ótimo nível. Mantenha a estratégia atual.";
+        } else if (estoque >= 60) {
+          alertaIA.innerText = "⚠️ Nível de estoque moderado. Avalie a reposição de itens estratégicos.";
+        } else if (estoque >= 40) {
+          alertaIA.innerText = "🔴 Estoque baixo. Reposição urgente pode ser necessária para evitar rupturas.";
+        } else {
+          alertaIA.innerText = "🚨 Estoque crítico! Ação imediata recomendada para evitar perdas significativas.";
+        }
+
+        // Conjunto de alertas adicionais (sugestões e insights)
+        let alertasExtras = [
+          "Produto A com validade próxima, considere promoção para evitar perdas.",
+          "Produto X está vendendo mais; analise estratégias para aumentar a margem de lucro.",
+          "Produto Y apresenta boa saída, mas avalie oportunidades de cross-selling.",
+          "A validade de alguns produtos está se aproximando: promoção pode ser vantajosa.",
+          "Verifique a precificação do Produto Z para maximizar os lucros.",
+          "Produto B registrou alta demanda, considere aumentar o estoque preventivamente.",
+          "Revisão de preços sugerida para otimizar a rentabilidade dos produtos.",
+          "Produto C está em baixa rotatividade, reavalie estratégias de marketing.",
+          "Análise preditiva indica oportunidades para melhorar o mix de produtos.",
+          "Sincronize com o ERP para atualizar os dados de reposição e evitar rupturas.",
+          "Considere ações de upselling para produtos com alta procura.",
+          "Monitorar promoções para produtos com vencimento próximo pode reduzir perdas."
+        ];
+
+        // Seleciona um alerta extra aleatório
+        let alertaExtra = alertasExtras[Math.floor(Math.random() * alertasExtras.length)];
+
+        // Cria um novo item de lista com o alerta e timestamp
+        let li = document.createElement("li");
+        li.textContent = new Date().toLocaleTimeString() + " - " + alertaExtra;
+
+        // Adiciona o novo alerta no topo da lista
+        ulAlertas.prepend(li);
+
+        // Limita a lista a 4 alertas, removendo o mais antigo se exceder
+        if (ulAlertas.children.length > 4) {
+          ulAlertas.removeChild(ulAlertas.lastChild);
+        }
+
+        // Reagendar a atualização em 3 segundos
+        setTimeout(atualizarEstoque, 3000);
+      }
+
+      atualizarEstoque();
+
+      // Gráfico de Previsão de Demanda (Chart.js)
+      let ctxIA = document.getElementById("graficoIA").getContext("2d");
+      new Chart(ctxIA, {
+        type: "line",
+        data: {
+          labels: ["Semana 1", "Semana 2", "Semana 3", "Semana 4"],
+          datasets: [{
+            label: "Demanda Prevista",
+            data: [150, 220, 290, 450],
+            borderColor: "#a40eb0",
+            backgroundColor: "rgba(164, 14, 176, 0.2)",
+            borderWidth: 3
+          }]
+        },
+        options: { responsive: true, scales: { y: { beginAtZero: true } } }
+      });
+
+      // Gráfico de Performance de Vendas (Chart.js)
+      let ctxVendas = document.getElementById("graficoVendas").getContext("2d");
+      new Chart(ctxVendas, {
+        type: "bar",
+        data: {
+          labels: ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"],
+          datasets: [{
+            label: "Vendas diárias",
+            data: [80, 120, 150, 200, 180, 220, 300],
+            backgroundColor: "rgba(164, 14, 176, 0.7)"
+          }]
+        },
+        options: { responsive: true, scales: { y: { beginAtZero: true } } }
+      });
+    });
   </script>
 </body>
 </html>
