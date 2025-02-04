@@ -1,17 +1,21 @@
-// Script para carrosséis de projetos e depoimentos
-emailjs.init("service_dzchx7m"); // Substitua pelo seu Public Key no EmailJS
+/************************************************
+  SCRIPT PRINCIPAL - script.js
+************************************************/
+
+// Inicialização do EmailJS (se ainda não estiver inicializado no head)
+emailjs.init("service_dzchx7m"); 
+// Substitua pelo seu PUBLIC KEY do EmailJS
+// ou remova caso já tenha feito no <head>.
 
 // Carrossel de Projetos
 const carouselProj = document.getElementById('carouselProj');
 const prevProj = document.getElementById('prevProj');
 const nextProj = document.getElementById('nextProj');
-
 let currentProjIndex = 0; // índice do slide atual
 
 prevProj.addEventListener('click', () => {
   moveCarousel(carouselProj, -1, 'projeto');
 });
-
 nextProj.addEventListener('click', () => {
   moveCarousel(carouselProj, 1, 'projeto');
 });
@@ -20,13 +24,11 @@ nextProj.addEventListener('click', () => {
 const carouselDepo = document.getElementById('carouselDepo');
 const prevDepo = document.getElementById('prevDepo');
 const nextDepo = document.getElementById('nextDepo');
-
 let currentDepoIndex = 0; // índice do slide atual
 
 prevDepo.addEventListener('click', () => {
   moveCarousel(carouselDepo, -1, 'depoimento');
 });
-
 nextDepo.addEventListener('click', () => {
   moveCarousel(carouselDepo, 1, 'depoimento');
 });
@@ -38,7 +40,7 @@ function moveCarousel(carousel, direction, tipo) {
 
   currentIndex += direction;
 
-  // se passar do último, volta pro primeiro e vice-versa
+  // se passar do último, volta pro primeiro, e vice-versa
   if (currentIndex < 0) {
     currentIndex = items.length - 1;
   } else if (currentIndex >= items.length) {
@@ -57,6 +59,7 @@ function moveCarousel(carousel, direction, tipo) {
   }
 }
 
+// Envio de formulário (EmailJS)
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".btn-enviar").addEventListener("click", function (event) {
     event.preventDefault(); // Evita o recarregamento da página
@@ -79,4 +82,27 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("FAILED...", error);
       });
   });
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const frases = [
+        "Maximize Suas Oportunidades",
+        "Transforme Dados em Estratégia",
+        "Aumente Seus Lucros com a Data Setti",
+        "Decisões Mais Inteligentes com Automação"
+    ];
+
+    let index = 0;
+    const bannerText = document.getElementById("banner-text");
+
+    function mudarTexto() {
+        index = (index + 1) % frases.length;
+        bannerText.style.opacity = 0; // Efeito fade-out
+        setTimeout(() => {
+            bannerText.textContent = frases[index];
+            bannerText.style.opacity = 1; // Efeito fade-in
+        }, 500);
+    }
+
+    setInterval(mudarTexto, 3000); // Troca a cada 3 segundos
+
 });
