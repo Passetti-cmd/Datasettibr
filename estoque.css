@@ -1,691 +1,476 @@
-/* ======================== RESET BÁSICO ======================== */
+/************************************
+  RESET (caso não esteja no estilo.css)
+************************************/
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    /* Paleta de cores */
-    --color-azul-noturno: #1A1A2E;
-    --color-roxo-dark: #6A0572;
-    --color-preto: #121212;
-    --color-branco: #ffffff;
-    --color-cinza-escuro: #2E2E2E;
+  /* Paleta de cores */
+  --color-azul-noturno: #1A1A2E;
+  --color-roxo-dark: #6A0572;
+  --color-preto: #121212;
+  --color-branco: #ffffff;
+  --color-cinza-escuro: #2E2E2E;
 
-    /* Fonte padrão */
-    --font-principal: 'Poppins', sans-serif;
+  /* Fonte padrão */
+  --font-principal: 'Poppins', sans-serif;
 }
 
 body {
-    font-family: var(--font-principal);
-    background-color: var(--color-azul-noturno);
-    color: var(--color-branco);
-    line-height: 1.5;
-    overflow-x: hidden; /* evita scroll horizontal */
+  font-family: var(--font-principal);
+  background-color: var(--color-azul-noturno);
+  color: var(--color-branco);
+  line-height: 1.5;
+  overflow-x: hidden;
 }
 
-/* ======================== CONTAINER GERAL ======================== */
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* ======================== HEADER FIXO NO TOPO ======================== */
+/************************************
+  HEADER
+************************************/
 .header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    background: rgba(26, 26, 46, 0.95); /* fundo levemente transparente */
-    backdrop-filter: blur(4px);         /* efeito de “vidro fosco” se quiser */
-    transition: background 0.3s;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    height: 70px;
-    display: flex;
-    align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(4px);
+  transition: background 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  height: 70px;
+  display: flex;
+  align-items: center;
 }
 .header .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .logo a {
-    font-size: 1.7rem;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
+  font-size: 1.7rem;
+  color: var(--color-branco);
+  text-decoration: none;
+  font-weight: 600;
 }
 .logo span {
-    color: var(--color-roxo-dark);
+  color: var(--color-roxo-dark);
 }
-
 .nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
 }
 .nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 400;
-    transition: color 0.3s ease;
+  color: var(--color-branco);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.3s ease;
 }
 .nav ul li a:hover {
-    color: var(--color-roxo-dark);
+  color: var(--color-roxo-dark);
 }
 
-/* ======================== HERO (TOPO) COM ANIMAÇÃO DE GRADIENTE ======================== */
-.hero-animado {
-    /* Gradiente animado */
-    background: linear-gradient(135deg, #6A0572, #1A1A2E, #8A0A94);
-    background-size: 200% 200%;
-    animation: gradientAnimation 20s ease infinite;
-
-    height: 75vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    margin-top: 70px; /* Para não ficar embaixo do header fixo */
-}
-/* Keyframes para o gradiente animado */
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.hero-content {
-    max-width: 900px; /* Aumenta um pouco a largura */
-    text-align: center; /* Centraliza todo o conteúdo */
-    margin: 0 auto; /* Centraliza no container */
-}
-.hero-content h1 {
-    font-size: 2.5rem; /* Diminui o tamanho da fonte */
-    line-height: 1.2;
-    margin-bottom: 1.2rem;
-}
-
-.hero-content p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-}
-.btn-primario,
-.cta-button {
-    background: linear-gradient(90deg, #a40eb0, #8A0A94);
-    color: white;
-    padding: 14px 24px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: 0.3s;
-    display: inline-block;
-}
-.cta-button:hover {
-    box-shadow: 0px 0px 10px #6A0572;
-    transform: scale(1.05);
-}
-#typed-text {
-    white-space: nowrap; /* Impede que o texto quebre */
-    display: inline-block; /* Mantém a estrutura alinhada */
-    font-size: 3rem; /* Ajusta o tamanho da fonte */
-    text-align: center; /* Centraliza o texto */
-}
-
-/* ======================== SEÇÕES (PADDING) ======================== */
+/************************************
+  SECTIONS
+************************************/
 section {
-    padding: 80px 0;
-    /* margin-top: 70px;  Cuidado para não duplicar se já tiver offset do header */
+  margin-top: 70px; /* Para não ficar atrás do header fixo */
+}
+.sec-escura {
+  background: var(--color-preto);
+  padding: 60px 0;
+}
+.sec-clara {
+  background: var(--color-azul-noturno);
+  padding: 60px 0;
+}
+.sec-gradient {
+  background: linear-gradient(135deg, #6A0572, #1A1A2E);
+  padding: 60px 0;
+  text-align: center;
 }
 
-.sobre,
-.servicos,
-.projetos,
-.depoimentos,
-.contato {
-    position: relative;
-}
-
-/* ======================== SEÇÃO SOBRE ======================== */
-.sobre {
-    background-color: var(--color-preto);
-}
-.sobre .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-.sobre-texto {
-    flex: 1;
-    min-width: 300px;
-}
-.sobre-texto h2 {
-    margin-bottom: 1rem;
-    font-size: 2rem;
-    color: var(--color-roxo-dark);
-}
-.sobre-texto p {
-    margin-bottom: 1rem;
-}
-.sobre-lista {
-    margin-bottom: 1rem;
-    list-style: none;
-    line-height: 1.6;
-}
-.sobre-lista li {
-    margin-bottom: 0.5rem;
-    font-weight: 300;
-}
-.sobre-lista li i {
-    color: var(--color-roxo-dark);
-    margin-right: 8px;
-}
-.sobre-imagem {
-    flex: 1;
-    text-align: center;
-}
-.sobre-imagem img {
-    max-width: 400px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* ======================== SEÇÃO SERVIÇOS ======================== */
-.servicos {
-    background-color: var(--color-azul-noturno);
-    text-align: center;
-}
-.servicos h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: var(--color-roxo-dark);
-}
-.servicos-cards {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-.servico-card {
-    background: #121212;
-    border-radius: 12px;
-    padding: 1.5rem;
-    text-align: center;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: flex-start; 
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.servico-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
-}
-.servico-card img {
-    display: block;
-    max-width: 80px;
-    height: auto;
-    margin: 0 auto 1rem; 
-}
-.servico-card h3 {
-    margin-bottom: 0.8rem;
-}
-.servico-card p {
-    margin-bottom: 1.2rem;
-    line-height: 1.5;
-    flex: 1; 
-}
-.btn-saiba-mais {
-    margin-top: auto; 
-}
-
-/* ======================== CARROSSEL GERAL (PROJETOS/DEPOIMENTOS) ======================== */
-.carousel-container {
-    position: relative;
-    overflow: hidden;
-    margin-top: 2rem;
-}
-.carousel-wrapper {
-    display: flex;
-    transition: transform 0.5s ease;
-}
-.carousel-item {
-    min-width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-/* Botões do carrossel */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: var(--color-roxo-dark);
-    color: #fff;
-    border: none;
-    padding: 0.7rem 1.2rem;
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    z-index: 10;
-    transition: background-color 0.3s;
-}
-.carousel-btn:hover {
-    background-color: #500459;
-}
-.prev { left: 14px; }
-.next { right: 14px; }
-
-/* ======================== PROJETOS ======================== */
-.projetos {
-    background-color: var(--color-preto);
-    text-align: center;
-}
-.projetos h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: var(--color-roxo-dark);
-}
-.projetos .carousel-item img {
-    max-width: 300px;
-    width: 100%;
-    height: auto;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-}
-.projetos .carousel-item h3 {
-    color: var(--color-roxo-dark);
-    margin-bottom: 0.5rem;
-}
-.projetos .carousel-item p {
-    color: #ccc;
-    max-width: 350px;
-    line-height: 1.4;
-}
-
-/* ======================== BANNER NO MEIO (NOVO) ======================== */
-.banner-meio {
-   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(106,5,114,1) 50%, rgba(26,26,46,1) 100%);
-    color: #fff;
-    text-align: center;
-    padding: 60px 20px;
-    position: relative;
-    overflow: hidden;
-}
-
-
-.banner-meio-title {
-    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Ajusta a fonte conforme o tamanho da tela */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.banner-meio-title {
-    font-size: 2.5rem;
-    margin-bottom: 5px;
-    font-weight: 600;
-}
-.banner-meio-subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    line-height: 1.5;
-}
-.banner-meio .btn-primario {
-    background: linear-gradient(90deg, #B554FF, #470457);
-    color: white;
-    padding: 14px 24px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background 0.3s ease, transform 0.2s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(138, 10, 148, 0.5);
-    display: inline-block;
-}
-
-.banner-meio .btn-primario:hover {
-    background: linear-gradient(90deg, #8A0A94, #D774FF);
-    transform: scale(1.05);
-    box-shadow: 0px 6px 15px rgba(138, 10, 148, 0.7);
-}
-
-#banner-text {
-    transition: opacity 0.5s ease-in-out;
-}
-
-
-
-/* ======================== DEPOIMENTOS ======================== */
-.depoimentos {
-    background: var(--color-azul-noturno);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-.depoimentos-overlay {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(135deg, rgba(106,5,114,0.2), rgba(26,26,46,0.2));
-    pointer-events: none;
-    z-index: 0;
-}
-.depoimentos .container {
-    position: relative;
-    z-index: 1;
-}
-.depoimentos h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: var(--color-roxo-dark);
-}
-.depo-content {
-    background-color: var(--color-preto);
-    border-radius: 8px;
-    padding: 2rem;
-    max-width: 400px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.depo-foto {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 1rem;
-}
-.depo-stars {
-    margin-top: 0.5rem;
-    color: #FFD700; /* cor de estrela (dourado) */
-}
-.depo-stars i {
-    margin: 0 2px;
-}
-
-/* ======================== CONTATO ======================== */
-/* ======================== CONTATO ======================== */
-.contato {
-    background-color: var(--color-preto);
-    text-align: center;
-    padding: 50px 20px;
-}
-
-.contato-box {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4rem;
-    justify-content: center;
-    align-items: flex-start;
-    max-width: 1500px;
-    margin: auto;
-}
-
-.form-contato {
-    background-color: var(--color-azul-noturno);
-    padding: 2rem;
-    border-radius: 8px;
-    flex: 1;
-    min-width: 320px; /* Ajustado */
-    max-width: 420px; /* Ajustado */
-    box-shadow: 0px 4px 15px rgba(138, 10, 148, 0.3);
-}
-
-/* Ajuste para os inputs e textarea */
-.form-group input,
-.form-group textarea {
-    background: #1A1A2E !important; /* Fundo escuro */
-    border: 1px solid #6A0572; /* Borda roxa */
-    color: #fff !important; /* Texto branco */
-    padding: 12px;
-    border-radius: 6px;
-    width: 100%;
-    font-size: 16px;
-    box-shadow: none;
-    outline: none;
-}
-
-/* Remove a borda branca quando focado */
-.form-group input:focus,
-.form-group textarea:focus {
-    border: 1px solid #B554FF;
-}
-
-/* Ajuste do botão Enviar */
-.btn-contato {
-  font-size: 16px;
-  background: linear-gradient(90deg, #8A0A94, #B554FF);
-  color: white;
-  padding: 12px 24px;
+/************************************
+  HERO SERVIÇO
+************************************/
+.hero-servico {
+  position: relative;
+  height: 60vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
+}
+.hero-video {
+  position: absolute;
+  top: 48%; /* Centraliza verticalmente */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Garante que o centro do vídeo esteja alinhado */
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 2;
+}
+.hero-content-servico {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: var(--color-branco);
+  max-width: 700px;
+  width: 100%;
+  padding: 0 1rem;
+}
+.hero-content-servico h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+.hero-content-servico p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/************************************
+  TÍTULOS E TEXTOS
+************************************/
+.titulo-secao {
+  color: var(--color-roxo-dark);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 2rem;
+}
+.texto-centro {
+  text-align: center;
+  color: #ccc;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/************************************
+  COMO FUNCIONA (4 BLOCOS)
+************************************/
+.grid-funciona {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.bloco-funciona {
+  background: #1A1A2E;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: 0.3s;
+  flex: 1 1 250px;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bloco-funciona img {
+  width: 60px;
+  margin-bottom: 1rem;
+}
+.bloco-funciona h3 {
+  margin-bottom: 0.5rem;
+  color: var(--color-branco);
+  font-size: 1.1rem;
+}
+.bloco-funciona p {
+  color: #ccc;
+  font-size: 0.95rem;
+}
+.bloco-funciona:hover {
+  background: #24244E;
+}
+
+/************************************
+  BENEFÍCIOS (3 BLOCOS)
+************************************/
+.grid-beneficios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.bloco-beneficio {
+  background: #1A1A2E;
+  border-radius: 8px;
+  padding: 1.5rem;
+  flex: 1 1 280px;
+  max-width: 380px;
+  text-align: center;
+  transition: 0.3s;
+}
+.bloco-beneficio h3 {
+  margin-bottom: 1rem;
+  color: #fff;
+}
+.bloco-beneficio p {
+  color: #ccc;
+  font-size: 0.95rem;
+}
+.bloco-beneficio:hover {
+  background: #2c2c44;
+}
+
+/************************************
+  SOLUÇÕES PRINCIPAIS
+************************************/
+.solucoes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.solucoes-card {
+  background: #121212;
+  border-radius: 8px;
+  padding: 1.5rem;
+  flex: 1 1 300px;
+  max-width: 400px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: left;
+}
+.solucoes-card h3 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+.solucoes-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #ccc;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+.solucoes-card ul li {
+  position: relative;
+  margin-bottom: 0.5rem;
+  padding-left: 1.2rem;
+}
+.solucoes-card ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--color-roxo-dark);
+}
+.solucoes-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/************************************
+  CASOS DE SUCESSO
+************************************/
+.grid-casos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.caso-card {
+  background: #1A1A2E;
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: #ccc;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: left;
+  width: 100%;
+}
+
+.caso-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+.caso-card h4 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .grid-casos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-casos {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/************************************
+  ANTES & DEPOIS
+************************************/
+#antes-depois .texto-centro {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+.antes-depois-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 2rem;
+  align-items: center;
+  justify-items: center;
+}
+.antes-depois-bloco {
+  max-width: 600px; /* imagem maior */
+  text-align: center;
+}
+.antes-depois-bloco h4 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+.antes-depois-bloco img {
+  width: 100%;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.antes-depois-bloco img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255,255,255,0.1);
+}
+/* Responsivo para mobile */
+@media (max-width: 768px) {
+  .antes-depois-grid {
+    grid-template-columns: 1fr;
+  }
+  .antes-depois-bloco {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+
+/************************************
+  CTA FINAL (ANIMAÇÃO SÓ AQUI)
+************************************/
+#cta-final {
+  background: linear-gradient(135deg, #6A0572, #1A1A2E);
+  text-align: center;
+  padding: 60px 0;
+  color: #fff;
+}
+#cta-final h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+#cta-final p {
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  line-height: 1.5;
+}
+.btn-primario {
+  background: var(--color-roxo-dark);
+  color: #fff;
+  padding: 12px 24px;
   border-radius: 30px;
-  width: 180px;
-  max-width: 100%;
-  margin: 20px auto;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  box-shadow: 0px 4px 10px rgba(138, 10, 148, 0.4);
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.btn-primario:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 10px var(--color-roxo-dark);
 }
 
-.btn-contato svg {
-  width: 18px;
-  height: 18px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.btn-contato:hover svg {
-  transform: translateX(5px) rotate(45deg);
-}
-
-.btn-contato:hover span {
-  transform: translateX(3px);
-}
-
-.btn-contato:active {
-  transform: scale(0.95);
-}
-
-/* Ajustando a parte do contato */
-.contato-info {
-    flex: 1;
-    min-width: 300px;
-    max-width: 400px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/* Ajustando o botão do WhatsApp */
-.btn-whatsapp {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #25D366;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-    width: fit-content;
-}
-
-.btn-whatsapp:hover {
-    background-color: #1EBE5D;
-}
-
-.btn-whatsapp img {
-    width: 20px;
-    margin-right: 10px;
-}
-
-
-@keyframes fly-1 {
-  from {
-    transform: translateY(0.1em);
-  }
-  to {
-    transform: translateY(-0.1em);
-  }
-}
-
-.contato-info {
-    flex: 1;
-    max-width: 400px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.contato-info h3 {
-    margin-bottom: 1rem;
-    color: var(--color-roxo-dark);
-}
-.btn-whatsapp {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: #28a155;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    margin-top: 1rem;
-    transition: background-color 0.3s ease;
-}
-.btn-whatsapp:hover {
-    background-color: #1ac159;
-}
-.btn-whatsapp img, .btn-whatsapp svg {
-    width: 24px;
-    height: 24px;
-}
-
-/* ======================== FOOTER ======================== */
+/************************************
+  FOOTER
+************************************/
 .footer {
-    background-color: var(--color-cinza-escuro);
-    text-align: center;
-    padding: 1.5rem 0;
+  background-color: var(--color-cinza-escuro);
+  text-align: center;
+  padding: 1.5rem 0;
+  margin-top: 0;
 }
 .footer-content p {
-    margin: 0.5rem 0;
+  margin: 0.5rem 0;
 }
 .footer-content a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 400;
-    margin: 0 0.5rem;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 0.5rem;
 }
 .footer-content a:hover {
-    color: var(--color-roxo-dark);
+  color: var(--color-roxo-dark);
 }
 
-/* ======================== BOTÃO FLUTUANTE DO WHATSAPP ======================== */
-.whatsapp-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-.whatsapp-float img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* ======================== RESPONSIVIDADE ======================== */
+/************************************
+  RESPONSIVIDADE GERAL
+************************************/
 @media (max-width: 768px) {
-    /* Faz o header acomodar melhor logo e menu empilhados */
-    .header .container {
-        flex-wrap: wrap;               
-        justify-content: center;       
-        padding: 0 1rem;              
-    }
-    /* Diminui o tamanho da logo no mobile */
-    .logo a {
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;         
-    }
-    /* Deixa o menu em coluna no celular */
-    .nav ul {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    /* Evita forçar o header ficar muito alto no mobile */
-    .header {
-        height: auto;
-        padding: 1rem 0;
-    }
-    /* Garante que imagens no "Sobre" e "Projetos" não estourem a tela */
-    .sobre-imagem img,
-    .projetos .carousel-item img {
-        max-width: 100%;
-        height: auto;
-    }
-    /* Ajusta o tamanho dos botões do carrossel para ficarem menores */
-    .carousel-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 1rem;
-        padding: 0;
-    }
-    /* Se quiser reposicionar os botões para baixo */
-    .carousel-btn.prev {
-        left: 10px;
-        top: auto;
-        bottom: 10px;
-        transform: none;
-    }
-    .carousel-btn.next {
-        right: 10px;
-        top: auto;
-        bottom: 10px;
-        transform: none;
-    }
-    /* HERO menor no mobile */
-    .hero-animado {
-        height: 60vh;
-    }
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-}
-
-/*BOTAO BANNER*/
-
-.cta-button:hover {
-  box-shadow: 0 0 15px rgba(164, 14, 176, 0.6), 0 0 5px rgba(164, 14, 176, 0.8);
-  animation: pulse 1.2s infinite; /* efeito de pulsar */
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1.05);
+  .header .container {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 1rem;
   }
-  50% {
-    transform: scale(1.1);
+  .header {
+    height: auto;
+    padding: 1rem 0;
   }
-  100% {
-    transform: scale(1.05);
+  .logo a {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  .nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero-servico {
+    height: 50vh;
+  }
+  .hero-content-servico h1 {
+    font-size: 1.6rem;
+  }
+  .hero-content-servico p {
+    font-size: 1rem;
+  }
+
+  .grid-funciona,
+  .grid-beneficios,
+  .solucoes-grid,
+  .grid-casos {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .bloco-funciona,
+  .bloco-beneficio,
+  .solucoes-card,
+  .caso-card {
+    max-width: 100%!important;
+    margin: 0 auto;
   }
 }
