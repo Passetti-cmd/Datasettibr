@@ -689,3 +689,148 @@ section {
     transform: scale(1.05);
   }
 }
+
+
+    .blog-section {
+        text-align: center;
+        padding: 50px 20px;
+        background-color: #1A1A2E;
+        color: white;
+    }
+    .section-title {
+        color: #b983ff;
+        font-size: 28px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .blog-grid {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    .blog-card {
+    background: #25254b;
+    padding: 20px;
+    border-radius: 8px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+    .blog-card:hover {
+        transform: translateY(-5px);
+    }
+    .blog-img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+    .blog-title {
+        color: #b983ff;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .blog-meta {
+        font-size: 12px;
+        color: #ccc;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .blog-tag {
+        font-size: 14px;
+    }
+    .blog-card p {
+        color: #ddd;
+        text-align: center;
+    }
+    .read-more {
+        display: block;
+        width: max-content;
+        margin: 10px auto;
+        padding: 8px 12px;
+        background: #8A0A94;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s;
+            margin-top: auto; /* Garante que o botão fique no final */
+    }
+
+    .read-more:hover {
+        background: #9c6efb;
+    }
+    .view-all {
+        display: inline-block;
+        margin: 30px auto;
+        padding: 10px 15px;
+        background: #b983ff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+
+/* From Uiverse.io by vinodjangid07 */ 
+.readmore-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: rgb(138, 10, 148);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  gap: 10px; /* Espaço de 10px entre os elementos internos */
+  transition: all 0.4s;
+  margin: 30px auto;
+  text-decoration: none; /* Remove o sublinhado */
+}
+
+
+.book-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  width: 45px;
+  height: 100%;
+}
+.book-wrapper .book-page {
+  width: 50%;
+  height: auto;
+  position: absolute;
+}
+.readmore-btn:hover .book-page {
+  animation: paging 0.4s linear infinite;
+  transform-origin: left;
+}
+.readmore-btn:hover {
+  background-color: rgb(159, 74, 255);
+}
+@keyframes paging {
+  0% {
+    transform: rotateY(0deg) skewY(0deg);
+  }
+  50% {
+    transform: rotateY(90deg) skewY(-20deg);
+  }
+  100% {
+    transform: rotateY(180deg) skewY(0deg);
+  }
+}
+.text {
+  /* width: 105px; */ /* Removido para permitir ajuste automático */
+  width: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 15px;
+  color: rgb(255, 255, 255);
+}
+
