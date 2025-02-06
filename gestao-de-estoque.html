@@ -2,47 +2,56 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Gestão de Estoque Inteligente - Data Setti">
+  <meta name="description" content="Gestão de Estoque Inteligente: Solução completa para reduzir perdas, aumentar lucros e otimizar seu estoque com inteligência artificial.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestão de Estoque - Data Setti</title>
+  <title>Gestão de Estoque Inteligente | Data Setti</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <!-- Estilos Integrados -->
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- GSAP Library (opcional para animações extras) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+  
+  <!-- CSS Personalizado -->
   <style>
-    /************************************
-      RESET E VARIÁVEIS
-    ************************************/
+    /* Variáveis de cores */
+    :root {
+      --color-roxo-dark: #6A0572;
+      --color-azul-noite: #1F2937;
+    }
+    /* Reset básico */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    :root {
-      --color-azul-noturno: #1A1A2E;
-      --color-roxo-dark: #6A0572;
-      --color-preto: #121212;
-      --color-branco: #ffffff;
-      --color-cinza-escuro: #2E2E2E;
-      --font-principal: 'Poppins', sans-serif;
-    }
     body {
-      font-family: var(--font-principal);
-      background-color: var(--color-azul-noturno);
-      color: var(--color-branco);
-      line-height: 1.5;
-      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      line-height: 1.6;
+      padding-top: 70px; /* Espaço para o header fixo */
     }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Container */
     .container {
       width: 90%;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: auto;
+      padding: 30px 0;
     }
-
-    /************************************
-      HEADER
-    ************************************/
+    /* ======================== HEADER FIXO NO TOPO ======================== */
     .header {
       position: fixed;
       width: 100%;
@@ -51,6 +60,7 @@
       z-index: 999;
       background: rgba(26,26,46,0.95);
       backdrop-filter: blur(4px);
+      transition: background 0.3s;
       box-shadow: 0 2px 4px rgba(0,0,0,0.3);
       height: 70px;
       display: flex;
@@ -60,12 +70,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      height: 100%;
     }
     .logo a {
       font-size: 1.7rem;
-      color: var(--color-branco);
+      color: #fff;
       text-decoration: none;
       font-weight: 600;
+      line-height: 70px;
     }
     .logo span {
       color: var(--color-roxo-dark);
@@ -74,835 +86,830 @@
       list-style: none;
       display: flex;
       gap: 1.5rem;
+      align-items: center;
+      height: 100%;
     }
     .nav ul li a {
-      color: var(--color-branco);
+      color: #fff;
       text-decoration: none;
       font-weight: 400;
-      transition: color 0.3s;
+      transition: color 0.3s ease;
+      line-height: 70px;
+      padding: 0 10px;
     }
     .nav ul li a:hover {
       color: var(--color-roxo-dark);
     }
-
-    /************************************
-      SECTIONS
-    ************************************/
-    section {
-      margin-top: 70px; /* Para não ficar atrás do header fixo */
-    }
-    .sec-escura {
-      background: var(--color-preto);
-      padding: 60px 0;
-    }
-    .sec-clara {
-      background: var(--color-azul-noturno);
-      padding: 60px 0;
-    }
-    .sec-gradient {
-      background: linear-gradient(135deg, #6A0572, #1A1A2E);
-      padding: 60px 0;
-      text-align: center;
-    }
-
-    /************************************
-      HERO SERVIÇO
-    ************************************/
-    .hero-servico {
+    /* ======================== FIM HEADER ======================== */
+    
+    /* Seção Hero com Vídeo Interativo */
+    .hero {
       position: relative;
-      width: 100%;
       height: 70vh;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      overflow: hidden;
     }
     .hero-video {
       position: absolute;
-      width: 100%;
-      height: 100%;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 0;
+      transform: translate(-50%, -50%);
       object-fit: cover;
-      z-index: -1;
     }
-    .hero-overlay {
+    .hero::after {
+      content: "";
       position: absolute;
+      top: 0; left: 0;
       width: 100%;
       height: 100%;
       background: rgba(26,26,46,0.7);
       z-index: 1;
     }
-    .hero-content-servico {
+    .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 700px;
-    }
-    .hero-content-servico h1 {
-      font-size: 3rem;
-      color: #fff;
-      margin-bottom: 1rem;
-    }
-    .hero-content-servico p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-    .btn-primario {
-      background: var(--color-roxo-dark);
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 30px;
-      font-weight: bold;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .btn-primario:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 10px var(--color-roxo-dark);
-    }
-
-    /************************************
-      TÍTULOS E TEXTOS
-    ************************************/
-    .titulo-secao {
-      color: var(--color-roxo-dark);
-      margin-bottom: 1.5rem;
-      text-align: center;
-      font-size: 2rem;
-    }
-    .texto-centro {
-      text-align: center;
-      color: #ccc;
       max-width: 800px;
-      margin: 0 auto 2rem;
-      line-height: 1.6;
+      padding: 0 20px;
     }
-
-    /************************************
-      COMO FUNCIONA
-    ************************************/
-    .grid-funciona {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      margin-top: 2rem;
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
     }
-    .bloco-funciona {
-      background: #1A1A2E;
-      border-radius: 8px;
-      padding: 1.5rem;
-      text-align: center;
-      transition: 0.3s;
-      flex: 1 1 250px;
-      max-width: 280px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
     }
-    .bloco-funciona img {
-      width: 60px;
-      margin-bottom: 1rem;
-    }
-    .bloco-funciona h3 {
-      margin-bottom: 0.5rem;
-      color: var(--color-branco);
+    .hero-content .cta-btn {
+      background-color: var(--color-roxo-dark);
+      padding: 15px 30px;
+      border-radius: 30px;
       font-size: 1.1rem;
-    }
-    .bloco-funciona p {
-      color: #ccc;
-      font-size: 0.95rem;
-    }
-    .bloco-funciona:hover {
-      background: #24244E;
-    }
-
-    /************************************
-      BENEFÍCIOS
-    ************************************/
-    .grid-beneficios {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-    .bloco-beneficio {
-      background: #1A1A2E;
-      border-radius: 8px;
-      padding: 1.5rem;
-      flex: 1 1 280px;
-      max-width: 380px;
-      text-align: center;
-      transition: 0.3s;
-    }
-    .bloco-beneficio h3 {
-      margin-bottom: 1rem;
+      font-weight: 600;
       color: #fff;
+      transition: background 0.3s;
     }
-    .bloco-beneficio p {
-      color: #ccc;
-      font-size: 0.95rem;
+    .hero-content .cta-btn:hover {
+      background-color: #a40eb0;
     }
-    .bloco-beneficio:hover {
-      background: #2c2c44;
+    /* Seção de Introdução */
+    .intro {
+      padding: 40px 0;
+      text-align: center;
     }
-
-    /************************************
-      SOLUÇÕES PRINCIPAIS
-    ************************************/
-    .solucoes-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      margin-top: 2rem;
+    .intro h2 {
+      color: var(--color-roxo-dark);
+      font-size: 2.5rem;
+      margin-bottom: 20px;
     }
-    .solucoes-card {
-      background: #121212;
-      border-radius: 8px;
-      padding: 1.5rem;
-      flex: 1 1 300px;
-      max-width: 400px;
-      transition: transform 0.3s, box-shadow 0.3s;
+    .intro p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: auto;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+    /* Seção de Funcionalidades Avançadas – 8 Cards */
+    .features {
+      background-color: #1A1A2E;
+      padding: 40px 0;
+    }
+    .features h2 {
+      text-align: center;
+      color: var(--color-roxo-dark);
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .feature-card {
+      background-color: #121212;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s;
+      border: 2px solid var(--color-roxo-dark);
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    .feature-card i {
+      font-size: 3rem;
+      color: var(--color-roxo-dark);
+      margin-bottom: 15px;
+    }
+    .feature-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+    /* Seção de Benefícios */
+    .benefits {
+      padding: 40px 0;
+      text-align: center;
+    }
+    .benefits h2 {
+      color: var(--color-roxo-dark);
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+    .benefits p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: auto;
+      margin-bottom: 40px;
+    }
+    .benefits-list {
+      list-style: none;
+      max-width: 800px;
+      margin: auto;
       text-align: left;
     }
-    .solucoes-card h3 {
-      color: #fff;
-      margin-bottom: 0.5rem;
+    .benefits-list li {
       font-size: 1.1rem;
-    }
-    .solucoes-card ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      color: #ccc;
-      line-height: 1.6;
-      font-size: 0.95rem;
-    }
-    .solucoes-card ul li {
+      margin-bottom: 15px;
+      padding-left: 35px;
       position: relative;
-      margin-bottom: 0.5rem;
-      padding-left: 1.2rem;
     }
-    .solucoes-card ul li::before {
-      content: "✔";
+    .benefits-list li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
       position: absolute;
       left: 0;
       color: var(--color-roxo-dark);
     }
-    .solucoes-card:hover {
-      transform: translateY(-4px);
+    /* Seção de Galeria Alternada "Veja Nossa Solução em Ação" */
+    .action-gallery {
+      background-color: #1A1A2E;
+      padding: 40px 0;
+    }
+    .action-gallery h2 {
+      text-align: center;
+      color: var(--color-roxo-dark);
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+    .action-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+    }
+    .action-item:nth-child(1) { animation-delay: 0.3s; }
+    .action-item:nth-child(2) { animation-delay: 0.6s; }
+    .action-item:nth-child(3) { animation-delay: 0.9s; }
+    .action-item:nth-child(4) { animation-delay: 1.2s; }
+    .action-item.reverse {
+      flex-direction: row-reverse;
+    }
+    .action-image, .action-text {
+      flex: 1;
+      padding: 20px;
+    }
+    .action-image img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .action-image img:hover {
+      transform: scale(1.05);
+    }
+    .action-text h3 {
+      font-size: 1.8rem;
+      color: var(--color-roxo-dark);
+      margin-bottom: 15px;
+    }
+    .action-text p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      text-align: justify;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Seção de Processo (Como Funciona) – 4 Cards Elaborados */
+    .process {
+      background-color: #1A1A2E;
+      padding: 40px 0;
+    }
+    .process h2 {
+      text-align: center;
+      color: var(--color-roxo-dark);
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+    .process-steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 30px;
+    }
+    .process-step {
+      flex: 1 1 250px;
+      background-color: #121212;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 2px solid var(--color-roxo-dark);
+    }
+    .process-step:hover {
+      transform: translateY(-5px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
-
-    /************************************
-      CASOS DE SUCESSO
-    ************************************/
-    .grid-casos {
+    .process-step i {
+      font-size: 2.5rem;
+      color: var(--color-roxo-dark);
+      margin-bottom: 15px;
+    }
+    .process-step h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .process-step p {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+    /* Seção de Testemunhos */
+    .testimonials {
+      padding: 40px 0;
+      text-align: center;
+      background-color: #121212;
+    }
+    .testimonials h2 {
+      color: var(--color-roxo-dark);
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+    .testimonial-cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .testimonial-card {
+      background-color: #1A1A2E;
+      padding: 20px;
+      border-radius: 10px;
+      font-style: italic;
+      position: relative;
+      min-height: 150px;
+      border: 2px solid var(--color-roxo-dark);
+    }
+    .testimonial-card::before {
+      content: "“";
+      font-size: 3rem;
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      color: var(--color-roxo-dark);
+    }
+    .testimonial-card p {
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-bottom: 15px;
+    }
+    .testimonial-card .client {
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-align: right;
+    }
+    /* ======================== CARROSSEL DE EMPRESAS ======================== */
+    .company-carousel {
+      background-color: #121212;
+      padding: 30px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .company-carousel h2 {
+      text-align: center;
+      color: var(--color-roxo-dark);
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .carousel-container {
+      display: flex;
+      gap: 15px;
+      transition: transform 0.5s ease;
+    }
+    .carousel-item {
+      min-width: 300px;
+      background-color: #1A1A2E;
+      border: 2px solid var(--color-roxo-dark);
+      border-radius: 10px;
+      padding: 15px;
       text-align: center;
     }
-    .caso-card {
-      background: #1A1A2E;
-      border-radius: 8px;
-      padding: 1.5rem;
-      color: #ccc;
-      transition: transform 0.3s, box-shadow 0.3s;
-      text-align: left;
+    .carousel-item img {
       width: 100%;
+      border-radius: 5px;
+      margin-bottom: 10px;
     }
-    .caso-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
-    }
-    .caso-card h4 {
+    .carousel-item h3 {
+      font-size: 1.5rem;
       color: #fff;
-      margin-bottom: 0.5rem;
+      margin-bottom: 10px;
+    }
+    .carousel-item p {
       font-size: 1rem;
+      line-height: 1.4;
+      color: #fff;
     }
-    @media (max-width: 1024px) {
-      .grid-casos {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      border-radius: 50%;
     }
-    @media (max-width: 600px) {
-      .grid-casos {
-        grid-template-columns: 1fr;
-      }
+    .carousel-nav.prev {
+      left: 10px;
     }
-
-    /************************************
-      DASHBOARD DE ESTOQUE
-    ************************************/
-    #dashboard-inteligente {
-      padding: 60px 0;
+    .carousel-nav.next {
+      right: 10px;
+    }
+    /* ======================== FIM CARROSSEL DE EMPRESAS ======================== */
+    /* ======================== BANNER NO MEIO (NOVO) ======================== */
+    .cta-final {
+      padding: 20px 20px;
+      text-align: center;
       position: relative;
+      overflow: hidden;
+      background: url('img/cta-bg.jpg') center/cover no-repeat;
+      animation: fadeSlideIn 1.5s ease-in-out;
     }
-    .dashboard-ia {
-      background: rgba(255,255,255,0.07);
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.2);
-      margin-top: 2rem;
-      width: 85%;
+    .cta-final::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26,26,46,0.85);
+      z-index: 1;
+    }
+    .cta-final .banner-meio-content {
+      position: relative;
+      z-index: 2;
+    }
+    .cta-final h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 5px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cta-final p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+      max-width: 800px;
       margin-left: auto;
       margin-right: auto;
     }
-    .dashboard-ia .grid {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .dashboard-ia .box {
-      background: #1A1A2E;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-      transition: transform 0.3s ease-in-out;
-      width: 300px;
-    }
-    .dashboard-ia .box:hover {
-      transform: scale(1.05);
-    }
-    .dashboard-ia .glow {
-      box-shadow: 0 0 15px rgba(164,14,176,0.5);
-    }
-    .dashboard-ia .progress-bar {
-      background: #262649;
-      border-radius: 8px;
-      height: 12px;
-      width: 100%;
-    }
-    .dashboard-ia .progress {
-      height: 100%;
-      background: linear-gradient(90deg, #a40eb0, #6A0572);
-      width: 87%;
-      transition: width 1s ease-in-out;
-    }
-    /* Lista de Alertas com Scroll Customizado */
-    #alertas-estoque {
-      list-style: none;
-      margin: 10px 0 0;
-      padding: 0 10px;
-      height: 100px;
-      overflow-y: auto;
-      text-align: left;
-      font-size: 0.85rem;
-      color: #ccc;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 6px;
-      background: rgba(0,0,0,0.2);
-      scrollbar-width: thin;
-      scrollbar-color: rgba(164,14,176,0.5) rgba(255,255,255,0.1);
-    }
-    #alertas-estoque::-webkit-scrollbar {
-      width: 6px;
-    }
-    #alertas-estoque::-webkit-scrollbar-track {
-      background: rgba(255,255,255,0.1);
-      border-radius: 3px;
-    }
-    #alertas-estoque::-webkit-scrollbar-thumb {
-      background-color: rgba(164,14,176,0.5);
-      border-radius: 3px;
-    }
-    #alertas-estoque li {
-      margin-bottom: 5px;
-      padding: 3px 0;
-      border-bottom: 1px dashed rgba(255,255,255,0.2);
-    }
-    #alertas-estoque li:last-child {
-      border-bottom: none;
-    }
-    /* Em telas maiores, forçar os 4 boxes em linha */
-    @media (min-width: 1024px) {
-      .dashboard-ia .grid {
-        flex-wrap: nowrap;
-        justify-content: space-between;
-      }
-      .dashboard-ia .box {
-        width: 23%;
-      }
-    }
-
-    /************************************
-      CTA FINAL
-    ************************************/
-    #cta-final {
-      background: linear-gradient(135deg, #6A0572, #1A1A2E);
-      text-align: center;
-      padding: 60px 0;
+    .cta-final .cta-btn {
+      background: linear-gradient(90deg, #B554FF, #470457);
       color: #fff;
-    }
-    #cta-final h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    #cta-final p {
-      max-width: 600px;
-      margin: 0 auto 1.5rem;
-      font-size: 1rem;
-      color: #fff;
-      line-height: 1.5;
-    }
-    /* Botão personalizado para a CTA final */
-    .btn-primario {
-      background: var(--color-roxo-dark);
-      color: #fff;
-      padding: 12px 24px;
+      padding: 14px 24px;
       border-radius: 30px;
       font-weight: bold;
-      font-size: 1rem;
       text-decoration: none;
-      transition: 0.3s;
+      transition: background 0.3s ease, transform 0.2s ease-in-out;
+      box-shadow: 0px 4px 10px rgba(138,10,148,0.5);
+      display: inline-block;
     }
-    .btn-primario:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 10px var(--color-roxo-dark);
+    .cta-final .cta-btn:hover {
+      background: linear-gradient(90deg, #8A0A94, #D774FF);
+      transform: scale(1.05);
+      box-shadow: 0px 6px 15px rgba(138,10,148,0.7);
     }
-
-    /************************************
-      FOOTER
-    ************************************/
-    .footer {
-      background-color: var(--color-cinza-escuro);
+    /* ======================== FIM BANNER NO MEIO ======================== */
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Footer */
+    footer {
+      background-color: #2E2E2E;
+      padding: 10px 0;
       text-align: center;
-      padding: 1.5rem 0;
-      margin-top: 0;
+      font-size: 0.8rem;
     }
-    .footer-content p {
-      margin: 0.5rem 0;
-    }
-    .footer-content a {
+    footer a {
       color: #fff;
-      text-decoration: none;
-      margin: 0 0.5rem;
+      margin: 0 5px;
+      transition: color 0.3s;
     }
-    .footer-content a:hover {
+    footer a:hover {
       color: var(--color-roxo-dark);
     }
-
-    /************************************
-      RESPONSIVIDADE GERAL
-    ************************************/
+    /* Responsividade */
     @media (max-width: 768px) {
-      .header .container {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 0 1rem;
+      .hero-content h1 {
+        font-size: 2.5rem;
       }
-      .header {
-        height: auto;
-        padding: 1rem 0;
-      }
-      .logo a {
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;
-      }
-      .nav ul {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .hero-servico {
-        height: 50vh;
-      }
-      .hero-content-servico h1 {
-        font-size: 1.6rem;
-      }
-      .hero-content-servico p {
+      .hero-content p {
         font-size: 1rem;
       }
-      .grid-funciona,
-      .grid-beneficios,
-      .solucoes-grid,
-      .grid-casos {
-        display: grid;
+      nav a {
+        margin: 0 10px;
+      }
+      .features-grid, .gallery-grid, .process-steps, .testimonial-cards {
         grid-template-columns: 1fr;
       }
-      .bloco-funciona,
-      .bloco-beneficio,
-      .solucoes-card,
-      .caso-card {
-        max-width: 100%!important;
-        margin: 0 auto;
+      .action-item {
+        flex-direction: column;
+      }
+      .carousel-item {
+        min-width: 250px;
       }
     }
   </style>
-
-  <!-- AOS CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <!-- Chart.js já incluso no head acima -->
 </head>
 <body>
 
-  <!-- ====================== HEADER ====================== -->
-  <header class="header">
+  <!-- Header -->
+  <header class="header" id="header">
     <div class="container">
       <div class="logo">
-        <a href="index.html">Data <span>Setti</span></a>
+        <a href="#">Data <span>Setti</span></a>
       </div>
       <nav class="nav">
         <ul>
-          <li><a href="index.html#sobre">Sobre</a></li>
-          <li><a href="index.html#servicos">Serviços</a></li>
-          <li><a href="index.html#projetos">Projetos</a></li>
-          <li><a href="index.html#depoimentos">Depoimentos</a></li>
-          <li><a href="index.html#contato">Contato</a></li>
+          <li><a href="index.html#home">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#contato">Contato</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- ====================== HERO (VÍDEO DE FUNDO) ====================== -->
-  <section class="hero-servico">
-    <video class="hero-video" autoplay muted loop>
+  <!-- Seção Hero com Vídeo Interativo -->
+  <section class="hero">
+    <video autoplay muted loop class="hero-video">
       <source src="videos/estoquee.mp4" type="video/mp4">
-      <!-- Fallback se o vídeo não carregar -->
+      Seu navegador não suporta vídeo.
     </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content-servico container">
+    <div class="hero-content">
       <h1>Gestão de Estoque Inteligente</h1>
+      <p>Reduza perdas e maximize seus lucros com uma solução completa que integra IA, automação e relatórios dinâmicos.</p>
+      <a href="#cta" class="cta-btn">Solicite sua Demonstração</a>
+    </div>
+  </section>
+
+  <!-- Seção de Introdução -->
+  <section class="intro container" id="intro">
+    <h2>O Futuro do Controle de Estoque</h2>
+    <p>
+      Em um mercado cada vez mais competitivo, gerenciar o estoque de forma eficiente é crucial para reduzir desperdícios, evitar perdas e otimizar os lucros. Nossa solução utiliza inteligência artificial e automação para monitorar, prever e ajustar os níveis de estoque, garantindo que seu negócio opere com máxima eficiência.
+    </p>
+  </section>
+
+  <!-- Seção de Funcionalidades Avançadas com 8 Cards -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2>Funcionalidades Avançadas</h2>
+      <div class="features-grid">
+        <!-- Card 1 -->
+        <div class="feature-card">
+          <i class="fa-solid fa-clock"></i>
+          <h3>Controle de Validade</h3>
+          <p>Monitore as datas de validade dos produtos com alertas automáticos, evitando perdas e desperdícios.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="feature-card">
+          <i class="fa-solid fa-bell"></i>
+          <h3>Alertas de Reposição</h3>
+          <p>Receba notificações em tempo real para repor produtos antes que ocorram rupturas.</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="feature-card">
+          <i class="fa-solid fa-chart-line"></i>
+          <h3>Previsões de Demanda</h3>
+          <p>Utilize algoritmos de IA para antecipar tendências de vendas e ajustar os níveis de estoque.</p>
+        </div>
+        <!-- Card 4 -->
+        <div class="feature-card">
+          <i class="fa-solid fa-file-lines"></i>
+          <h3>Relatórios Detalhados</h3>
+          <p>Obtenha análises precisas sobre o desempenho do estoque, produtos parados e consumo médio.</p>
+        </div>
+        <!-- Card 5 -->
+        <div class="feature-card">
+          <i class="fa-solid fa-arrows-rotate"></i>
+          <h3>Integração Total</h3>
+          <p>Conecte a solução com seu ERP e outras ferramentas para um fluxo contínuo de informações.</p>
+        </div>
+        <!-- Card 6 -->
+        <div class="feature-card">
+          <i class="fa-solid fa-mobile-screen"></i>
+          <h3>Acesso Remoto</h3>
+          <p>Consulte seu estoque e receba alertas em tempo real de qualquer lugar, via dispositivos móveis.</p>
+        </div>
+        <!-- Card 7 -->
+        <div class="feature-card">
+          <i class="fa-solid fa-lock"></i>
+          <h3>Segurança de Dados</h3>
+          <p>Proteja suas informações com protocolos avançados de segurança e backup automático.</p>
+        </div>
+        <!-- Card 8 -->
+        <div class="feature-card">
+          <i class="fa-solid fa-chart-pie"></i>
+          <h3>Análise de Performance</h3>
+          <p>Visualize tendências e métricas essenciais através de dashboards interativos e personalizados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Benefícios -->
+  <section class="benefits" id="benefits">
+    <div class="container">
+      <h2>Benefícios Comprovados</h2>
       <p>
-        Tenha controle total do seu inventário, reduza perdas e aumente vendas.  
-        Tudo isso com análises avançadas e automação, sem complicações.
+        Nossa solução de Gestão de Estoque Inteligente traz resultados que impactam diretamente a eficiência e os lucros do seu negócio.
       </p>
-      <a href="index.html#contato" class="btn-primario">
-        Quero otimizar meu estoque
-      </a>
+      <ul class="benefits-list">
+        <li>Redução significativa de desperdícios e perdas por validade.</li>
+        <li>Maior previsibilidade nas operações e reposição de produtos.</li>
+        <li>Automatização de processos, economizando tempo e recursos.</li>
+        <li>Decisões estratégicas baseadas em dados reais e insights inteligentes.</li>
+        <li>Integração perfeita com seus sistemas de gestão e ERP.</li>
+      </ul>
     </div>
   </section>
 
-  <!-- ====================== O QUE É ====================== -->
-  <section id="o-que-e" class="sec-escura">
+  <!-- Seção de Galeria Alternada "Veja Nossa Solução em Ação" -->
+  <section class="action-gallery" id="action-gallery">
     <div class="container">
-      <h2 class="titulo-secao">O que é a Gestão de Estoque Inteligente?</h2>
-      <p class="texto-centro">
-        Nossa solução une <strong>análise de dados</strong>, <strong>inteligência artificial</strong> 
-        e <strong>automação</strong> para garantir que seus produtos estejam sempre disponíveis, 
-        sem excessos e sem perdas por validade. Ao contrário de sistemas tradicionais, 
-        fazemos uma sincronização em tempo real com suas vendas, fornecedores e histórico, 
-        permitindo que você tome decisões <strong>baseadas em dados concretos</strong> e não em suposições.
-      </p>
-    </div>
-  </section>
-
-  <!-- ====================== COMO FUNCIONA ====================== -->
-  <section id="como-funciona" class="sec-clara">
-    <div class="container">
-      <h2 class="titulo-secao">Como Funciona?</h2>
-      <div class="grid-funciona">
-        <div class="bloco-funciona">
-          <img src="img/inventory-management.svg" alt="Coleta de Dados">
-          <h3>Coleta de Dados</h3>
-          <p>
-            Integramos seu ERP, planilhas e sistemas para consolidar todo o histórico de compras, 
-            vendas e estoque em um só lugar.
-          </p>
+      <h2>Veja Nossa Solução em Ação</h2>
+      <!-- Item 1: Dashboard de Estoque -->
+      <div class="action-item">
+        <div class="action-image">
+          <img src="img/powerest.jpeg" alt="Dashboard de Estoque">
         </div>
-        <div class="bloco-funciona">
-          <img src="img/Ia_chip.png" alt="Análise e IA">
-          <h3>Análise e IA</h3>
+        <div class="action-text">
+          <h3>Dashboard de Estoque</h3>
           <p>
-            Modelos de IA para prever demanda, identificar sazonalidades e sugerir 
-            quantidades ideais de compra.
-          </p>
-        </div>
-        <div class="bloco-funciona">
-          <img src="img/validade.png" alt="Avisos de Validade">
-          <h3>Avisos de Validade</h3>
-          <p>
-            Alertas automáticos de produtos próximos ao vencimento, evitando perdas por descuido.
-          </p>
-        </div>
-        <div class="bloco-funciona">
-          <img src="img/sos.svg" alt="Automação e Alertas">
-          <h3>Automação e Alertas</h3>
-          <p>
-            Receba notificações de estoque baixo ou vendas acima do previsto — tudo em tempo real.
+            Visualize o status completo do seu estoque em tempo real. Nosso dashboard interativo apresenta gráficos dinâmicos, níveis de estoque e alertas que facilitam decisões rápidas e embasadas.
           </p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ====================== BENEFÍCIOS ====================== -->
-  <section id="beneficios" class="sec-escura">
-    <div class="container">
-      <h2 class="titulo-secao">Benefícios para sua Empresa</h2>
-      <div class="grid-beneficios">
-        <div class="bloco-beneficio">
-          <h3>Reduza Desperdícios</h3>
-          <p>
-            Produtos encalhados ou vencidos são prejuízo. Antecipe demandas e elimine excessos de estoque.
-          </p>
+      <!-- Item 2: Relatórios Inteligentes -->
+      <div class="action-item reverse">
+        <div class="action-image">
+          <img src="img/productanalys.png" alt="Relatórios Inteligentes">
         </div>
-        <div class="bloco-beneficio">
-          <h3>Aumente a Satisfação</h3>
+        <div class="action-text">
+          <h3>Relatórios Inteligentes</h3>
           <p>
-            Tenha o produto certo, na hora certa. Fidelize clientes e gere indicações positivas.
-          </p>
-        </div>
-        <div class="bloco-beneficio">
-          <h3>Decisões Conscientes</h3>
-          <p>
-            Relatórios e dashboards preditivos para embasar suas decisões, reduzindo riscos e maximizando lucros.
+            Receba relatórios detalhados que destacam produtos com baixa rotatividade, consumo médio e análises históricas, permitindo otimizar seu inventário e reduzir perdas.
           </p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ====================== SOLUÇÕES PRINCIPAIS ====================== -->
-  <section id="servicos-possiveis" class="sec-clara">
-    <div class="container">
-      <h2 class="titulo-secao">Soluções Principais em Gestão de Estoque</h2>
-      <p class="texto-centro">
-        A Data Setti oferece um pacote completo de recursos para otimizar cada etapa da sua operação:
-      </p>
-      <div class="solucoes-grid">
-        <div class="solucoes-card">
+      <!-- Item 3: Monitoramento em Tempo Real -->
+      <div class="action-item">
+        <div class="action-image">
+          <img src="img/monit.png" alt="Monitoramento em Tempo Real">
+        </div>
+        <div class="action-text">
           <h3>Monitoramento em Tempo Real</h3>
-          <ul>
-            <li>Dashboards dinâmicos para acompanhar o nível de cada SKU.</li>
-            <li>Alertas automáticos via SMS, e-mail ou apps integrados.</li>
-          </ul>
-        </div>
-        <div class="solucoes-card">
-          <h3>Previsão de Demanda com IA</h3>
-          <ul>
-            <li>Modelos preditivos baseados em histórico de vendas e tendências de mercado.</li>
-            <li>Ajuste automático de níveis de reposição conforme sazonalidade.</li>
-          </ul>
-        </div>
-        <div class="solucoes-card">
-          <h3>Otimização de Logística e Distribuição</h3>
-          <ul>
-            <li>Integração com ERPs para sincronizar a cadeia de suprimentos.</li>
-            <li>Análise de rotas e estratégias de distribuição para evitar rupturas.</li>
-          </ul>
-        </div>
-        <div class="solucoes-card">
-          <h3>Análise de Desperdícios e Validade</h3>
-          <ul>
-            <li>Detecção de produtos próximos ao vencimento com alertas antecipados.</li>
-            <li>Relatórios de perdas e sugestões de ações preventivas.</li>
-          </ul>
-        </div>
-        <div class="solucoes-card">
-          <h3>Integração Multicanal</h3>
-          <ul>
-            <li>Gerencie estoques de lojas físicas, e-commerces e marketplaces em um só painel.</li>
-            <li>Sincronização em tempo real para vendas online e offline.</li>
-          </ul>
+          <p>
+            Acompanhe todas as movimentações do seu estoque com atualizações instantâneas. Nosso sistema envia alertas automáticos para garantir que nenhum detalhe passe despercebido.
+          </p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ====================== CASOS DE SUCESSO ====================== -->
-  <section id="casos-sucesso" class="sec-escura">
-    <div class="container texto-centro">
-      <h2 class="titulo-secao">Casos de Sucesso</h2>
-      <p class="texto-centro">
-        Empresas que implementaram nossa solução reduziram desperdícios, otimizaram a gestão de estoque 
-        e aumentaram sua rentabilidade. Confira alguns exemplos de impacto real:
-      </p>
-      <div class="grid-casos">
-        <div class="caso-card">
-          <h4>📈 Controle Eficiente de Estoque</h4>
-          <p>
-            Implementamos rastreamento em tempo real para um grande varejista, reduzindo em 30% as perdas de produtos perecíveis e aumentando em 20% a satisfação dos clientes.
-          </p>
+      <!-- Item 4: Integração com ERP -->
+      <div class="action-item reverse">
+        <div class="action-image">
+          <img src="img/ERP.png" alt="Integração com ERP">
         </div>
-        <div class="caso-card">
-          <h4>📊 Previsão Inteligente de Demanda</h4>
+        <div class="action-text">
+          <h3>Integração com ERP</h3>
           <p>
-            Uma rede de supermercados utilizou IA para prever sazonalidades, reduzindo R$ 150 mil em estoque parado e evitando falta de produtos essenciais.
-          </p>
-        </div>
-        <div class="caso-card">
-          <h4>📦 Movimentação de Produtos</h4>
-          <p>
-            Dashboards interativos para uma distribuidora aumentaram o faturamento em 25%, priorizando produtos de maior demanda e evitando rupturas.
+            Conecte nosso sistema ao seu ERP e outras ferramentas, assegurando um fluxo contínuo de informações que otimiza a gestão do seu negócio de ponta a ponta.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ====================== DASHBOARD DE ESTOQUE ====================== -->
-  <section id="dashboard-inteligente" class="sec-escura">
+  <!-- Seção Carrossel de Empresas com Bootstrap -->
+  <section class="company-carousel" id="company-carousel">
     <div class="container">
-      <h2 class="titulo-secao">IA Gerenciando Estoques em Tempo Real</h2>
-      <p class="texto-centro">
-        Monitore operações com automação inteligente e dados preditivos.
-      </p>
-      <div class="dashboard-ia">
-        <div class="grid">
-          <!-- Nível de Estoque -->
-          <div class="box glow">
-            <h3>📦 Nível de Estoque</h3>
-            <p><span id="nivel-estoque">87%</span> Capacidade Atual</p>
-            <div class="progress-bar">
-              <div class="progress" id="barra-estoque"></div>
+      <h2 class="text-center text-primary mb-4">Empresas que Podemos Ajudar</h2>
+      <div id="empresaCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+        <div class="carousel-inner">
+          <!-- Primeiro slide -->
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="card bg-secondary border-primary text-center">
+                  <img src="img/gas_station.jpg" class="card-img-top" alt="Postos de Gasolina">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">Postos de Gasolina</h5>
+                    <p class="card-text text-white">Monitore o consumo e otimize as reposições de combustíveis.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-secondary border-primary text-center">
+                  <img src="img/bakery.jpg" class="card-img-top" alt="Padarias">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">Padarias</h5>
+                    <p class="card-text text-white">Controle insumos e garanta produtos sempre frescos.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-secondary border-primary text-center">
+                  <img src="img/market.jpg" class="card-img-top" alt="Mercados">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">Mercados</h5>
+                    <p class="card-text text-white">Otimize seu inventário e minimize perdas com análises preditivas.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-secondary border-primary text-center">
+                  <img src="img/commerce.jpg" class="card-img-top" alt="Lojas de Varejo">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">Lojas de Varejo</h5>
+                    <p class="card-text text-white">Gerencie seu estoque e melhore a experiência de compra do cliente.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <!-- Alertas Inteligentes -->
-          <div class="box glow">
-            <h3>🚨 Alertas Inteligentes</h3>
-            <!-- Mensagem principal -->
-            <p id="alerta-ia" style="font-size: 0.95rem;">Análise de estoque inicial...</p>
-            <!-- Lista de alertas com scroll customizado -->
-            <ul id="alertas-estoque"></ul>
+          <!-- Segundo slide -->
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="card bg-secondary border-primary text-center">
+                  <img src="img/restaurant.jpg" class="card-img-top" alt="Restaurantes">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">Restaurantes</h5>
+                    <p class="card-text text-white">Otimize a gestão de insumos e garanta qualidade nos pratos.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card bg-secondary border-primary text-center">
+                  <img src="img/pharmacy.jpg" class="card-img-top" alt="Farmácias">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">Farmácias</h5>
+                    <p class="card-text text-white">Mantenha um controle rigoroso dos medicamentos e evite vencimentos.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Você pode adicionar mais cards aqui se desejar -->
+            </div>
           </div>
-          <!-- Previsão de Demanda -->
-          <div class="box glow">
-            <h3>📊 Previsão de Demanda</h3>
-            <canvas id="graficoIA"></canvas>
-          </div>
-          <!-- Performance de Vendas -->
-          <div class="box glow">
-            <h3>📈 Performance de Vendas</h3>
-            <canvas id="graficoVendas"></canvas>
-          </div>
+        </div>
+        <!-- Controles do Carrossel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#empresaCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#empresaCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Próximo</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Processo (Como Funciona) – 4 Cards Elaborados -->
+  <section class="process" id="process">
+    <div class="container">
+      <h2>Como Funciona?</h2>
+      <div class="process-steps">
+        <!-- Card 1: Análise Inicial -->
+        <div class="process-step">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <h3>Análise Inicial</h3>
+          <p>Avaliamos seu estoque e processos para identificar gargalos e oportunidades de melhoria com base em dados históricos e tendências de mercado.</p>
+        </div>
+        <!-- Card 2: Implementação Personalizada -->
+        <div class="process-step">
+          <i class="fa-solid fa-gear"></i>
+          <h3>Implementação Personalizada</h3>
+          <p>Integramos nossa solução de IA ao seu sistema atual de forma transparente, garantindo continuidade operacional e mínima interrupção.</p>
+        </div>
+        <!-- Card 3: Alertas & Oportunidades -->
+        <div class="process-step alert">
+          <i class="fa-solid fa-bell"></i>
+          <h3>Alertas &amp; Oportunidades</h3>
+          <p>O sistema monitora continuamente o estoque e envia alertas automáticos, permitindo reposição ágil, promoções pontuais e aproveitamento de vendas cruzadas.</p>
+        </div>
+        <!-- Card 4: Monitoramento & Análise -->
+        <div class="process-step">
+          <i class="fa-solid fa-chart-pie"></i>
+          <h3>Monitoramento &amp; Análise</h3>
+          <p>Acompanhe o desempenho do seu estoque em tempo real através de dashboards interativos que fornecem insights para decisões estratégicas.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ====================== CTA FINAL ====================== -->
-  <section id="cta-final" class="sec-gradient">
+  <!-- Seção de Testemunhos -->
+  <section class="testimonials" id="testimonials">
     <div class="container">
-      <h2>Pronto para transformar seu estoque?</h2>
-      <p class="texto-centro" data-aos="slide-up" data-aos-delay="100">
-        Fale agora com um de nossos especialistas e descubra como a Data Setti pode reduzir custos, aumentar suas vendas e trazer total visibilidade ao seu inventário.
-      </p>
-      <!-- Botão CTA personalizado -->
-      <a href="index.html#contato" class="btn-primario" data-aos="slide-up" data-aos-delay="200">
-        QUERO RECEBER ANÁLISES SOBRE MEU ESTOQUE!!
-      </a>
+      <h2>O que Nossos Clientes Dizem</h2>
+      <div class="testimonial-cards">
+        <div class="testimonial-card">
+          <p>"Com a solução da Data Setti, reduzimos em 30% as perdas com produtos vencidos e melhoramos significativamente nosso fluxo de reposição. A ferramenta é intuitiva e gera insights valiosos."</p>
+          <div class="client">— João Silva, Gerente de Mercado</div>
+        </div>
+        <div class="testimonial-card">
+          <p>"A integração com nosso ERP foi feita de forma simples e rápida. Hoje temos total controle do nosso estoque, o que nos permite tomar decisões estratégicas baseadas em dados reais."</p>
+          <div class="client">— Maria Oliveira, Diretora de Operações</div>
+        </div>
+        <div class="testimonial-card">
+          <p>"Nossa empresa ganhou em eficiência e reduziu custos operacionais após a implementação da ferramenta de gestão de estoque inteligente. Recomendo fortemente a solução da Data Setti!"</p>
+          <div class="client">— Carlos Mendes, Proprietário de Distribuidora</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ====================== FOOTER ====================== -->
-  <footer class="footer">
-    <div class="container footer-content">
+  <!-- Seção CTA Final – Banner Personalizado com Fundo de Imagem e Animação -->
+  <section class="cta-final" id="cta">
+    <div class="container banner-meio-content">
+      <h2 id="banner-text">Transforme Seu Estoque Agora!</h2>
+      <p>Descubra como nossa solução pode revolucionar a gestão do seu negócio, reduzir perdas e aumentar seus lucros com tecnologia de ponta.</p>
+      <a href="mailto:contato@datasetti.com.br" class="cta-btn">Solicite Sua Demonstração</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
       <p>Data Setti – Inteligência em Dados &copy; 2025. Todos os direitos reservados.</p>
+      <p>
+        <a href="https://datasetti.com" target="_blank">datasetti.com</a> | 
+        <a href="mailto:contato@datasetti.com.br">contato@datasetti.com.br</a> | 
+        <a href="https://www.instagram.com/datasetti" target="_blank">Instagram: @datasetti</a>
+      </p>
     </div>
   </footer>
-
-  <!-- ====================== SCRIPTS ====================== -->
-  <!-- AOS (Animation On Scroll) -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 800 });
-  </script>
   
-  <!-- Script do Dashboard -->
+  <!-- Bootstrap JS Bundle (inclui Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Scripts personalizados -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      console.log("Dashboard script iniciado.");
-      let estoque = 87;
-      const estoqueElement = document.getElementById("nivel-estoque");
-      const barraEstoque = document.getElementById("barra-estoque");
-      const alertaIA = document.getElementById("alerta-ia");
-      const ulAlertas = document.getElementById("alertas-estoque");
+    // GSAP animation for action-gallery items (opcional)
+    gsap.from(".action-item", {
+      scrollTrigger: {
+        trigger: ".action-gallery",
+        start: "top 80%",
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.2
+    });
 
-      function atualizarEstoque() {
-        // Simulação: decrementa o estoque gradualmente para demonstração
-        if (estoque > 30) {
-          estoque -= Math.random() * 1.2;
-          if (estoque < 0) estoque = 0;
-        }
-
-        // Atualiza o texto e a barra de progresso
-        estoqueElement.innerText = estoque.toFixed(1) + "%";
-        barraEstoque.style.width = estoque + "%";
-
-        // Define a mensagem principal de alerta conforme o nível do estoque
-        if (estoque >= 80) {
-          alertaIA.innerText = "✅ Estoque em ótimo nível. Mantenha a estratégia atual.";
-        } else if (estoque >= 60) {
-          alertaIA.innerText = "⚠️ Nível de estoque moderado. Avalie a reposição de itens estratégicos.";
-        } else if (estoque >= 40) {
-          alertaIA.innerText = "🔴 Estoque baixo. Reposição urgente pode ser necessária para evitar rupturas.";
-        } else {
-          alertaIA.innerText = "🚨 Estoque crítico! Ação imediata recomendada para evitar perdas significativas.";
-        }
-
-        // Conjunto de alertas adicionais (sugestões e insights)
-        let alertasExtras = [
-          "Produto A com validade próxima, considere promoção para evitar perdas.",
-          "Produto X está vendendo mais; analise estratégias para aumentar a margem de lucro.",
-          "Produto Y apresenta boa saída, mas avalie oportunidades de cross-selling.",
-          "A validade de alguns produtos está se aproximando: promoção pode ser vantajosa.",
-          "Verifique a precificação do Produto Z para maximizar os lucros.",
-          "Produto B registrou alta demanda, considere aumentar o estoque preventivamente.",
-          "Revisão de preços sugerida para otimizar a rentabilidade dos produtos.",
-          "Produto C está em baixa rotatividade, reavalie estratégias de marketing.",
-          "Análise preditiva indica oportunidades para melhorar o mix de produtos.",
-          "Sincronize com o ERP para atualizar os dados de reposição e evitar rupturas.",
-          "Considere ações de upselling para produtos com alta procura.",
-          "Monitorar promoções para produtos com vencimento próximo pode reduzir perdas."
-        ];
-
-        // Seleciona um alerta extra aleatório
-        let alertaExtra = alertasExtras[Math.floor(Math.random() * alertasExtras.length)];
-
-        // Cria um novo item de lista com o alerta e timestamp
-        let li = document.createElement("li");
-        li.textContent = new Date().toLocaleTimeString() + " - " + alertaExtra;
-
-        // Adiciona o novo alerta no topo da lista
-        ulAlertas.prepend(li);
-
-        // Limita a lista a 4 alertas, removendo o mais antigo se exceder
-        if (ulAlertas.children.length > 4) {
-          ulAlertas.removeChild(ulAlertas.lastChild);
-        }
-
-        // Reagendar a atualização em 3 segundos
-        setTimeout(atualizarEstoque, 3000);
-      }
-
-      atualizarEstoque();
-
-      // Gráfico de Previsão de Demanda (Chart.js)
-      let ctxIA = document.getElementById("graficoIA").getContext("2d");
-      new Chart(ctxIA, {
-        type: "line",
-        data: {
-          labels: ["Semana 1", "Semana 2", "Semana 3", "Semana 4"],
-          datasets: [{
-            label: "Demanda Prevista",
-            data: [150, 220, 290, 450],
-            borderColor: "#a40eb0",
-            backgroundColor: "rgba(164, 14, 176, 0.2)",
-            borderWidth: 3
-          }]
-        },
-        options: { responsive: true, scales: { y: { beginAtZero: true } } }
-      });
-
-      // Gráfico de Performance de Vendas (Chart.js)
-      let ctxVendas = document.getElementById("graficoVendas").getContext("2d");
-      new Chart(ctxVendas, {
-        type: "bar",
-        data: {
-          labels: ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"],
-          datasets: [{
-            label: "Vendas diárias",
-            data: [80, 120, 150, 200, 180, 220, 300],
-            backgroundColor: "rgba(164, 14, 176, 0.7)"
-          }]
-        },
-        options: { responsive: true, scales: { y: { beginAtZero: true } } }
-      });
+    // GSAP animation for the CTA final section (opcional)
+    gsap.from(".cta-final .banner-meio-content", {
+      scrollTrigger: {
+        trigger: ".cta-final",
+        start: "top 80%",
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1
     });
   </script>
 </body>
