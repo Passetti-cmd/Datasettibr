@@ -2,23 +2,376 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Painéis e Insights Estratégicos - Data Setti">
+  <meta name="description" content="Painéis de Power BI, Insights Estratégicos, Growth Marketing e Crescimento de Marca - Data Setti">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painéis e Insights Estratégicos | Data Setti</title>
+  <title>Power BI, Insights e Growth | Data Setti</title>
 
-  <!-- CSS principal (estilo.css) -->
-  <link rel="stylesheet" href="estilo.css">
-  <!-- CSS complementar (opcional) -->
-  <link rel="stylesheet" href="insights.css">
+  <!-- Bootstrap 5 CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
 
-  <!-- (Opcional) Biblioteca de animação on-scroll -->
-  <!--
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  -->
+  <!-- Font Awesome (opcional) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
+  <!-- Google Fonts (Poppins) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --color-roxo-dark: #6A0572;
+      --color-preto: #121212;
+      --color-cinza-escuro: #2E2E2E;
+      --color-branco: #fff;
+      --gradient-roxo: linear-gradient(135deg, rgba(106,5,114,1) 0%, rgba(26,26,46,1) 100%);
+      --font-base: 'Poppins', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: var(--font-base);
+      background: var(--color-preto);
+      color: var(--color-branco);
+      line-height: 1.6;
+      padding-top: 70px; /* Espaço para header fixo */
+      overflow-x: hidden;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER */
+    .header {
+      position: fixed; 
+      top: 0; 
+      width: 100%; 
+      z-index: 999;
+      background: rgba(26,26,46,0.95);
+      backdrop-filter: blur(4px);
+      height: 70px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      display: flex; 
+      align-items: center;
+    }
+    .header .container {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+    }
+    .logo a {
+      font-size: 1.7rem; 
+      font-weight: 600; 
+      color: var(--color-branco);
+    }
+    .logo span {
+      color: var(--color-roxo-dark);
+    }
+    .nav ul {
+      list-style: none; 
+      display: flex; 
+      gap: 1.5rem;
+    }
+    .nav ul li a {
+      color: var(--color-branco);
+      transition: color 0.3s;
+      line-height: 70px;
+    }
+    .nav ul li a:hover {
+      color: var(--color-roxo-dark);
+    }
+
+    /* HERO */
+    .hero-powerbi {
+      position: relative; 
+      height: 60vh; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-video {
+      position: absolute; 
+      top: 50%; 
+      left: 50%;
+      min-width: 100%; 
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover; 
+      z-index: 1;
+    }
+    .hero-overlay {
+      position: absolute; 
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 2;
+    }
+    .hero-content {
+      position: relative; 
+      z-index: 3; 
+      max-width: 800px;
+      margin: 0 auto; 
+      padding: 0 20px;
+    }
+    .hero-content h1 {
+      font-size: 2.5rem; 
+      margin-bottom: 1rem; 
+      font-weight: 700;
+    }
+    .hero-content p {
+      font-size: 1.1rem; 
+      margin-bottom: 2rem;
+    }
+    .btn-primario {
+      background-color: var(--color-roxo-dark);
+      padding: 14px 28px; 
+      border-radius: 30px;
+      font-size: 1rem; 
+      font-weight: 600; 
+      color: var(--color-branco);
+      transition: 0.3s; 
+      display: inline-block;
+    }
+    .btn-primario:hover {
+      background-color: #8A0A94;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(138,10,148,0.4);
+    }
+
+    /* Section: Painéis e Growth (bullets) */
+    .powerbi-section {
+      padding: 60px 20px;
+    }
+    .powerbi-section h2 {
+      text-align: center; 
+      font-size: 2rem; 
+      color: var(--color-roxo-dark); 
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+    .powerbi-cards {
+      display: flex; 
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .powerbi-card {
+      background: #1A1A2E;
+      border-radius: 8px;
+      padding: 1.5rem;
+      flex: 1 1 270px;
+      max-width: 320px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: center; 
+      transition: 0.3s;
+    }
+    .powerbi-card:hover {
+      transform: translateY(-5px);
+    }
+    .powerbi-card i {
+      font-size: 3rem; 
+      color: var(--color-roxo-dark); 
+      margin-bottom: 1rem;
+    }
+    .powerbi-card h3 {
+      font-size: 1.2rem; 
+      margin-bottom: 0.5rem; 
+      color: #fff;
+      font-weight: 600;
+    }
+    .powerbi-card p {
+      font-size: 0.95rem; 
+      color: #ccc; 
+      line-height: 1.4;
+    }
+
+    /* Galeria de Ação (slides alternados) */
+    .action-gallery {
+      background-color: #121212;
+      padding: 60px 20px;
+    }
+    .action-gallery .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .action-gallery h2 {
+      text-align: center; 
+      color: var(--color-roxo-dark);
+      font-size: 2rem; 
+      margin-bottom: 2rem; 
+      font-weight: 600;
+    }
+    .action-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      transition: 0.3s;
+    }
+    .action-item.reverse {
+      flex-direction: row-reverse;
+    }
+    .action-image, .action-text {
+      flex: 1; 
+      padding: 20px;
+    }
+    .action-image img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+    .action-image img:hover {
+      transform: scale(1.05);
+    }
+    .action-text h3 {
+      font-size: 1.8rem; 
+      color: var(--color-roxo-dark);
+      margin-bottom: 15px;
+    }
+    .action-text p {
+      font-size: 1.1rem; 
+      line-height: 1.5; 
+      color: #ccc; 
+      text-align: justify;
+    }
+
+    /* Seção Benefícios Leigos */
+    .beneficios-leigos {
+      background: #1A1A2E;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .beneficios-leigos h2 {
+      color: var(--color-roxo-dark);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .beneficio-card {
+      background: var(--color-preto);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .beneficio-card:hover {
+      transform: translateY(-5px);
+    }
+    .beneficio-card i {
+      font-size: 2rem;
+      color: var(--color-roxo-dark);
+      margin-bottom: 1rem;
+    }
+    .beneficio-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+      font-weight: 600;
+    }
+    .beneficio-card p {
+      font-size: 0.95rem;
+      color: #ccc;
+      line-height: 1.4;
+      padding: 0 10px;
+    }
+
+    /* CTA Final */
+    .cta-final-growth {
+      background: var(--gradient-roxo);
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .cta-final-growth h2 {
+      color: #fff; 
+      margin-bottom: 1rem; 
+      font-size: 2rem; 
+      font-weight: 600;
+    }
+    .cta-final-growth p {
+      color: #fff; 
+      max-width: 800px; 
+      margin: 0 auto 2rem; 
+      font-size: 1rem; 
+      line-height: 1.5;
+    }
+    .cta-final-growth .btn-primario {
+      background: #fff; 
+      color: var(--color-roxo-dark); 
+      font-weight: 700;
+    }
+    .cta-final-growth .btn-primario:hover {
+      background: #eee; 
+      color: #333;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--color-cinza-escuro);
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.85rem;
+    }
+    .footer-content p a {
+      color: #fff; 
+      margin: 0 5px; 
+      transition: color 0.3s;
+    }
+    .footer-content p a:hover {
+      color: var(--color-roxo-dark);
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .action-item,
+      .action-item.reverse {
+        flex-direction: column !important;
+        text-align: center;
+      }
+      .action-image, .action-text {
+        padding: 10px;
+      }
+      .action-text h3 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ========== HEADER ========== -->
+<!-- Header -->
 <header class="header">
   <div class="container">
     <div class="logo">
@@ -36,267 +389,200 @@
   </div>
 </header>
 
-<!-- ========== HERO COM VÍDEO DE FUNDO ========== -->
-<section class="hero-servico">
+<!-- Hero: Power BI & Growth -->
+<section class="hero-powerbi">
+  <!-- Se tiver um vídeo de fundo, substitua aqui -->
   <video class="hero-video" autoplay muted loop>
     <source src="videos/data.mp4" type="video/mp4">
-    <!-- fallback se o vídeo não carregar -->
+    Seu navegador não suporta vídeo.
   </video>
   <div class="hero-overlay"></div>
-  <div class="hero-content-servico container">
-    <h1 data-aos="fade-up">Painéis e Insights Estratégicos</h1>
-    <p data-aos="fade-up" data-aos-delay="100">
-      Transforme dados em decisões inteligentes. Visualize oportunidades, antecipe tendências e 
-      leve seu negócio a outro nível de competitividade.
+  <div class="hero-content">
+    <h1>Power BI, Insights & Growth Marketing</h1>
+    <p>
+      Transforme dados em estratégias de crescimento com dashboards interativos, 
+      análises avançadas e planos de marketing que fortalecem sua marca 
+      e impulsionam vendas.
     </p>
-    <a href="index.html#contato" class="btn-primario" data-aos="fade-up" data-aos-delay="200">
-      Quero revolucionar meus dados
-    </a>
+    <a href="#contato" class="btn-primario">Explorar Agora</a>
   </div>
 </section>
 
-<!-- ========== O QUE É ========== -->
-<section id="o-que-e" style="padding:60px 0; background:#121212;">
-  <div class="container">
-    <h2 style="color: var(--color-roxo-dark); margin-bottom:1.5rem; text-align:center;" data-aos="fade-right">
-      O que são Painéis e Insights Estratégicos?
-    </h2>
-    <p style="max-width:800px; margin:0 auto; text-align:center; color:#ccc;" data-aos="fade-left">
-      É a capacidade de unir <strong>Business Intelligence (BI)</strong> e <strong>Análise de Dados</strong> 
-      para extrair informações valiosas de diversas fontes. Imagine ter <em>todos</em> os KPIs da sua empresa 
-      em um só lugar, atualizados em tempo real, ajudando você a enxergar oportunidades e se adaptar 
-      rapidamente às mudanças do mercado.
-    </p>
+<!-- Seção Principais Funcionalidades -->
+<section class="powerbi-section">
+  <h2>Painéis, Insights & Crescimento Estratégico</h2>
+  <div class="powerbi-cards">
+    <div class="powerbi-card">
+      <i class="fa-solid fa-chart-column"></i>
+      <h3>Painéis Interativos</h3>
+      <p>
+        Visualize KPIs de vendas, marketing e operações em tempo real, 
+        personalizando cada painel no Power BI.
+      </p>
+    </div>
+    <div class="powerbi-card">
+      <i class="fa-solid fa-lightbulb"></i>
+      <h3>Insights Estratégicos</h3>
+      <p>
+        Otimize campanhas, identifique oportunidades de cross-selling 
+        e descubra onde cortar custos para maximizar lucros.
+      </p>
+    </div>
+    <div class="powerbi-card">
+      <i class="fa-solid fa-rocket"></i>
+      <h3>Growth Marketing</h3>
+      <p>
+        Planeje ações de marketing baseadas em dados, usando técnicas 
+        de experimentação e funnels inteligentes que impulsionam 
+        crescimento exponencial.
+      </p>
+    </div>
+    <div class="powerbi-card">
+      <i class="fa-solid fa-user-check"></i>
+      <h3>Segmentação Avançada</h3>
+      <p>
+        Identifique o perfil ideal do cliente e crie campanhas 
+        personalizadas para aumentar conversão e fidelização.
+      </p>
+    </div>
   </div>
 </section>
 
-<!-- ========== COMO FUNCIONA ========== -->
-<section id="como-funciona" style="padding:60px 0; background: var(--color-azul-noturno);">
+<!-- Galeria de Ação (slides alternados) -->
+
+<section class="action-gallery">
   <div class="container">
-    <h2 style="text-align:center; color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-up">
-      Como Funciona?
-    </h2>
-    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
+    <h2>Veja Nossa Solução em Ação</h2>
 
-      <!-- ETAPA 1 -->
-      <div style="max-width:300px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="zoom-in">
-        <img src="img/icones/data-integration.svg" alt="Integração de Dados" style="width:60px; margin-bottom:1rem;">
-        <h3>Integração de Dados</h3>
-        <p style="color:#ccc; font-size:0.95rem;">
-          Coletamos e unificamos informações de ERPs, CRMs, planilhas e fontes externas para ter 
-          uma visão completa do seu negócio.
+    <!-- Slide 1 -->
+    <div class="action-item">
+      <div class="action-image">
+        <img src="img/hash.png" alt="Dashboard Interativo">
+      </div>
+      <div class="action-text">
+        <h3>Dashboards Dinâmicos</h3>
+        <p>
+          Acesse relatórios interativos que revelam tendências de vendas, comportamento 
+          do cliente e performance de marketing. Tome decisões ágeis com dados atualizados em tempo real.
         </p>
       </div>
+    </div>
 
-      <!-- ETAPA 2 -->
-      <div style="max-width:300px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="zoom-in" data-aos-delay="200">
-        <img src="img/icones/bi.svg" alt="Business Intelligence" style="width:60px; margin-bottom:1rem;">
-        <h3>Business Intelligence</h3>
-        <p style="color:#ccc; font-size:0.95rem;">
-          Transformamos esses dados em painéis interativos, relatórios dinâmicos e análises avançadas.
-        </p>
+    <!-- Slide 2 (reverse) -->
+    <div class="action-item reverse">
+      <div class="action-image">
+        <img src="img/insights_powerbi.png" alt="Insights Estratégicos">
       </div>
-
-      <!-- ETAPA 3 -->
-      <div style="max-width:300px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="zoom-in" data-aos-delay="400">
-        <img src="img/icones/insights.svg" alt="Insights Estratégicos" style="width:60px; margin-bottom:1rem;">
+      <div class="action-text">
         <h3>Insights Estratégicos</h3>
-        <p style="color:#ccc; font-size:0.95rem;">
-          Indicamos tendências, riscos e oportunidades, permitindo uma tomada de decisão 
-          mais acertada e rápida.
+        <p>
+          Identifique oportunidades de promoções, crie campanhas segmentadas e 
+          descubra quais canais geram maior ROI, tudo a partir de dados confiáveis e visualizações claras.
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="action-item">
+      <div class="action-image">
+        <img src="img/growth_campanha.png" alt="Campanhas de Growth Marketing">
+      </div>
+      <div class="action-text">
+        <h3>Campanhas de Growth Marketing</h3>
+        <p>
+          Estruture funis de vendas e marketing, experimente táticas de aquisição 
+          e retenção de clientes, e valide rapidamente o que funciona para seu público.
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 4 (reverse) -->
+    <div class="action-item reverse">
+      <div class="action-image">
+        <img src="img/relatorio_powerbi.png" alt="Relatórios Automatizados">
+      </div>
+      <div class="action-text">
+        <h3>Relatórios Automatizados</h3>
+        <p>
+          Elimine trabalho manual: receba relatórios mensais (ou semanais) 
+          com métricas de crescimento, identificando pontos fortes e 
+          gargalos potenciais em suas estratégias.
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="action-item">
+      <div class="action-image">
+        <img src="img/brand_analyse.png" alt="Crescimento de Marca">
+      </div>
+      <div class="action-text">
+        <h3>Crescimento de Marca</h3>
+        <p>
+          Entenda a percepção do público sobre sua marca, identifique oportunidades de branding 
+          e posicione-se de forma mais sólida no mercado.
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 6 (reverse) -->
+    <div class="action-item reverse">
+      <div class="action-image">
+        <img src="img/finance_planning.png" alt="Otimização Financeira">
+      </div>
+      <div class="action-text">
+        <h3>Otimização Financeira</h3>
+        <p>
+          Identifique áreas de desperdício e pontos de alto retorno, 
+          ajustando orçamentos e investimentos para maximizar resultados 
+          e ampliar a margem de lucro.
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 7 -->
+    <div class="action-item">
+      <div class="action-image">
+        <img src="img/objetivo.jpg" alt="Objetivo Final">
+      </div>
+      <div class="action-text">
+        <h3>Objetivo Final</h3>
+        <p>
+          Fornecer às empresas ações assertivas e diretas, maximizando lucros, fortalecendo a marca e eliminando desperdícios. Com dados estratégicos e automação, ajudamos a investir no que realmente gera crescimento e resultados
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== BENEFÍCIOS ========== -->
-<section id="beneficios" style="padding:60px 0; background:#121212;">
+<!-- CTA Final -->
+<section class="cta-final-growth">
   <div class="container">
-    <h2 style="text-align:center; color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-up">
-      Benefícios para sua Empresa
-    </h2>
-    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
-      
-      <!-- BENEFÍCIO 1 -->
-      <div style="flex:1; min-width:280px; max-width:380px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="fade-right">
-        <h3 style="color:#fff; margin-bottom:1rem;">Decisões Baseadas em Fatos</h3>
-        <p style="color:#ccc;">
-          Saia do “achismo”. Use dados confiáveis para planejar ações, estabelecer metas 
-          e acompanhar resultados.
-        </p>
-      </div>
-
-      <!-- BENEFÍCIO 2 -->
-      <div style="flex:1; min-width:280px; max-width:380px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="fade-up">
-        <h3 style="color:#fff; margin-bottom:1rem;">Agilidade e Produtividade</h3>
-        <p style="color:#ccc;">
-          Relatórios que antes levavam horas ou dias para serem criados, agora surgem em poucos cliques, 
-          atualizados em tempo real.
-        </p>
-      </div>
-
-      <!-- BENEFÍCIO 3 -->
-      <div style="flex:1; min-width:280px; max-width:380px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="fade-left">
-        <h3 style="color:#fff; margin-bottom:1rem;">Visão de Futuro</h3>
-        <p style="color:#ccc;">
-          Identifique tendências de mercado, antecipe mudanças e planeje estratégias de crescimento 
-          sustentadas por dados.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ========== SEÇÃO: SERVIÇOS POSSÍVEIS (Painéis & Insights) ========== -->
-<section id="servicos-possiveis" style="padding:60px 0; background: var(--color-azul-noturno);">
-  <div class="container">
-    <h2 style="text-align:center; color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-up">
-      Principais Soluções de Insights
-    </h2>
-    <p style="max-width: 800px; margin: 0 auto 2rem; text-align:center; color:#fff;" data-aos="fade-up" data-aos-delay="100">
-      A Data Setti oferece um leque de serviços para você explorar todo o potencial dos seus dados:
+    <h2>Pronto para Crescer de Forma Inteligente?</h2>
+    <p>
+      Entre em contato com a Data Setti e descubra como nosso mix de Painéis 
+      em Power BI, Insights Estratégicos, Growth Marketing e fortalecimento de marca 
+      pode elevar o potencial do seu negócio.
     </p>
-
-    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
-      <!-- ITEM 1 -->
-      <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;" data-aos="fade-right">
-        <h3 style="color:#fff; margin-bottom:0.5rem;">1. Dashboards Personalizados</h3>
-        <ul style="color:#ccc; line-height:1.6;">
-          <li>Criação de painéis interativos com KPIs específicos de vendas, finanças ou operações.</li>
-          <li>Visualizações customizadas para cada departamento.</li>
-        </ul>
-      </div>
-      <!-- ITEM 2 -->
-      <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;" data-aos="fade-up">
-        <h3 style="color:#fff; margin-bottom:0.5rem;">2. Business Intelligence (BI)</h3>
-        <ul style="color:#ccc; line-height:1.6;">
-          <li>Integração de dados de múltiplas fontes (ERP, CRM, web, etc.).</li>
-          <li>Relatórios dinâmicos e automatizados para decisões estratégicas.</li>
-        </ul>
-      </div>
-      <!-- ITEM 3 -->
-      <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;" data-aos="fade-left">
-        <h3 style="color:#fff; margin-bottom:0.5rem;">3. Análise Preditiva</h3>
-        <ul style="color:#ccc; line-height:1.6;">
-          <li>Ferramentas para identificar oportunidades de mercado e antecipar mudanças.</li>
-          <li>Simulações “what-if” para planejar cenários futuros.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; margin-top:2rem;">
-      <!-- ITEM 4 -->
-      <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;" data-aos="fade-right" data-aos-delay="200">
-        <h3 style="color:#fff; margin-bottom:0.5rem;">4. Consultoria em Estratégia de Dados</h3>
-        <ul style="color:#ccc; line-height:1.6;">
-          <li>Auxílio para estruturar métricas e definir KPIs relevantes.</li>
-          <li>Treinamentos para equipes utilizarem as ferramentas de BI com eficiência.</li>
-        </ul>
-      </div>
-      <!-- ITEM 5 -->
-      <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;" data-aos="fade-up" data-aos-delay="200">
-        <h3 style="color:#fff; margin-bottom:0.5rem;">5. Integração e Governança</h3>
-        <ul style="color:#ccc; line-height:1.6;">
-          <li>Soluções para consolidar dados dispersos e otimizar a qualidade das informações.</li>
-          <li>Boas práticas de governança e segurança de dados.</li>
-        </ul>
-      </div>
-    </div>
+    <a href="#contato" class="btn-primario">Fale com a Data Setti</a>
   </div>
 </section>
 
-<!-- ========== CASOS DE SUCESSO ========== -->
-<section id="casos-sucesso" style="padding:60px 0; background: var(--color-preto);">
-  <div class="container" style="text-align:center;">
-    <h2 style="color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-up">
-      Casos de Sucesso
-    </h2>
-    <p style="max-width:700px; margin:0 auto 2rem; color:#ccc;" data-aos="fade-up" data-aos-delay="100">
-      Veja como nossos painéis e insights já transformaram diversos negócios:
-    </p>
-
-    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
-      <!-- CARD 1 -->
-      <div style="background:#1A1A2E; border-radius:8px; padding:1.5rem; max-width:300px;" data-aos="fade-right">
-        <img src="img/insights_case1.jpg" alt="Case 1" style="width:100%; border-radius:6px; margin-bottom:1rem;">
-        <h4 style="color:#fff; margin-bottom:0.5rem;">Rede de Franquias</h4>
-        <p style="color:#ccc; font-size:0.95rem;">
-          Padronização de KPIs em mais de 30 unidades, reduzindo custos de operação e aumentando as vendas em 18%.
-        </p>
-      </div>
-      <!-- CARD 2 -->
-      <div style="background:#1A1A2E; border-radius:8px; padding:1.5rem; max-width:300px;" data-aos="fade-up">
-        <img src="img/insights_case2.jpg" alt="Case 2" style="width:100%; border-radius:6px; margin-bottom:1rem;">
-        <h4 style="color:#fff; margin-bottom:0.5rem;">E-commerce de Moda</h4>
-        <p style="color:#ccc; font-size:0.95rem;">
-          Análises preditivas de comportamento do consumidor resultaram em 25% de aumento na taxa de conversão online.
-        </p>
-      </div>
-      <!-- CARD 3 -->
-      <div style="background:#1A1A2E; border-radius:8px; padding:1.5rem; max-width:300px;" data-aos="fade-left">
-        <img src="img/insights_case3.jpg" alt="Case 3" style="width:100%; border-radius:6px; margin-bottom:1rem;">
-        <h4 style="color:#fff; margin-bottom:0.5rem;">Fábrica de Alimentos</h4>
-        <p style="color:#ccc; font-size:0.95rem;">
-          Dashboards unificados de produção, vendas e logística, otimizando processos e reduzindo desperdícios em 20%.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== ANTES & DEPOIS (OPCIONAL) ========== -->
-<section id="antes-depois" style="padding:60px 0; background:#121212;">
-  <div class="container" style="text-align:center;">
-    <h2 style="color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-up">
-      Antes & Depois
-    </h2>
-    <p style="color:#ccc; max-width:700px; margin:0 auto 2rem;" data-aos="fade-up" data-aos-delay="100">
-      Compare a rotina de relatórios manuais e pouca visibilidade com a automação e clareza que nossos painéis oferecem.
-    </p>
-    <div style="display: flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
-      <div data-aos="fade-right">
-        <h4 style="color:#fff; margin-bottom:0.5rem;">Antes</h4>
-        <img src="img/antes-insights.jpg" alt="Antes" style="width:300px; border-radius:8px;">
-      </div>
-      <div data-aos="fade-left">
-        <h4 style="color:#fff; margin-bottom:0.5rem;">Depois</h4>
-        <img src="img/depois-insights.jpg" alt="Depois" style="width:300px; border-radius:8px;">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== CTA FINAL ========== -->
-<section id="cta-final" style="padding:60px 0; background: linear-gradient(135deg, #6A0572, #1A1A2E); text-align:center;">
-  <div class="container">
-    <h2 style="color:#fff; margin-bottom:1rem;">Pronto para transformar seus dados?</h2>
-    <p style="color:#fff; max-width:600px; margin:0 auto 1.5rem;">
-      Entre em contato e descubra como a Data Setti pode criar soluções de BI e painéis 
-      personalizados para o seu negócio.
-    </p>
-    <a href="index.html#contato" class="btn-primario" style="background:#fff; color:#6A0572;">
-      Fale com a Data Setti
-    </a>
-  </div>
-</section>
-
-<!-- ========== FOOTER ========== -->
+<!-- Footer -->
 <footer class="footer">
   <div class="container footer-content">
     <p>Data Setti – Inteligência em Dados &copy; 2025. Todos os direitos reservados.</p>
+    <p>
+      <a href="index.html#sobre">Sobre</a> | 
+      <a href="index.html#servicos">Serviços</a> | 
+      <a href="index.html#projetos">Projetos</a> | 
+      <a href="index.html#depoimentos">Depoimentos</a> | 
+      <a href="index.html#contato">Contato</a>
+    </p>
   </div>
 </footer>
 
-<!-- Se quiser usar AOS (Animation On Scroll), descomente
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 800
-  });
-</script>
--->
-
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
