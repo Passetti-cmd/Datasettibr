@@ -17,15 +17,18 @@
   <!-- Font Awesome para ícones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- GSAP Library (opcional para animações extras) -->
+  <!-- GSAP Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+  <!-- GSAP ScrollTrigger Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
   
   <!-- CSS Personalizado -->
   <style>
-    /* Variáveis de cores */
     :root {
       --color-roxo-dark: #6A0572;
       --color-azul-noite: #1F2937;
+      --cor-fundo: #121212;
+      --cor-card: #1e1e2e;
     }
     /* Reset básico */
     * {
@@ -35,23 +38,22 @@
     }
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #121212;
+      background-color: var(--cor-fundo);
       color: #fff;
       line-height: 1.6;
-      padding-top: 70px; /* Espaço para o header fixo */
+      padding-top: 70px;
     }
     a {
       text-decoration: none;
       color: inherit;
     }
-    /* Container */
     .container {
       width: 90%;
       max-width: 1200px;
       margin: auto;
       padding: 30px 0;
     }
-    /* ======================== HEADER FIXO NO TOPO ======================== */
+    /* HEADER */
     .header {
       position: fixed;
       width: 100%;
@@ -60,7 +62,6 @@
       z-index: 999;
       background: rgba(26,26,46,0.95);
       backdrop-filter: blur(4px);
-      transition: background 0.3s;
       box-shadow: 0 2px 4px rgba(0,0,0,0.3);
       height: 70px;
       display: flex;
@@ -75,7 +76,6 @@
     .logo a {
       font-size: 1.7rem;
       color: #fff;
-      text-decoration: none;
       font-weight: 600;
       line-height: 70px;
     }
@@ -91,7 +91,6 @@
     }
     .nav ul li a {
       color: #fff;
-      text-decoration: none;
       font-weight: 400;
       transition: color 0.3s ease;
       line-height: 70px;
@@ -100,9 +99,7 @@
     .nav ul li a:hover {
       color: var(--color-roxo-dark);
     }
-    /* ======================== FIM HEADER ======================== */
-    
-    /* Seção Hero com Vídeo Interativo */
+    /* HERO */
     .hero {
       position: relative;
       height: 70vh;
@@ -159,7 +156,7 @@
     .hero-content .cta-btn:hover {
       background-color: #a40eb0;
     }
-    /* Seção de Introdução */
+    /* INTRODUÇÃO */
     .intro {
       padding: 40px 0;
       text-align: center;
@@ -176,7 +173,7 @@
       margin-bottom: 20px;
       text-align: justify;
     }
-    /* Seção de Funcionalidades Avançadas – 8 Cards */
+    /* FUNCIONALIDADES */
     .features {
       background-color: #1A1A2E;
       padding: 40px 0;
@@ -193,12 +190,13 @@
       gap: 30px;
     }
     .feature-card {
-      background-color: #121212;
+      background-color: var(--cor-fundo);
       padding: 20px;
       border-radius: 10px;
       text-align: center;
       transition: transform 0.3s;
-      border: 2px solid var(--color-roxo-dark);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
     }
     .feature-card:hover {
       transform: translateY(-5px);
@@ -216,7 +214,7 @@
       font-size: 1rem;
       line-height: 1.4;
     }
-    /* Seção de Benefícios */
+    /* BENEFÍCIOS */
     .benefits {
       padding: 40px 0;
       text-align: center;
@@ -252,7 +250,7 @@
       left: 0;
       color: var(--color-roxo-dark);
     }
-    /* Seção de Galeria Alternada "Veja Nossa Solução em Ação" */
+    /* GALERIA DE AÇÃO */
     .action-gallery {
       background-color: #1A1A2E;
       padding: 40px 0;
@@ -301,16 +299,10 @@
       text-align: justify;
     }
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    /* Seção de Processo (Como Funciona) – 4 Cards Elaborados */
+    /* PROCESSO */
     .process {
       background-color: #1A1A2E;
       padding: 40px 0;
@@ -329,12 +321,13 @@
     }
     .process-step {
       flex: 1 1 250px;
-      background-color: #121212;
+      background-color: var(--cor-fundo);
       padding: 20px;
       border-radius: 10px;
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
-      border: 2px solid var(--color-roxo-dark);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
     }
     .process-step:hover {
       transform: translateY(-5px);
@@ -353,11 +346,11 @@
       font-size: 1rem;
       line-height: 1.4;
     }
-    /* Seção de Testemunhos */
+    /* TESTEMUNHOS */
     .testimonials {
       padding: 40px 0;
       text-align: center;
-      background-color: #121212;
+      background-color: var(--cor-fundo);
     }
     .testimonials h2 {
       color: var(--color-roxo-dark);
@@ -376,7 +369,8 @@
       font-style: italic;
       position: relative;
       min-height: 150px;
-      border: 2px solid var(--color-roxo-dark);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
     }
     .testimonial-card::before {
       content: "“";
@@ -396,9 +390,9 @@
       font-size: 0.9rem;
       text-align: right;
     }
-    /* ======================== CARROSSEL DE EMPRESAS ======================== */
+    /* CARROSSEL */
     .company-carousel {
-      background-color: #121212;
+      background-color: var(--cor-fundo);
       padding: 30px 0;
       position: relative;
       overflow: hidden;
@@ -409,62 +403,57 @@
       font-size: 2.5rem;
       margin-bottom: 20px;
     }
-    .carousel-container {
-      display: flex;
-      gap: 15px;
-      transition: transform 0.5s ease;
-    }
-    .carousel-item {
-      min-width: 300px;
-      background-color: #1A1A2E;
-      border: 2px solid var(--color-roxo-dark);
+    .carousel-card {
+      background-color: var(--cor-card);
       border-radius: 10px;
       padding: 15px;
       text-align: center;
-      /* Uniformiza a altura dos cards */
       height: 360px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      transition: transform 0.3s;
     }
-    .carousel-item img {
+    .carousel-card:hover {
+      transform: translateY(-5px);
+    }
+    .carousel-card img {
       width: 100%;
       height: 150px;
       object-fit: cover;
       border-radius: 5px;
       margin-bottom: 10px;
     }
-    .carousel-item h3 {
+    .carousel-card h3 {
       font-size: 1.5rem;
       color: #fff;
       margin-bottom: 10px;
     }
-    .carousel-item p {
+    .carousel-card p {
       font-size: 1rem;
       line-height: 1.4;
       color: #fff;
       flex-grow: 1;
     }
-    .carousel-nav {
-      position: absolute;
+    /* Controles do Carousel */
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #fff;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-      font-size: 1.5rem;
-      border-radius: 50%;
     }
-    .carousel-nav.prev {
-      left: 10px;
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      filter: invert(1);
+      width: 20px;
+      height: 20px;
     }
-    .carousel-nav.next {
-      right: 10px;
-    }
-    /* ======================== FIM CARROSSEL DE EMPRESAS ======================== */
-    /* ======================== BANNER NO MEIO (NOVO) ======================== */
+    /* CTA Final */
     .cta-final {
       padding: 20px;
       text-align: center;
@@ -500,8 +489,7 @@
       margin-bottom: 30px;
       line-height: 1.5;
       max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: auto;
     }
     .cta-final .cta-btn {
       background: linear-gradient(90deg, #B554FF, #470457);
@@ -511,20 +499,15 @@
       font-weight: bold;
       text-decoration: none;
       transition: background 0.3s ease, transform 0.2s ease-in-out;
-      box-shadow: 0px 4px 10px rgba(138,10,148,0.5);
+      box-shadow: 0 4px 10px rgba(138,10,148,0.5);
       display: inline-block;
     }
     .cta-final .cta-btn:hover {
       background: linear-gradient(90deg, #8A0A94, #D774FF);
       transform: scale(1.05);
-      box-shadow: 0px 6px 15px rgba(138,10,148,0.7);
+      box-shadow: 0 6px 15px rgba(138,10,148,0.7);
     }
-    /* ======================== FIM BANNER NO MEIO ======================== */
-    @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    /* Footer */
+    /* FOOTER */
     footer {
       background-color: #2E2E2E;
       padding: 10px 0;
@@ -539,7 +522,6 @@
     footer a:hover {
       color: var(--color-roxo-dark);
     }
-    /* Responsividade */
     @media (max-width: 768px) {
       .hero-content h1 {
         font-size: 2.5rem;
@@ -556,14 +538,54 @@
       .action-item {
         flex-direction: column;
       }
-      .carousel-item {
-        min-width: 250px;
+      .carousel-card {
+        height: auto;
       }
+    }
+    .banner-meio {
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(106,5,114,1) 50%, rgba(26,26,46,1) 100%);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .banner-meio .banner-meio-content {
+      position: relative;
+      z-index: 2;
+    }
+    .banner-meio-title {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    .banner-meio-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+    .banner-meio .btn-primario {
+      background: linear-gradient(90deg, #B554FF, #470457);
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease-in-out;
+      box-shadow: 0px 4px 10px rgba(138,10,148,0.5);
+      display: inline-block;
+    }
+    .banner-meio .btn-primario:hover {
+      background: linear-gradient(90deg, #8A0A94, #D774FF);
+      transform: scale(1.05);
+      box-shadow: 0px 6px 15px rgba(138,10,148,0.7);
+    }
+    #banner-text {
+      transition: opacity 0.5s ease-in-out;
     }
   </style>
 </head>
 <body>
-
   <!-- Header -->
   <header class="header" id="header">
     <div class="container">
@@ -582,7 +604,7 @@
     </div>
   </header>
 
-  <!-- Seção Hero com Vídeo Interativo -->
+  <!-- Hero -->
   <section class="hero">
     <video autoplay muted loop class="hero-video">
       <source src="videos/estoquee.mp4" type="video/mp4">
@@ -595,7 +617,7 @@
     </div>
   </section>
 
-  <!-- Seção de Introdução -->
+  <!-- Introdução -->
   <section class="intro container" id="intro">
     <h2>O Futuro do Controle de Estoque</h2>
     <p>
@@ -603,54 +625,46 @@
     </p>
   </section>
 
-  <!-- Seção de Funcionalidades Avançadas com 8 Cards -->
+  <!-- Funcionalidades -->
   <section class="features" id="features">
     <div class="container">
       <h2>Funcionalidades Avançadas</h2>
       <div class="features-grid">
-        <!-- Card 1 -->
         <div class="feature-card">
           <i class="fa-solid fa-clock"></i>
           <h3>Controle de Validade</h3>
           <p>Monitore as datas de validade dos produtos com alertas automáticos, evitando perdas e desperdícios.</p>
         </div>
-        <!-- Card 2 -->
         <div class="feature-card">
           <i class="fa-solid fa-bell"></i>
           <h3>Alertas de Reposição</h3>
           <p>Receba notificações em tempo real para repor produtos antes que ocorram rupturas.</p>
         </div>
-        <!-- Card 3 -->
         <div class="feature-card">
           <i class="fa-solid fa-chart-line"></i>
           <h3>Previsões de Demanda</h3>
           <p>Utilize algoritmos de IA para antecipar tendências de vendas e ajustar os níveis de estoque.</p>
         </div>
-        <!-- Card 4 -->
         <div class="feature-card">
           <i class="fa-solid fa-file-lines"></i>
           <h3>Relatórios Detalhados</h3>
           <p>Obtenha análises precisas sobre o desempenho do estoque, produtos parados e consumo médio.</p>
         </div>
-        <!-- Card 5 -->
         <div class="feature-card">
           <i class="fa-solid fa-arrows-rotate"></i>
           <h3>Integração Total</h3>
           <p>Conecte a solução com seu ERP e outras ferramentas para um fluxo contínuo de informações.</p>
         </div>
-        <!-- Card 6 -->
         <div class="feature-card">
           <i class="fa-solid fa-mobile-screen"></i>
           <h3>Acesso Remoto</h3>
           <p>Consulte seu estoque e receba alertas em tempo real de qualquer lugar, via dispositivos móveis.</p>
         </div>
-        <!-- Card 7 -->
         <div class="feature-card">
           <i class="fa-solid fa-lock"></i>
           <h3>Segurança de Dados</h3>
           <p>Proteja suas informações com protocolos avançados de segurança e backup automático.</p>
         </div>
-        <!-- Card 8 -->
         <div class="feature-card">
           <i class="fa-solid fa-chart-pie"></i>
           <h3>Análise de Performance</h3>
@@ -660,7 +674,7 @@
     </div>
   </section>
 
-  <!-- Seção de Benefícios -->
+  <!-- Benefícios -->
   <section class="benefits" id="benefits">
     <div class="container">
       <h2>Benefícios Comprovados</h2>
@@ -677,11 +691,10 @@
     </div>
   </section>
 
-  <!-- Seção de Galeria Alternada "Veja Nossa Solução em Ação" -->
+  <!-- Galeria de Ação -->
   <section class="action-gallery" id="action-gallery">
     <div class="container">
       <h2>Veja Nossa Solução em Ação</h2>
-      <!-- Item 1: Dashboard de Estoque -->
       <div class="action-item">
         <div class="action-image">
           <img src="img/dash.png" alt="Dashboard de Estoque">
@@ -689,11 +702,10 @@
         <div class="action-text">
           <h3>Dashboard de Estoque</h3>
           <p>
-            Visualize o status completo do seu estoque em tempo real. Nosso dashboard interativo apresenta gráficos dinâmicos, níveis de estoque e alertas que facilitam decisões rápidas e embasadas.
+            Visualize o status completo do seu estoque em tempo real com gráficos dinâmicos e alertas inteligentes.
           </p>
         </div>
       </div>
-      <!-- Item 2: Relatórios Inteligentes -->
       <div class="action-item reverse">
         <div class="action-image">
           <img src="img/productanalys.png" alt="Relatórios Inteligentes">
@@ -701,11 +713,10 @@
         <div class="action-text">
           <h3>Relatórios Inteligentes</h3>
           <p>
-            Receba relatórios detalhados que destacam produtos com baixa rotatividade, consumo médio e análises históricas, permitindo otimizar seu inventário e reduzir perdas.
+            Receba relatórios detalhados que evidenciam produtos com baixa rotatividade e análises históricas para otimizar seu inventário.
           </p>
         </div>
       </div>
-      <!-- Item 3: Monitoramento em Tempo Real -->
       <div class="action-item">
         <div class="action-image">
           <img src="img/monit.png" alt="Monitoramento em Tempo Real">
@@ -713,11 +724,10 @@
         <div class="action-text">
           <h3>Monitoramento em Tempo Real</h3>
           <p>
-            Acompanhe todas as movimentações do seu estoque com atualizações instantâneas. Nosso sistema envia alertas automáticos para garantir que nenhum detalhe passe despercebido.
+            Acompanhe as movimentações do seu estoque com atualizações instantâneas e alertas automáticos.
           </p>
         </div>
       </div>
-      <!-- Item 4: Integração com ERP -->
       <div class="action-item reverse">
         <div class="action-image">
           <img src="img/ERP.png" alt="Integração com ERP">
@@ -725,26 +735,24 @@
         <div class="action-text">
           <h3>Integração com ERP</h3>
           <p>
-            Conecte nosso sistema ao seu ERP e outras ferramentas, assegurando um fluxo contínuo de informações que otimiza a gestão do seu negócio de ponta a ponta.
+            Conecte nosso sistema ao seu ERP para garantir um fluxo contínuo e integrado de informações.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Seção Carrossel de Empresas com Bootstrap -->
+  <!-- Carousel de Empresas -->
   <section class="company-carousel" id="company-carousel">
     <div class="container">
       <h2 class="text-center text-primary mb-4">Empresas que Podemos Ajudar</h2>
-      <!-- Carousel Bootstrap: utilize data-bs-wrap="true" para que o ciclo seja completo -->
-      <div id="empresaCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" data-bs-wrap="true">
+      <div id="empresaCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <!-- Primeiro slide -->
+          <!-- Primeiro Slide -->
           <div class="carousel-item active">
             <div class="row">
-              <!-- Card 1 -->
               <div class="col-md-3">
-                <div class="card bg-secondary border-primary text-center carousel-card">
+                <div class="card bg-secondary border-0 carousel-card">
                   <img src="img/posto.png" class="card-img-top" alt="Postos de Gasolina">
                   <div class="card-body">
                     <h5 class="card-title text-white">Postos de Gasolina</h5>
@@ -752,9 +760,8 @@
                   </div>
                 </div>
               </div>
-              <!-- Card 2 -->
               <div class="col-md-3">
-                <div class="card bg-secondary border-primary text-center carousel-card">
+                <div class="card bg-secondary border-0 carousel-card">
                   <img src="img/padaria.jpg" class="card-img-top" alt="Padarias">
                   <div class="card-body">
                     <h5 class="card-title text-white">Padarias</h5>
@@ -762,9 +769,8 @@
                   </div>
                 </div>
               </div>
-              <!-- Card 3 -->
               <div class="col-md-3">
-                <div class="card bg-secondary border-primary text-center carousel-card">
+                <div class="card bg-secondary border-0 carousel-card">
                   <img src="img/mercado.png" class="card-img-top" alt="Mercados">
                   <div class="card-body">
                     <h5 class="card-title text-white">Mercados</h5>
@@ -772,9 +778,8 @@
                   </div>
                 </div>
               </div>
-              <!-- Card 4 -->
               <div class="col-md-3">
-                <div class="card bg-secondary border-primary text-center carousel-card">
+                <div class="card bg-secondary border-0 carousel-card">
                   <img src="img/varejo.png" class="card-img-top" alt="Lojas de Varejo">
                   <div class="card-body">
                     <h5 class="card-title text-white">Lojas de Varejo</h5>
@@ -784,12 +789,11 @@
               </div>
             </div>
           </div>
-          <!-- Segundo slide -->
+          <!-- Segundo Slide -->
           <div class="carousel-item">
             <div class="row">
-              <!-- Card 5 -->
               <div class="col-md-3">
-                <div class="card bg-secondary border-primary text-center carousel-card">
+                <div class="card bg-secondary border-0 carousel-card">
                   <img src="img/restaurante.png" class="card-img-top" alt="Restaurantes">
                   <div class="card-body">
                     <h5 class="card-title text-white">Restaurantes</h5>
@@ -797,9 +801,8 @@
                   </div>
                 </div>
               </div>
-              <!-- Card 6 -->
               <div class="col-md-3">
-                <div class="card bg-secondary border-primary text-center carousel-card">
+                <div class="card bg-secondary border-0 carousel-card">
                   <img src="img/farmacia.png" class="card-img-top" alt="Farmácias">
                   <div class="card-body">
                     <h5 class="card-title text-white">Farmácias</h5>
@@ -807,22 +810,20 @@
                   </div>
                 </div>
               </div>
-              <!-- Card 7 -->
               <div class="col-md-3">
-                <div class="card bg-secondary border-primary text-center carousel-card">
-                  <img src="img/loja.png" class="card-img-top" alt="Distribuidoras">
+                <div class="card bg-secondary border-0 carousel-card">
+                  <img src="img/distruibuidorapng.avif" class="card-img-top" alt="Distribuidoras">
                   <div class="card-body">
                     <h5 class="card-title text-white">Distribuidoras</h5>
                     <p class="card-text text-white">Otimize a logística e melhore o controle de estoque.</p>
                   </div>
                 </div>
               </div>
-              <!-- Card 8 -->
               <div class="col-md-3">
-                <div class="card bg-secondary border-primary text-center carousel-card">
-                  <img src="img/comercio.png" class="card-img-top" alt="Outros Comércios">
+                <div class="card bg-secondary border-0 carousel-card">
+                  <img src="img/estoquese.avif" class="card-img-top" alt="E-Commerce">
                   <div class="card-body">
-                    <h5 class="card-title text-white">Outros Comércios</h5>
+                    <h5 class="card-title text-white">E-Commerce</h5>
                     <p class="card-text text-white">Gerencie seu estoque e reduza desperdícios em diversos estabelecimentos.</p>
                   </div>
                 </div>
@@ -830,7 +831,7 @@
             </div>
           </div>
         </div>
-        <!-- Controles do Carrossel -->
+        <!-- Controles -->
         <button class="carousel-control-prev" type="button" data-bs-target="#empresaCarousel" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Anterior</span>
@@ -843,30 +844,26 @@
     </div>
   </section>
 
-  <!-- Seção de Processo (Como Funciona) – 4 Cards Elaborados -->
+  <!-- Processo -->
   <section class="process" id="process">
     <div class="container">
       <h2>Como Funciona?</h2>
       <div class="process-steps">
-        <!-- Card 1: Análise Inicial -->
         <div class="process-step">
           <i class="fa-solid fa-magnifying-glass"></i>
           <h3>Análise Inicial</h3>
           <p>Avaliamos seu estoque e processos para identificar gargalos e oportunidades de melhoria com base em dados históricos e tendências de mercado.</p>
         </div>
-        <!-- Card 2: Implementação Personalizada -->
         <div class="process-step">
           <i class="fa-solid fa-gear"></i>
           <h3>Implementação Personalizada</h3>
           <p>Integramos nossa solução de IA ao seu sistema atual de forma transparente, garantindo continuidade operacional e mínima interrupção.</p>
         </div>
-        <!-- Card 3: Alertas & Oportunidades -->
         <div class="process-step alert">
           <i class="fa-solid fa-bell"></i>
           <h3>Alertas &amp; Oportunidades</h3>
-          <p>O sistema monitora continuamente o estoque e envia alertas automáticos, permitindo reposição ágil, promoções pontuais e aproveitamento de vendas cruzadas.</p>
+          <p>O sistema monitora continuamente o estoque e envia alertas automáticos, permitindo reposição ágil e promoções pontuais.</p>
         </div>
-        <!-- Card 4: Monitoramento & Análise -->
         <div class="process-step">
           <i class="fa-solid fa-chart-pie"></i>
           <h3>Monitoramento &amp; Análise</h3>
@@ -876,7 +873,7 @@
     </div>
   </section>
 
-  <!-- Seção de Testemunhos -->
+  <!-- Testemunhos -->
   <section class="testimonials" id="testimonials">
     <div class="container">
       <h2>O que Nossos Clientes Dizem</h2>
@@ -886,7 +883,7 @@
           <div class="client">— João Silva, Gerente de Mercado</div>
         </div>
         <div class="testimonial-card">
-          <p>"A integração com nosso ERP foi feita de forma simples e rápida. Hoje temos total controle do nosso estoque, o que nos permite tomar decisões estratégicas baseadas em dados reais."</p>
+          <p>"A integração com nosso ERP foi feita de forma simples e rápida. Hoje temos total controle do nosso estoque, permitindo decisões estratégicas baseadas em dados reais."</p>
           <div class="client">— Maria Oliveira, Diretora de Operações</div>
         </div>
         <div class="testimonial-card">
@@ -897,12 +894,17 @@
     </div>
   </section>
 
-  <!-- Seção CTA Final – Banner Personalizado com Fundo de Imagem e Animação -->
-  <section class="cta-final" id="cta">
-    <div class="container banner-meio-content">
-      <h2 id="banner-text">Transforme Seu Estoque Agora!</h2>
-      <p>Descubra como nossa solução pode revolucionar a gestão do seu negócio, reduzir perdas e aumentar seus lucros com tecnologia de ponta.</p>
-      <a href="mailto:contato@datasetti.com.br" class="cta-btn">Solicite Sua Demonstração</a>
+  <!-- CTA Final -->
+ <!-- BANNER MEIO (Novo Final) -->
+  <section class="banner-meio">
+    <div class="banner-meio-content">
+      <h2 class="banner-meio-title">
+        <span id="banner-text">Transforme Seu Estoque Agora!</span>
+      </h2>
+      <p class="banner-meio-subtitle">
+        Descubra como nossa solução pode revolucionar a gestão do seu negócio, reduzir perdas e aumentar seus lucros com tecnologia de ponta.
+      </p>
+      <a href="mailto:contato@datasetti.com.br" class="btn-primario">Solicite Sua Demonstração</a>
     </div>
   </section>
 
@@ -921,25 +923,23 @@
   <!-- Bootstrap JS Bundle (inclui Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   
-  <!-- Scripts personalizados -->
+  <!-- GSAP Scripts -->
   <script>
-    // GSAP animation for action-gallery items (opcional)
+    gsap.registerPlugin(ScrollTrigger);
     gsap.from(".action-item", {
       scrollTrigger: {
         trigger: ".action-gallery",
-        start: "top 80%",
+        start: "top 80%"
       },
       opacity: 0,
       y: 50,
       duration: 1,
       stagger: 0.2
     });
-
-    // GSAP animation for the CTA final section (opcional)
     gsap.from(".cta-final .banner-meio-content", {
       scrollTrigger: {
         trigger: ".cta-final",
-        start: "top 80%",
+        start: "top 80%"
       },
       opacity: 0,
       y: 50,
