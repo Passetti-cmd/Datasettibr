@@ -234,6 +234,7 @@ section {
 }
 .servico-card h3 {
     margin-bottom: 0.8rem;
+    font-size: 1.1rem;
 }
 .servico-card p {
     margin-bottom: 1.2rem;
@@ -833,4 +834,3 @@ section {
   font-size: 15px;
   color: rgb(255, 255, 255);
 }
-
