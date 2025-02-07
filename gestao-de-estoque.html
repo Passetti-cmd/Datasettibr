@@ -13,7 +13,7 @@
   
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  
   <!-- Font Awesome para ícones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
@@ -421,9 +421,16 @@
       border-radius: 10px;
       padding: 15px;
       text-align: center;
+      /* Uniformiza a altura dos cards */
+      height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .carousel-item img {
       width: 100%;
+      height: 150px;
+      object-fit: cover;
       border-radius: 5px;
       margin-bottom: 10px;
     }
@@ -436,6 +443,7 @@
       font-size: 1rem;
       line-height: 1.4;
       color: #fff;
+      flex-grow: 1;
     }
     .carousel-nav {
       position: absolute;
@@ -458,7 +466,7 @@
     /* ======================== FIM CARROSSEL DE EMPRESAS ======================== */
     /* ======================== BANNER NO MEIO (NOVO) ======================== */
     .cta-final {
-      padding: 20px 20px;
+      padding: 20px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -676,7 +684,7 @@
       <!-- Item 1: Dashboard de Estoque -->
       <div class="action-item">
         <div class="action-image">
-          <img src="img/powerest.jpeg" alt="Dashboard de Estoque">
+          <img src="img/dash.png" alt="Dashboard de Estoque">
         </div>
         <div class="action-text">
           <h3>Dashboard de Estoque</h3>
@@ -728,44 +736,49 @@
   <section class="company-carousel" id="company-carousel">
     <div class="container">
       <h2 class="text-center text-primary mb-4">Empresas que Podemos Ajudar</h2>
-      <div id="empresaCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+      <!-- Carousel Bootstrap: utilize data-bs-wrap="true" para que o ciclo seja completo -->
+      <div id="empresaCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" data-bs-wrap="true">
         <div class="carousel-inner">
           <!-- Primeiro slide -->
           <div class="carousel-item active">
             <div class="row">
+              <!-- Card 1 -->
               <div class="col-md-3">
-                <div class="card bg-secondary border-primary text-center">
-                  <img src="img/gas_station.jpg" class="card-img-top" alt="Postos de Gasolina">
+                <div class="card bg-secondary border-primary text-center carousel-card">
+                  <img src="img/posto.png" class="card-img-top" alt="Postos de Gasolina">
                   <div class="card-body">
                     <h5 class="card-title text-white">Postos de Gasolina</h5>
                     <p class="card-text text-white">Monitore o consumo e otimize as reposições de combustíveis.</p>
                   </div>
                 </div>
               </div>
+              <!-- Card 2 -->
               <div class="col-md-3">
-                <div class="card bg-secondary border-primary text-center">
-                  <img src="img/bakery.jpg" class="card-img-top" alt="Padarias">
+                <div class="card bg-secondary border-primary text-center carousel-card">
+                  <img src="img/padaria.jpg" class="card-img-top" alt="Padarias">
                   <div class="card-body">
                     <h5 class="card-title text-white">Padarias</h5>
                     <p class="card-text text-white">Controle insumos e garanta produtos sempre frescos.</p>
                   </div>
                 </div>
               </div>
+              <!-- Card 3 -->
               <div class="col-md-3">
-                <div class="card bg-secondary border-primary text-center">
-                  <img src="img/market.jpg" class="card-img-top" alt="Mercados">
+                <div class="card bg-secondary border-primary text-center carousel-card">
+                  <img src="img/mercado.png" class="card-img-top" alt="Mercados">
                   <div class="card-body">
                     <h5 class="card-title text-white">Mercados</h5>
                     <p class="card-text text-white">Otimize seu inventário e minimize perdas com análises preditivas.</p>
                   </div>
                 </div>
               </div>
+              <!-- Card 4 -->
               <div class="col-md-3">
-                <div class="card bg-secondary border-primary text-center">
-                  <img src="img/commerce.jpg" class="card-img-top" alt="Lojas de Varejo">
+                <div class="card bg-secondary border-primary text-center carousel-card">
+                  <img src="img/varejo.png" class="card-img-top" alt="Lojas de Varejo">
                   <div class="card-body">
                     <h5 class="card-title text-white">Lojas de Varejo</h5>
-                    <p class="card-text text-white">Gerencie seu estoque e melhore a experiência de compra do cliente.</p>
+                    <p class="card-text text-white">Gerencie seu estoque e melhore a experiência de compra.</p>
                   </div>
                 </div>
               </div>
@@ -774,25 +787,46 @@
           <!-- Segundo slide -->
           <div class="carousel-item">
             <div class="row">
+              <!-- Card 5 -->
               <div class="col-md-3">
-                <div class="card bg-secondary border-primary text-center">
-                  <img src="img/restaurant.jpg" class="card-img-top" alt="Restaurantes">
+                <div class="card bg-secondary border-primary text-center carousel-card">
+                  <img src="img/restaurante.png" class="card-img-top" alt="Restaurantes">
                   <div class="card-body">
                     <h5 class="card-title text-white">Restaurantes</h5>
                     <p class="card-text text-white">Otimize a gestão de insumos e garanta qualidade nos pratos.</p>
                   </div>
                 </div>
               </div>
+              <!-- Card 6 -->
               <div class="col-md-3">
-                <div class="card bg-secondary border-primary text-center">
-                  <img src="img/pharmacy.jpg" class="card-img-top" alt="Farmácias">
+                <div class="card bg-secondary border-primary text-center carousel-card">
+                  <img src="img/farmacia.png" class="card-img-top" alt="Farmácias">
                   <div class="card-body">
                     <h5 class="card-title text-white">Farmácias</h5>
                     <p class="card-text text-white">Mantenha um controle rigoroso dos medicamentos e evite vencimentos.</p>
                   </div>
                 </div>
               </div>
-              <!-- Você pode adicionar mais cards aqui se desejar -->
+              <!-- Card 7 -->
+              <div class="col-md-3">
+                <div class="card bg-secondary border-primary text-center carousel-card">
+                  <img src="img/loja.png" class="card-img-top" alt="Distribuidoras">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">Distribuidoras</h5>
+                    <p class="card-text text-white">Otimize a logística e melhore o controle de estoque.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 8 -->
+              <div class="col-md-3">
+                <div class="card bg-secondary border-primary text-center carousel-card">
+                  <img src="img/comercio.png" class="card-img-top" alt="Outros Comércios">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">Outros Comércios</h5>
+                    <p class="card-text text-white">Gerencie seu estoque e reduza desperdícios em diversos estabelecimentos.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
