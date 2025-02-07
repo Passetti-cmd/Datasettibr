@@ -22,7 +22,7 @@
   <!-- GSAP ScrollTrigger Plugin -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
   
-  <!-- CSS Personalizado -->
+  <!-- CSS Inline (você pode separar em um arquivo .css se preferir) -->
   <style>
     :root {
       --color-roxo-dark: #6A0572;
@@ -41,7 +41,7 @@
       background-color: var(--cor-fundo);
       color: #fff;
       line-height: 1.6;
-      padding-top: 70px;
+      padding-top: 70px; /* espaço para o header fixo */
     }
     a {
       text-decoration: none;
@@ -53,6 +53,7 @@
       margin: auto;
       padding: 30px 0;
     }
+
     /* HEADER */
     .header {
       position: fixed;
@@ -99,10 +100,11 @@
     .nav ul li a:hover {
       color: var(--color-roxo-dark);
     }
+
     /* HERO */
     .hero {
       position: relative;
-      height: 70vh;
+      height: 60vh; /* altura reduzida para não ficar tão grande */
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -156,6 +158,7 @@
     .hero-content .cta-btn:hover {
       background-color: #a40eb0;
     }
+
     /* INTRODUÇÃO */
     .intro {
       padding: 40px 0;
@@ -173,6 +176,7 @@
       margin-bottom: 20px;
       text-align: justify;
     }
+
     /* FUNCIONALIDADES */
     .features {
       background-color: #1A1A2E;
@@ -214,6 +218,7 @@
       font-size: 1rem;
       line-height: 1.4;
     }
+
     /* BENEFÍCIOS */
     .benefits {
       padding: 40px 0;
@@ -243,13 +248,14 @@
       position: relative;
     }
     .benefits-list li::before {
-      content: "\f00c";
+      content: "\f00c"; /* ícone check do Font Awesome */
       font-family: "Font Awesome 6 Free";
       font-weight: 900;
       position: absolute;
       left: 0;
       color: var(--color-roxo-dark);
     }
+
     /* GALERIA DE AÇÃO */
     .action-gallery {
       background-color: #1A1A2E;
@@ -302,6 +308,7 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     /* PROCESSO */
     .process {
       background-color: #1A1A2E;
@@ -346,6 +353,7 @@
       font-size: 1rem;
       line-height: 1.4;
     }
+
     /* TESTEMUNHOS */
     .testimonials {
       padding: 40px 0;
@@ -390,7 +398,8 @@
       font-size: 0.9rem;
       text-align: right;
     }
-    /* CARROSSEL */
+
+    /* CARROSSEL DE EMPRESAS */
     .company-carousel {
       background-color: var(--cor-fundo);
       padding: 30px 0;
@@ -426,8 +435,8 @@
       border-radius: 5px;
       margin-bottom: 10px;
     }
-    .carousel-card h3 {
-      font-size: 1.5rem;
+    .carousel-card h5 {
+      font-size: 1.2rem;
       color: #fff;
       margin-bottom: 10px;
     }
@@ -437,7 +446,6 @@
       color: #fff;
       flex-grow: 1;
     }
-    /* Controles do Carousel */
     .carousel-control-prev,
     .carousel-control-next {
       width: 40px;
@@ -453,45 +461,31 @@
       width: 20px;
       height: 20px;
     }
-    /* CTA Final */
-    .cta-final {
-      padding: 20px;
+
+    /* BANNER FINAL (CTA) */
+    .banner-final {
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(106,5,114,1) 50%, rgba(26,26,46,1) 100%);
+      color: #fff;
       text-align: center;
+      padding: 60px 20px;
       position: relative;
       overflow: hidden;
-      background: url('img/cta-bg.jpg') center/cover no-repeat;
-      animation: fadeSlideIn 1.5s ease-in-out;
     }
-    .cta-final::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(26,26,46,0.85);
-      z-index: 1;
-    }
-    .cta-final .banner-meio-content {
+    .banner-final .banner-meio-content {
       position: relative;
       z-index: 2;
     }
-    .cta-final h2 {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
+    .banner-final-title {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
       margin-bottom: 5px;
       font-weight: 600;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
-    .cta-final p {
+    .banner-final-subtitle {
       font-size: 1.2rem;
       margin-bottom: 30px;
       line-height: 1.5;
-      max-width: 800px;
-      margin: auto;
     }
-    .cta-final .cta-btn {
+    .banner-final .btn-primario {
       background: linear-gradient(90deg, #B554FF, #470457);
       color: #fff;
       padding: 14px 24px;
@@ -499,14 +493,18 @@
       font-weight: bold;
       text-decoration: none;
       transition: background 0.3s ease, transform 0.2s ease-in-out;
-      box-shadow: 0 4px 10px rgba(138,10,148,0.5);
+      box-shadow: 0px 4px 10px rgba(138,10,148,0.5);
       display: inline-block;
     }
-    .cta-final .cta-btn:hover {
+    .banner-final .btn-primario:hover {
       background: linear-gradient(90deg, #8A0A94, #D774FF);
       transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(138,10,148,0.7);
+      box-shadow: 0px 6px 15px rgba(138,10,148,0.7);
     }
+    #banner-text {
+      transition: opacity 0.5s ease-in-out;
+    }
+
     /* FOOTER */
     footer {
       background-color: #2E2E2E;
@@ -522,6 +520,8 @@
     footer a:hover {
       color: var(--color-roxo-dark);
     }
+
+    /* RESPONSIVO */
     @media (max-width: 768px) {
       .hero-content h1 {
         font-size: 2.5rem;
@@ -542,47 +542,6 @@
         height: auto;
       }
     }
-    .banner-meio {
-      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(106,5,114,1) 50%, rgba(26,26,46,1) 100%);
-      color: #fff;
-      text-align: center;
-      padding: 60px 20px;
-      position: relative;
-      overflow: hidden;
-    }
-    .banner-meio .banner-meio-content {
-      position: relative;
-      z-index: 2;
-    }
-    .banner-meio-title {
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
-      margin-bottom: 5px;
-      font-weight: 600;
-    }
-    .banner-meio-subtitle {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-      line-height: 1.5;
-    }
-    .banner-meio .btn-primario {
-      background: linear-gradient(90deg, #B554FF, #470457);
-      color: #fff;
-      padding: 14px 24px;
-      border-radius: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.3s ease, transform 0.2s ease-in-out;
-      box-shadow: 0px 4px 10px rgba(138,10,148,0.5);
-      display: inline-block;
-    }
-    .banner-meio .btn-primario:hover {
-      background: linear-gradient(90deg, #8A0A94, #D774FF);
-      transform: scale(1.05);
-      box-shadow: 0px 6px 15px rgba(138,10,148,0.7);
-    }
-    #banner-text {
-      transition: opacity 0.5s ease-in-out;
-    }
   </style>
 </head>
 <body>
@@ -595,10 +554,10 @@
       <nav class="nav">
         <ul>
           <li><a href="index.html#home">Sobre</a></li>
-          <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#projetos">Projetos</a></li>
-          <li><a href="#depoimentos">Depoimentos</a></li>
-          <li><a href="#contato">Contato</a></li>
+          <li><a href="index.html#servicos">Serviços</a></li>
+          <li><a href="index.html#projetos">Projetos</a></li>
+          <li><a href="index.html#depoimentos">Depoimentos</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
         </ul>
       </nav>
     </div>
@@ -612,8 +571,8 @@
     </video>
     <div class="hero-content">
       <h1>Gestão de Estoque Inteligente</h1>
-      <p>Reduza perdas e maximize seus lucros com uma solução completa que integra IA, automação e relatórios dinâmicos.</p>
-      <a href="#cta" class="cta-btn">Solicite sua Demonstração</a>
+      <p>Garanta alta disponibilidade de produtos, elimine perdas por validade e impulsione lucros com uma solução que une IA, automação e relatórios dinâmicos.</p>
+      <a href="#banner-final" class="cta-btn">Solicite sua Demonstração</a>
     </div>
   </section>
 
@@ -621,7 +580,7 @@
   <section class="intro container" id="intro">
     <h2>O Futuro do Controle de Estoque</h2>
     <p>
-      Em um mercado cada vez mais competitivo, gerenciar o estoque de forma eficiente é crucial para reduzir desperdícios, evitar perdas e otimizar os lucros. Nossa solução utiliza inteligência artificial e automação para monitorar, prever e ajustar os níveis de estoque, garantindo que seu negócio opere com máxima eficiência.
+      Em um cenário onde cada detalhe faz diferença no resultado final, a forma como você gerencia seu estoque pode definir o sucesso ou fracasso do seu negócio. Nossa plataforma foi desenvolvida para ajudar você a evitar desperdícios, prevenir rupturas e tomar decisões estratégicas embasadas em dados, tudo de maneira simples e automatizada.
     </p>
   </section>
 
@@ -633,42 +592,42 @@
         <div class="feature-card">
           <i class="fa-solid fa-clock"></i>
           <h3>Controle de Validade</h3>
-          <p>Monitore as datas de validade dos produtos com alertas automáticos, evitando perdas e desperdícios.</p>
+          <p>Mantenha-se sempre à frente, identificando e removendo produtos próximos ao vencimento, reduzindo perdas e garantindo qualidade.</p>
         </div>
         <div class="feature-card">
           <i class="fa-solid fa-bell"></i>
           <h3>Alertas de Reposição</h3>
-          <p>Receba notificações em tempo real para repor produtos antes que ocorram rupturas.</p>
+          <p>Receba notificações instantâneas sobre baixo nível de estoque, evitando a falta de produtos nas prateleiras e garantindo vendas contínuas.</p>
         </div>
         <div class="feature-card">
           <i class="fa-solid fa-chart-line"></i>
           <h3>Previsões de Demanda</h3>
-          <p>Utilize algoritmos de IA para antecipar tendências de vendas e ajustar os níveis de estoque.</p>
+          <p>Use algoritmos de Inteligência Artificial para identificar tendências de vendas e ajustar a quantidade de itens de acordo com a demanda real.</p>
         </div>
         <div class="feature-card">
           <i class="fa-solid fa-file-lines"></i>
           <h3>Relatórios Detalhados</h3>
-          <p>Obtenha análises precisas sobre o desempenho do estoque, produtos parados e consumo médio.</p>
+          <p>Avalie rapidamente o desempenho do estoque, descubra produtos com baixa rotatividade e tome decisões embasadas em dados concretos.</p>
         </div>
         <div class="feature-card">
           <i class="fa-solid fa-arrows-rotate"></i>
           <h3>Integração Total</h3>
-          <p>Conecte a solução com seu ERP e outras ferramentas para um fluxo contínuo de informações.</p>
+          <p>Conecte nossa solução ao seu ERP e outras plataformas para um fluxo contínuo de informações e processos enxutos.</p>
         </div>
         <div class="feature-card">
           <i class="fa-solid fa-mobile-screen"></i>
           <h3>Acesso Remoto</h3>
-          <p>Consulte seu estoque e receba alertas em tempo real de qualquer lugar, via dispositivos móveis.</p>
+          <p>Gerencie seu estoque de qualquer lugar, acompanhando movimentações e recebendo alertas direto no seu celular.</p>
         </div>
         <div class="feature-card">
           <i class="fa-solid fa-lock"></i>
           <h3>Segurança de Dados</h3>
-          <p>Proteja suas informações com protocolos avançados de segurança e backup automático.</p>
+          <p>Mantenha seus registros protegidos com criptografia e backups automáticos, garantindo tranquilidade e confiabilidade.</p>
         </div>
         <div class="feature-card">
           <i class="fa-solid fa-chart-pie"></i>
-          <h3>Análise de Performance</h3>
-          <p>Visualize tendências e métricas essenciais através de dashboards interativos e personalizados.</p>
+          <h3>Análises de Performance</h3>
+          <p>Visualize métricas essenciais em dashboards intuitivos, identificando oportunidades de redução de custos e aumento de vendas.</p>
         </div>
       </div>
     </div>
@@ -679,14 +638,14 @@
     <div class="container">
       <h2>Benefícios Comprovados</h2>
       <p>
-        Nossa solução de Gestão de Estoque Inteligente traz resultados que impactam diretamente a eficiência e os lucros do seu negócio.
+        Desde pequenos comércios até grandes redes varejistas, nossa solução traz resultados expressivos que tornam o gerenciamento de estoque mais simples, eficaz e lucrativo.
       </p>
       <ul class="benefits-list">
-        <li>Redução significativa de desperdícios e perdas por validade.</li>
-        <li>Maior previsibilidade nas operações e reposição de produtos.</li>
-        <li>Automatização de processos, economizando tempo e recursos.</li>
-        <li>Decisões estratégicas baseadas em dados reais e insights inteligentes.</li>
-        <li>Integração perfeita com seus sistemas de gestão e ERP.</li>
+        <li>Redução de até 30% em perdas relacionadas a validade de produtos.</li>
+        <li>Maior assertividade na reposição, evitando tanto ruptura quanto excessos.</li>
+        <li>Automação de tarefas repetitivas, liberando sua equipe para funções mais estratégicas.</li>
+        <li>Relatórios personalizados e insights em tempo real, facilitando decisões rápidas.</li>
+        <li>Fácil integração com sistemas de gestão e maior transparência em todas as áreas da empresa.</li>
       </ul>
     </div>
   </section>
@@ -702,7 +661,7 @@
         <div class="action-text">
           <h3>Dashboard de Estoque</h3>
           <p>
-            Visualize o status completo do seu estoque em tempo real com gráficos dinâmicos e alertas inteligentes.
+            Visualize o status completo do seu estoque em tempo real, com gráficos modernos e alertas automáticos que garantem um controle preciso.
           </p>
         </div>
       </div>
@@ -713,7 +672,7 @@
         <div class="action-text">
           <h3>Relatórios Inteligentes</h3>
           <p>
-            Receba relatórios detalhados que evidenciam produtos com baixa rotatividade e análises históricas para otimizar seu inventário.
+            Receba análises detalhadas sobre giro de produtos, histórico de consumo e oportunidades de promoções para itens encalhados.
           </p>
         </div>
       </div>
@@ -724,7 +683,7 @@
         <div class="action-text">
           <h3>Monitoramento em Tempo Real</h3>
           <p>
-            Acompanhe as movimentações do seu estoque com atualizações instantâneas e alertas automáticos.
+            Acompanhe cada movimentação do estoque e seja notificado imediatamente sobre qualquer variação incomum ou nível crítico de produtos.
           </p>
         </div>
       </div>
@@ -735,7 +694,7 @@
         <div class="action-text">
           <h3>Integração com ERP</h3>
           <p>
-            Conecte nosso sistema ao seu ERP para garantir um fluxo contínuo e integrado de informações.
+            Sincronize nossos recursos com seu software de gestão para manter dados unificados e atualizados em toda a empresa.
           </p>
         </div>
       </div>
@@ -746,7 +705,8 @@
   <section class="company-carousel" id="company-carousel">
     <div class="container">
       <h2 class="text-center text-primary mb-4">Empresas que Podemos Ajudar</h2>
-      <div id="empresaCarousel" class="carousel slide" data-bs-ride="carousel">
+      <!-- Auto-slide a cada 3s -->
+      <div id="empresaCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
         <div class="carousel-inner">
           <!-- Primeiro Slide -->
           <div class="carousel-item active">
@@ -756,7 +716,7 @@
                   <img src="img/posto.png" class="card-img-top" alt="Postos de Gasolina">
                   <div class="card-body">
                     <h5 class="card-title text-white">Postos de Gasolina</h5>
-                    <p class="card-text text-white">Monitore o consumo e otimize as reposições de combustíveis.</p>
+                    <p class="card-text text-white">Controle o consumo e otimize o reabastecimento de combustíveis em cada bomba.</p>
                   </div>
                 </div>
               </div>
@@ -765,7 +725,7 @@
                   <img src="img/padaria.jpg" class="card-img-top" alt="Padarias">
                   <div class="card-body">
                     <h5 class="card-title text-white">Padarias</h5>
-                    <p class="card-text text-white">Controle insumos e garanta produtos sempre frescos.</p>
+                    <p class="card-text text-white">Garanta insumos frescos e reduza sobras que afetam a qualidade dos produtos.</p>
                   </div>
                 </div>
               </div>
@@ -774,7 +734,7 @@
                   <img src="img/mercado.png" class="card-img-top" alt="Mercados">
                   <div class="card-body">
                     <h5 class="card-title text-white">Mercados</h5>
-                    <p class="card-text text-white">Otimize seu inventário e minimize perdas com análises preditivas.</p>
+                    <p class="card-text text-white">Evite rupturas nas prateleiras e mantenha sempre os itens mais vendidos em estoque.</p>
                   </div>
                 </div>
               </div>
@@ -783,7 +743,7 @@
                   <img src="img/varejo.png" class="card-img-top" alt="Lojas de Varejo">
                   <div class="card-body">
                     <h5 class="card-title text-white">Lojas de Varejo</h5>
-                    <p class="card-text text-white">Gerencie seu estoque e melhore a experiência de compra.</p>
+                    <p class="card-text text-white">Melhore a experiência do cliente com produtos organizados e reposições oportunas.</p>
                   </div>
                 </div>
               </div>
@@ -797,7 +757,7 @@
                   <img src="img/restaurante.png" class="card-img-top" alt="Restaurantes">
                   <div class="card-body">
                     <h5 class="card-title text-white">Restaurantes</h5>
-                    <p class="card-text text-white">Otimize a gestão de insumos e garanta qualidade nos pratos.</p>
+                    <p class="card-text text-white">Gerencie insumos com precisão e mantenha a qualidade dos pratos servidos.</p>
                   </div>
                 </div>
               </div>
@@ -806,7 +766,7 @@
                   <img src="img/farmacia.png" class="card-img-top" alt="Farmácias">
                   <div class="card-body">
                     <h5 class="card-title text-white">Farmácias</h5>
-                    <p class="card-text text-white">Mantenha um controle rigoroso dos medicamentos e evite vencimentos.</p>
+                    <p class="card-text text-white">Evite vencimentos de medicamentos e controle rigorosamente cada lote recebido.</p>
                   </div>
                 </div>
               </div>
@@ -815,7 +775,7 @@
                   <img src="img/distruibuidorapng.avif" class="card-img-top" alt="Distribuidoras">
                   <div class="card-body">
                     <h5 class="card-title text-white">Distribuidoras</h5>
-                    <p class="card-text text-white">Otimize a logística e melhore o controle de estoque.</p>
+                    <p class="card-text text-white">Gerencie grandes quantidades de produtos com monitoramento e alertas automatizados.</p>
                   </div>
                 </div>
               </div>
@@ -824,7 +784,7 @@
                   <img src="img/estoquese.avif" class="card-img-top" alt="E-Commerce">
                   <div class="card-body">
                     <h5 class="card-title text-white">E-Commerce</h5>
-                    <p class="card-text text-white">Gerencie seu estoque e reduza desperdícios em diversos estabelecimentos.</p>
+                    <p class="card-text text-white">Controle cada etapa do fulfillment e reduza erros em diversos centros de distribuição.</p>
                   </div>
                 </div>
               </div>
@@ -852,22 +812,22 @@
         <div class="process-step">
           <i class="fa-solid fa-magnifying-glass"></i>
           <h3>Análise Inicial</h3>
-          <p>Avaliamos seu estoque e processos para identificar gargalos e oportunidades de melhoria com base em dados históricos e tendências de mercado.</p>
+          <p>Fazemos um mapeamento completo do seu estoque e processos, identificando gargalos e oportunidades de economia com base em dados históricos.</p>
         </div>
         <div class="process-step">
           <i class="fa-solid fa-gear"></i>
           <h3>Implementação Personalizada</h3>
-          <p>Integramos nossa solução de IA ao seu sistema atual de forma transparente, garantindo continuidade operacional e mínima interrupção.</p>
+          <p>Integramos nossa solução de IA ao seu sistema de forma fluida, garantindo continuidade operacional e evitando qualquer interrupção nas vendas.</p>
         </div>
         <div class="process-step alert">
           <i class="fa-solid fa-bell"></i>
-          <h3>Alertas &amp; Oportunidades</h3>
-          <p>O sistema monitora continuamente o estoque e envia alertas automáticos, permitindo reposição ágil e promoções pontuais.</p>
+          <h3>Alertas &amp; Ações Oportunas</h3>
+          <p>Receba avisos em tempo real para repor produtos, ofertar promoções pontuais e gerenciar validade, evitando perdas e maximizando lucros.</p>
         </div>
         <div class="process-step">
           <i class="fa-solid fa-chart-pie"></i>
           <h3>Monitoramento &amp; Análise</h3>
-          <p>Acompanhe o desempenho do seu estoque em tempo real através de dashboards interativos que fornecem insights para decisões estratégicas.</p>
+          <p>Acompanhe KPIs essenciais em dashboards interativos, ajustando sua estratégia conforme as variações de mercado e o feedback dos clientes.</p>
         </div>
       </div>
     </div>
@@ -879,30 +839,29 @@
       <h2>O que Nossos Clientes Dizem</h2>
       <div class="testimonial-cards">
         <div class="testimonial-card">
-          <p>"Com a solução da Data Setti, reduzimos em 30% as perdas com produtos vencidos e melhoramos significativamente nosso fluxo de reposição. A ferramenta é intuitiva e gera insights valiosos."</p>
+          <p>"Com a solução da Data Setti, reduzimos em 30% as perdas causadas por produtos vencidos e melhoramos o fluxo de reposição. A plataforma é fácil de usar e fornece insights valiosos para decisões diárias."</p>
           <div class="client">— João Silva, Gerente de Mercado</div>
         </div>
         <div class="testimonial-card">
-          <p>"A integração com nosso ERP foi feita de forma simples e rápida. Hoje temos total controle do nosso estoque, permitindo decisões estratégicas baseadas em dados reais."</p>
+          <p>"A integração com nosso ERP foi simples, e hoje temos um controle muito mais preciso do estoque. Podemos planejar compras de forma estratégica, baseando-nos em dados reais, e isso faz toda a diferença."</p>
           <div class="client">— Maria Oliveira, Diretora de Operações</div>
         </div>
         <div class="testimonial-card">
-          <p>"Nossa empresa ganhou em eficiência e reduziu custos operacionais após a implementação da ferramenta de gestão de estoque inteligente. Recomendo fortemente a solução da Data Setti!"</p>
+          <p>"Nossa equipe ganhou agilidade e conseguimos eliminar desperdícios graças aos alertas automáticos de validade. Em poucas semanas, já notamos economia e satisfação maior dos clientes."</p>
           <div class="client">— Carlos Mendes, Proprietário de Distribuidora</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Final -->
- <!-- BANNER MEIO (Novo Final) -->
-  <section class="banner-meio">
+  <!-- BANNER FINAL (CTA) -->
+  <section class="banner-final" id="banner-final">
     <div class="banner-meio-content">
-      <h2 class="banner-meio-title">
+      <h2 class="banner-final-title">
         <span id="banner-text">Transforme Seu Estoque Agora!</span>
       </h2>
-      <p class="banner-meio-subtitle">
-        Descubra como nossa solução pode revolucionar a gestão do seu negócio, reduzir perdas e aumentar seus lucros com tecnologia de ponta.
+      <p class="banner-final-subtitle">
+        Conheça na prática como nossa ferramenta pode revolucionar a forma como você controla seu estoque, prevenindo perdas e aumentando a competitividade do seu negócio.
       </p>
       <a href="mailto:contato@datasetti.com.br" class="btn-primario">Solicite Sua Demonstração</a>
     </div>
@@ -926,6 +885,8 @@
   <!-- GSAP Scripts -->
   <script>
     gsap.registerPlugin(ScrollTrigger);
+
+    // Animação dos itens da "action-gallery"
     gsap.from(".action-item", {
       scrollTrigger: {
         trigger: ".action-gallery",
@@ -936,9 +897,11 @@
       duration: 1,
       stagger: 0.2
     });
-    gsap.from(".cta-final .banner-meio-content", {
+
+    // Animação do banner-final (se quiser)
+    gsap.from(".banner-final .banner-meio-content", {
       scrollTrigger: {
-        trigger: ".cta-final",
+        trigger: ".banner-final",
         start: "top 80%"
       },
       opacity: 0,
