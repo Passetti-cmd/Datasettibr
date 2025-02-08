@@ -2,22 +2,480 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Desenvolvimento de Software e Automação - Data Setti">
+  <meta name="description" content="Desenvolvimento de Software e Automação - Data Setti. Soluções personalizadas, integrações avançadas, segurança robusta e escalabilidade para o seu negócio.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Desenvolvimento de Software e Automação | Data Setti</title>
 
-  <!-- CSS principal (estilo.css) -->
-  <link rel="stylesheet" href="estilo.css">
-  <!-- CSS complementar (opcional) -->
-  <link rel="stylesheet" href="software.css">
+  <!-- Bootstrap 5 CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
+  <!-- Font Awesome (opcional) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <!-- Google Fonts (Poppins) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
 
-  <!-- (Opcional) AOS para animações -->
-  <!-- 
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  -->
+  <style>
+    :root {
+      --color-roxo-dark: #6A0572;
+      --color-preto: #121212;
+      --color-cinza-escuro: #2E2E2E;
+      --color-branco: #fff;
+      --gradient-roxo: linear-gradient(135deg, rgba(106,5,114,1) 0%, rgba(26,26,46,1) 100%);
+      --font-base: 'Poppins', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: var(--font-base);
+      background: var(--color-preto);
+      color: var(--color-branco);
+      line-height: 1.6;
+      padding-top: 70px; /* Espaço para header fixo */
+      overflow-x: hidden;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER */
+    .header {
+      position: fixed; 
+      top: 0; 
+      width: 100%; 
+      z-index: 999;
+      background: rgba(26,26,46,0.95);
+      backdrop-filter: blur(4px);
+      height: 70px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      display: flex; 
+      align-items: center;
+    }
+    .header .container {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+    }
+    .logo a {
+      font-size: 1.7rem; 
+      font-weight: 600; 
+      color: var(--color-branco);
+    }
+    .logo span {
+      color: var(--color-roxo-dark);
+    }
+    .nav ul {
+      list-style: none; 
+      display: flex; 
+      gap: 1.5rem;
+    }
+    .nav ul li a {
+      color: var(--color-branco);
+      transition: color 0.3s;
+      line-height: 70px;
+    }
+    .nav ul li a:hover {
+      color: var(--color-roxo-dark);
+    }
+
+    /* HERO */
+    .hero-dev {
+      position: relative; 
+      height: 60vh; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-video {
+      position: absolute; 
+      top: 50%; 
+      left: 50%;
+      min-width: 100%; 
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover; 
+      z-index: 1;
+    }
+    .hero-overlay {
+      position: absolute; 
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 2;
+    }
+    .hero-content {
+      position: relative; 
+      z-index: 3; 
+      max-width: 850px;
+      margin: 0 auto; 
+      padding: 0 20px;
+    }
+    .hero-content h1 {
+      font-size: 2.5rem; 
+      margin-bottom: 1rem; 
+      font-weight: 700;
+    }
+    .hero-content p {
+      font-size: 1.1rem; 
+      margin-bottom: 2rem;
+    }
+    .btn-primario {
+      background-color: var(--color-roxo-dark);
+      padding: 14px 28px; 
+      border-radius: 30px;
+      font-size: 1rem; 
+      font-weight: 600; 
+      color: var(--color-branco);
+      transition: 0.3s; 
+      display: inline-block;
+    }
+    .btn-primario:hover {
+      background-color: #8A0A94;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(138,10,148,0.4);
+    }
+
+    /* SEÇÃO INTRO */
+    .dev-section {
+      padding: 60px 20px;
+      background: #1A1A2E;
+    }
+    .dev-section .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .dev-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--color-roxo-dark);
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+    .dev-intro {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      color: #ccc;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* GALERIA DE AÇÃO */
+    .action-gallery {
+      background-color: #121212;
+      padding: 60px 20px;
+    }
+    .action-gallery .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .action-gallery h2 {
+      text-align: center; 
+      color: var(--color-roxo-dark);
+      font-size: 2rem; 
+      margin-bottom: 2rem; 
+      font-weight: 600;
+    }
+    .action-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      transition: 0.3s;
+      min-height: 300px; /* Ajuda a manter tamanho uniforme */
+    }
+    .action-item.reverse {
+      flex-direction: row-reverse;
+    }
+    .action-image, .action-text {
+      flex: 1; 
+      padding: 20px;
+    }
+    .action-image img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      max-height: 300px; /* Limita a altura para evitar saltos */
+      object-fit: cover;
+    }
+    .action-image img:hover {
+      transform: scale(1.05);
+    }
+    .action-text h3 {
+      font-size: 1.8rem; 
+      color: var(--color-roxo-dark);
+      margin-bottom: 15px;
+    }
+    .action-text p {
+      font-size: 1.1rem; 
+      line-height: 1.5; 
+      color: #ccc; 
+      text-align: justify;
+    }
+
+    /* VANTAGENS EXTRAS */
+    .vantagens-extras {
+      background: #1A1A2E;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .vantagens-extras .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .vantagens-extras h2 {
+      color: var(--color-roxo-dark);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    .vantagens-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+    .vantagem-card {
+      background: #121212;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.3s;
+    }
+    .vantagem-card:hover {
+      transform: translateY(-5px);
+    }
+    .vantagem-card h3 {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .vantagem-card p {
+      font-size: 0.95rem;
+      color: #ccc;
+      line-height: 1.4;
+    }
+    .vantagem-card i {
+      font-size: 2rem;
+      color: var(--color-roxo-dark);
+      margin-right: 0.5rem;
+      float: left;
+    }
+
+    /* BENEFICIOS PARA EMPRESAS */
+    .beneficios-dev {
+      background: #121212;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .beneficios-dev h2 {
+      color: var(--color-roxo-dark);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .beneficio-card {
+      background: #1A1A2E;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.3s;
+      text-align: left;
+      min-height: 220px; /* Ajuda a manter alinhado */
+    }
+    .beneficio-card:hover {
+      transform: translateY(-5px);
+    }
+    .beneficio-card i {
+      font-size: 2rem;
+      color: var(--color-roxo-dark);
+      margin-bottom: 0.5rem;
+    }
+    .beneficio-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+      font-weight: 600;
+    }
+    .beneficio-card p {
+      font-size: 0.95rem;
+      color: #ccc;
+      line-height: 1.4;
+      padding: 0 5px;
+    }
+
+    /* CASES DE SUCESSO (CARROSSEL) */
+    .cases-sucesso {
+      background:#121212; 
+      padding:60px 20px;
+    }
+    .cases-sucesso h2 {
+      text-align:center; 
+      color:var(--color-roxo-dark); 
+      font-size:2rem; 
+      margin-bottom:2rem; 
+      font-weight:600;
+    }
+    /* Ajustando a altura mínima do carrossel */
+    .carousel-inner {
+      min-height: 450px; /* Mantém uma altura fixa para evitar "saltos" */
+    }
+    .case-slide {
+      gap:2rem; 
+      text-align:center;
+      min-height: 400px; /* Altura mínima para padronizar */
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      padding: 20px;
+    }
+    .case-slide img {
+      max-width:400px; 
+      border-radius:8px; 
+      box-shadow:0 4px 8px rgba(0,0,0,0.6);
+    }
+    .case-text {
+      max-width:500px;
+      margin-top:1rem; /* espaçamento em mobile */
+    }
+    .case-text h3 {
+      color:var(--color-roxo-dark); 
+      margin-bottom:1rem; 
+      font-size:1.5rem;
+    }
+    .case-text p {
+      color:#ccc; 
+      font-size:0.95rem; 
+      line-height:1.4; 
+      text-align:justify;
+    }
+
+    /* Ajuste dos botões do carrossel para não ficar em cima do texto */
+ 
+  /* Regras gerais do seu site acima ... */
+
+  /* Regras personalizadas para os botões do carrossel */
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-image: none !important;
+    background: none !important;
+  }
+  .carousel-control-prev-icon::after {
+    content: '‹';
+    font-size: 4rem;
+    color: #fff;
+  }
+  .carousel-control-next-icon::after {
+    content: '›';
+    font-size: 4rem;
+    color: #fff;
+  }
+
+
+    /* CTA FINAL */
+    .cta-final-dev {
+      background: var(--gradient-roxo);
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .cta-final-dev h2 {
+      color: #fff; 
+      margin-bottom: 1rem; 
+      font-size: 2rem; 
+      font-weight: 600;
+    }
+    .cta-final-dev p {
+      color: #fff; 
+      max-width: 800px; 
+      margin: 0 auto 2rem; 
+      font-size: 1rem; 
+      line-height: 1.5;
+    }
+    .cta-final-dev .btn-primario {
+      background: #fff; 
+      color: var(--color-roxo-dark); 
+      font-weight: 700;
+    }
+    .cta-final-dev .btn-primario:hover {
+      background: #eee; 
+      color: #333;
+    }
+
+    /* FOOTER */
+    .footer {
+      background-color: var(--color-cinza-escuro);
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.85rem;
+    }
+    .footer-content p a {
+      color: #fff; 
+      margin: 0 5px; 
+      transition: color 0.3s;
+    }
+    .footer-content p a:hover {
+      color: var(--color-roxo-dark);
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .action-item,
+      .action-item.reverse {
+        flex-direction: column !important;
+        text-align: center;
+        min-height: auto !important; /* remove altura fixa em mobile */
+      }
+      .action-image img {
+        max-height: 200px; /* limita no mobile */
+      }
+      .case-slide {
+        flex-direction: column;
+        min-height: auto; /* remove altura fixa em mobile */
+      }
+      .case-text {
+        margin-top: 1rem;
+      }
+      .carousel-inner {
+        min-height: 300px; /* menor em mobile */
+      }
+    }
+  </style>
 </head>
 <body>
 
+<!-- Header -->
 <header class="header">
   <div class="container">
     <div class="logo">
@@ -35,239 +493,504 @@
   </div>
 </header>
 
-<section class="hero-servico">
+<!-- Hero -->
+<section class="hero-dev">
   <video class="hero-video" autoplay muted loop>
     <source src="videos/software.mp4" type="video/mp4">
+    Seu navegador não suporta vídeo.
   </video>
   <div class="hero-overlay"></div>
-  <div class="hero-content-servico container">
-    <h1 data-aos="fade-up">Desenvolvimento de Software e Automação</h1>
-    <p data-aos="fade-up" data-aos-delay="100">
-      Elimine tarefas manuais, integre seus sistemas e crie soluções sob medida para impulsionar a produtividade.
+  <div class="hero-content">
+    <h1>Desenvolvimento de Software e Automação</h1>
+    <p>
+      Elimine tarefas manuais, integre seus sistemas e crie soluções sob medida 
+      para impulsionar a produtividade do seu negócio.
     </p>
-    <a href="index.html#contato" class="btn-primario" data-aos="fade-up" data-aos-delay="200">
-      Quero automatizar meu negócio
-    </a>
+    <a href="#contato" class="btn-primario">Solicitar Projeto</a>
   </div>
 </section>
 
-<!-- Seção: O que é -->
-<section style="padding:60px 0; background:#121212;">
+<!-- Seção Intro -->
+<section class="dev-section">
   <div class="container">
-    <h2 style="text-align:center; color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-right">
-      O que é o Desenvolvimento de Software e Automação?
-    </h2>
-    <p style="max-width:800px; margin:0 auto; text-align:center; color:#ccc;" data-aos="fade-left">
-      Trata-se de criar sistemas personalizados que atendam às necessidades <em>exatas</em> do seu negócio 
-      — seja um ERP, CRM, aplicativos web/móveis ou robôs de automação (RPA). Reduza custos operacionais, 
-      aumente a eficiência e ganhe vantagem competitiva com processos totalmente integrados.
-    </p>
+    <h2>O que é Desenvolvimento de Software e Automação?</h2>
+    <div class="dev-intro">
+      <p>
+        Desenvolvimento de Software e Automação envolve a criação de sistemas inteligentes e personalizados 
+        para otimizar processos empresariais. Isso inclui sistemas de gestão (ERP, CRM), aplicativos web e mobile 
+        e robôs que automatizam tarefas repetitivas (RPA), permitindo maior eficiência e redução de custos operacionais.
+      </p>
+      <p>
+        Trabalhamos com metodologias ágeis e as melhores práticas de DevOps para garantir entregas rápidas e de qualidade. 
+        Além disso, utilizamos testes automatizados, pipelines CI/CD e infraestrutura em nuvem para oferecer soluções 
+        seguras, escaláveis e sempre disponíveis.
+      </p>
+      <p>
+        Se sua empresa busca um sistema personalizado ou automação para aumentar a produtividade, estamos prontos para 
+        transformar sua ideia em realidade!
+      </p>
+    </div>
   </div>
 </section>
 
-<!-- Seção: Como Funciona -->
-<section style="padding:60px 0; background: var(--color-azul-noturno);">
+<!-- Galeria de Ação - Como Funciona -->
+<section class="action-gallery">
   <div class="container">
-    <h2 style="text-align:center; color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-up">
-      Como Funciona?
-    </h2>
-    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
+    <h2>Como Funciona?</h2>
 
-      <div style="max-width:300px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="zoom-in">
-        <img src="img/icones/analise.svg" alt="Análise de Requisitos" style="width:60px; margin-bottom:1rem;">
+    <!-- Slide 1 -->
+    <div class="action-item">
+      <div class="action-image">
+        <img src="img/problem.avif" alt="Análise de Requisitos">
+      </div>
+      <div class="action-text">
         <h3>Análise de Requisitos</h3>
-        <p style="color:#ccc; font-size:0.95rem;">
-          Levantamos seus desafios e metas para projetar um software ou automação que atenda 100% das suas demandas.
+        <p>
+          Levantamos seus desafios e metas para projetar um software ou automação 
+          que atenda 100% das suas demandas. Entendemos fluxos de trabalho, 
+          integrações necessárias e objetivos de negócio.
         </p>
       </div>
+    </div>
 
-      <div style="max-width:300px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="zoom-in" data-aos-delay="200">
-        <img src="img/icones/dev.svg" alt="Desenvolvimento" style="width:60px; margin-bottom:1rem;">
-        <h3>Desenvolvimento</h3>
-        <p style="color:#ccc; font-size:0.95rem;">
-          Nossa equipe cria, testa e implementa a solução, garantindo segurança, escalabilidade e fácil manutenção.
+    <!-- Slide 2 (reverse) -->
+    <div class="action-item reverse">
+      <div class="action-image">
+        <img src="img/test.jpg" alt="Desenvolvimento de Sistemas">
+      </div>
+      <div class="action-text">
+        <h3>Desenvolvimento e Testes</h3>
+        <p>
+          Com abordagem ágil, criamos MVPs (Produtos Mínimos Viáveis) para 
+          validação rápida. Implementamos testes automatizados e pipeline 
+          de integração contínua (CI) para garantir qualidade a cada versão.
         </p>
       </div>
+    </div>
 
-      <div style="max-width:300px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="zoom-in" data-aos-delay="400">
-        <img src="img/icones/implement.svg" alt="Implementação e Suporte" style="width:60px; margin-bottom:1rem;">
-        <h3>Implementação & Suporte</h3>
-        <p style="color:#ccc; font-size:0.95rem;">
-          Oferecemos treinamentos, suporte contínuo e monitoramento proativo para garantir o sucesso da sua solução.
+    <!-- Slide 3 -->
+    <div class="action-item">
+      <div class="action-image">
+        <img src="img/cloud.jpg" alt="Infraestrutura e DevOps">
+      </div>
+      <div class="action-text">
+        <h3>Infraestrutura &amp; DevOps</h3>
+        <p>
+          Utilizamos serviços de nuvem (AWS, Azure ou GCP) para escalar 
+          de forma elástica, garantindo alta disponibilidade e backups automáticos. 
+          Práticas de DevOps minimizam o tempo de implantação e evitam falhas.
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 4 (reverse) -->
+    <div class="action-item reverse">
+      <div class="action-image">
+        <img src="img/suport.avif" alt="Implementação e Suporte">
+      </div>
+      <div class="action-text">
+        <h3>Implementação &amp; Suporte</h3>
+        <p>
+          Treinamos sua equipe, oferecemos monitoramento proativo 
+          e manutenção contínua. Assim, você opera com tranquilidade, 
+          sabendo que qualquer imprevisto será solucionado rapidamente.
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="action-item">
+      <div class="action-image">
+        <img src="img/sofinal.avif" alt="Objetivo Final">
+      </div>
+      <div class="action-text">
+        <h3>Objetivo Final</h3>
+        <p>
+          Entregar processos totalmente integrados, eliminar retrabalhos e 
+          aumentar a produtividade da sua equipe. Foque em inovar e crescer — 
+          e deixe a parte técnica e a automação em nossas mãos.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Seção: Benefícios -->
-<section style="padding:60px 0; background:#121212;">
+<!-- Seção de Vantagens Extras -->
+<section class="vantagens-extras">
   <div class="container">
-    <h2 style="text-align:center; color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-up">
-      Benefícios para sua Empresa
-    </h2>
-    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
-      
-      <div style="flex:1; min-width:280px; max-width:380px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="fade-right">
-        <h3 style="color:#fff; margin-bottom:1rem;">Automação Total</h3>
-        <p style="color:#ccc;">
-          De processos financeiros a rotinas de produção, ganhe tempo e evite erros manuais.
+    <h2>Por que Confiar na Data Setti?</h2>
+    <div class="vantagens-grid">
+      <div class="vantagem-card">
+        <i class="fa-solid fa-shield-halved"></i>
+        <h3>Segurança Robusta</h3>
+        <p>
+          Criptografia de dados, SSL/TLS, backups automáticos e monitoramento 
+          constante para manter seu sistema protegido contra ameaças.
         </p>
       </div>
-      <div style="flex:1; min-width:280px; max-width:380px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="fade-up">
-        <h3 style="color:#fff; margin-bottom:1rem;">Integração de Sistemas</h3>
-        <p style="color:#ccc;">
-          ERP, CRM, e-commerce, bancos de dados — tudo funcionando em harmonia, reduzindo retrabalhos.
+      <div class="vantagem-card">
+        <i class="fa-solid fa-cloud"></i>
+        <h3>Implementação em Nuvem</h3>
+        <p>
+          Hospede suas aplicações na AWS, Azure ou GCP, garantindo escalabilidade, 
+          alta disponibilidade e redução de custos com servidores locais.
         </p>
       </div>
-      <div style="flex:1; min-width:280px; max-width:380px; background:#1A1A2E; border-radius:8px; padding:1.5rem;" data-aos="fade-left">
-        <h3 style="color:#fff; margin-bottom:1rem;">Soluções Sob Medida</h3>
-        <p style="color:#ccc;">
-          Software feito para seu negócio, garantindo adequação perfeita e alto retorno sobre o investimento.
+      <div class="vantagem-card">
+        <i class="fa-solid fa-code-branch"></i>
+        <h3>DevOps e CI/CD</h3>
+        <p>
+          Pipelines automatizados para build, teste e deploy, diminuindo erros 
+          humanos e acelerando a entrega de novas features ao seu sistema.
+        </p>
+      </div>
+      <div class="vantagem-card">
+        <i class="fa-solid fa-user-shield"></i>
+        <h3>LGPD &amp; Compliance</h3>
+        <p>
+          Adequação às normas de proteção de dados, políticas de privacidade e 
+          protocolos de auditoria, garantindo conformidade legal.
+        </p>
+      </div>
+      <div class="vantagem-card">
+        <i class="fa-solid fa-sync"></i>
+        <h3>Metodologia Ágil</h3>
+        <p>
+          Entregas parciais e frequentes, priorizando funcionalidades 
+          de maior impacto para sua empresa e reduzindo riscos do projeto.
+        </p>
+      </div>
+      <div class="vantagem-card">
+        <i class="fa-solid fa-sitemap"></i>
+        <h3>Microservices &amp; Escalabilidade</h3>
+        <p>
+          Arquitetura moderna para que cada serviço possa evoluir 
+          independentemente, facilitando upgrades e manutenções.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Seção: Serviços Possíveis -->
-<section style="padding:60px 0; background: var(--color-azul-noturno);">
+<!-- Benefícios para Empresas -->
+<section class="beneficios-dev">
   <div class="container">
-    <h2 style="text-align:center; color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-up">
-      Principais Soluções de Software e Automação
-    </h2>
-    <p style="max-width:800px; margin:0 auto 2rem; text-align:center; color:#fff;" data-aos="fade-up" data-aos-delay="100">
-      Confira as principais áreas onde atuamos para agilizar seus processos e criar sistemas eficientes:
-    </p>
-    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
-
-      <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;" data-aos="fade-right">
-        <h3 style="color:#fff; margin-bottom:0.5rem;">1. Desenvolvimento de Sistemas Personalizados</h3>
-        <ul style="color:#ccc; line-height:1.6;">
-          <li>CRMs, ERPs e aplicativos sob medida.</li>
-          <li>Aplicações web e mobile que atendem ao seu fluxo de trabalho.</li>
-        </ul>
-      </div>
-      <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;" data-aos="fade-up">
-        <h3 style="color:#fff; margin-bottom:0.5rem;">2. Integração de Sistemas</h3>
-        <ul style="color:#ccc; line-height:1.6;">
-          <li>Conexão de plataformas e bancos de dados distintos.</li>
-          <li>Implementação de APIs para comunicação e troca de informações.</li>
-        </ul>
-      </div>
-      <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;" data-aos="fade-left">
-        <h3 style="color:#fff; margin-bottom:0.5rem;">3. Automação de Processos (RPA)</h3>
-        <ul style="color:#ccc; line-height:1.6;">
-          <li>Criação de robôs para eliminar tarefas repetitivas.</li>
-          <li>Automação de relatórios e geração de documentos.</li>
-        </ul>
-      </div>
-    </div>
-    
-    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; margin-top:2rem;">
-      <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;" data-aos="fade-right" data-aos-delay="200">
-        <h3 style="color:#fff; margin-bottom:0.5rem;">4. Chatbots e Assistentes Virtuais</h3>
-        <ul style="color:#ccc; line-height:1.6;">
-          <li>Atendimento ao cliente ou suporte interno 24/7.</li>
-          <li>Processamento de linguagem natural (NLP) para interações mais humanas.</li>
-        </ul>
-      </div>
-      <div style="flex:1; min-width:300px; max-width:400px; background:#121212; border-radius:8px; padding:1.5rem;" data-aos="fade-up" data-aos-delay="200">
-        <h3 style="color:#fff; margin-bottom:0.5rem;">5. Manutenção & Suporte</h3>
-        <ul style="color:#ccc; line-height:1.6;">
-          <li>Atualizações regulares e suporte técnico contínuo.</li>
-          <li>Monitoramento proativo para corrigir problemas antes de virarem crises.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Casos de Sucesso -->
-<section style="padding:60px 0; background: var(--color-preto);">
-  <div class="container" style="text-align:center;">
-    <h2 style="color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-up">
-      Casos de Sucesso
-    </h2>
-    <p style="max-width:700px; margin:0 auto 2rem; color:#ccc;" data-aos="fade-up" data-aos-delay="100">
-      Veja como sistemas personalizados e automações ajudaram a transformar negócios:
-    </p>
-    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
-      <!-- CARD 1 -->
-      <div style="background:#1A1A2E; border-radius:8px; padding:1.5rem; max-width:300px;" data-aos="fade-right">
-        <img src="img/software_case1.jpg" alt="Case 1" style="width:100%; border-radius:6px; margin-bottom:1rem;">
-        <h4 style="color:#fff; margin-bottom:0.5rem;">Empresa de Logística</h4>
-        <p style="color:#ccc; font-size:0.95rem;">
-          Implementação de sistema de rastreamento e automação de rotas, reduzindo atrasos em 40%.
+    <h2>Benefícios para sua Empresa</h2>
+    <div class="beneficios-grid">
+      <div class="beneficio-card">
+        <i class="fa-solid fa-robot"></i>
+        <h3>Automação de Processos</h3>
+        <p>
+          Aumente a eficiência eliminando rotinas manuais, reduzindo erros humanos
+          e garantindo maior agilidade em todas as áreas da empresa.
         </p>
       </div>
-      <!-- CARD 2 -->
-      <div style="background:#1A1A2E; border-radius:8px; padding:1.5rem; max-width:300px;" data-aos="fade-up">
-        <img src="img/software_case2.jpg" alt="Case 2" style="width:100%; border-radius:6px; margin-bottom:1rem;">
-        <h4 style="color:#fff; margin-bottom:0.5rem;">Rede de Clínicas</h4>
-        <p style="color:#ccc; font-size:0.95rem;">
-          Sistema online de agendamentos e prontuários, otimizando atendimentos e reduzindo custos de papel.
+      <div class="beneficio-card">
+        <i class="fa-solid fa-hand-holding-dollar"></i>
+        <h3>Redução de Custos</h3>
+        <p>
+          Soluções inteligentes evitam desperdícios e otimizam recursos,
+          resultando em economia operacional e maior margem de lucro.
         </p>
       </div>
-      <!-- CARD 3 -->
-      <div style="background:#1A1A2E; border-radius:8px; padding:1.5rem; max-width:300px;" data-aos="fade-left">
-        <img src="img/software_case3.jpg" alt="Case 3" style="width:100%; border-radius:6px; margin-bottom:1rem;">
-        <h4 style="color:#fff; margin-bottom:0.5rem;">Fábrica de Alimentos</h4>
-        <p style="color:#ccc; font-size:0.95rem;">
-          Automação de relatórios de produção e controle de qualidade, aumentando a precisão e reduzindo erros.
+      <div class="beneficio-card">
+        <i class="fa-solid fa-heart-circle-check"></i>
+        <h3>Melhora na Qualidade</h3>
+        <p>
+          Padronize fluxos e garanta consistência nos resultados,
+          aumentando a satisfação de clientes e colaboradores.
+        </p>
+      </div>
+      <div class="beneficio-card">
+        <i class="fa-solid fa-cubes"></i>
+        <h3>Escalabilidade</h3>
+        <p>
+          Sistemas sob medida facilitam expansão e integração com novos
+          módulos, serviços e tecnologias, acompanhando o crescimento do negócio.
+        </p>
+      </div>
+      <div class="beneficio-card">
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>Insights Estratégicos</h3>
+        <p>
+          Dashboards e relatórios gerenciais permitem tomadas de decisões
+          mais embasadas, impulsionando a competitividade da empresa.
+        </p>
+      </div>
+      <div class="beneficio-card">
+        <i class="fa-solid fa-trophy"></i>
+        <h3>Diferencial de Mercado</h3>
+        <p>
+          Software único e automações avançadas destacam seu negócio 
+          frente à concorrência, consolidando sua marca no mercado.
+        </p>
+      </div>
+      <!-- NOVOS BENEFÍCIOS (2 a mais) -->
+      <div class="beneficio-card">
+        <i class="fa-solid fa-bolt"></i>
+        <h3>Tempo de Resposta Acelerado</h3>
+        <p>
+          Integrações ágeis e processos automatizados permitem 
+          reações rápidas às demandas do mercado, mantendo sua 
+          empresa sempre competitiva.
+        </p>
+      </div>
+      <div class="beneficio-card">
+        <i class="fa-solid fa-user-gear"></i>
+        <h3>Suporte 24/7</h3>
+        <p>
+          Conte com nossa equipe disponível a qualquer hora 
+          para resolução de problemas, garantindo estabilidade 
+          e continuidade das operações.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Antes & Depois (Opcional) -->
-<section style="padding:60px 0; background:#121212;">
-  <div class="container" style="text-align:center;">
-    <h2 style="color: var(--color-roxo-dark); margin-bottom:1.5rem;" data-aos="fade-up">
-      Antes & Depois
-    </h2>
-    <p style="color:#ccc; max-width:700px; margin:0 auto 2rem;" data-aos="fade-up" data-aos-delay="100">
-      Compare processos manuais e desconexos com a automação integrada que criamos para nossos clientes.
-    </p>
-    <div style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
-      <div data-aos="fade-right">
-        <h4 style="color:#fff; margin-bottom:0.5rem;">Antes</h4>
-        <img src="img/antes-software.jpg" alt="Antes" style="width:300px; border-radius:8px;">
+<!-- Cases de Sucesso (Carrossel) -->
+<section class="cases-sucesso">
+  <div class="container">
+    <h2>Cases de Sucesso</h2>
+    <div id="casesCarousel" class="carousel slide" data-bs-ride="carousel">
+
+      <!-- Indicadores (bolinhas) -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#casesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Case 1"></button>
+        <button type="button" data-bs-target="#casesCarousel" data-bs-slide-to="1" aria-label="Case 2"></button>
+        <button type="button" data-bs-target="#casesCarousel" data-bs-slide-to="2" aria-label="Case 3"></button>
+        <button type="button" data-bs-target="#casesCarousel" data-bs-slide-to="3" aria-label="Case 4"></button>
+        <button type="button" data-bs-target="#casesCarousel" data-bs-slide-to="4" aria-label="Case 5"></button>
+        <button type="button" data-bs-target="#casesCarousel" data-bs-slide-to="5" aria-label="Case 6"></button>
+        <button type="button" data-bs-target="#casesCarousel" data-bs-slide-to="6" aria-label="Case 7"></button>
+        <button type="button" data-bs-target="#casesCarousel" data-bs-slide-to="7" aria-label="Case 8"></button>
       </div>
-      <div data-aos="fade-left">
-        <h4 style="color:#fff; margin-bottom:0.5rem;">Depois</h4>
-        <img src="img/depois-software.jpg" alt="Depois" style="width:300px; border-radius:8px;">
+
+      <!-- Slides -->
+      <div class="carousel-inner" style="margin-bottom:30px;">
+        <!-- Ajuste do margin-bottom para afastar indicadores das imagens -->
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="case-slide">
+            <img 
+              src="img/logic.avif" 
+              alt="Case Sucesso 1" 
+            />
+            <div class="case-text">
+              <h3>Empresa de Logística</h3>
+              <p>
+                Automação de rotas e rastreamento em tempo real, reduzindo atrasos em 40% 
+                e aumentando a satisfação dos clientes. Integração com plataformas de frete 
+                e relatórios de acompanhamento.
+              </p>
+              <a href="#link-case1" class="btn-primario mt-3" style="text-decoration:none;">
+                Ver Mais
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <div class="case-slide">
+            <img 
+              src="img/clinc.png" 
+              alt="Case Sucesso 2" 
+            />
+            <div class="case-text">
+              <h3>Rede de Clínicas</h3>
+              <p>
+                Sistema online de agendamentos e prontuários, otimizando atendimentos 
+                e reduzindo custos de papel. Melhor experiência para pacientes 
+                e redução de tempo ocioso.
+              </p>
+              <a href="#link-case2" class="btn-primario mt-3" style="text-decoration:none;">
+                Ver Mais
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <div class="case-slide">
+            <img 
+              src="img/fabric.png" 
+              alt="Case Sucesso 3" 
+            />
+            <div class="case-text">
+              <h3>Fábrica de Alimentos</h3>
+              <p>
+                Automação de relatórios de produção e controle de qualidade, aumentando a precisão 
+                e reduzindo erros. Supervisores obtiveram 30% mais eficiência na linha de produção.
+              </p>
+              <a href="#link-case3" class="btn-primario mt-3" style="text-decoration:none;">
+                Ver Mais
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="carousel-item">
+          <div class="case-slide">
+            <img 
+              src="img/roups.png" 
+              alt="Case Sucesso 4" 
+            />
+            <div class="case-text">
+              <h3>E-commerce de Roupas</h3>
+              <p>
+                Desenvolvimento de plataforma personalizada, integração com gateways 
+                de pagamento e automação de estoque, resultando em 25% de aumento 
+                nas conversões de vendas.
+              </p>
+              <a href="#link-case4" class="btn-primario mt-3" style="text-decoration:none;">
+                Ver Mais
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="carousel-item">
+          <div class="case-slide">
+            <img 
+              src="img/fintech.png" 
+              alt="Case Sucesso 5" 
+            />
+            <div class="case-text">
+              <h3>Fintech Local</h3>
+              <p>
+                Criação de APIs seguras e automação de fluxos de aprovação, 
+                garantindo compliance e escalabilidade para novos produtos financeiros.
+                Aumento de 40% na adesão de novos clientes.
+              </p>
+              <a href="#link-case5" class="btn-primario mt-3" style="text-decoration:none;">
+                Ver Mais
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 6 - Software para Padaria -->
+        <div class="carousel-item">
+          <div class="case-slide">
+            <img 
+              src="img/padaria.jpg" 
+              alt="Case Sucesso 6 - Software para Padaria"
+            />
+            <div class="case-text">
+              <h3>Software para Padaria</h3>
+              <p>
+                Sistema completo de gestão para produção e vendas em padarias,
+                controlando estoque de insumos, validade de produtos e fluxo de caixa.
+                Redução de perdas em 20% e maior rapidez no atendimento ao cliente.
+              </p>
+              <a href="#link-case6" class="btn-primario mt-3" style="text-decoration:none;">
+                Ver Mais
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 7 - Software de Comandas -->
+        <div class="carousel-item">
+          <div class="case-slide">
+            <img 
+              src="img/product.png" 
+              alt="Case Sucesso 7 - Software de Comandas"
+            />
+            <div class="case-text">
+              <h3>Software de Produtos</h3>
+              <p>
+                Aplicativo intuitivo para bares e restaurantes, eliminando papel e 
+                integrando impressões de pedidos diretamente na cozinha. 
+                Redução de erros em 35% e aumento da velocidade de serviço.
+              </p>
+              <a href="#link-case7" class="btn-primario mt-3" style="text-decoration:none;">
+                Ver Mais
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 8 - Frente de Caixa -->
+        <div class="carousel-item">
+          <div class="case-slide">
+            <img 
+              src="img/frente-caixa.jpg" 
+              alt="Case Sucesso 8 - Frente de Caixa"
+            />
+            <div class="case-text">
+              <h3>Sistema de Frente de Caixa</h3>
+              <p>
+                Solução completa para controle de vendas, emissão de cupons fiscais e gerenciamento 
+                de estoque em tempo real. Aumento de 15% na velocidade do atendimento e diminuição 
+                de filas nos horários de pico.
+              </p>
+              <a href="#link-case8" class="btn-primario mt-3" style="text-decoration:none;">
+                Ver Mais
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
+
+      <!-- Controles de navegação -->
+      <button 
+        class="carousel-control-prev" 
+        type="button" 
+        data-bs-target="#casesCarousel" 
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button 
+        class="carousel-control-next" 
+        type="button" 
+        data-bs-target="#casesCarousel" 
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+      </button>
     </div>
   </div>
 </section>
 
 <!-- CTA Final -->
-<section style="padding:60px 0; background: linear-gradient(135deg, #6A0572, #1A1A2E); text-align:center;">
+<section class="cta-final-dev">
   <div class="container">
-    <h2 style="color:#fff; margin-bottom:1rem;">Pronto para automatizar seu negócio?</h2>
-    <p style="color:#fff; max-width:600px; margin:0 auto 1.5rem;">
-      Fale conosco para desenvolver soluções sob medida, integrar sistemas e reduzir custos 
-      com processos totalmente automatizados.
+    <h2>Pronto para Integrar e Automatizar?</h2>
+    <p>
+      Fale com a Data Setti e descubra como o Desenvolvimento de Software 
+      e Automação pode levar sua empresa a um novo patamar de produtividade, 
+      escalabilidade e competitividade no mercado.
     </p>
-    <a href="index.html#contato" class="btn-primario" style="background:#fff; color:#6A0572;">
-      Fale com a Data Setti
-    </a>
+    <a href="#contato" class="btn-primario">Começar Projeto</a>
   </div>
 </section>
 
+<!-- Footer -->
 <footer class="footer">
   <div class="container footer-content">
     <p>Data Setti – Inteligência em Dados &copy; 2025. Todos os direitos reservados.</p>
+    <p>
+      <a href="index.html#sobre">Sobre</a> | 
+      <a href="index.html#servicos">Serviços</a> | 
+      <a href="index.html#projetos">Projetos</a> | 
+      <a href="index.html#depoimentos">Depoimentos</a> | 
+      <a href="index.html#contato">Contato</a>
+    </p>
   </div>
 </footer>
 
-<!-- AOS (se quiser) 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({ duration:800 });
-</script>
--->
+<!-- Bootstrap JS (inclui Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+s
