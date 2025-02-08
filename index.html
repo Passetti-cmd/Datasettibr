@@ -8,9 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data Setti - IA e Automação para Crescimento de Empresas</title>
   
-  <!-- Fonte Google (Poppins) -->
+  <!-- Google Font (Poppins) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" 
+    rel="stylesheet" 
+  />
 
   <!-- Ícones do Font Awesome -->
   <link
@@ -28,61 +31,71 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-  <!-- EmailJS -->
+  <!-- EmailJS (opcional, se estiver usando) -->
   <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
     (function(){
-        emailjs.init("SEU_USER_ID"); // Substitua pelo seu User ID do EmailJS
+        // emailjs.init("SEU_USER_ID"); // Substitua pelo seu User ID do EmailJS (opcional)
     })();
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
+  <!-- Typed.js para texto digitado no hero -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 <body>
   <!-- Header -->
   <header class="header" id="header">
-    <div class="container">
-      <div class="logo">
-        <a href="#">Data <span>Setti</span></a>
-      </div>
-      <nav class="nav">
-        <ul>
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#projetos">Projetos</a></li>
-          <li><a href="#depoimentos">Depoimentos</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-      </nav>
+  <div class="container">
+    <div class="logo">
+      <a href="#">Data <span>Setti</span></a>
     </div>
-  </header>
+
+    <!-- Ícone de menu hamburguer -->
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <nav class="nav">
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
 
   <!-- Banner (Hero) no topo, com gradiente animado -->
-<section class="hero-animado">
-  <div class="container hero-content">
-    <!-- Decor: se usar as formas flutuantes, insira aqui ou fora -->
-    
-    <h1 id="typed-text"></h1> <!-- Título gerado via JS -->
-    <p>A Data Setti impulsiona o crescimento da sua empresa unindo IA, automação e análise de dados.</p>
-    <a href="#contato" class="btn-primario cta-button">Solicitar Diagnóstico Gratuito</a>
-  </div>
-</section>
-<script>
-  document.addEventListener("DOMContentLoaded", function(){
-    var typed = new Typed("#typed-text", {
-      strings: [
-        "Lucre Mais Com Nossos Serviços",
-        "Tenha Melhor Gestao e Reduza Gastos",
-        "Desfrute de Insights e Inove com IA"
-      ],
-      typeSpeed: 50,   // velocidade para “digitar”
-      backSpeed: 70,   // velocidade para “apagar”
-      loop: false,      // repetir indefinidamente
-      showCursor: false
-    });
-  });
-</script>
+  <section class="hero-animado">
+    <div class="container hero-content">
+      <!-- Texto digitado com Typed.js -->
+      <h1 id="typed-text"></h1>
+      <p>
+        A Data Setti impulsiona o crescimento da sua empresa unindo IA, automação e análise de dados.
+      </p>
+      <a href="#contato" class="btn-primario cta-button">Solicitar Diagnóstico Gratuito</a>
+    </div>
+  </section>
 
+  <!-- Script do Typed.js (hero) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      var typed = new Typed("#typed-text", {
+        strings: [
+          "Lucre mais com nossos serviços",
+          "Tenha melhor gestão e reduza gastos",
+          "Aproveite insights e inove com IA"
+        ],
+        typeSpeed: 50,   // velocidade para “digitar”
+        backSpeed: 70,   // velocidade para “apagar”
+        loop: false,     // se quiser repetir, mude para true
+        showCursor: false
+      });
+    });
+  </script>
 
   <!-- Sobre a Empresa -->
   <section id="sobre" class="sobre">
@@ -90,14 +103,24 @@
       <div class="sobre-texto">
         <h2>Sobre a Data Setti</h2>
         <p>
-         Transformamos dados em <strong>decisões inteligentes </strong> para <strong>otimizar sua empresa e aumentar seus lucros</strong>, com IA e automação.
+          A <strong>Data Setti</strong> nasceu da união de <strong>paixão por tecnologia</strong> e 
+          <strong>foco em resultados</strong>. Transformamos dados em decisões mais inteligentes, 
+          melhorando processos e aumentando a <strong>lucratividade</strong> do seu negócio.
+        </p>
+        <p>
+          Nossa equipe une especialistas em <strong>IA</strong>, <strong>automação</strong> e 
+          <strong>desenvolvimento de software</strong> para entregar soluções que otimizam sua 
+          operação, reduzem custos e impulsionam o crescimento sustentável.
         </p>
         <ul class="sobre-lista">
           <li><i class="fas fa-chart-line"></i> Gestão de Estoque Inteligente</li>
           <li><i class="fas fa-robot"></i> Painéis e Insights Estratégicos</li>
-          <li><i class="fas fa-code"></i> Desenvolvimento de Software sob medida</li>
+          <li><i class="fas fa-code"></i> Desenvolvimento de Software Sob Medida</li>
         </ul>
-        <p><em>Missão:</em> Capacitar negócios a reduzir desperdícios e aumentar lucros de forma automatizada.</p>
+        <p>
+          <em>Missão:</em> Capacitar empresas de todos os tamanhos a inovar 
+          e se destacar no mercado, simplificando o uso de dados e tecnologia.
+        </p>
       </div>
       <div class="sobre-imagem">
         <img src="img/Free.png" alt="Sobre a Data Setti" />
@@ -109,22 +132,32 @@
   <section id="servicos" class="servicos">
     <div class="container">
       <h2>Nossos Serviços</h2>
+
+      <!-- Pequeno texto introdutório -->
+      <p class="servicos-intro" style="text-align:center; max-width:800px; margin:0 auto 2rem;">
+        Conheça nossas principais soluções e descubra como 
+        podemos <strong>automatizar processos</strong>, <strong>reduzir custos</strong> 
+        e <strong>elevar seus resultados</strong> por meio de dados e IA.
+      </p>
+
       <div class="servicos-cards">
         <!-- 1. Gestão de Estoque Inteligente -->
         <div class="servico-card">
           <img src="img/estoque.svg" alt="Gestão de Estoque" />
           <h3>Gestão de Estoque Inteligente</h3>
           <p>
-            Reduza desperdícios e aumente seus lucros! Nossa IA monitora seu estoque 24/7, previne perdas e sugere as melhores estratégias para sua empresa crescer sem desperdícios.
+            Reduza desperdícios e aumente seus lucros! Nossa IA monitora seu estoque 24/7, 
+            previne perdas e sugere as melhores estratégias para expandir sem estresse.
           </p>
           <a href="gestao-de-estoque.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
         </div>
         <!-- 2. Painéis e Insights Estratégicos -->
         <div class="servico-card">
           <img src="img/Growth.svg" alt="Insights Estratégicos" />
-          <h3>Painéis, Insights & Crescimento Estratégico</h3>
+          <h3>Painéis, Insights &amp; Crescimento</h3>
           <p>
-          dashboards interativos que ajudam sua empresa a visualizar novas oportunidades, otimizar campanhas e aumentar suas vendas com estratégias inteligentes e certeiras.
+            Dashboards interativos revelam oportunidades, otimizam campanhas e impulsionam
+            vendas com estratégias inteligentes e certeiras.
           </p>
           <a href="paineis-e-insights.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
         </div>
@@ -133,7 +166,8 @@
           <img src="img/software.svg" alt="Desenvolvimento de Software" />
           <h3>Desenvolvimento de Software</h3>
           <p>
-            Automação sob medida para sua empresa! Desenvolvemos soluções personalizadas para integrar dados, otimizar processos e aumentar a produtividade do seu negócio com tecnologia de ponta.
+            Automação sob medida! Criamos sistemas personalizados para integrar dados, 
+            agilizar rotinas e levar produtividade do seu negócio a outro patamar.
           </p>
           <a href="desenvolvimento-software.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
         </div>
@@ -142,7 +176,9 @@
           <img src="img/artificial.png" alt="Inteligência Artificial" />
           <h3>Estratégias Baseadas em IA</h3>
           <p>
-            Decisões mais inteligentes com Inteligência Artificial! Reduza erros humanos e aprimore sua estratégia com tecnologias avançadas de IA, proporcionando insights valiosos e automação eficiente.
+            Decisões mais inteligentes com Inteligência Artificial! 
+            Obtenha insights valiosos, reduza erros humanos e aprimore sua 
+            competitividade com tecnologia de ponta.
           </p>
           <a href="estrategias-ia.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
         </div>
@@ -153,7 +189,7 @@
   <!-- Seção Projetos (Carrossel) -->
   <section id="projetos" class="projetos">
     <div class="container">
-      <h2 class="animate">Empresas que confiam na Data Setti</h2>
+      <h2 class="animate">Empresas que Confiam na Data Setti</h2>
       <div class="carousel-container">
         <button class="carousel-btn prev" id="prevProj">&#10094;</button>
         <div class="carousel-wrapper" id="carouselProj">
@@ -162,38 +198,45 @@
             <h3>Otimização de Estoque</h3>
             <img src="img/Sesi.jpg" alt="Projeto 1">
             <p>
-              Indicadores em tempo real para decisões assertivas! Desenvolvemos dashboards personalizados para visualizar métricas de vendas e otimizar sua operação.
-              <br>SESI - Rede de Instituições Paraestatais Brasileiras
+              Indicadores em tempo real para decisões assertivas! 
+              Desenvolvemos dashboards personalizados para visualizar métricas de vendas e otimizar operações.
+              <br><strong>SESI</strong> - Rede de Instituições Paraestatais Brasileiras
             </p>
           </div>
           <div class="carousel-item">
             <h3>Automação Financeira</h3>
             <img src="img/emene_turismo.png" alt="Projeto 2">
             <p>
-              Redução de custos com inteligência de dados! Implementamos IA para prever demanda e reduzir desperdícios, aumentando a eficiência operacional.
-              <br>Emene Turismo - Viagens
+              Redução de custos com inteligência de dados! Implementamos IA para prever demanda e reduzir desperdícios.
+              <br><strong>Emene Turismo</strong> - Viagens
             </p>
           </div>
           <div class="carousel-item">
             <h3>Dashboard de Vendas</h3>
             <img src="img/precolandia.png" alt="Projeto 3">
             <p>
-              Menos burocracia e mais crescimento! Integramos relatórios financeiros automaticamente, aumentando a produtividade.
-              <br>Preçolandia - 50 Lojas no Brasil (Varejo)
+              Menos burocracia e mais crescimento! Integramos relatórios financeiros 
+              automaticamente, aumentando a produtividade.
+              <br><strong>Preçolandia</strong> - Varejo
             </p>
           </div>
           <div class="carousel-item">
             <h3>IA para Previsão</h3>
             <img src="img/acceptimidia.png" alt="Projeto 4">
             <p>
-              Antecipe tendências e fique à frente do mercado! Aplicamos modelos preditivos para gerar insights estratégicos.
-              <br>Accept Mídia - Marketing e Publicidade
+              Antecipe tendências e fique à frente do mercado! Aplicamos modelos preditivos 
+              para gerar insights estratégicos.
+              <br><strong>Accept Mídia</strong> - Marketing e Publicidade
             </p>
           </div>
           <div class="carousel-item">
-            <h3>Estategias para Crescimento</h3>
+            <h3>Estratégias para Crescimento</h3>
             <img src="img/smartec.png" alt="Projeto 5">
-            <p> Auxilio nas campanhas para alcançar numeros maiores com estatiscas e estrategias baseado nos dados das empresas</p><br>Smartec Metalurgica - Metalurgica  
+            <p>
+              Ajudamos na criação de campanhas de marketing baseadas em dados, 
+              alcançando maior público e gerando resultados rápidos.
+              <br><strong>Smartec Metalúrgica</strong> 
+            </p>
           </div>
         </div>
         <button class="carousel-btn next" id="nextProj">&#10095;</button>
@@ -201,20 +244,22 @@
     </div>
   </section>
 
-  <!-- (NOVO) BANNER NO MEIO -->
-<section class="banner-meio">
-  <div class="banner-meio-content">
-    <h2 class="banner-meio-title">
-      <span id="banner-text">Maximize Suas Oportunidades</span>
-    </h2>
-    <p class="banner-meio-subtitle">
-      Obtenha insights estratégicos e fique à frente da concorrência!
-    </p>
-    <a href="#contato" class="btn-primario">Solicite um diagnóstico gratuito agora!<a>
-  </div>
-</section>
+  <!-- BANNER MEIO -->
+  <section class="banner-meio">
+    <div class="banner-meio-content">
+      <h2 class="banner-meio-title">
+        <span id="banner-text">Maximize Suas Oportunidades</span>
+      </h2>
+      <p class="banner-meio-subtitle">
+        Obtenha insights estratégicos e fique à frente da concorrência!
+      </p>
+      <a href="#contato" class="btn-primario">
+        Solicite um diagnóstico gratuito agora!
+      </a>
+    </div>
+  </section>
 
-  <!-- Seção Depoimentos (Carrossel) -->
+  <!-- Depoimentos (Carrossel) -->
   <section id="depoimentos" class="depoimentos">
     <div class="depoimentos-overlay"></div>
     <div class="container">
@@ -226,13 +271,14 @@
           <div class="carousel-item">
             <div class="depo-content animate">
               <img src="img/depoimento_maria.jpg" alt="Foto da Maria" class="depo-foto">
-              <p>"A Data Setti revolucionou nossa gestão de estoque! Temos mais controle, menos desperdício e as vendas cresceram 20%!"</p>
+              <p>
+                "A Data Setti revolucionou nossa gestão de estoque! Temos mais controle, 
+                menos desperdício e as vendas cresceram 20%!"
+              </p>
               <span><strong>Camila Ferreira</strong> - Gerente de Loja</span>
               <div class="depo-stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
               </div>
             </div>
@@ -240,13 +286,14 @@
           <div class="carousel-item">
             <div class="depo-content animate">
               <img src="img/depoimento_joao.jpg" alt="Foto do João" class="depo-foto">
-              <p>"As automações e relatórios inteligentes reduziram nossos custos operacionais e aumentaram a eficiência!"</p>
+              <p>
+                "As automações e relatórios inteligentes reduziram nossos custos 
+                e aumentaram a eficiência!"
+              </p>
               <span><strong>Lucas Alves</strong> - Diretor Financeiro</span>
               <div class="depo-stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
               </div>
             </div>
@@ -254,27 +301,29 @@
           <div class="carousel-item">
             <div class="depo-content animate">
               <img src="img/depoimento_ana.jpg" alt="Foto da Ana" class="depo-foto">
-              <p>"A implementação de IA nos permitiu prever demandas com precisão, transformando nossa operação!"</p>
+              <p>
+                "A implementação de IA nos permitiu prever demandas com precisão, 
+                transformando nossa operação!"
+              </p>
               <span><strong>Ana Nogueira</strong> - CEO de Startup</span>
               <div class="depo-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                </div>
+              </div>
             </div>
           </div>
           <div class="carousel-item">
             <div class="depo-content animate">
-              <img src="img/depoimento_carlos.jpg" alt="Foto da carlos" class="depo-foto">
-              <p>"A implementação de IA nos permitiu prever demandas com precisão, transformando nossa operação!"</p>
-              <span><strong>Carlos Rosa</strong> - CEO de Startup</span>
+              <img src="img/depoimento_carlos.jpg" alt="Foto do Carlos" class="depo-foto">
+              <p>
+                "Nossos processos ficaram mais ágeis e confiáveis graças às soluções 
+                de automação da Data Setti."
+              </p>
+              <span><strong>Carlos Rosa</strong> - Diretor de Operações</span>
               <div class="depo-stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
               </div>
             </div>
@@ -285,118 +334,113 @@
     </div>
   </section>
 
-  <!-- BLOGZADA DE MALUCO -->
-<section id="blog" class="blog-section">
+  <!-- BLOG -->
+  <section id="blog" class="blog-section">
     <div class="container">
-        <h2 class="section-title">Últimos Posts do Blog</h2>
-        <div class="blog-grid">
-            <div class="blog-card">
-                <h3>Como a Inteligência Artificial Pode Reduzir Custos</h3>
-                <p class="blog-meta">Publicado em 05/02/2025 • <span class="blog-tag">IA</span></p>
-                <p>Descubra como a IA pode otimizar processos e reduzir desperdícios...</p>
-                <a href="post1.html" class="read-more">Leia o Blog</a>
-            </div>
-            <div class="blog-card">
-                <h3>5 Motivos Para Usar Power BI na Gestão</h3>
-                <p class="blog-meta">Publicado em 03/02/2025 • <span class="blog-tag">Power BI</span></p>
-                <p>como o Power BI pode transformar sua análise de dados...</p>
-                <a href="post2.html" class="read-more">Leia o Blog</a>
-            </div>
-            <div class="blog-card">
-                <h3>Gestão de Estoque Inteligente</h3>
-                <p class="blog-meta">Publicado em 01/02/2025 • <span class="blog-tag">Automação</span></p>
-                <p>Como evitar desperdícios e aumentar lucros com uma gestão eficaz...</p>
-                <a href="blog/post3.html" class="read-more">Leia o Blog</a>
-            </div>
-        </div>
-<div class="blog-footer">
-  <a href="Blog template.html" class="readmore-btn">
-    <span class="book-wrapper">
-      <!-- SVGs aqui -->
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="rgb(86, 69, 117)"
-        viewBox="0 0 126 75"
-        class="book"
-      >
-        <rect
-          stroke-width="3"
-          stroke="#fff"
-          rx="7.5"
-          height="70"
-          width="121"
-          y="2.5"
-          x="2.5"
-        ></rect>
-        <line stroke-width="3" stroke="#fff" y2="75" x2="63.5" x1="63.5"></line>
-        <path
-          stroke-linecap="round"
-          stroke-width="4"
-          stroke="#fff"
-          d="M25 20H50"
-        ></path>
-        <path
-          stroke-linecap="round"
-          stroke-width="4"
-          stroke="#fff"
-          d="M101 20H76"
-        ></path>
-        <path
-          stroke-linecap="round"
-          stroke-width="4"
-          stroke="#fff"
-          d="M16 30L50 30"
-        ></path>
-        <path
-          stroke-linecap="round"
-          stroke-width="4"
-          stroke="#fff"
-          d="M110 30L76 30"
-        ></path>
-      </svg>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 65 75"
-        class="book-page"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-width="4"
-          stroke="#fff"
-          d="M40 20H15"
-        ></path>
-        <path
-          stroke-linecap="round"
-          stroke-width="4"
-          stroke="#fff"
-          d="M49 30L15 30"
-        ></path>
-        <path
-          stroke-width="3"
-          stroke="#fff"
-          d="M2.5 2.5H55C59.1421 2.5 62.5 5.85786 62.5 10V65C62.5 69.1421 59.1421 72.5 55 72.5H2.5V2.5Z"
-        ></path>
-      </svg>
-    </span>
-    <span class="text"> Leia Mais</span>
-  </a>
-</div>
+      <h2 class="section-title">Últimos Posts do Blog</h2>
+      <p style="text-align:center; max-width:700px; margin:0 auto 2rem;">
+        Fique por dentro das novidades sobre Inteligência Artificial, 
+        automação e estratégias de crescimento para sua empresa.
+      </p>
 
+      <div class="blog-grid">
+        <div class="blog-card">
+            <h3>Como a Inteligência Artificial Pode Reduzir Custos</h3>
+            <p class="blog-meta">
+              Publicado em 05/02/2025 • <span class="blog-tag">IA</span>
+            </p>
+            <p>
+              Descubra como a IA pode otimizar processos e reduzir desperdícios...
+            </p>
+            <a href="post1.html" class="read-more">Leia o Blog</a>
         </div>
+        <div class="blog-card">
+            <h3>5 Motivos Para Usar Power BI na Gestão</h3>
+            <p class="blog-meta">
+              Publicado em 03/02/2025 • <span class="blog-tag">Power BI</span>
+            </p>
+            <p>
+              Saiba como o Power BI pode transformar sua análise de dados...
+            </p>
+            <a href="post2.html" class="read-more">Leia o Blog</a>
+        </div>
+        <div class="blog-card">
+            <h3>Gestão de Estoque Inteligente</h3>
+            <p class="blog-meta">
+              Publicado em 01/02/2025 • <span class="blog-tag">Automação</span>
+            </p>
+            <p>
+              Como evitar desperdícios e aumentar lucros com uma gestão eficaz...
+            </p>
+            <a href="post3.html" class="read-more">Leia o Blog</a>
+        </div>
+      </div>
+
+      <div class="blog-footer">
+        <a href="Blog template.html" class="readmore-btn">
+          <span class="book-wrapper">
+            <!-- SVGs ou ícones aqui, se desejar -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="rgb(86, 69, 117)"
+              viewBox="0 0 126 75"
+              class="book"
+            >
+              <rect
+                stroke-width="3"
+                stroke="#fff"
+                rx="7.5"
+                height="70"
+                width="121"
+                y="2.5"
+                x="2.5"
+              ></rect>
+              <line stroke-width="3" stroke="#fff" y2="75" x2="63.5" x1="63.5"></line>
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#fff"
+                d="M25 20H50"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#fff"
+                d="M101 20H76"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#fff"
+                d="M16 30L50 30"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-width="4"
+                stroke="#fff"
+                d="M110 30L76 30"
+              ></path>
+            </svg>
+          </span>
+          <span class="text"> Leia Mais</span>
+        </a>
+      </div>
     </div>
-</section>
+  </section>
 
   <!-- Contato -->
   <section id="contato" class="contato">
     <div class="container">
       <h2>Entre em Contato</h2>
       <p class="contato-chamada">
-        "Entre em contato e veja como podemos <strong>transformar</strong> seus dados em <strong>crescimento</strong>!"
+        Entre em contato e veja como podemos <strong>transformar</strong> seus dados em <strong>crescimento</strong>!
       </p>
-      <p>Oferecemos diagnóstico gratuito para mostrar como nossos insights podem turbinar o seu negócio!</p><br><br>
+      <p>
+        Oferecemos diagnóstico gratuito para mostrar como nossos insights podem turbinar o seu negócio!
+      </p>
+      <br><br>
 
-     <div class="contato-box">
+      <div class="contato-box">
         <form action="#" method="post" class="form-contato">
           <div class="form-group">
             <label for="nome">Nome</label>
@@ -414,16 +458,17 @@
             <label for="mensagem">Mensagem</label>
             <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
           </div>
-          <!-- From Uiverse.io by adamgiebl --> 
-           <button class="btn-contato">
-             <div class="svg-wrapper">
-           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="white"/>
-        </svg>
-         </div>
-          <span>Enviar</span>
+          <!-- Botão de Enviar (SVG animado) -->
+          <button class="btn-contato">
+            <div class="svg-wrapper">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="white"/>
+              </svg>
+            </div>
+            <span>Enviar</span>
           </button>
         </form>
+        
         <div class="contato-info">
           <h3>Vamos conversar?</h3>
           <p><strong>E-mail:</strong> contato@datasetti.com</p>
@@ -467,13 +512,12 @@
     <img src="img/whatsapp_float.svg" alt="WhatsApp" />
   </a>
 
-  <!-- Script JS principal -->
+  <!-- Script JS principal (script.js) -->
   <script src="script.js"></script>
 
   <!-- Animação do banner-meio (GSAP) -->
   <script>
     gsap.registerPlugin(ScrollTrigger);
-
     gsap.from(".banner-meio-content", {
       scrollTrigger: {
         trigger: ".banner-meio",
