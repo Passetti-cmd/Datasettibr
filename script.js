@@ -106,3 +106,12 @@ document.addEventListener("DOMContentLoaded", function() {
     setInterval(mudarTexto, 3000); // Troca a cada 3 segundos
 
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menu-toggle");
+  const navUl = document.querySelector(".nav ul");
+
+  menuToggle.addEventListener("click", () => {
+    // Ativa ou desativa a classe .active em .nav ul
+    navUl.classList.toggle("active");
+  });
+});
