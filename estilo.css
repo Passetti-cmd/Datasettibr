@@ -234,7 +234,6 @@ section {
 }
 .servico-card h3 {
     margin-bottom: 0.8rem;
-    font-size: 1.1rem;
 }
 .servico-card p {
     margin-bottom: 1.2rem;
@@ -833,4 +832,100 @@ section {
   font-weight: 600;
   font-size: 15px;
   color: rgb(255, 255, 255);
+}
+
+/* ... seu RESET e variáveis ... */
+
+/* ========== HEADER ========== */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(4px);
+  transition: background 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Se desejar, adicione flex-wrap se precisar */
+}
+
+.logo a {
+  font-size: 1.7rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.logo span {
+  color: var(--color-roxo-dark);
+}
+
+/* O menu em telas grandes */
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+.nav ul li a:hover {
+  color: var(--color-roxo-dark);
+}
+
+/* O ícone hamburguer, escondido no desktop */
+.menu-toggle {
+  display: none;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* ========== MEDIA QUERIES PARA MOBILE ========== */
+@media (max-width: 768px) {
+  /* Torna o .menu-toggle visível e o .nav ul escondido por padrão */
+  .menu-toggle {
+    display: block; /* Mostra o hamburger no mobile */
+    z-index: 1001;  /* acima do .nav ul */
+  }
+
+  /* Em telas pequenas, vamos esconder o ul do menu e exibir só o ícone */
+  .nav ul {
+    position: absolute;
+    top: 70px;          /* abaixo do header */
+    right: 0;
+    background: rgba(26, 26, 46, 0.95);
+    backdrop-filter: blur(4px);
+    flex-direction: column;
+    gap: 1rem;
+    width: 180px;
+    padding: 1rem;
+    transform: translateX(100%); /* some da tela */
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Sempre que tiver .active, aparece na tela */
+  .nav ul.active {
+    transform: translateX(0%);
+  }
+
+  /* Ajuste o link para ocupar a linha toda no mobile */
+  .nav ul li {
+    margin: 0;
+  }
+  .nav ul li a {
+    display: block;
+    padding: 0.5rem;
+  }
 }
