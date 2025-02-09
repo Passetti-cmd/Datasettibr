@@ -1,24 +1,236 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Como a Inteligência Artificial Pode Reduzir Custos - Data Setti</title>
-  <link rel="stylesheet" href="poststyle.css" />
+  <title>Como a Inteligência Artificial Pode Reduzir Custos | Data Setti</title>
+  
+  <!-- Google Font: Poppins -->
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" 
+    rel="stylesheet"
+  />
+
+  <!-- Observação: Se usar Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+
+  <!-- Estilos internos (ou remova para poststyle.css) -->
+  <style>
+    :root {
+      --color-azul-noite: #1A1A2E; 
+      --color-roxo: #6A0572;
+      --color-preto: #121212;
+      --color-cinza-escuro: #2E2E2E;
+      --color-branco: #ffffff;
+      --font-base: 'Poppins', sans-serif;
+      --gradient-roxo: linear-gradient(135deg, #6A0572, #1A1A2E);
+    }
+
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-base);
+      background-color: var(--color-azul-noite);
+      color: var(--color-branco);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* ========== HEADER FIXO NO TOPO ========== */
+    header {
+      position: fixed;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 999;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+    .logo a {
+      text-decoration: none;
+      color: var(--color-branco);
+    }
+    .logo span {
+      color: var(--color-roxo);
+    }
+    nav a {
+      color: var(--color-branco);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--color-roxo);
+    }
+
+    /* Espaço para compensar o header fixo */
+    body::before {
+      content: "";
+      display: block;
+      height: 60px;
+      width: 100%;
+    }
+
+    /* ========== BANNER (inner-banner) ========== */
+    .inner-banner {
+      background: var(--gradient-roxo);
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .inner-banner .banner-text h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ========== CONTAINER PRINCIPAL DO POST ========== */
+    .container {
+      display: flex;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    /* ========== CONTEÚDO DO POST (coluna principal) ========== */
+    .post-content {
+      flex: 3;
+      background: #2E2E2E;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .post-meta {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+    .post-meta span {
+      margin-right: 1rem;
+    }
+    .post-content p {
+      margin-bottom: 1.2rem;
+      color: #ccc;
+      line-height: 1.5;
+    }
+    .post-content img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1.2rem 0;
+    }
+    .post-content h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--color-roxo);
+    }
+
+    /* ========== SIDEBAR (coluna direita) ========== */
+    .sidebar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .sidebar section {
+      background: #2E2E2E;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .sidebar h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--color-roxo);
+    }
+    .sidebar .widget p,
+    .sidebar .widget li {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+    .sidebar .widget a {
+      color: var(--color-roxo);
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
+    .sidebar .widget a:hover {
+      color: #8A0A94;
+    }
+    .sidebar .widget ul {
+      list-style: none;
+      padding-left: 1rem; /* se quiser dar um recuo */
+    }
+    .sidebar .widget ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+      background: #2E2E2E;
+      color: #fff;
+    }
+
+    /* ========== RESPONSIVIDADE ========== */
+    @media (max-width: 992px) {
+      .container {
+        flex-direction: column;
+      }
+      .post-content {
+        margin-bottom: 2rem;
+      }
+      .sidebar {
+        flex-direction: column;
+      }
+    }
+    @media (max-width: 600px) {
+      nav a {
+        margin-left: 1rem;
+      }
+      .inner-banner .banner-text h1 {
+        font-size: 1.6rem;
+      }
+      .post-content h2 {
+        font-size: 1.15rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- HEADER -->
   <header>
-    <div class="logo">Data Setti</div>
+    <div class="logo">
+      <a href="index.html">Data <span>Setti</span></a>
+    </div>
     <nav>
-   <a href="index.html#home">Home</a>
-      <a href="Blog Template.html#sobre">Blog</a>
+      <a href="index.html#home">Home</a>
+      <a href="Blog template.html">Blog</a>
       <a href="index.html#contato">Contato</a>
       <a href="index.html#servicos">Serviços</a>
     </nav>
   </header>
   
-  <!-- BANNER INTERNO (DESTAQUE DO POST) -->
+  <!-- BANNER INTERNO -->
   <section class="inner-banner">
     <div class="banner-text">
       <h1>Como a Inteligência Artificial Pode Reduzir Custos</h1>
@@ -27,7 +239,7 @@
   
   <!-- CONTAINER PRINCIPAL -->
   <div class="container">
-    <!-- CONTEÚDO DO POST -->
+    <!-- COLUNA PRINCIPAL (POST) -->
     <div class="post-content">
       <div class="post-meta">
         <span>Publicado em 05/02/2025</span> • 
@@ -35,49 +247,67 @@
       </div>
       
       <p>
-        A inteligência artificial (IA) está revolucionando a forma como as empresas operam. Com a automação de processos, análise preditiva e aprendizado de máquina, a IA tem se tornado uma ferramenta indispensável para reduzir custos e aumentar a eficiência operacional. Mas como exatamente essa tecnologia impacta os negócios?
+        A inteligência artificial (IA) está revolucionando a forma como as empresas operam.
+        Com a automação de processos, análise preditiva e aprendizado de máquina, a IA tem se
+        tornado uma ferramenta indispensável para reduzir custos e aumentar a eficiência 
+        operacional. Mas como exatamente essa tecnologia impacta os negócios?
       </p>
       
-      <img src="post-imagem.jpg" alt="Ilustração da Inteligência Artificial">
+      <img src="post_imagem.jpg" alt="Ilustração da Inteligência Artificial">
       
       <h2>1. Automação de Processos e Eficiência Operacional</h2>
       <p>
-        Um dos principais benefícios da IA é a automação de tarefas repetitivas e burocráticas. Empresas que adotam IA em setores administrativos conseguem reduzir custos com mão de obra e minimizar erros humanos, tornando os processos mais ágeis e precisos.
+        Um dos principais benefícios da IA é a automação de tarefas repetitivas e burocráticas.
+        Empresas que adotam IA em setores administrativos conseguem reduzir custos com mão de obra 
+        e minimizar erros humanos, tornando os processos mais ágeis e precisos.
       </p>
       
       <h2>2. Redução de Desperdícios e Otimização de Recursos</h2>
       <p>
-        No setor industrial e varejista, a IA é usada para prever demanda, ajustar estoques e evitar desperdícios. Empresas que implementaram sistemas de IA relataram uma redução média de 30% nos custos operacionais devido à melhor alocação de recursos e à redução de estoques desnecessários.
+        No setor industrial e varejista, a IA é usada para prever demanda, ajustar estoques
+        e evitar desperdícios. Empresas que implementaram sistemas de IA relataram uma redução
+        média de 30% nos custos operacionais graças a uma alocação de recursos mais eficaz.
       </p>
       
       <h2>3. Análise de Dados para Tomada de Decisão Estratégica</h2>
       <p>
-        A IA possibilita a coleta e análise de grandes volumes de dados em tempo real. Isso permite que gestores tomem decisões mais assertivas, prevendo tendências e ajustando estratégias de forma mais eficiente.
+        A IA possibilita a coleta e análise de grandes volumes de dados em tempo real. 
+        Isso permite que gestores tomem decisões mais assertivas, prevendo tendências 
+        e ajustando estratégias de maneira ágil e eficiente.
       </p>
       
       <h2>4. Atendimento ao Cliente Inteligente</h2>
       <p>
-        Com o uso de chatbots e assistentes virtuais, empresas conseguem reduzir custos operacionais e melhorar a experiência do cliente. A IA proporciona um atendimento ágil e disponível 24/7, sem necessidade de uma grande equipe de suporte.
+        Com o uso de chatbots e assistentes virtuais, as empresas conseguem reduzir custos
+        e melhorar a experiência do cliente. A IA proporciona um atendimento ágil e disponível
+        24/7, sem necessidade de uma grande equipe de suporte.
       </p>
       
       <h2>Conclusão</h2>
       <p>
-        A Inteligência Artificial é um investimento estratégico para empresas que buscam reduzir custos e melhorar sua competitividade. Com soluções personalizadas, é possível otimizar processos, prever cenários e garantir maior eficiência operacional. 
+        A Inteligência Artificial é um investimento estratégico para empresas que buscam
+        reduzir custos e melhorar sua competitividade. Com soluções personalizadas, 
+        é possível otimizar processos, prever cenários e garantir maior eficiência operacional.
       </p>
       <p>
-        🚀 <strong>Quer implementar IA no seu negócio?</strong> Entre em contato com a Data Setti e descubra como podemos ajudar!
+         <strong>Quer implementar IA no seu negócio?</strong> Entre em contato com a 
+        Data Setti e descubra como podemos ajudar!
       </p>
     </div>
     
-    <!-- SIDEBAR -->
+    <!-- SIDEBAR (coluna direita) -->
     <aside class="sidebar">
       <section class="about-widget">
         <h3>Sobre a Data Setti</h3>
         <div class="widget">
-          <p>A Data Setti é referência em tecnologia e insights para transformar seu negócio. Saiba mais sobre nossos serviços e inovações.</p>
+          <p>
+            A Data Setti é referência em tecnologia e insights para transformar 
+            o seu negócio. Conheça mais sobre nossos serviços e inovações.
+          </p>
           <a href="index.html#home">Conheça Mais</a>
         </div>
       </section>
+      
       <section class="recent-widget">
         <h3>Posts Recentes</h3>
         <div class="widget">
@@ -88,6 +318,7 @@
           </ul>
         </div>
       </section>
+      
       <section class="categories-widget">
         <h3>Categorias</h3>
         <div class="widget">
