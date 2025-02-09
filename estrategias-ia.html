@@ -35,6 +35,7 @@
       --font-base: 'Poppins', sans-serif;
     }
 
+    /* RESET BÁSICO */
     * {
       margin: 0;
       padding: 0;
@@ -46,14 +47,14 @@
       color: var(--color-branco);
       line-height: 1.6;
       padding-top: 70px; /* Espaço para header fixo */
-      overflow-x: hidden;
+      overflow-x: hidden; /* evita scroll horizontal */
     }
     a {
       text-decoration: none;
       color: inherit;
     }
 
-    /* HEADER */
+    /* HEADER FIXO */
     .header {
       position: fixed;
       top: 0;
@@ -75,25 +76,115 @@
       font-size: 1.7rem;
       font-weight: 600;
       color: var(--color-branco);
+      line-height: 70px;
     }
     .logo span {
       color: var(--color-roxo-dark);
     }
-    .nav ul {
+
+    /* MENU DESKTOP (telas >= 769px) */
+    .nav-desktop ul {
       list-style: none;
       display: flex;
       gap: 1.5rem;
     }
-    .nav ul li a {
+    .nav-desktop ul li a {
       color: var(--color-branco);
       transition: color 0.3s;
       line-height: 70px;
     }
-    .nav ul li a:hover {
+    .nav-desktop ul li a:hover {
       color: var(--color-roxo-dark);
     }
+    @media (max-width: 768px) {
+      .nav-desktop {
+        display: none; /* some no mobile */
+      }
+    }
 
-    /* HERO */
+    /* BOTÃO HAMBÚRGUER (MOBILE) */
+    .hamburger {
+      display: none; /* não aparece em desktop */
+      font-size: 1.8rem;
+      background: var(--color-roxo-dark);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 5px;
+    }
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block; /* aparece no mobile */
+      }
+    }
+
+    /* OVERLAY E SIDE MENU (MOBILE) */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 998;
+    }
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -250px; /* fora da tela */
+      width: 250px;
+      height: 100%;
+      background-color: #1A1A2E;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+      transition: right 0.3s ease;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 40px 20px;
+    }
+    .side-menu.active {
+      right: 0; /* entra na tela */
+    }
+    .close-btn {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .side-menu nav ul {
+      list-style: none;
+      width: 100%;
+    }
+    .side-menu nav ul li a {
+      display: block;
+      padding: 10px 0;
+      font-size: 1.1rem;
+      color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: color 0.3s;
+    }
+    .side-menu nav ul li a:hover {
+      color: var(--color-roxo-dark);
+    }
+    @media (min-width: 769px) {
+      .side-menu,
+      .overlay {
+        display: none; /* sem side menu no desktop */
+      }
+    }
+
+    /* HERO IA */
     .hero-ia {
       position: relative;
       height: 70vh;
@@ -174,28 +265,24 @@
       font-size: 1rem;
       line-height: 1.5;
     }
-/* Estilo padrão (desktop) */
-.bullets-ia {
-  display: flex;
-  flex-wrap: nowrap; /* Mantém em uma linha no desktop */
-  justify-content: space-between;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-/* Ajuste para mobile */
-@media (max-width: 768px) {
-  .bullets-ia {
-    flex-wrap: wrap;          /* Permite quebra de linha */
-    justify-content: center;  /* Centraliza os cards */
-  }
-  .bullet-item {
-    flex: 1 1 100%;           /* Faz o card ocupar 100% do container (até o max-width) */
-    max-width: 320px;         /* Limita a largura máxima do card */
-    margin-bottom: 2rem;      /* Espaço entre as linhas, se necessário */
-  }
-}
-
+    .bullets-ia {
+      display: flex;
+      flex-wrap: nowrap; /* linha única no desktop */
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 768px) {
+      .bullets-ia {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .bullet-item {
+        flex: 1 1 100%;
+        max-width: 320px;
+        margin-bottom: 2rem;
+      }
+    }
     .bullet-item {
       background-color: #1A1A2E;
       border-radius: 8px;
@@ -221,81 +308,81 @@
       color: #ccc;
     }
 
-    /* Seção de Fotos Extras */
-    .fotos-ia {
-      background-color: var(--color-preto);
-      padding: 60px 20px;
+    /* ACTION GALLERY (IA em Ação) */
+    .action-gallery {
+      background-color: #1A1A2E;
+      padding: 40px 0;
     }
-    .fotos-ia h2 {
-      text-align: center;
-      color: var(--color-roxo-dark);
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
-      font-weight: 600;
-    }
-    .fotos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .foto-card img {
-      width: 100%;
-      border-radius: 8px;
-      object-fit: cover;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-      transition: transform 0.3s;
-    }
-    .foto-card img:hover {
-      transform: scale(1.05);
-    }
-
-    /* COMO FUNCIONA */
-    .como-funciona {
-      background-color: var(--color-azul-noite);
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .como-funciona h2 {
-      color: var(--color-roxo-dark);
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
-    }
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 2rem;
+    .action-gallery .container {
+      width: 90%;
       max-width: 1200px;
       margin: 0 auto;
     }
-    .step-card {
-      background: #1A1A2E;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: transform 0.3s;
+    .action-gallery h2 {
       text-align: center;
-    }
-    .step-card:hover {
-      transform: translateY(-5px);
-    }
-    .step-card i {
+      color: var(--color-roxo-dark);
       font-size: 2rem;
-      color: var(--color-roxo-dark);
-      margin-bottom: 0.8rem;
+      margin-bottom: 2rem;
     }
-    .step-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--color-roxo-dark);
-      font-weight: 600;
+    .action-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
     }
-    .step-card p {
-      font-size: 0.95rem;
+    .action-item.reverse {
+      flex-direction: row-reverse;
+    }
+    .action-item:nth-child(1) { animation-delay: 0.2s; }
+    .action-item:nth-child(2) { animation-delay: 0.4s; }
+    .action-item:nth-child(3) { animation-delay: 0.6s; }
+    .action-item:nth-child(4) { animation-delay: 0.8s; }
+    .action-image, .action-text {
+      flex: 1;
+      padding: 20px;
+    }
+    .action-image img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+    .action-image img:hover {
+      transform: scale(1.05);
+    }
+    .action-text h3 {
+      font-size: 1.8rem;
+      color: var(--color-roxo-dark);
+      margin-bottom: 15px;
+    }
+    .action-text p {
+      font-size: 1.1rem;
+      line-height: 1.5;
       color: #ccc;
-      line-height: 1.4;
+      text-align: justify;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      .action-item {
+        flex-direction: column !important;
+      }
+      .action-item.reverse {
+        flex-direction: column !important;
+      }
+      .action-image, .action-text {
+        padding: 10px;
+      }
+      .action-text h3 {
+        font-size: 1.4rem;
+      }
+      .action-text p {
+        font-size: 1rem;
+      }
     }
 
     /* PROJETOS OPENAI */
@@ -437,6 +524,7 @@
       color: var(--color-roxo-dark);
     }
 
+    /* Ajustes de responsividade */
     @media (max-width: 768px) {
       .hero-content h1 {
         font-size: 2.2rem;
@@ -452,155 +540,19 @@
         margin-top: 1rem;
       }
     }
-    .action-gallery {
-  background-color: #1A1A2E;
-  padding: 40px 0;
-}
-
-.action-gallery .container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.action-gallery h2 {
-  text-align: center;
-  color: var(--color-roxo-dark);
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
-.action-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 40px;
-  opacity: 0;             /* Se quiser animação, comece em 0 */
-  transform: translateY(20px);
-  animation: fadeInUp 1s forwards;
-}
-.action-item:nth-child(1) { animation-delay: 0.2s; }
-.action-item:nth-child(2) { animation-delay: 0.4s; }
-.action-item:nth-child(3) { animation-delay: 0.6s; }
-.action-item:nth-child(4) { animation-delay: 0.8s; }
-/* Ajuste delays conforme quantos itens tiver */
-
-.action-item.reverse {
-  flex-direction: row-reverse;
-}
-
-.action-image, .action-text {
-  flex: 1;
-  padding: 20px;
-}
-
-.action-image img {
-  width: 100%;
-  border-radius: 10px;
-  transition: transform 0.3s;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-}
-.action-image img:hover {
-  transform: scale(1.05);
-}
-
-.action-text h3 {
-  font-size: 1.8rem;
-  color: var(--color-roxo-dark);
-  margin-bottom: 15px;
-}
-.action-text p {
-  font-size: 1.1rem;
-  line-height: 1.5;
-  color: #ccc;
-  text-align: justify;
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Se precisar de responsividade extra */
-@media (max-width: 768px) {
-  .action-item {
-    flex-direction: column !important;
-  }
-  .action-item.reverse {
-    flex-direction: column !important;
-  }
-  .action-image, .action-text {
-    padding: 10px;
-  }
-  .action-text h3 {
-    font-size: 1.4rem;
-  }
-  .action-text p {
-    font-size: 1rem;
-  }
-}
-/* Ocultar o menu e mostrar só o ícone no mobile */
-.menu-toggle {
-  display: none;               /* desktop: escondido */
-  color: #fff;
-  font-size: 1.8rem;
-  cursor: pointer;
-  z-index: 1001;               /* acima do nav ul */
-}
-
-/* Por padrão, a nav ul fica normal em desktop */
-.nav ul {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  align-items: center;
-  height: 100%;
-}
-
-/* No mobile, transformamos em menu “fora da tela” */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;          /* aparece no mobile */
-  }
-
-  .nav ul {
-    position: absolute;
-    top: 70px;               /* abaixo do header fixo */
-    right: 0;
-    background: rgba(26, 26, 46, 0.95);
-    backdrop-filter: blur(4px);
-    flex-direction: column;
-    gap: 1rem;
-    width: 180px;
-    padding: 1rem;
-    transform: translateX(100%); /* começa “escondido” */
-    transition: transform 0.3s ease-in-out;
-  }
-  .nav ul.active {
-    transform: translateX(0%);   /* quando ativo, aparece */
-  }
-  .nav ul li a {
-    display: block;     /* para “clicar” no link */
-    padding: 0.5rem;
-  }
-}
-
   </style>
 </head>
 <body>
 
-<!-- Header -->
+<!-- HEADER -->
 <header class="header" id="header">
   <div class="container">
     <div class="logo">
-      <a href="index.html#home">Data <span>Setti</span></a>
+      <a href="#home">Data <span>Setti</span></a>
     </div>
 
-    <!-- Ícone hamburguer -->
-    <div class="menu-toggle" id="menu-toggle">
-      <i class="fas fa-bars"></i>
-    </div>
-
-    <nav class="nav">
+    <!-- MENU DESKTOP (telas grandes) -->
+    <nav class="nav-desktop">
       <ul>
         <li><a href="index.html#home">Home</a></li>
         <li><a href="index.html#sobre">Sobre</a></li>
@@ -609,12 +561,31 @@
         <li><a href="index.html#contato">Contato</a></li>
       </ul>
     </nav>
+
+    <!-- BOTÃO HAMBÚRGUER (mobile) -->
+    <button class="hamburger" id="hamburger">
+      <i class="fas fa-bars"></i>
+    </button>
   </div>
 </header>
 
+<!-- OVERLAY E SIDE-MENU (somente mobile) -->
+<div class="overlay" id="overlay"></div>
+<div class="side-menu" id="sideMenu">
+  <button class="close-btn" id="closeBtn"><i class="fas fa-times"></i></button>
+  <nav>
+    <ul>
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#sobre">Sobre</a></li>
+      <li><a href="index.html#servicos">Serviços</a></li>
+      <li><a href="index.html#projetos">Projetos</a></li>
+      <li><a href="index.html#contato">Contato</a></li>
+    </ul>
+  </nav>
+</div>
 
 <!-- Hero IA -->
-<section class="hero-ia">
+<section class="hero-ia" id="home">
   <video class="hero-video" autoplay muted loop>
     <source src="videos/IA.mp4" type="video/mp4">
     Seu navegador não suporta vídeo.
@@ -630,7 +601,7 @@
   </div>
 </section>
 
-<!-- Seção: IA e ML - Destaques -->
+<!-- SEÇÃO: IA e ML - Destaques -->
 <section class="section-ia">
   <div class="container">
     <h2>Por que Investir em IA e Machine Learning?</h2>
@@ -670,7 +641,6 @@
 <section class="action-gallery" id="como-funciona">
   <div class="container">
     <h2>IA em Ação: Como Funciona?</h2>
-
     <!-- Item 1 -->
     <div class="action-item">
       <div class="action-image">
@@ -683,8 +653,7 @@
         </p>
       </div>
     </div>
-
-    <!-- Item 2 (reverse) -->
+    <!-- Item 2 -->
     <div class="action-item reverse">
       <div class="action-image">
         <img src="img/model.jpg" alt="Modelos de IA Personalizados">
@@ -696,7 +665,6 @@
         </p>
       </div>
     </div>
-
     <!-- Item 3 -->
     <div class="action-item">
       <div class="action-image">
@@ -709,8 +677,7 @@
         </p>
       </div>
     </div>
-
-    <!-- Item 4 (reverse) -->
+    <!-- Item 4 -->
     <div class="action-item reverse">
       <div class="action-image">
         <img src="img/Ia_cel.webp" alt="Integração com Ferramentas">
@@ -722,7 +689,6 @@
         </p>
       </div>
     </div>
-
     <!-- Item 5 -->
     <div class="action-item">
       <div class="action-image">
@@ -735,8 +701,7 @@
         </p>
       </div>
     </div>
-
-    <!-- Item 6 (reverse) -->
+    <!-- Item 6 -->
     <div class="action-item reverse">
       <div class="action-image">
         <img src="img/analysbussines.jpeg" alt="Como as Empresas Usam a IA">
@@ -748,8 +713,7 @@
         </p>
       </div>
     </div>
-
-    <!-- Item 7 (reverse) -->
+    <!-- Item 7 -->
     <div class="action-item">
       <div class="action-image">
         <img src="img/IAhuman.png" alt="Objetivo Final">
@@ -876,12 +840,29 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- SCRIPT PARA O MENU LATERAL (MOBILE) -->
 <script>
-  const menuToggle = document.getElementById("menu-toggle");
-  const navUl = document.querySelector(".nav ul");
+  const hamburger = document.getElementById("hamburger");
+  const sideMenu = document.getElementById("sideMenu");
+  const closeBtn = document.getElementById("closeBtn");
+  const overlay = document.getElementById("overlay");
 
-  menuToggle.addEventListener("click", () => {
-    navUl.classList.toggle("active"); 
+  // Abre o side menu
+  hamburger.addEventListener("click", () => {
+    sideMenu.classList.add("active");
+    overlay.classList.add("active");
+  });
+
+  // Fecha ao clicar no X
+  closeBtn.addEventListener("click", () => {
+    sideMenu.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+
+  // Fecha ao clicar no overlay
+  overlay.addEventListener("click", () => {
+    sideMenu.classList.remove("active");
+    overlay.classList.remove("active");
   });
 </script>
 
