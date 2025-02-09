@@ -174,13 +174,28 @@
       font-size: 1rem;
       line-height: 1.5;
     }
-    .bullets-ia {
+/* Estilo padrão (desktop) */
+.bullets-ia {
   display: flex;
-  flex-wrap: nowrap; /* Altera para nowrap para evitar que os itens quebrem linha */
-  justify-content: space-between; /* Ajusta o espaçamento entre os itens */
+  flex-wrap: nowrap; /* Mantém em uma linha no desktop */
+  justify-content: space-between;
   gap: 2rem;
   margin-top: 2rem;
 }
+
+/* Ajuste para mobile */
+@media (max-width: 768px) {
+  .bullets-ia {
+    flex-wrap: wrap;          /* Permite quebra de linha */
+    justify-content: center;  /* Centraliza os cards */
+  }
+  .bullet-item {
+    flex: 1 1 100%;           /* Faz o card ocupar 100% do container (até o max-width) */
+    max-width: 320px;         /* Limita a largura máxima do card */
+    margin-bottom: 2rem;      /* Espaço entre as linhas, se necessário */
+  }
+}
+
     .bullet-item {
       background-color: #1A1A2E;
       border-radius: 8px;
