@@ -1,15 +1,244 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <link rel="stylesheet" href="blogstyle.css" />
-    </head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Blog - Data Setti | IA, Automação e Insights para Negócios">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Data Setti</title>
+
+  <!-- Google Font: Poppins -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome para ícones -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+
+  <style>
+    :root {
+      /* Paleta de cores */
+      --color-azul-noite: #1A1A2E;
+      --color-roxo: #6A0572;
+      --color-preto: #121212;
+      --color-branco: #ffffff;
+      --color-cinza-escuro: #2E2E2E;
+      --color-roxo-escuro: #470457; /* se quiser variações */
+      --gradient-roxo: linear-gradient(135deg, #6A0572, #1A1A2E);
+
+      /* Fonte */
+      --font-base: "Poppins", sans-serif;
+    }
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: var(--font-base);
+      background-color: var(--color-azul-noite);
+      color: var(--color-branco);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* ========== HEADER FIXO NO TOPO ========== */
+    header {
+      position: fixed;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 999;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+    .logo a {
+      text-decoration: none;
+      color: var(--color-branco);
+    }
+    .logo span {
+      color: var(--color-roxo);
+    }
+    nav a {
+      color: var(--color-branco);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--color-roxo);
+    }
+
+    /* Espaço para compensar o header fixo */
+    body::before {
+      content: "";
+      display: block;
+      height: 60px;
+      width: 100%;
+    }
+
+    /* ========== BANNER DE DESTAQUE (Hero) ========== */
+    .banner {
+      background: linear-gradient(90deg, #6A0572, #1A1A2E);
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .banner-text {
+      max-width: 700px;
+      margin: auto;
+    }
+    .banner-text h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .banner-text p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* ========== CONTAINER PRINCIPAL ========== */
+    .content-container {
+      display: flex;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 2rem auto; /* centraliza */
+      padding: 0 1rem;   /* espacinho lateral */
+    }
+
+    /* ========== COLUNA ESQUERDA: POSTS ========== */
+    .blog-posts {
+      flex: 3;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .blog-posts article {
+      background-color: #2E2E2E;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .blog-posts article h2 {
+      font-size: 1.4rem;
+      color: var(--color-roxo);
+      margin-bottom: 0.5rem;
+    }
+    .blog-posts article p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #ccc;
+    }
+    .blog-posts article a {
+      background: none;
+      border: 1px solid var(--color-roxo);
+      color: var(--color-roxo);
+      padding: 6px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s;
+    }
+    .blog-posts article a:hover {
+      background: var(--color-roxo);
+      color: #fff;
+    }
+
+    /* ========== COLUNA DIREITA: SIDEBAR ========== */
+    .sidebar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .sidebar section {
+      background: #2E2E2E;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .sidebar h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--color-roxo);
+    }
+    .widget p, .widget li {
+      font-size: 0.95rem;
+      color: #ccc;
+      line-height: 1.4;
+    }
+    .widget a {
+      color: var(--color-roxo);
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
+    .widget a:hover {
+      color: #8A0A94;
+    }
+    .recent-posts li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #2E2E2E;
+      text-align: center;
+      padding: 1rem 0;
+      color: #fff;
+      margin-top: 2rem;
+    }
+
+    /* ========== RESPONSIVIDADE ========== */
+    @media (max-width: 992px) {
+      .content-container {
+        flex-direction: column;
+      }
+      .blog-posts {
+        flex: auto;
+      }
+      .sidebar {
+        flex: auto;
+      }
+    }
+    @media (max-width: 768px) {
+      .banner {
+        height: 180px;
+      }
+      .banner-text h1 {
+        font-size: 1.8rem;
+      }
+      nav a {
+        margin-left: 1rem;
+      }
+    }
+
+  </style>
+</head>
 <body>
+
   <!-- HEADER -->
   <header>
-    <div class="logo">Data Setti</div>
+    <div class="logo">
+      <a href="index.html">Data <span>Setti</span></a>
+    </div>
     <nav>
       <a href="index.html#home">Home</a>
-      <a href="index.html#sobre">Sobre</a>
+      <a href="Blog template.html">Blog</a>
       <a href="index.html#contato">Contato</a>
       <a href="index.html#servicos">Serviços</a>
     </nav>
@@ -25,16 +254,30 @@
   
   <!-- CONTAINER PRINCIPAL -->
   <div class="content-container">
+    
     <!-- COLUNA ESQUERDA: POSTS -->
     <div class="blog-posts">
       <article>
         <h2>Como a Inteligência Artificial Pode Reduzir Custos na sua Empresa</h2>
-        <p>Descubra como a IA pode otimizar processos e reduzir desperdícios no seu negócio...</p>
+        <p>
+          Descubra como a IA pode otimizar processos e reduzir desperdícios 
+          no seu negócio, gerando maiores lucros e competitividade...
+        </p>
         <a href="post1.html">Leia Mais</a>
       </article>
       <article>
         <h2>5 Motivos Para Usar Power BI na Gestão do Seu Negócio</h2>
-        <p>Veja como o Power BI pode transformar sua análise de dados e facilitar decisões...</p>
+        <p>
+          Veja como o Power BI pode transformar sua análise de dados,
+          facilitar decisões estratégicas e impulsionar resultados...
+        </p>
+        <a href="post2.html">Leia Mais</a>
+      </article>
+       <article>
+        <h2>Gestão de Estoque Inteligente</h2>
+        <p>
+         Saiba como prever a demanda, reduzir perdas e otimizar a reposição de produtos, garantindo maior lucratividade e menos desperdícios, evitando tanto rupturas quanto excessos, além de eliminar processos manuais na gestão do estoque...
+        </p>
         <a href="post2.html">Leia Mais</a>
       </article>
       <!-- Adicione mais artigos conforme necessário -->
@@ -45,26 +288,30 @@
       <section class="about-widget">
         <h3>Sobre a Data Setti</h3>
         <div class="widget">
-          <p>A Data Setti é referência em tecnologia e insights para transformar seu negócio. Conheça mais sobre nossos serviços e inovações.</p>
+          <p>
+            A Data Setti é referência em tecnologia e insights para 
+            transformar seu negócio. Conheça mais sobre nossos serviços 
+            e inovações.
+          </p>
           <a href="#">Saiba mais</a>
         </div>
       </section>
       <section class="recent-widget">
         <h3>Posts Recentes</h3>
         <ul class="recent-posts widget">
-          <li><a href="#">Novas tendências em IA</a></li>
-          <li><a href="#">Como otimizar processos com tecnologia</a></li>
-          <li><a href="#">Inovações que estão mudando o mercado</a></li>
+          <a href="#">Novas tendências em IA</a><br>
+          <a href="#">Como otimizar processos com tecnologia</a><br>
+          <a href="#">Inovações que estão mudando o mercado</a><br>
         </ul>
       </section>
       <section class="categories-widget">
         <h3>Categorias</h3>
         <ul class="widget">
-          <li><a href="#">Tecnologia</a></li>
-          <li><a href="#">Inovação</a></li>
-          <li><a href="#">Negócios</a></li>
-          <li><a href="#">Insights</a></li>
-        </ul>
+          <a href="#">Tecnologia</a><br>
+          <a href="#">Inovação</a><br>
+          <a href="#">Negócios</a><br>
+          <a href="#">Insights</a><br>
+        
       </section>
     </aside>
   </div>
@@ -73,5 +320,6 @@
   <footer>
     &copy; 2025 Data Setti. Todos os direitos reservados.
   </footer>
+
 </body>
 </html>
