@@ -3,24 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Como a Inteligência Artificial Pode Reduzir Custos | Data Setti</title>
+  <title>5 Motivos Para Usar Power BI na Gestão | Data Setti</title>
   
   <!-- Google Font: Poppins -->
   <link 
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" 
     rel="stylesheet"
   />
-
-  <!-- Observação: Se usar Font Awesome -->
+  <!-- Font Awesome (opcional) -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
   />
 
-  <!-- Estilos internos (ou remova para poststyle.css) -->
   <style>
     :root {
-      --color-azul-noite: #1A1A2E; 
+      --color-azul-noite: #1A1A2E;
       --color-roxo: #6A0572;
       --color-preto: #121212;
       --color-cinza-escuro: #2E2E2E;
@@ -43,14 +41,14 @@
       overflow-x: hidden;
     }
 
-    /* ========== HEADER FIXO NO TOPO ========== */
+    /* HEADER FIXO */
     header {
       position: fixed;
       top: 0; 
       left: 0;
       width: 100%;
       height: 60px;
-      background: rgba(26, 26, 46, 0.95);
+      background: rgba(26,26,46,0.95);
       backdrop-filter: blur(5px);
       display: flex;
       align-items: center;
@@ -70,17 +68,97 @@
     .logo span {
       color: var(--color-roxo);
     }
-    nav a {
+    .nav-desktop {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .nav-desktop a {
       color: var(--color-branco);
       text-decoration: none;
-      margin-left: 1.5rem;
       transition: color 0.3s;
     }
-    nav a:hover {
+    .nav-desktop a:hover {
+      color: var(--color-roxo);
+    }
+    /* Hamburguer */
+    .hamburger {
+      display: none;
+      background: var(--color-roxo);
+      border: none;
+      color: #fff;
+      font-size: 1.4rem;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    @media(max-width:768px){
+      .nav-desktop {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 998;
+    }
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #1A1A2E;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 40px 20px;
+    }
+    .side-menu.active {
+      right: 0;
+    }
+    .close-btn {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+    .side-menu nav ul {
+      list-style: none;
+      width: 100%;
+    }
+    .side-menu nav ul li {
+      margin-bottom: 1rem;
+    }
+    .side-menu nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
+    }
+    .side-menu nav ul li a:hover {
       color: var(--color-roxo);
     }
 
-    /* Espaço para compensar o header fixo */
     body::before {
       content: "";
       display: block;
@@ -88,19 +166,20 @@
       width: 100%;
     }
 
-    /* ========== BANNER (inner-banner) ========== */
+    /* BANNER INTERNO */
     .inner-banner {
       background: var(--gradient-roxo);
       padding: 40px 20px;
       text-align: center;
+      margin-top: 0; 
     }
-    .inner-banner .banner-text h1 {
+    .inner-banner h1 {
       font-size: 2rem;
       font-weight: 600;
       margin-bottom: 0.5rem;
     }
 
-    /* ========== CONTAINER PRINCIPAL DO POST ========== */
+    /* CONTAINER */
     .container {
       display: flex;
       gap: 2rem;
@@ -108,8 +187,7 @@
       margin: 2rem auto;
       padding: 0 1rem;
     }
-
-    /* ========== CONTEÚDO DO POST (coluna principal) ========== */
+    /* POST */
     .post-content {
       flex: 3;
       background: #2E2E2E;
@@ -122,28 +200,17 @@
       color: #ccc;
       margin-bottom: 1rem;
     }
-    .post-meta span {
-      margin-right: 1rem;
-    }
     .post-content p {
       margin-bottom: 1.2rem;
       color: #ccc;
       line-height: 1.5;
     }
-    .post-content img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin: 1.2rem 0;
-    }
     .post-content h2 {
       font-size: 1.3rem;
-      margin-bottom: 0.8rem;
       color: var(--color-roxo);
+      margin-bottom: 0.8rem;
     }
-
-    /* ========== SIDEBAR (coluna direita) ========== */
+    /* SIDEBAR */
     .sidebar {
       flex: 1;
       display: flex;
@@ -158,8 +225,8 @@
     }
     .sidebar h3 {
       font-size: 1.2rem;
-      margin-bottom: 1rem;
       color: var(--color-roxo);
+      margin-bottom: 1rem;
     }
     .sidebar .widget p,
     .sidebar .widget li {
@@ -174,15 +241,8 @@
     .sidebar .widget a:hover {
       color: #8A0A94;
     }
-    .sidebar .widget ul {
-      list-style: none;
-      padding-left: 1rem; /* se quiser dar um recuo */
-    }
-    .sidebar .widget ul li {
-      margin-bottom: 0.5rem;
-    }
 
-    /* ========== FOOTER ========== */
+    /* FOOTER */
     footer {
       text-align: center;
       padding: 1rem 0;
@@ -191,150 +251,167 @@
       color: #fff;
     }
 
-    /* ========== RESPONSIVIDADE ========== */
-    @media (max-width: 992px) {
+    /* RESPONSIVIDADE */
+    @media(max-width:992px) {
       .container {
         flex-direction: column;
       }
-      .post-content {
-        margin-bottom: 2rem;
-      }
-      .sidebar {
-        flex-direction: column;
-      }
     }
-    @media (max-width: 600px) {
-      nav a {
-        margin-left: 1rem;
-      }
-      .inner-banner .banner-text h1 {
+    @media(max-width:600px) {
+      .inner-banner h1 {
         font-size: 1.6rem;
       }
-      .post-content h2 {
-        font-size: 1.15rem;
-      }
+    }
+    .post-content img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1.2rem 0;
     }
   </style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="logo">
-      <a href="index.html">Data <span>Setti</span></a>
-    </div>
-    <nav>
-      <a href="index.html#home">Home</a>
-      <a href="Blog template.html">Blog</a>
-      <a href="index.html#contato">Contato</a>
-      <a href="index.html#servicos">Serviços</a>
-    </nav>
-  </header>
-  
-  <!-- BANNER INTERNO -->
-  <section class="inner-banner">
-    <div class="banner-text">
-      <h1>Como a Inteligência Artificial Pode Reduzir Custos</h1>
-    </div>
-  </section>
-  
-  <!-- CONTAINER PRINCIPAL -->
-  <div class="container">
-    <!-- COLUNA PRINCIPAL (POST) -->
-    <div class="post-content">
-      <div class="post-meta">
-        <span>Publicado em 05/02/2025</span> • 
-        <span>Categoria: Tecnologia</span>
-      </div>
-      
-      <p>
-        A inteligência artificial (IA) está revolucionando a forma como as empresas operam.
-        Com a automação de processos, análise preditiva e aprendizado de máquina, a IA tem se
-        tornado uma ferramenta indispensável para reduzir custos e aumentar a eficiência 
-        operacional. Mas como exatamente essa tecnologia impacta os negócios?
-      </p>
-      
-      <img src="post_imagem.jpg" alt="Ilustração da Inteligência Artificial">
-      
-      <h2>1. Automação de Processos e Eficiência Operacional</h2>
-      <p>
-        Um dos principais benefícios da IA é a automação de tarefas repetitivas e burocráticas.
-        Empresas que adotam IA em setores administrativos conseguem reduzir custos com mão de obra 
-        e minimizar erros humanos, tornando os processos mais ágeis e precisos.
-      </p>
-      
-      <h2>2. Redução de Desperdícios e Otimização de Recursos</h2>
-      <p>
-        No setor industrial e varejista, a IA é usada para prever demanda, ajustar estoques
-        e evitar desperdícios. Empresas que implementaram sistemas de IA relataram uma redução
-        média de 30% nos custos operacionais graças a uma alocação de recursos mais eficaz.
-      </p>
-      
-      <h2>3. Análise de Dados para Tomada de Decisão Estratégica</h2>
-      <p>
-        A IA possibilita a coleta e análise de grandes volumes de dados em tempo real. 
-        Isso permite que gestores tomem decisões mais assertivas, prevendo tendências 
-        e ajustando estratégias de maneira ágil e eficiente.
-      </p>
-      
-      <h2>4. Atendimento ao Cliente Inteligente</h2>
-      <p>
-        Com o uso de chatbots e assistentes virtuais, as empresas conseguem reduzir custos
-        e melhorar a experiência do cliente. A IA proporciona um atendimento ágil e disponível
-        24/7, sem necessidade de uma grande equipe de suporte.
-      </p>
-      
-      <h2>Conclusão</h2>
-      <p>
-        A Inteligência Artificial é um investimento estratégico para empresas que buscam
-        reduzir custos e melhorar sua competitividade. Com soluções personalizadas, 
-        é possível otimizar processos, prever cenários e garantir maior eficiência operacional.
-      </p>
-      <p>
-         <strong>Quer implementar IA no seu negócio?</strong> Entre em contato com a 
-        Data Setti e descubra como podemos ajudar!
-      </p>
-    </div>
-    
-    <!-- SIDEBAR (coluna direita) -->
-    <aside class="sidebar">
-      <section class="about-widget">
-        <h3>Sobre a Data Setti</h3>
-        <div class="widget">
-          <p>
-            A Data Setti é referência em tecnologia e insights para transformar 
-            o seu negócio. Conheça mais sobre nossos serviços e inovações.
-          </p>
-          <a href="index.html#home">Conheça Mais</a>
-        </div>
-      </section>
-      
-      <section class="recent-widget">
-        <h3>Posts Recentes</h3>
-        <div class="widget">
-          <ul>
-            <li><a href="#">Novas tendências em IA</a></li>
-            <li><a href="#">Como otimizar processos com tecnologia</a></li>
-            <li><a href="#">Inovações que estão mudando o mercado</a></li>
-          </ul>
-        </div>
-      </section>
-      
-      <section class="categories-widget">
-        <h3>Categorias</h3>
-        <div class="widget">
-          <ul>
-            <li><a href="index.html#home">Data Setti</a></li>
-            <li><a href="index.html#servicos">Conheça Nossos Serviços</a></li>
-            <li><a href="index.html#contato">Insights</a></li>
-          </ul>
-        </div>
-      </section>
-    </aside>
+
+<!-- HEADER + HAMBURGER -->
+<header>
+  <div class="logo">
+    <a href="index.html">Data <span>Setti</span></a>
   </div>
-  
-  <!-- FOOTER -->
-  <footer>
-    &copy; 2025 Data Setti. Todos os direitos reservados.
-  </footer>
+  <!-- MENU DESKTOP -->
+  <nav class="nav-desktop">
+    <a href="index.html#sobre">Sobre</a>
+    <a href="index.html#servicos">Serviços</a>
+    <a href="index.html#projetos">Projetos</a>
+    <a href="index.html#contato">Contato</a>
+    <a href="blog_template.html">Blog</a>
+  </nav>
+  <button class="hamburger" id="hamburger">
+    <i class="fas fa-bars"></i>
+  </button>
+</header>
+
+<!-- OVERLAY E SIDE-MENU -->
+<div class="overlay" id="overlay"></div>
+<div class="side-menu" id="sideMenu">
+  <button class="close-btn" id="closeBtn">
+    <i class="fas fa-times"></i>
+  </button>
+  <nav>
+    <ul>
+      <li><a href="index.html#sobre">Sobre</a></li>
+      <li><a href="index.html#servicos">Serviços</a></li>
+      <li><a href="index.html#projetos">Projetos</a></li>
+      <li><a href="index.html#contato">Contato</a></li>
+      <li><a href="blog_template.html">Blog</a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- BANNER INTERNO -->
+<section class="inner-banner">
+  <h1>5 Motivos Para Usar Power BI na Gestão</h1>
+</section>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<div class="container">
+  <!-- POST -->
+  <div class="post-content">
+    <div class="post-meta">
+      <span>Publicado em 03/02/2025</span> • 
+      <span>Categoria: <strong>Power BI</strong></span>
+    </div>
+    <p>
+      O Power BI tornou-se uma das principais ferramentas de Business Intelligence
+      para empresas que desejam tomar decisões baseadas em dados. Com relatórios interativos 
+      e recursos robustos de análise, ele simplifica a visualização de indicadores,
+      ajudando gestores a enxergar oportunidades de economia, crescimento e inovação.
+    </p>
+    <img src="img/blowo.jpg" alt="Ilustração da Inteligência Artificial">
+
+    <h2>1. Visualização de Dados Intuitiva</h2>
+    <p>
+      O Power BI oferece dashboards dinâmicos que qualquer colaborador — mesmo sem 
+      background técnico — consegue interpretar. Dessa forma, a empresa ganha agilidade 
+      ao reagir a tendências do mercado.
+    </p>
+    <h2>2. Conexão com Diversas Fontes</h2>
+    <p>
+      Ele se conecta facilmente a bancos de dados, planilhas e sistemas de CRM, 
+      consolidando todas as informações em um só lugar e evitando retrabalhos.
+    </p>
+    <h2>3. Tomada de Decisão Baseada em Dados</h2>
+    <p>
+      Ao transformar dados brutos em relatórios claros, o Power BI fortalece a 
+      cultura de Data-Driven, significando decisões mais embasadas e maior competitividade.
+    </p>
+    <h2>4. Mobilidade e Acesso Remoto</h2>
+    <p>
+      É possível acessar seus relatórios em qualquer lugar, agilizando tomadas de decisão 
+      e facilitando o trabalho remoto.
+    </p>
+    <h2>5. Integrações com IA e Ferramentas Avançadas</h2>
+    <p>
+      A ferramenta permite integrar algoritmos de Inteligência Artificial, 
+      levando as análises a outro nível de profundidade e automação.
+    </p>
+
+    <h2>Conclusão</h2>
+    <p>
+      O Power BI é uma solução completa para quem quer aperfeiçoar a gestão de dados 
+      e tomar decisões mais assertivas. Deseja implementar no seu negócio? 
+      <strong>Fale agora com a Data Setti</strong> e solicite um diagnóstico gratuito.
+    </p>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <section>
+      <h3>Sobre a Data Setti</h3>
+      <div class="widget">
+        <p>
+          A Data Setti é especialista em transformar dados em resultados concretos. 
+          De IA até Power BI, oferecemos soluções sob medida para cada negócio.
+        </p>
+        <a href="index.html#servicos">Conheça nossos serviços</a>
+      </div>
+    </section>
+    <section>
+      <h3>Posts Recentes</h3>
+      <div class="widget">
+        <ul>
+          <li><a href="post_ia_custos.html">Como a IA Pode Reduzir Custos</a></li>
+          <li><a href="post_estoque_inteligente.html">Gestão de Estoque Inteligente</a></li>
+          <li><a href="post_powerbi.html">5 Motivos Para Usar Power BI</a></li>
+        </ul>
+      </div>
+    </section>
+  </aside>
+</div>
+
+<footer>
+  &copy; 2025 Data Setti. Todos os direitos reservados.
+</footer>
+
+<!-- SCRIPT HAMBURGER -->
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const overlay = document.getElementById("overlay");
+  const sideMenu = document.getElementById("sideMenu");
+  const closeBtn = document.getElementById("closeBtn");
+
+  hamburger.addEventListener("click", () => {
+    sideMenu.classList.add("active");
+    overlay.classList.add("active");
+  });
+  closeBtn.addEventListener("click", () => {
+    sideMenu.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+  overlay.addEventListener("click", () => {
+    sideMenu.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+</script>
 </body>
 </html>
