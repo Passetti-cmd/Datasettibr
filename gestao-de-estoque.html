@@ -543,15 +543,16 @@
       }
     }
     /* Ocultar o menu e mostrar só o ícone no mobile */
+/* Torna o menu hamburguer visível e com fundo sólido no mobile */
 .menu-toggle {
-  display: none;               /* desktop: escondido */
+  display: none; /* desktop escondido */
   color: #fff;
   font-size: 1.8rem;
   cursor: pointer;
-  z-index: 1001;               /* acima do nav ul */
+  z-index: 10001; /* acima de tudo */
 }
 
-/* Por padrão, a nav ul fica normal em desktop */
+/* Menu normal em desktop */
 .nav ul {
   display: flex;
   gap: 1.5rem;
@@ -560,34 +561,41 @@
   height: 100%;
 }
 
-/* No mobile, transformamos em menu “fora da tela” */
+/* MOBILE: até 768px */
 @media (max-width: 768px) {
   .menu-toggle {
-    display: block;          /* aparece no mobile */
+    display: block; /* aparece o ícone */
   }
 
   .nav ul {
     position: absolute;
-    top: 70px;               /* abaixo do header fixo */
+    top: 70px; /* abaixo do header */
     right: 0;
-     background: rgba(26,26,46,0.95);
+    /* FUNDO ESCURO E 100% OPACO (ou semitransparente) */
+    background-color: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(4px);
+
     flex-direction: column;
     gap: 1rem;
-    width: 180px;
+    width: 200px;   /* ajusta a largura */
     padding: 1rem;
     z-index: 9999;
-    transform: translateX(100%); /* começa “escondido” */
+    transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
   }
+
+  /* Quando tiver .active, o menu “entra” */
   .nav ul.active {
-    transform: translateX(0%);   /* quando ativo, aparece */
+    transform: translateX(0%);
   }
+
   .nav ul li a {
-    display: block;     /* para “clicar” no link */
-    padding: 0.5rem;
+    display: block;
+    padding: 0.8rem;
+    width: 100%;
   }
 }
+
 @media (max-width: 768px) {
   .action-item,
   .action-item.reverse {
@@ -789,7 +797,7 @@
           <!-- Primeiro Slide -->
           <div class="carousel-item active">
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="col-12 col-md-6 col-lg-3">
                 <div class="card bg-secondary border-0 carousel-card">
                   <img src="img/posto.png" class="card-img-top" alt="Postos de Gasolina">
                   <div class="card-body">
@@ -798,7 +806,7 @@
                   </div>
                 </div>
               </div>
-                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="col-12 col-md-6 col-lg-3">
                 <div class="card bg-secondary border-0 carousel-card">
                   <img src="img/padaria.jpg" class="card-img-top" alt="Padarias">
                   <div class="card-body">
@@ -807,7 +815,7 @@
                   </div>
                 </div>
               </div>
-                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="col-12 col-md-6 col-lg-3">
                 <div class="card bg-secondary border-0 carousel-card">
                   <img src="img/mercado.png" class="card-img-top" alt="Mercados">
                   <div class="card-body">
@@ -816,7 +824,7 @@
                   </div>
                 </div>
               </div>
-                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="col-12 col-md-6 col-lg-3">
                 <div class="card bg-secondary border-0 carousel-card">
                   <img src="img/varejo.png" class="card-img-top" alt="Lojas de Varejo">
                   <div class="card-body">
@@ -830,7 +838,7 @@
           <!-- Segundo Slide -->
           <div class="carousel-item">
             <div class="row">
-              <div class="col-6 col-md-3">
+                  <div class="col-12 col-md-6 col-lg-3">
                 <div class="card bg-secondary border-0 carousel-card">
                   <img src="img/restaurante.png" class="card-img-top" alt="Restaurantes">
                   <div class="card-body">
@@ -839,7 +847,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-6 col-md-3">
+                  <div class="col-12 col-md-6 col-lg-3">
                 <div class="card bg-secondary border-0 carousel-card">
                   <img src="img/farmacia.png" class="card-img-top" alt="Farmácias">
                   <div class="card-body">
@@ -848,7 +856,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-6 col-md-3">
+                  <div class="col-12 col-md-6 col-lg-3">
                 <div class="card bg-secondary border-0 carousel-card">
                   <img src="img/distruibuidorapng.avif" class="card-img-top" alt="Distribuidoras">
                   <div class="card-body">
@@ -857,7 +865,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-6 col-md-3">
+                  <div class="col-12 col-md-6 col-lg-3">
                 <div class="card bg-secondary border-0 carousel-card">
                   <img src="img/estoquese.avif" class="card-img-top" alt="E-Commerce">
                   <div class="card-body">
