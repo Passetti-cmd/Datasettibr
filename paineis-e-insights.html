@@ -32,6 +32,7 @@
       --font-base: 'Poppins', sans-serif;
     }
 
+    /* RESET */
     * {
       margin: 0;
       padding: 0;
@@ -43,7 +44,7 @@
       color: var(--color-branco);
       line-height: 1.6;
       padding-top: 70px; /* Espaço para header fixo */
-      overflow-x: hidden;
+      overflow-x: hidden; 
     }
     a {
       text-decoration: none;
@@ -52,66 +53,157 @@
 
     /* HEADER */
     .header {
-      position: fixed; 
-      top: 0; 
-      width: 100%; 
+      position: fixed;
+      top: 0;
+      width: 100%;
       z-index: 999;
-      background: rgba(26,26,46,0.95);
+      background: rgba(26, 26, 46, 0.95);
       backdrop-filter: blur(4px);
       height: 70px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-      display: flex; 
+      display: flex;
       align-items: center;
     }
     .header .container {
-      display: flex; 
-      justify-content: space-between; 
+      display: flex;
+      justify-content: space-between;
       align-items: center;
     }
     .logo a {
-      font-size: 1.7rem; 
-      font-weight: 600; 
+      font-size: 1.7rem;
+      font-weight: 600;
       color: var(--color-branco);
+      line-height: 70px;
     }
     .logo span {
       color: var(--color-roxo-dark);
     }
-    .nav ul {
-      list-style: none; 
-      display: flex; 
+
+    /* MENU DESKTOP (nav-desktop) */
+    .nav-desktop ul {
+      list-style: none;
+      display: flex;
       gap: 1.5rem;
     }
-    .nav ul li a {
+    .nav-desktop ul li a {
       color: var(--color-branco);
       transition: color 0.3s;
       line-height: 70px;
     }
-    .nav ul li a:hover {
+    .nav-desktop ul li a:hover {
       color: var(--color-roxo-dark);
+    }
+    @media (max-width: 768px) {
+      .nav-desktop {
+        display: none; /* Some no mobile */
+      }
+    }
+
+    /* BOTÃO HAMBURGUER (MOBILE) */
+    .hamburger {
+      display: none; /* não aparece em desktop */
+      font-size: 1.8rem;
+      background: var(--color-roxo-dark);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 5px;
+    }
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block; /* aparece no mobile */
+      }
+    }
+
+    /* OVERLAY E SIDE MENU (MOBILE) */
+    .overlay {
+      position: fixed;
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 998;
+    }
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -250px; 
+      width: 250px;
+      height: 100%;
+      background-color: #1A1A2E;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+      transition: right 0.3s ease;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 40px 20px;
+    }
+    .side-menu.active {
+      right: 0; 
+    }
+    .close-btn {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .side-menu nav ul {
+      list-style: none;
+      width: 100%;
+    }
+    .side-menu nav ul li a {
+      display: block;
+      padding: 10px 0;
+      font-size: 1.1rem;
+      color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: color 0.3s;
+    }
+    .side-menu nav ul li a:hover {
+      color: var(--color-roxo-dark);
+    }
+    @media (min-width: 769px) {
+      .side-menu,
+      .overlay {
+        display: none; 
+      }
     }
 
     /* HERO */
     .hero-powerbi {
-      position: relative; 
-      height: 60vh; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
+      position: relative;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       overflow: hidden;
     }
     .hero-video {
-      position: absolute; 
-      top: 50%; 
+      position: absolute;
+      top: 50%;
       left: 50%;
-      min-width: 100%; 
+      min-width: 100%;
       min-height: 100%;
       transform: translate(-50%, -50%);
-      object-fit: cover; 
+      object-fit: cover;
       z-index: 1;
     }
     .hero-overlay {
-      position: absolute; 
+      position: absolute;
       top: 0; 
       left: 0;
       width: 100%; 
@@ -120,29 +212,29 @@
       z-index: 2;
     }
     .hero-content {
-      position: relative; 
-      z-index: 3; 
+      position: relative;
+      z-index: 3;
       max-width: 800px;
-      margin: 0 auto; 
+      margin: 0 auto;
       padding: 0 20px;
     }
     .hero-content h1 {
-      font-size: 2.5rem; 
-      margin-bottom: 1rem; 
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
       font-weight: 700;
     }
     .hero-content p {
-      font-size: 1.1rem; 
+      font-size: 1.1rem;
       margin-bottom: 2rem;
     }
     .btn-primario {
       background-color: var(--color-roxo-dark);
-      padding: 14px 28px; 
+      padding: 14px 28px;
       border-radius: 30px;
-      font-size: 1rem; 
-      font-weight: 600; 
+      font-size: 1rem;
+      font-weight: 600;
       color: var(--color-branco);
-      transition: 0.3s; 
+      transition: 0.3s;
       display: inline-block;
     }
     .btn-primario:hover {
@@ -156,14 +248,14 @@
       padding: 60px 20px;
     }
     .powerbi-section h2 {
-      text-align: center; 
-      font-size: 2rem; 
-      color: var(--color-roxo-dark); 
+      text-align: center;
+      font-size: 2rem;
+      color: var(--color-roxo-dark);
       margin-bottom: 2rem;
       font-weight: 600;
     }
     .powerbi-cards {
-      display: flex; 
+      display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 2rem;
@@ -178,26 +270,26 @@
       max-width: 320px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.5);
       border: 1px solid rgba(255,255,255,0.1);
-      text-align: center; 
+      text-align: center;
       transition: 0.3s;
     }
     .powerbi-card:hover {
       transform: translateY(-5px);
     }
     .powerbi-card i {
-      font-size: 3rem; 
-      color: var(--color-roxo-dark); 
+      font-size: 3rem;
+      color: var(--color-roxo-dark);
       margin-bottom: 1rem;
     }
     .powerbi-card h3 {
-      font-size: 1.2rem; 
-      margin-bottom: 0.5rem; 
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
       color: #fff;
       font-weight: 600;
     }
     .powerbi-card p {
-      font-size: 0.95rem; 
-      color: #ccc; 
+      font-size: 0.95rem;
+      color: #ccc;
       line-height: 1.4;
     }
 
@@ -289,11 +381,16 @@
       font-weight: 600;
     }
     .carousel-dashboards .carousel-item img {
-      max-height: 450px; /* Ajuste conforme desejar */
-      object-fit: contain; /* Evitar corte das imagens */
+      max-height: 450px; 
+      object-fit: contain; 
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.5);
       margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .carousel-dashboards .carousel-item img {
+        max-height: 300px;
+      }
     }
 
     /* Seção Benefícios Leigos */
@@ -352,29 +449,29 @@
       text-align: center;
     }
     .cta-final-growth h2 {
-      color: #fff; 
-      margin-bottom: 1rem; 
-      font-size: 2rem; 
+      color: #fff;
+      margin-bottom: 1rem;
+      font-size: 2rem;
       font-weight: 600;
     }
     .cta-final-growth p {
-      color: #fff; 
-      max-width: 800px; 
-      margin: 0 auto 2rem; 
-      font-size: 1rem; 
+      color: #fff;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      font-size: 1rem;
       line-height: 1.5;
     }
     .cta-final-growth .btn-primario {
-      background: #fff; 
-      color: var(--color-roxo-dark); 
+      background: #fff;
+      color: var(--color-roxo-dark);
       font-weight: 700;
     }
     .cta-final-growth .btn-primario:hover {
-      background: #eee; 
+      background: #eee;
       color: #333;
     }
 
-    /* Footer */
+    /* FOOTER */
     .footer {
       background-color: var(--color-cinza-escuro);
       text-align: center;
@@ -382,99 +479,26 @@
       font-size: 0.85rem;
     }
     .footer-content p a {
-      color: #fff; 
-      margin: 0 5px; 
+      color: #fff;
+      margin: 0 5px;
       transition: color 0.3s;
     }
     .footer-content p a:hover {
       color: var(--color-roxo-dark);
     }
 
-    @media (max-width: 768px) {
-      .hero-content h1 {
-        font-size: 2rem;
-      }
-      .hero-content p {
-        font-size: 1rem;
-      }
-      .action-item,
-      .action-item.reverse {
-        flex-direction: column !important;
-        text-align: center;
-      }
-      .action-image, .action-text {
-        padding: 10px;
-      }
-      .action-text h3 {
-        font-size: 1.4rem;
-      }
-      .carousel-dashboards .carousel-item img {
-        max-height: 300px;
-      }
-    }
-    /* Ocultar o menu e mostrar só o ícone no mobile */
-.menu-toggle {
-  display: none;               /* desktop: escondido */
-  color: #fff;
-  font-size: 1.8rem;
-  cursor: pointer;
-  z-index: 1001;               /* acima do nav ul */
-}
-
-/* Por padrão, a nav ul fica normal em desktop */
-.nav ul {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  align-items: center;
-  height: 100%;
-}
-
-/* No mobile, transformamos em menu “fora da tela” */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;          /* aparece no mobile */
-  }
-
-  .nav ul {
-    position: absolute;
-    top: 70px;               /* abaixo do header fixo */
-    right: 0;
-    background: rgba(26, 26, 46, 0.95);
-    backdrop-filter: blur(4px);
-    flex-direction: column;
-    gap: 1rem;
-    width: 180px;
-    padding: 1rem;
-    transform: translateX(100%); /* começa “escondido” */
-    transition: transform 0.3s ease-in-out;
-  }
-  .nav ul.active {
-    transform: translateX(0%);   /* quando ativo, aparece */
-  }
-  .nav ul li a {
-    display: block;     /* para “clicar” no link */
-    padding: 0.5rem;
-  }
-}
-
   </style>
 </head>
 <body>
-
 <!-- Header -->
 <header class="header" id="header">
   <div class="container">
     <div class="logo">
-      <a href="index.html#home">Data <span>Setti</span></a>
+      <a href="#home">Data <span>Setti</span></a>
     </div>
 
-    <!-- Ícone hamburguer -->
-    <div class="menu-toggle" id="menu-toggle">
-      <i class="fas fa-bars"></i>
-    </div>
-
-    <nav class="nav">
+    <!-- Menu Desktop (telas grandes) -->
+    <nav class="nav-desktop">
       <ul>
         <li><a href="index.html#home">Home</a></li>
         <li><a href="index.html#sobre">Sobre</a></li>
@@ -483,8 +507,31 @@
         <li><a href="index.html#contato">Contato</a></li>
       </ul>
     </nav>
+
+    <!-- Ícone hamburguer (mobile) -->
+    <button class="hamburger" id="hamburger">
+      <i class="fas fa-bars"></i>
+    </button>
   </div>
 </header>
+
+<!-- Overlay e Side Menu (Mobile) -->
+<div class="overlay" id="overlay"></div>
+<div class="side-menu" id="sideMenu">
+  <button class="close-btn" id="closeBtn">
+    <i class="fas fa-times"></i>
+  </button>
+  <nav>
+    <ul>
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#sobre">Sobre</a></li>
+      <li><a href="index.html#servicos">Serviços</a></li>
+      <li><a href="index.html#projetos">Projetos</a></li>
+      <li><a href="index.html#contato">Contato</a></li>
+    </ul>
+  </nav>
+</div>
+
 <!-- Hero: Power BI & Growth -->
 <section class="hero-powerbi">
   <video class="hero-video" autoplay muted loop>
@@ -547,7 +594,6 @@
 <section class="action-gallery">
   <div class="container">
     <h2>Veja Nossa Solução em Ação</h2>
-
     <!-- Slide 1 -->
     <div class="action-item">
       <div class="action-image">
@@ -561,7 +607,6 @@
         </p>
       </div>
     </div>
-
     <!-- Slide 2 (reverse) -->
     <div class="action-item reverse">
       <div class="action-image">
@@ -575,7 +620,6 @@
         </p>
       </div>
     </div>
-
     <!-- Slide 3 -->
     <div class="action-item">
       <div class="action-image">
@@ -589,7 +633,6 @@
         </p>
       </div>
     </div>
-
     <!-- Slide 4 (reverse) -->
     <div class="action-item reverse">
       <div class="action-image">
@@ -604,7 +647,6 @@
         </p>
       </div>
     </div>
-
     <!-- Slide 5 -->
     <div class="action-item">
       <div class="action-image">
@@ -618,7 +660,6 @@
         </p>
       </div>
     </div>
-
     <!-- Slide 6 (reverse) -->
     <div class="action-item reverse">
       <div class="action-image">
@@ -633,7 +674,6 @@
         </p>
       </div>
     </div>
-
     <!-- Slide 7 -->
     <div class="action-item">
       <div class="action-image">
@@ -678,7 +718,7 @@
   <div class="container">
     <h2>Dashboards Interativos</h2>
     <!-- Bootstrap Carousel -->
-    <div id="dashboardsCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="dashboardsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000">
       <!-- Indicadores (bolinhas) -->
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#dashboardsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -825,12 +865,30 @@
 
 <!-- Bootstrap JS (inclui Popper) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  const menuToggle = document.getElementById("menu-toggle");
-  const navUl = document.querySelector(".nav ul");
 
-  menuToggle.addEventListener("click", () => {
-    navUl.classList.toggle("active"); 
+<!-- SCRIPT PARA O MENU LATERAL (MOBILE) -->
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const sideMenu = document.getElementById("sideMenu");
+  const closeBtn = document.getElementById("closeBtn");
+  const overlay = document.getElementById("overlay");
+
+  // Abre o side menu
+  hamburger.addEventListener("click", () => {
+    sideMenu.classList.add("active");
+    overlay.classList.add("active");
+  });
+
+  // Fecha ao clicar no X
+  closeBtn.addEventListener("click", () => {
+    sideMenu.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+
+  // Fecha ao clicar fora (overlay)
+  overlay.addEventListener("click", () => {
+    sideMenu.classList.remove("active");
+    overlay.classList.remove("active");
   });
 </script>
 
