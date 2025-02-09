@@ -61,8 +61,8 @@
       top: 0;
       left: 0;
       z-index: 999;
-      background: rgba(26,26,46,0.95);
-      backdrop-filter: blur(4px);
+  background: rgba(26,26,46,0.95);
+  backdrop-filter: none
       box-shadow: 0 2px 4px rgba(0,0,0,0.3);
       height: 70px;
       display: flex;
@@ -100,6 +100,13 @@
     .nav ul li a:hover {
       color: var(--color-roxo-dark);
     }
+@media (max-width: 768px) {
+  .nav ul {
+    background-color: #1A1A2E !important;
+    backdrop-filter: none !important;
+    /* ...demais estilos... */
+  }
+}
 
     /* HERO */
     .hero {
@@ -129,7 +136,7 @@
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(26,26,46,0.7);
+      background: rgba(26,26,46,0.95);
       z-index: 1;
     }
     .hero-content {
@@ -609,6 +616,14 @@
     margin-bottom: 15px; /* separa da descrição */
   }
 }
+/* Adiciona espaçamento na vertical entre os col-? dentro de cada slide */
+.company-carousel .carousel-item .row > [class*="col-"] {
+  margin-bottom: 20px; /* ajuste para o valor que preferir */
+}
+.company-carousel .carousel-item {
+  margin-bottom: 20px; /* se desejar */
+}
+
 
   </style>
 </head>
@@ -792,8 +807,9 @@
     <div class="container">
       <h2 class="text-center text-primary mb-4">Empresas que Podemos Ajudar</h2>
       <!-- Auto-slide a cada 3s -->
-      <div id="empresaCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div id="empresaCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000">
         <div class="carousel-inner">
+
           <!-- Primeiro Slide -->
           <div class="carousel-item active">
             <div class="row">
@@ -988,3 +1004,5 @@
 
 </body>
 </html>
+
+estou fazendo esse html onde o menu hamburguer esta sem fundo e n esta funcioonando
