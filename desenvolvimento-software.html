@@ -32,6 +32,7 @@
       --font-base: 'Poppins', sans-serif;
     }
 
+    /* RESET */
     * {
       margin: 0;
       padding: 0;
@@ -72,22 +73,113 @@
       font-size: 1.7rem; 
       font-weight: 600; 
       color: var(--color-branco);
+      line-height: 70px;
     }
     .logo span {
       color: var(--color-roxo-dark);
     }
-    .nav ul {
-      list-style: none; 
-      display: flex; 
+
+    /* MENU DESKTOP (nav-desktop) */
+    .nav-desktop ul {
+      list-style: none;
+      display: flex;
       gap: 1.5rem;
     }
-    .nav ul li a {
+    .nav-desktop ul li a {
       color: var(--color-branco);
       transition: color 0.3s;
       line-height: 70px;
     }
-    .nav ul li a:hover {
+    .nav-desktop ul li a:hover {
       color: var(--color-roxo-dark);
+    }
+    @media (max-width: 768px) {
+      .nav-desktop {
+        display: none; /* some no mobile */
+      }
+    }
+
+    /* BOTÃO HAMBURGUER (MOBILE) */
+    .hamburger {
+      display: none; /* não aparece em desktop */
+      font-size: 1.8rem;
+      background: var(--color-roxo-dark);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 5px;
+    }
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block; /* aparece no mobile */
+      }
+    }
+
+    /* OVERLAY E SIDE MENU (MOBILE) */
+    .overlay {
+      position: fixed; 
+      top: 0; 
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 998;
+    }
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -250px; 
+      width: 250px;
+      height: 100%;
+      background-color: #1A1A2E;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+      transition: right 0.3s ease;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 40px 20px;
+    }
+    .side-menu.active {
+      right: 0; 
+    }
+    .close-btn {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .side-menu nav ul {
+      list-style: none;
+      width: 100%;
+    }
+    .side-menu nav ul li a {
+      display: block;
+      padding: 10px 0;
+      font-size: 1.1rem;
+      color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: color 0.3s;
+    }
+    .side-menu nav ul li a:hover {
+      color: var(--color-roxo-dark);
+    }
+    @media (min-width: 769px) {
+      .side-menu,
+      .overlay {
+        display: none; 
+      }
     }
 
     /* HERO */
@@ -198,7 +290,7 @@
       align-items: center;
       margin-bottom: 40px;
       transition: 0.3s;
-      min-height: 300px; /* Ajuda a manter tamanho uniforme */
+      min-height: 300px; 
     }
     .action-item.reverse {
       flex-direction: row-reverse;
@@ -212,7 +304,7 @@
       border-radius: 10px;
       transition: transform 0.3s;
       box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-      max-height: 300px; /* Limita a altura para evitar saltos */
+      max-height: 300px; 
       object-fit: cover;
     }
     .action-image img:hover {
@@ -308,7 +400,7 @@
       border: 1px solid rgba(255,255,255,0.1);
       transition: transform 0.3s;
       text-align: left;
-      min-height: 220px; /* Ajuda a manter alinhado */
+      min-height: 220px; 
     }
     .beneficio-card:hover {
       transform: translateY(-5px);
@@ -343,14 +435,13 @@
       margin-bottom:2rem; 
       font-weight:600;
     }
-    /* Ajustando a altura mínima do carrossel */
     .carousel-inner {
-      min-height: 450px; /* Mantém uma altura fixa para evitar "saltos" */
+      min-height: 450px; 
     }
     .case-slide {
       gap:2rem; 
       text-align:center;
-      min-height: 400px; /* Altura mínima para padronizar */
+      min-height: 400px; 
       display: flex; 
       align-items: center; 
       justify-content: center;
@@ -363,7 +454,7 @@
     }
     .case-text {
       max-width:500px;
-      margin-top:1rem; /* espaçamento em mobile */
+      margin-top:1rem; 
     }
     .case-text h3 {
       color:var(--color-roxo-dark); 
@@ -376,27 +467,35 @@
       line-height:1.4; 
       text-align:justify;
     }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-image: none !important;
+      background: none !important;
+    }
+    .carousel-control-prev-icon::after {
+      content: '‹';
+      font-size: 4rem;
+      color: #fff;
+    }
+    .carousel-control-next-icon::after {
+      content: '›';
+      font-size: 4rem;
+      color: #fff;
+    }
+    /* Supondo que você queira mais espaço entre os pontos e o botão */
+.cases-sucesso .carousel-indicators {
+  margin-top: 1rem; /* ou 2rem, se quiser aumentar */
+}
 
-    /* Ajuste dos botões do carrossel para não ficar em cima do texto */
- 
-  /* Regras gerais do seu site acima ... */
-
-  /* Regras personalizadas para os botões do carrossel */
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    background-image: none !important;
-    background: none !important;
-  }
-  .carousel-control-prev-icon::after {
-    content: '‹';
-    font-size: 4rem;
-    color: #fff;
-  }
-  .carousel-control-next-icon::after {
-    content: '›';
-    font-size: 4rem;
-    color: #fff;
-  }
+/* Se estiver usando "position: absolute" nos indicadores,
+   também pode ajustar com bottom/margin-bottom, por exemplo:
+*/
+.cases-sucesso .carousel-indicators {
+  position: absolute;
+  bottom: -44px; /* Ajuste conforme a distância desejada */
+  left: 35%;
+  transform: translateX(-50%);
+}
 
 
     /* CTA FINAL */
@@ -444,6 +543,7 @@
       color: var(--color-roxo-dark);
     }
 
+    /* Responsividade Extra */
     @media (max-width: 768px) {
       .hero-content h1 {
         font-size: 2rem;
@@ -455,67 +555,22 @@
       .action-item.reverse {
         flex-direction: column !important;
         text-align: center;
-        min-height: auto !important; /* remove altura fixa em mobile */
+        min-height: auto !important; 
       }
       .action-image img {
-        max-height: 200px; /* limita no mobile */
+        max-height: 200px; 
       }
       .case-slide {
         flex-direction: column;
-        min-height: auto; /* remove altura fixa em mobile */
+        min-height: auto; 
       }
       .case-text {
         margin-top: 1rem;
       }
       .carousel-inner {
-        min-height: 300px; /* menor em mobile */
+        min-height: 300px; 
       }
     }
-    /* Ocultar o menu e mostrar só o ícone no mobile */
-.menu-toggle {
-  display: none;               /* desktop: escondido */
-  color: #fff;
-  font-size: 1.8rem;
-  cursor: pointer;
-  z-index: 1001;               /* acima do nav ul */
-}
-
-/* Por padrão, a nav ul fica normal em desktop */
-.nav ul {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  align-items: center;
-  height: 100%;
-}
-
-/* No mobile, transformamos em menu “fora da tela” */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;          /* aparece no mobile */
-  }
-
-  .nav ul {
-    position: absolute;
-    top: 70px;               /* abaixo do header fixo */
-    right: 0;
-    background: rgba(26, 26, 46, 0.95);
-    backdrop-filter: blur(4px);
-    flex-direction: column;
-    gap: 1rem;
-    width: 180px;
-    padding: 1rem;
-    transform: translateX(100%); /* começa “escondido” */
-    transition: transform 0.3s ease-in-out;
-  }
-  .nav ul.active {
-    transform: translateX(0%);   /* quando ativo, aparece */
-  }
-  .nav ul li a {
-    display: block;     /* para “clicar” no link */
-    padding: 0.5rem;
-  }
-}
 
   </style>
 </head>
@@ -528,12 +583,8 @@
       <a href="index.html#home">Data <span>Setti</span></a>
     </div>
 
-    <!-- Ícone hamburguer -->
-    <div class="menu-toggle" id="menu-toggle">
-      <i class="fas fa-bars"></i>
-    </div>
-
-    <nav class="nav">
+    <!-- MENU DESKTOP (telas >= 769px) -->
+    <nav class="nav-desktop">
       <ul>
         <li><a href="index.html#home">Home</a></li>
         <li><a href="index.html#sobre">Sobre</a></li>
@@ -542,9 +593,30 @@
         <li><a href="index.html#contato">Contato</a></li>
       </ul>
     </nav>
+
+    <!-- Ícone hamburguer (mobile) -->
+    <button class="hamburger" id="hamburger">
+      <i class="fas fa-bars"></i>
+    </button>
   </div>
 </header>
 
+<!-- OVERLAY E SIDE MENU (MOBILE) -->
+<div class="overlay" id="overlay"></div>
+<div class="side-menu" id="sideMenu">
+  <button class="close-btn" id="closeBtn">
+    <i class="fas fa-times"></i>
+  </button>
+  <nav>
+    <ul>
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#sobre">Sobre</a></li>
+      <li><a href="index.html#servicos">Serviços</a></li>
+      <li><a href="index.html#projetos">Projetos</a></li>
+      <li><a href="index.html#contato">Contato</a></li>
+    </ul>
+  </nav>
+</div>
 
 <!-- Hero -->
 <section class="hero-dev">
@@ -668,7 +740,7 @@
   </div>
 </section>
 
-<!-- Seção de Vantagens Extras -->
+<!-- Vantagens Extras -->
 <section class="vantagens-extras">
   <div class="container">
     <h2>Por que Confiar na Data Setti?</h2>
@@ -778,7 +850,7 @@
           frente à concorrência, consolidando sua marca no mercado.
         </p>
       </div>
-      <!-- NOVOS BENEFÍCIOS (2 a mais) -->
+      <!-- NOVOS BENEFÍCIOS -->
       <div class="beneficio-card">
         <i class="fa-solid fa-bolt"></i>
         <h3>Tempo de Resposta Acelerado</h3>
@@ -821,8 +893,6 @@
 
       <!-- Slides -->
       <div class="carousel-inner" style="margin-bottom:30px;">
-        <!-- Ajuste do margin-bottom para afastar indicadores das imagens -->
-
         <!-- Slide 1 -->
         <div class="carousel-item active">
           <div class="case-slide">
@@ -1044,13 +1114,41 @@
 
 <!-- Bootstrap JS (inclui Popper) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script para o menu lateral (Mobile) -->
 <script>
+  const hamburger = document.getElementById("hamburger");
+  const sideMenu = document.getElementById("sideMenu");
+  const closeBtn = document.getElementById("closeBtn");
+  const overlay = document.getElementById("overlay");
+
+  // Abre o side menu
+  hamburger.addEventListener("click", () => {
+    sideMenu.classList.add("active");
+    overlay.classList.add("active");
+  });
+
+  // Fecha ao clicar no X
+  closeBtn?.addEventListener("click", () => {
+    sideMenu.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+
+  // Fecha ao clicar no overlay
+  overlay.addEventListener("click", () => {
+    sideMenu.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+
+  // Se ainda quiser manter a lógica do menuToggle e navUl:
   const menuToggle = document.getElementById("menu-toggle");
   const navUl = document.querySelector(".nav ul");
 
-  menuToggle.addEventListener("click", () => {
-    navUl.classList.toggle("active"); 
-  });
+  if (menuToggle) {
+    menuToggle.addEventListener("click", () => {
+      navUl.classList.toggle("active");
+    });
+  }
 </script>
 
 </body>
