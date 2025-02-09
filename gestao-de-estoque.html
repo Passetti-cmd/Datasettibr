@@ -1,534 +1,982 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="description" content="Data Setti - Inteligência em Dados e Automação para Empresas" />
-  <meta name="keywords" content="Data Setti, Análise de Dados, IA, Automação, Power BI" />
-  <meta name="author" content="Data Setti" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data Setti - IA e Automação para Crescimento de Empresas</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Gestão de Estoque Inteligente: Solução completa para reduzir perdas, aumentar lucros e otimizar seu estoque com inteligência artificial.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Estoque Inteligente | Data Setti</title>
   
-  <!-- Google Font (Poppins) -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" 
-    rel="stylesheet" 
-  />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+  <!-- GSAP ScrollTrigger Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+  
+  <!-- CSS Inline (você pode separar em um arquivo .css se preferir) -->
+  <style>
+    :root {
+      --color-roxo-dark: #6A0572;
+      --color-azul-noite: #1F2937;
+      --cor-fundo: #121212;
+      --cor-card: #1e1e2e;
+    }
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--cor-fundo);
+      color: #fff;
+      line-height: 1.6;
+      padding-top: 70px; /* espaço para o header fixo */
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px 0;
+    }
 
-  <!-- Ícones do Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    integrity="sha512-..."
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+    /* HEADER */
+    .header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      background: rgba(26,26,46,0.95);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      height: 70px;
+      display: flex;
+      align-items: center;
+    }
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .logo a {
+      font-size: 1.7rem;
+      color: #fff;
+      font-weight: 600;
+      line-height: 70px;
+    }
+    .logo span {
+      color: var(--color-roxo-dark);
+    }
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      height: 100%;
+    }
+    .nav ul li a {
+      color: #fff;
+      font-weight: 400;
+      transition: color 0.3s ease;
+      line-height: 70px;
+      padding: 0 10px;
+    }
+    .nav ul li a:hover {
+      color: var(--color-roxo-dark);
+    }
 
-  <!-- Link para o nosso CSS -->
-  <link rel="stylesheet" href="estilo.css" />
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 60vh; /* altura reduzida para não ficar tão grande */
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 0;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26,26,46,0.7);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .hero-content .cta-btn {
+      background-color: var(--color-roxo-dark);
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      transition: background 0.3s;
+    }
+    .hero-content .cta-btn:hover {
+      background-color: #a40eb0;
+    }
 
-  <!-- GSAP para animações -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    /* INTRODUÇÃO */
+    .intro {
+      padding: 40px 0;
+      text-align: center;
+    }
+    .intro h2 {
+      color: var(--color-roxo-dark);
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .intro p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: auto;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
 
-  <!-- EmailJS (opcional, se estiver usando) -->
-  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <script>
-    (function(){
-        // emailjs.init("SEU_USER_ID"); // Substitua pelo seu User ID do EmailJS (opcional)
-    })();
-  </script>
+    /* FUNCIONALIDADES */
+    .features {
+      background-color: #1A1A2E;
+      padding: 40px 0;
+    }
+    .features h2 {
+      text-align: center;
+      color: var(--color-roxo-dark);
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .feature-card {
+      background-color: var(--cor-fundo);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    .feature-card i {
+      font-size: 3rem;
+      color: var(--color-roxo-dark);
+      margin-bottom: 15px;
+    }
+    .feature-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
 
-  <!-- Typed.js para texto digitado no hero -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    /* BENEFÍCIOS */
+    .benefits {
+      padding: 40px 0;
+      text-align: center;
+    }
+    .benefits h2 {
+      color: var(--color-roxo-dark);
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+    .benefits p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: auto;
+      margin-bottom: 40px;
+    }
+    .benefits-list {
+      list-style: none;
+      max-width: 800px;
+      margin: auto;
+      text-align: left;
+    }
+    .benefits-list li {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      padding-left: 35px;
+      position: relative;
+    }
+    .benefits-list li::before {
+      content: "\f00c"; /* ícone check do Font Awesome */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--color-roxo-dark);
+    }
+
+    /* GALERIA DE AÇÃO */
+    .action-gallery {
+      background-color: #1A1A2E;
+      padding: 40px 0;
+    }
+    .action-gallery h2 {
+      text-align: center;
+      color: var(--color-roxo-dark);
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+    .action-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+    }
+    .action-item:nth-child(1) { animation-delay: 0.3s; }
+    .action-item:nth-child(2) { animation-delay: 0.6s; }
+    .action-item:nth-child(3) { animation-delay: 0.9s; }
+    .action-item:nth-child(4) { animation-delay: 1.2s; }
+    .action-item.reverse {
+      flex-direction: row-reverse;
+    }
+    .action-image, .action-text {
+      flex: 1;
+      padding: 20px;
+    }
+    .action-image img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .action-image img:hover {
+      transform: scale(1.05);
+    }
+    .action-text h3 {
+      font-size: 1.8rem;
+      color: var(--color-roxo-dark);
+      margin-bottom: 15px;
+    }
+    .action-text p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      text-align: justify;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* PROCESSO */
+    .process {
+      background-color: #1A1A2E;
+      padding: 40px 0;
+    }
+    .process h2 {
+      text-align: center;
+      color: var(--color-roxo-dark);
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+    .process-steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 30px;
+    }
+    .process-step {
+      flex: 1 1 250px;
+      background-color: var(--cor-fundo);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+    .process-step:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    .process-step i {
+      font-size: 2.5rem;
+      color: var(--color-roxo-dark);
+      margin-bottom: 15px;
+    }
+    .process-step h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .process-step p {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* TESTEMUNHOS */
+    .testimonials {
+      padding: 40px 0;
+      text-align: center;
+      background-color: var(--cor-fundo);
+    }
+    .testimonials h2 {
+      color: var(--color-roxo-dark);
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+    .testimonial-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .testimonial-card {
+      background-color: #1A1A2E;
+      padding: 20px;
+      border-radius: 10px;
+      font-style: italic;
+      position: relative;
+      min-height: 150px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+    .testimonial-card::before {
+      content: "“";
+      font-size: 3rem;
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      color: var(--color-roxo-dark);
+    }
+    .testimonial-card p {
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-bottom: 15px;
+    }
+    .testimonial-card .client {
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-align: right;
+    }
+
+    /* CARROSSEL DE EMPRESAS */
+    .company-carousel {
+      background-color: var(--cor-fundo);
+      padding: 30px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .company-carousel h2 {
+      text-align: center;
+      color: var(--color-roxo-dark);
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .carousel-card {
+      background-color: var(--cor-card);
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      transition: transform 0.3s;
+    }
+    .carousel-card:hover {
+      transform: translateY(-5px);
+    }
+    .carousel-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .carousel-card h5 {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .carousel-card p {
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #fff;
+      flex-grow: 1;
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      filter: invert(1);
+      width: 20px;
+      height: 20px;
+    }
+
+    /* BANNER FINAL (CTA) */
+    .banner-final {
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(106,5,114,1) 50%, rgba(26,26,46,1) 100%);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .banner-final .banner-meio-content {
+      position: relative;
+      z-index: 2;
+    }
+    .banner-final-title {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    .banner-final-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+    .banner-final .btn-primario {
+      background: linear-gradient(90deg, #B554FF, #470457);
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease-in-out;
+      box-shadow: 0px 4px 10px rgba(138,10,148,0.5);
+      display: inline-block;
+    }
+    .banner-final .btn-primario:hover {
+      background: linear-gradient(90deg, #8A0A94, #D774FF);
+      transform: scale(1.05);
+      box-shadow: 0px 6px 15px rgba(138,10,148,0.7);
+    }
+    #banner-text {
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #2E2E2E;
+      padding: 10px 0;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+    footer a {
+      color: #fff;
+      margin: 0 5px;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: var(--color-roxo-dark);
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      nav a {
+        margin: 0 10px;
+      }
+      .features-grid, .gallery-grid, .process-steps, .testimonial-cards {
+        grid-template-columns: 1fr;
+      }
+      .action-item {
+        flex-direction: column;
+      }
+      .carousel-card {
+        height: auto;
+      }
+    }
+    /* Ocultar o menu e mostrar só o ícone no mobile */
+.menu-toggle {
+  display: none;               /* desktop: escondido */
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 1001;               /* acima do nav ul */
+}
+
+/* Por padrão, a nav ul fica normal em desktop */
+.nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  align-items: center;
+  height: 100%;
+}
+
+/* No mobile, transformamos em menu “fora da tela” */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;          /* aparece no mobile */
+  }
+
+  .nav ul {
+    position: absolute;
+    top: 70px;               /* abaixo do header fixo */
+    right: 0;
+     background: rgba(26,26,46,0.95);
+    backdrop-filter: blur(4px);
+    flex-direction: column;
+    gap: 1rem;
+    width: 180px;
+    padding: 1rem;
+    z-index: 9999;
+    transform: translateX(100%); /* começa “escondido” */
+    transition: transform 0.3s ease-in-out;
+  }
+  .nav ul.active {
+    transform: translateX(0%);   /* quando ativo, aparece */
+  }
+  .nav ul li a {
+    display: block;     /* para “clicar” no link */
+    padding: 0.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .action-item,
+  .action-item.reverse {
+    flex-direction: column !important;
+  }
+  .action-image,
+  .action-text {
+    width: 100%;
+  }
+  .action-image img {
+    margin-bottom: 15px; /* separa da descrição */
+  }
+}
+
+  </style>
 </head>
 <body>
   <!-- Header -->
-  <header class="header" id="header">
+<header class="header" id="header">
   <div class="container">
     <div class="logo">
-      <a href="#">Data <span>Setti</span></a>
+      <a href="index.html#home">Data <span>Setti</span></a>
     </div>
 
-    <!-- Ícone de menu hamburguer -->
+    <!-- Ícone hamburguer -->
     <div class="menu-toggle" id="menu-toggle">
       <i class="fas fa-bars"></i>
     </div>
 
     <nav class="nav">
       <ul>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#projetos">Projetos</a></li>
-        <li><a href="#depoimentos">Depoimentos</a></li>
-        <li><a href="#contato">Contato</a></li>
-         <li><a href="#blog">Blog</a></li>
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#sobre">Sobre</a></li>
+        <li><a href="index.html#servicos">Serviços</a></li>
+        <li><a href="index.html#projetos">Projetos</a></li>
+        <li><a href="index.html#contato">Contato</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 
-  <!-- Banner (Hero) no topo, com gradiente animado -->
-  <section class="hero-animado">
-    <div class="container hero-content">
-      <!-- Texto digitado com Typed.js -->
-      <h1 id="typed-text"></h1>
+  <!-- Hero -->
+  <section class="hero">
+    <video autoplay muted loop class="hero-video">
+      <source src="videos/estoquee.mp4" type="video/mp4">
+      Seu navegador não suporta vídeo.
+    </video>
+    <div class="hero-content">
+      <h1>Gestão de Estoque Inteligente</h1>
+      <p>Garanta alta disponibilidade de produtos, elimine perdas por validade e impulsione lucros com uma solução que une IA, automação e relatórios dinâmicos.</p>
+      <a href="#banner-final" class="cta-btn">Solicite sua Demonstração</a>
+    </div>
+  </section>
+
+  <!-- Introdução -->
+  <section class="intro container" id="intro">
+    <h2>O Futuro do Controle de Estoque</h2>
+    <p>
+      Em um cenário onde cada detalhe faz diferença no resultado final, a forma como você gerencia seu estoque pode definir o sucesso ou fracasso do seu negócio. Nossa plataforma foi desenvolvida para ajudar você a evitar desperdícios, prevenir rupturas e tomar decisões estratégicas embasadas em dados, tudo de maneira simples e automatizada.
+    </p>
+  </section>
+
+  <!-- Funcionalidades -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2>Funcionalidades Avançadas</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fa-solid fa-clock"></i>
+          <h3>Controle de Validade</h3>
+          <p>Mantenha-se sempre à frente, identificando e removendo produtos próximos ao vencimento, reduzindo perdas e garantindo qualidade.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-bell"></i>
+          <h3>Alertas de Reposição</h3>
+          <p>Receba notificações instantâneas sobre baixo nível de estoque, evitando a falta de produtos nas prateleiras e garantindo vendas contínuas.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-chart-line"></i>
+          <h3>Previsões de Demanda</h3>
+          <p>Use algoritmos de Inteligência Artificial para identificar tendências de vendas e ajustar a quantidade de itens de acordo com a demanda real.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-file-lines"></i>
+          <h3>Relatórios Detalhados</h3>
+          <p>Avalie rapidamente o desempenho do estoque, descubra produtos com baixa rotatividade e tome decisões embasadas em dados concretos.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-arrows-rotate"></i>
+          <h3>Integração Total</h3>
+          <p>Conecte nossa solução ao seu ERP e outras plataformas para um fluxo contínuo de informações e processos enxutos.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-mobile-screen"></i>
+          <h3>Acesso Remoto</h3>
+          <p>Gerencie seu estoque de qualquer lugar, acompanhando movimentações e recebendo alertas direto no seu celular.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-lock"></i>
+          <h3>Segurança de Dados</h3>
+          <p>Mantenha seus registros protegidos com criptografia e backups automáticos, garantindo tranquilidade e confiabilidade.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-chart-pie"></i>
+          <h3>Análises de Performance</h3>
+          <p>Visualize métricas essenciais em dashboards intuitivos, identificando oportunidades de redução de custos e aumento de vendas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefícios -->
+  <section class="benefits" id="benefits">
+    <div class="container">
+      <h2>Benefícios Comprovados</h2>
       <p>
-        A Data Setti impulsiona o crescimento da sua empresa unindo IA, automação e análise de dados.
+        Desde pequenos comércios até grandes redes varejistas, nossa solução traz resultados expressivos que tornam o gerenciamento de estoque mais simples, eficaz e lucrativo.
       </p>
-      <a href="#contato" class="btn-primario cta-button">Solicitar Diagnóstico Gratuito</a>
+      <ul class="benefits-list">
+        <li>Redução de até 30% em perdas relacionadas a validade de produtos.</li>
+        <li>Maior assertividade na reposição, evitando tanto ruptura quanto excessos.</li>
+        <li>Automação de tarefas repetitivas, liberando sua equipe para funções mais estratégicas.</li>
+        <li>Relatórios personalizados e insights em tempo real, facilitando decisões rápidas.</li>
+        <li>Fácil integração com sistemas de gestão e maior transparência em todas as áreas da empresa.</li>
+      </ul>
     </div>
   </section>
 
-  <!-- Script do Typed.js (hero) -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function(){
-      var typed = new Typed("#typed-text", {
-        strings: [
-          "Lucre mais com nossos serviços",
-          "Tenha melhor gestão e reduza gastos",
-          "Aproveite insights e inove com IA"
-        ],
-        typeSpeed: 50,   // velocidade para “digitar”
-        backSpeed: 70,   // velocidade para “apagar”
-        loop: false,     // se quiser repetir, mude para true
-        showCursor: false
-      });
-    });
-  </script>
-
-  <!-- Sobre a Empresa -->
-  <section id="sobre" class="sobre">
+  <!-- Galeria de Ação -->
+  <section class="action-gallery" id="action-gallery">
     <div class="container">
-      <div class="sobre-texto">
-        <h2>Sobre a Data Setti</h2>
-        <p>
-          A <strong>Data Setti</strong> nasceu da união de <strong>paixão por tecnologia</strong> e 
-          <strong>foco em resultados</strong>. Transformamos dados em decisões mais inteligentes, 
-          melhorando processos e aumentando a <strong>lucratividade</strong> do seu negócio.
-        </p>
-        <p>
-          Nossa equipe une especialistas em <strong>IA</strong>, <strong>automação</strong> e 
-          <strong>desenvolvimento de software</strong> para entregar soluções que otimizam sua 
-          operação, reduzem custos e impulsionam o crescimento sustentável.
-        </p>
-        <ul class="sobre-lista">
-          <li><i class="fas fa-chart-line"></i> Gestão de Estoque Inteligente</li>
-          <li><i class="fas fa-robot"></i> Painéis e Insights Estratégicos</li>
-          <li><i class="fas fa-code"></i> Desenvolvimento de Software Sob Medida</li>
-        </ul>
-        <p>
-          <em>Missão:</em> Capacitar empresas de todos os tamanhos a inovar 
-          e se destacar no mercado, simplificando o uso de dados e tecnologia.
-        </p>
+      <h2>Veja Nossa Solução em Ação</h2>
+      <div class="action-item">
+        <div class="action-image">
+          <img src="img/dash.png" alt="Dashboard de Estoque">
+        </div>
+        <div class="action-text">
+          <h3>Dashboard de Estoque</h3>
+          <p>
+            Visualize o status completo do seu estoque em tempo real, com gráficos modernos, indicadores de desempenho e alertas automáticos. Tenha um controle preciso, evitando desperdícios e garantindo reposições no momento certo.
+          </p>
+        </div>
       </div>
-      <div class="sobre-imagem">
-        <img src="img/free.png" alt="Sobre a Data Setti" />
+      <div class="action-item reverse">
+        <div class="action-image">
+          <img src="img/productanalys.png" alt="Relatórios Inteligentes">
+        </div>
+        <div class="action-text">
+          <h3>Relatórios Inteligentes</h3>
+          <p>
+           Obtenha análises detalhadas sobre giro de produtos, histórico de consumo e tendências de vendas. Descubra oportunidades de promoções para itens parados, otimize reposições e tome decisões estratégicas baseadas em dados precisos.
+          </p>
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-image">
+          <img src="img/monit.png" alt="Monitoramento em Tempo Real">
+        </div>
+        <div class="action-text">
+          <h3>Monitoramento em Tempo Real</h3>
+          <p>
+            Acompanhe cada movimentação do seu estoque com atualizações instantâneas e notificações automáticas. Identifique rapidamente variações incomuns, evite rupturas e garanta que os níveis críticos de produtos sejam ajustados antes que impactem suas operações.
+          </p>
+        </div>
+      </div>
+      <div class="action-item reverse">
+        <div class="action-image">
+          <img src="img/ERP.png" alt="Integração com ERP">
+        </div>
+        <div class="action-text">
+          <h3>Integração com ERP</h3>
+          <p>
+            Conecte nosso sistema ao seu ERP e mantenha todos os setores da empresa alinhados com dados atualizados em tempo real. Automatize processos, reduza erros manuais e otimize a reposição de produtos, garantindo uma gestão mais eficiente e estratégica.
+          </p>
+        </div>
+              </div>
+      <div class="action-item">
+        <div class="action-image">
+          <img src="img/finalest.jpg" alt="Objetivo Final">
+        </div>
+        <div class="action-text">
+          <h3>Objetivo Final</h3>
+          <p>
+        Nosso objetivo é desenvolver um sistema de estoque inteligente que ajude as empresas a prever a demanda, reduzir perdas e otimizar a reposição de produtos. Com isso, garantimos maior lucratividade e menos desperdícios, evitando tanto rupturas quanto excessos, além de eliminar processos manuais na gestão do estoque.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Serviços -->
-  <section id="servicos" class="servicos">
+  <!-- Carousel de Empresas -->
+  <section class="company-carousel" id="company-carousel">
     <div class="container">
-      <h2>Nossos Serviços</h2>
-
-      <!-- Pequeno texto introdutório -->
-      <p class="servicos-intro" style="text-align:center; max-width:800px; margin:0 auto 2rem;">
-        Conheça nossas principais soluções e descubra como 
-        podemos <strong>automatizar processos</strong>, <strong>reduzir custos</strong> 
-        e <strong>elevar seus resultados</strong> por meio de dados e IA.
-      </p>
-
-      <div class="servicos-cards">
-        <!-- 1. Gestão de Estoque Inteligente -->
-        <div class="servico-card">
-          <img src="img/estoque.svg" alt="Gestão de Estoque" />
-          <h3>Gestão de Estoque Inteligente</h3>
-          <p>
-            Reduza desperdícios e aumente seus lucros! Nossa IA monitora seu estoque 24/7, 
-            previne perdas e sugere as melhores estratégias para expandir sem estresse.
-          </p>
-          <a href="gestao-de-estoque.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
+      <h2 class="text-center text-primary mb-4">Empresas que Podemos Ajudar</h2>
+      <!-- Auto-slide a cada 3s -->
+      <div id="empresaCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+          <!-- Primeiro Slide -->
+          <div class="carousel-item active">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-3">
+                <div class="card bg-secondary border-0 carousel-card">
+                  <img src="img/posto.png" class="card-img-top" alt="Postos de Gasolina">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">Postos de Gasolina</h5>
+                    <p class="card-text text-white">Controle o consumo e otimize o reabastecimento de combustíveis em cada bomba.</p>
+                  </div>
+                </div>
+              </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                <div class="card bg-secondary border-0 carousel-card">
+                  <img src="img/padaria.jpg" class="card-img-top" alt="Padarias">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">Padarias</h5>
+                    <p class="card-text text-white">Garanta insumos frescos e reduza sobras que afetam a qualidade dos produtos.</p>
+                  </div>
+                </div>
+              </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                <div class="card bg-secondary border-0 carousel-card">
+                  <img src="img/mercado.png" class="card-img-top" alt="Mercados">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">Mercados</h5>
+                    <p class="card-text text-white">Evite rupturas nas prateleiras e mantenha sempre os itens mais vendidos em estoque.</p>
+                  </div>
+                </div>
+              </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                <div class="card bg-secondary border-0 carousel-card">
+                  <img src="img/varejo.png" class="card-img-top" alt="Lojas de Varejo">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">Lojas de Varejo</h5>
+                    <p class="card-text text-white">Melhore a experiência do cliente com produtos organizados e reposições oportunas.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Segundo Slide -->
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-6 col-md-3">
+                <div class="card bg-secondary border-0 carousel-card">
+                  <img src="img/restaurante.png" class="card-img-top" alt="Restaurantes">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">Restaurantes</h5>
+                    <p class="card-text text-white">Gerencie insumos com precisão e mantenha a qualidade dos pratos servidos.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="card bg-secondary border-0 carousel-card">
+                  <img src="img/farmacia.png" class="card-img-top" alt="Farmácias">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">Farmácias</h5>
+                    <p class="card-text text-white">Evite vencimentos de medicamentos e controle rigorosamente cada lote recebido.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="card bg-secondary border-0 carousel-card">
+                  <img src="img/distruibuidorapng.avif" class="card-img-top" alt="Distribuidoras">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">Distribuidoras</h5>
+                    <p class="card-text text-white">Gerencie grandes quantidades de produtos com monitoramento e alertas automatizados.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="card bg-secondary border-0 carousel-card">
+                  <img src="img/estoquese.avif" class="card-img-top" alt="E-Commerce">
+                  <div class="card-body">
+                    <h5 class="card-title text-white">E-Commerce</h5>
+                    <p class="card-text text-white">Controle cada etapa do fulfillment e reduza erros em diversos centros de distribuição.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- 2. Painéis e Insights Estratégicos -->
-        <div class="servico-card">
-          <img src="img/Growth.svg" alt="Insights Estratégicos" />
-          <h3>Painéis, Insights &amp; Crescimento</h3>
-          <p>
-            Dashboards interativos revelam oportunidades, otimizam campanhas e impulsionam
-            vendas com estratégias inteligentes e certeiras.
-          </p>
-          <a href="paineis-e-insights.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
-        </div>
-        <!-- 3. Desenvolvimento de Software -->
-        <div class="servico-card">
-          <img src="img/software.svg" alt="Desenvolvimento de Software" />
-          <h3>Desenvolvimento de Software</h3>
-          <p>
-            Automação sob medida! Criamos sistemas personalizados para integrar dados, 
-            agilizar rotinas e levar produtividade do seu negócio a outro patamar.
-          </p>
-          <a href="desenvolvimento-software.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
-        </div>
-        <!-- 4. Estratégias Baseadas em IA -->
-        <div class="servico-card">
-          <img src="img/artificial.png" alt="Inteligência Artificial" />
-          <h3>Estratégias Baseadas em IA</h3>
-          <p>
-            Decisões mais inteligentes com Inteligência Artificial! 
-            Obtenha insights valiosos, reduza erros humanos e aprimore sua 
-            competitividade com tecnologia de ponta.
-          </p>
-          <a href="estrategias-ia.html" class="btn-primario btn-saiba-mais">Saiba Mais</a>
-        </div>
+        <!-- Controles -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#empresaCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#empresaCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Próximo</span>
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- Seção Projetos (Carrossel) -->
-  <section id="projetos" class="projetos">
+  <!-- Processo -->
+  <section class="process" id="process">
     <div class="container">
-      <h2 class="animate">Empresas que Confiam na Data Setti</h2>
-      <div class="carousel-container">
-        <button class="carousel-btn prev" id="prevProj">&#10094;</button>
-        <div class="carousel-wrapper" id="carouselProj">
-          <!-- Slides de Projetos -->
-          <div class="carousel-item">
-            <h3>Otimização de Estoque</h3>
-            <img src="img/Sesi.jpg" alt="Projeto 1">
-            <p>
-              Indicadores em tempo real para decisões assertivas! 
-              Desenvolvemos dashboards personalizados para visualizar métricas de vendas e otimizar operações.
-              <br><strong>SESI</strong> - Rede de Instituições Paraestatais Brasileiras
-            </p>
-          </div>
-          <div class="carousel-item">
-            <h3>Automação Financeira</h3>
-            <img src="img/emene_turismo.png" alt="Projeto 2">
-            <p>
-              Redução de custos com inteligência de dados! Implementamos IA para prever demanda e reduzir desperdícios.
-              <br><strong>Emene Turismo</strong> - Viagens
-            </p>
-          </div>
-          <div class="carousel-item">
-            <h3>Dashboard de Vendas</h3>
-            <img src="img/precolandia.png" alt="Projeto 3">
-            <p>
-              Menos burocracia e mais crescimento! Integramos relatórios financeiros 
-              automaticamente, aumentando a produtividade.
-              <br><strong>Preçolandia</strong> - Varejo
-            </p>
-          </div>
-          <div class="carousel-item">
-            <h3>IA para Previsão</h3>
-            <img src="img/acceptimidia.png" alt="Projeto 4">
-            <p>
-              Antecipe tendências e fique à frente do mercado! Aplicamos modelos preditivos 
-              para gerar insights estratégicos.
-              <br><strong>Accept Mídia</strong> - Marketing e Publicidade
-            </p>
-          </div>
-          <div class="carousel-item">
-            <h3>Estratégias para Crescimento</h3>
-            <img src="img/smartec.png" alt="Projeto 5">
-            <p>
-              Ajudamos na criação de campanhas de marketing baseadas em dados, 
-              alcançando maior público e gerando resultados rápidos.
-              <br><strong>Smartec Metalúrgica</strong> 
-            </p>
-          </div>
+      <h2>Como Funciona?</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <h3>Análise Inicial</h3>
+          <p>Fazemos um mapeamento completo do seu estoque e processos, identificando gargalos e oportunidades de economia com base em dados históricos.</p>
         </div>
-        <button class="carousel-btn next" id="nextProj">&#10095;</button>
+        <div class="process-step">
+          <i class="fa-solid fa-gear"></i>
+          <h3>Implementação Personalizada</h3>
+          <p>Integramos nossa solução de IA ao seu sistema de forma fluida, garantindo continuidade operacional e evitando qualquer interrupção nas vendas.</p>
+        </div>
+        <div class="process-step alert">
+          <i class="fa-solid fa-bell"></i>
+          <h3>Alertas &amp; Ações Oportunas</h3>
+          <p>Receba avisos em tempo real para repor produtos, ofertar promoções pontuais e gerenciar validade, evitando perdas e maximizando lucros.</p>
+        </div>
+        <div class="process-step">
+          <i class="fa-solid fa-chart-pie"></i>
+          <h3>Monitoramento &amp; Análise</h3>
+          <p>Acompanhe KPIs essenciais em dashboards interativos, ajustando sua estratégia conforme as variações de mercado e o feedback dos clientes.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- BANNER MEIO -->
-  <section class="banner-meio">
+  <!-- BANNER FINAL (CTA) -->
+  <section class="banner-final" id="banner-final">
     <div class="banner-meio-content">
-      <h2 class="banner-meio-title">
-        <span id="banner-text">Maximize Suas Oportunidades</span>
+      <h2 class="banner-final-title">
+        <span id="banner-text">Transforme Seu Estoque Agora!</span>
       </h2>
-      <p class="banner-meio-subtitle">
-        Obtenha insights estratégicos e fique à frente da concorrência!
+      <p class="banner-final-subtitle">
+        Deixe nos ajudar a controla seu estoque, prevenindo perdas e aumentando os lucros.
       </p>
-      <a href="#contato" class="btn-primario">
-        Solicite um diagnóstico gratuito agora!
-      </a>
+      <a href="mailto:contato@datasetti.com.br" class="btn-primario">Solicite Sua Demonstração</a>
     </div>
   </section>
 
-  <!-- Depoimentos (Carrossel) -->
-  <section id="depoimentos" class="depoimentos">
-    <div class="depoimentos-overlay"></div>
+  <!-- Footer -->
+  <footer>
     <div class="container">
-      <h2 class="animate">O que dizem nossos clientes</h2>
-      <div class="carousel-container">
-        <button class="carousel-btn prev" id="prevDepo">&#10094;</button>
-        <div class="carousel-wrapper" id="carouselDepo">
-          <!-- Slides de Depoimentos -->
-          <div class="carousel-item">
-            <div class="depo-content animate">
-              <img src="img/depoimento_maria.jpg" alt="Foto da Maria" class="depo-foto">
-              <p>
-                "A Data Setti revolucionou nossa gestão de estoque! Temos mais controle, 
-                menos desperdício e as vendas cresceram 20%!"
-              </p>
-              <span><strong>Camila Ferreira</strong> - Gerente de Loja</span>
-              <div class="depo-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="depo-content animate">
-              <img src="img/depoimento_joao.jpg" alt="Foto do João" class="depo-foto">
-              <p>
-                "As automações e relatórios inteligentes reduziram nossos custos 
-                e aumentaram a eficiência!"
-              </p>
-              <span><strong>Lucas Alves</strong> - Diretor Financeiro</span>
-              <div class="depo-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="depo-content animate">
-              <img src="img/depoimento_ana.jpg" alt="Foto da Ana" class="depo-foto">
-              <p>
-                "A implementação de IA nos permitiu prever demandas com precisão, 
-                transformando nossa operação!"
-              </p>
-              <span><strong>Ana Nogueira</strong> - CEO de Startup</span>
-              <div class="depo-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="depo-content animate">
-              <img src="img/depoimento_carlos.jpg" alt="Foto do Carlos" class="depo-foto">
-              <p>
-                "Nossos processos ficaram mais ágeis e confiáveis graças às soluções 
-                de automação da Data Setti."
-              </p>
-              <span><strong>Carlos Rosa</strong> - Diretor de Operações</span>
-              <div class="depo-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-btn next" id="nextDepo">&#10095;</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOG -->
-  <section id="blog" class="blog-section">
-    <div class="container">
-      <h2 class="section-title">Últimos Posts do Blog</h2>
-      <p style="text-align:center; max-width:700px; margin:0 auto 2rem;">
-        Fique por dentro das novidades sobre Inteligência Artificial, 
-        automação e estratégias de crescimento para sua empresa.
-      </p>
-
-      <div class="blog-grid">
-        <div class="blog-card">
-            <h3>Como a Inteligência Artificial Pode Reduzir Custos</h3>
-            <p class="blog-meta">
-              Publicado em 05/02/2025 • <span class="blog-tag">IA</span>
-            </p>
-            <p>
-              Descubra como a IA pode otimizar processos e reduzir desperdícios...
-            </p>
-            <a href="post1.html" class="read-more">Leia o Blog</a>
-        </div>
-        <div class="blog-card">
-            <h3>5 Motivos Para Usar Power BI na Gestão</h3>
-            <p class="blog-meta">
-              Publicado em 03/02/2025 • <span class="blog-tag">Power BI</span>
-            </p>
-            <p>
-              Saiba como o Power BI pode transformar sua análise de dados...
-            </p>
-            <a href="post2.html" class="read-more">Leia o Blog</a>
-        </div>
-        <div class="blog-card">
-            <h3>Gestão de Estoque Inteligente</h3>
-            <p class="blog-meta">
-              Publicado em 01/02/2025 • <span class="blog-tag">Automação</span>
-            </p>
-            <p>
-              Como evitar desperdícios e aumentar lucros com uma gestão eficaz...
-            </p>
-            <a href="post3.html" class="read-more">Leia o Blog</a>
-        </div>
-      </div>
-
-      <div class="blog-footer">
-        <a href="Blog template.html" class="readmore-btn">
-          <span class="book-wrapper">
-            <!-- SVGs ou ícones aqui, se desejar -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="rgb(86, 69, 117)"
-              viewBox="0 0 126 75"
-              class="book"
-            >
-              <rect
-                stroke-width="3"
-                stroke="#fff"
-                rx="7.5"
-                height="70"
-                width="121"
-                y="2.5"
-                x="2.5"
-              ></rect>
-              <line stroke-width="3" stroke="#fff" y2="75" x2="63.5" x1="63.5"></line>
-              <path
-                stroke-linecap="round"
-                stroke-width="4"
-                stroke="#fff"
-                d="M25 20H50"
-              ></path>
-              <path
-                stroke-linecap="round"
-                stroke-width="4"
-                stroke="#fff"
-                d="M101 20H76"
-              ></path>
-              <path
-                stroke-linecap="round"
-                stroke-width="4"
-                stroke="#fff"
-                d="M16 30L50 30"
-              ></path>
-              <path
-                stroke-linecap="round"
-                stroke-width="4"
-                stroke="#fff"
-                d="M110 30L76 30"
-              ></path>
-            </svg>
-          </span>
-          <span class="text"> Leia Mais</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contato -->
-  <section id="contato" class="contato">
-    <div class="container">
-      <h2>Entre em Contato</h2>
-      <p class="contato-chamada">
-        Entre em contato e veja como podemos <strong>transformar</strong> seus dados em <strong>crescimento</strong>!
-      </p>
-      <p>
-        Oferecemos diagnóstico gratuito para mostrar como nossos insights podem turbinar o seu negócio!
-      </p>
-      <br><br>
-
-      <div class="contato-box">
-        <form action="#" method="post" class="form-contato">
-          <div class="form-group">
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" required />
-          </div>
-          <div class="form-group">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div class="form-group">
-            <label for="empresa">Empresa</label>
-            <input type="text" id="empresa" name="empresa" />
-          </div>
-          <div class="form-group">
-            <label for="mensagem">Mensagem</label>
-            <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
-          </div>
-          <!-- Botão de Enviar (SVG animado) -->
-          <button class="btn-contato">
-            <div class="svg-wrapper">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="white"/>
-              </svg>
-            </div>
-            <span>Enviar</span>
-          </button>
-        </form>
-        
-        <div class="contato-info">
-          <h3>Vamos conversar?</h3>
-          <p><strong>E-mail:</strong> contato@datasetti.com</p>
-          <p><strong>Telefone:</strong> +55 (14) 98835-4859</p>
-          <p>Ou mande uma mensagem no WhatsApp!</p>
-          <a 
-            href="https://wa.link/myved1" 
-            class="btn-whatsapp" 
-            target="_blank"
-            rel="noopener"
-          >
-            <img src="img/whatsapp_verde.svg" alt="WhatsApp">
-            Fale Agora
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Rodapé -->
-  <footer class="footer">
-    <div class="container footer-content">
       <p>Data Setti – Inteligência em Dados &copy; 2025. Todos os direitos reservados.</p>
       <p>
-        <a href="#sobre">Sobre</a> | 
-        <a href="#servicos">Serviços</a> | 
-        <a href="#projetos">Projetos</a> | 
-        <a href="#depoimentos">Depoimentos</a> | 
-        <a href="#contato">Contato</a>
+        <a href="https://datasetti.com" target="_blank">datasetti.com</a> | 
+        <a href="mailto:contato@datasetti.com.br">contato@datasetti.com.br</a> | 
+        <a href="https://www.instagram.com/datasetti" target="_blank">Instagram: @datasetti</a>
       </p>
     </div>
   </footer>
-
-  <!-- Ícone flutuante do WhatsApp -->
-  <a 
-    href="https://wa.link/myved1" 
-    class="whatsapp-float" 
-    target="_blank"
-    rel="noopener"
-  >
-    <img src="img/whatsapp_float.svg" alt="WhatsApp" />
-  </a>
-
-  <!-- Script JS principal (script.js) -->
-  <script src="script.js"></script>
-
-  <!-- Animação do banner-meio (GSAP) -->
+  
+  <!-- Bootstrap JS Bundle (inclui Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- GSAP Scripts -->
   <script>
     gsap.registerPlugin(ScrollTrigger);
-    gsap.from(".banner-meio-content", {
+
+    // Animação dos itens da "action-gallery"
+    gsap.from(".action-item", {
       scrollTrigger: {
-        trigger: ".banner-meio",
-        start: "top 80%",
+        trigger: ".action-gallery",
+        start: "top 80%"
       },
-      duration: 1,
       opacity: 0,
       y: 50,
-      ease: "power2.out"
+      duration: 1,
+      stagger: 0.2
     });
+
+    // Animação do banner-final (se quiser)
+    gsap.from(".banner-final .banner-meio-content", {
+      scrollTrigger: {
+        trigger: ".banner-final",
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1
+    });
+
+
   </script>
+
+  <script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const navUl = document.querySelector(".nav ul");
+
+  menuToggle.addEventListener("click", () => {
+    navUl.classList.toggle("active"); 
+  });
+</script>
+
 </body>
 </html>
