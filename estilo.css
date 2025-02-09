@@ -39,8 +39,8 @@ body {
     top: 0;
     left: 0;
     z-index: 999;
-    background: rgba(26, 26, 46, 0.95); /* fundo levemente transparente */
-    backdrop-filter: blur(4px);         /* efeito de “vidro fosco” se quiser */
+    background: rgba(26, 26, 46, 0.95);
+    backdrop-filter: blur(4px);
     transition: background 0.3s;
     box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     height: 70px;
@@ -63,54 +63,142 @@ body {
     color: var(--color-roxo-dark);
 }
 
-.nav ul {
+/* =========== MENU DESKTOP (NAV-DESKTOP) =========== */
+.nav-desktop ul {
     list-style: none;
     display: flex;
     gap: 1.5rem;
 }
-.nav ul li a {
+.nav-desktop ul li a {
     color: #fff;
-    text-decoration: none;
-    font-weight: 400;
-    transition: color 0.3s ease;
+    text-decoration: none; /* remove sublinhado no desktop */
+    transition: color 0.3s;
+    line-height: 70px;
 }
-.nav ul li a:hover {
+.nav-desktop ul li a:hover {
     color: var(--color-roxo-dark);
 }
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none; /* some no mobile */
+  }
+}
 
-/* ======================== HERO (TOPO) COM ANIMAÇÃO DE GRADIENTE ======================== */
+/* BOTÃO HAMBURGUER (MOBILE) */
+.hamburger {
+  display: none; /* não aparece em desktop */
+  font-size: 1.8rem;
+  background: var(--color-roxo-dark);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+/* No mobile, aparece e vai para a direita */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    margin-left: auto; /* empurra o hambúrguer p/ a direita se necessário */
+  }
+}
+
+/* OVERLAY e SIDE-MENU (MOBILE) */
+.overlay {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 998;
+}
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #1A1A2E;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+  transition: right 0.3s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+.side-menu.active {
+  right: 0;
+}
+.close-btn {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.side-menu nav ul {
+  list-style: none;
+  width: 100%;
+}
+.side-menu nav ul li a {
+  display: block;
+  padding: 10px 0;
+  font-size: 1.1rem;
+  color: #fff;
+  text-decoration: none; /* remove sublinhado no menu lateral */
+  /* Removemos a borda: */
+  /* border-bottom: 1px solid rgba(255,255,255,0.1); */
+  transition: color 0.3s;
+}
+.side-menu nav ul li a:hover {
+  color: var(--color-roxo-dark);
+}
+@media (min-width: 769px) {
+  .side-menu,
+  .overlay {
+    display: none; /* some no desktop */
+  }
+}
+
+/* ======================== HERO (TOP) ======================== */
 .hero-animado {
-    /* Gradiente animado */
     background: linear-gradient(135deg, #6A0572, #1A1A2E, #8A0A94);
     background-size: 200% 200%;
     animation: gradientAnimation 20s ease infinite;
-
     height: 75vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
-    margin-top: 70px; /* Para não ficar embaixo do header fixo */
+    margin-top: 70px; /* offset do header fixo */
 }
-/* Keyframes para o gradiente animado */
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-
 .hero-content {
-    max-width: 900px; /* Aumenta um pouco a largura */
-    text-align: center; /* Centraliza todo o conteúdo */
-    margin: 0 auto; /* Centraliza no container */
+    max-width: 900px;
+    text-align: center;
+    margin: 0 auto;
 }
 .hero-content h1 {
-    font-size: 2.5rem; /* Diminui o tamanho da fonte */
+    font-size: 2.5rem;
     line-height: 1.2;
     margin-bottom: 1.2rem;
 }
-
 .hero-content p {
     font-size: 1.3rem;
     margin-bottom: 2rem;
@@ -131,27 +219,18 @@ body {
     transform: scale(1.05);
 }
 #typed-text {
-    white-space: nowrap; /* Impede que o texto quebre */
-    display: inline-block; /* Mantém a estrutura alinhada */
-    font-size: 2.5rem; /* Ajusta o tamanho da fonte */
-    text-align: center; /* Centraliza o texto */
+    white-space: nowrap;
+    display: inline-block;
+    font-size: 2.5rem;
+    text-align: center;
 }
 
-/* ======================== SEÇÕES (PADDING) ======================== */
+/* ========== SEÇÕES GERAIS PADDING ========== */
 section {
     padding: 80px 0;
-    /* margin-top: 70px;  Cuidado para não duplicar se já tiver offset do header */
 }
 
-.sobre,
-.servicos,
-.projetos,
-.depoimentos,
-.contato {
-    position: relative;
-}
-
-/* ======================== SEÇÃO SOBRE ======================== */
+/* ========== SEÇÃO SOBRE ========== */
 .sobre {
     background-color: var(--color-preto);
 }
@@ -196,25 +275,8 @@ section {
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-@media (max-width: 768px) {
-  .sobre .container {
-    flex-direction: column;   /* empilha imagem e texto */
-    text-align: center;       /* se quiser centralizar no mobile */
-  }
-  .sobre-texto, .sobre-imagem {
-    flex: none;
-    max-width: 100%;
-  }
 
-  /* Aumentar a fonte no celular (opcional) */
-  .sobre-texto p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-  }
-}
-
-
-/* ======================== SEÇÃO SERVIÇOS ======================== */
+/* ========== SERVIÇOS ========== */
 .servicos {
     background-color: var(--color-azul-noturno);
     text-align: center;
@@ -255,13 +317,13 @@ section {
 .servico-card p {
     margin-bottom: 1.2rem;
     line-height: 1.5;
-    flex: 1; 
+    flex: 1;
 }
 .btn-saiba-mais {
-    margin-top: auto; 
+    margin-top: auto;
 }
 
-/* ======================== CARROSSEL GERAL (PROJETOS/DEPOIMENTOS) ======================== */
+/* ========== CARROSSEL GERAL (PROJETOS/DEPOIMENTOS) ========== */
 .carousel-container {
     position: relative;
     overflow: hidden;
@@ -302,7 +364,7 @@ section {
 .prev { left: 14px; }
 .next { right: 14px; }
 
-/* ======================== PROJETOS ======================== */
+/* ========== PROJETOS ========== */
 .projetos {
     background-color: var(--color-preto);
     text-align: center;
@@ -329,37 +391,15 @@ section {
     line-height: 1.4;
 }
 
-/* ======================== BANNER NO MEIO (NOVO) ======================== */
+/* ========== BANNER MEIO ========== */
 .banner-meio {
    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(106,5,114,1) 50%, rgba(26,26,46,1) 100%);
-    color: #fff;
-    text-align: center;
-    padding: 60px 20px;
-    position: relative;
-    overflow: hidden;
+   color: #fff;
+   text-align: center;
+   padding: 60px 20px;
+   position: relative;
+   overflow: hidden;
 }
-
-
-/* No estilo global (se não usa text-overflow fixo) */
-.banner-meio-title {
-    /* Remova estas linhas se existirem */
-    /* white-space: nowrap; */
-    /* overflow: hidden; */
-    /* text-overflow: ellipsis; */
-}
-
-/* Ou então, especificamente no mobile, sobrescreva */
-@media (max-width: 768px) {
-  .banner-meio-title {
-    white-space: normal;       /* permite quebrar linha */
-    overflow: visible;         /* não corta texto */
-    text-overflow: unset;      /* não mostra ... */
-    font-size: 1.8rem;         /* ajuste de fonte no mobile */
-    line-height: 1.2;
-  }
-}
-
-
 .banner-meio-title {
     font-size: 2.5rem;
     margin-bottom: 5px;
@@ -381,20 +421,16 @@ section {
     box-shadow: 0px 4px 10px rgba(138, 10, 148, 0.5);
     display: inline-block;
 }
-
 .banner-meio .btn-primario:hover {
     background: linear-gradient(90deg, #8A0A94, #D774FF);
     transform: scale(1.05);
     box-shadow: 0px 6px 15px rgba(138, 10, 148, 0.7);
 }
-
 #banner-text {
     transition: opacity 0.5s ease-in-out;
 }
 
-
-
-/* ======================== DEPOIMENTOS ======================== */
+/* ========== DEPOIMENTOS ========== */
 .depoimentos {
     background: var(--color-azul-noturno);
     text-align: center;
@@ -437,61 +473,174 @@ section {
 }
 .depo-stars {
     margin-top: 0.5rem;
-    color: #FFD700; /* cor de estrela (dourado) */
+    color: #FFD700;
 }
 .depo-stars i {
     margin: 0 2px;
 }
 
-/* ======================== CONTATO ======================== */
-/* ======================== CONTATO ======================== */
+/* ========== BLOG SECTION ========== */
+.blog-section {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #1A1A2E;
+  color: white;
+}
+.section-title {
+  color: #b983ff;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.blog-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.blog-card {
+  background: #25254b;
+  padding: 20px;
+  border-radius: 8px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+.blog-img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.blog-title {
+  color: #b983ff;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.blog-meta {
+  font-size: 12px;
+  color: #ccc;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.blog-tag {
+  font-size: 14px;
+}
+.blog-card p {
+  color: #ddd;
+  text-align: center;
+}
+.read-more {
+  display: block;
+  width: max-content;
+  margin: 10px auto;
+  padding: 8px 12px;
+  background: #8A0A94;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s;
+  margin-top: auto; /* Garante que o botão fique no final */
+}
+.read-more:hover {
+  background: #9c6efb;
+}
+.readmore-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: rgb(138, 10, 148);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  gap: 10px;
+  transition: all 0.4s;
+  margin: 30px auto;
+  text-decoration: none;
+}
+.readmore-btn:hover {
+  background-color: rgb(159, 74, 255);
+}
+.book-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  width: 45px;
+  height: 100%;
+}
+.readmore-btn:hover .book-page {
+  animation: paging 0.4s linear infinite;
+  transform-origin: left;
+}
+@keyframes paging {
+  0% {
+    transform: rotateY(0deg) skewY(0deg);
+  }
+  50% {
+    transform: rotateY(90deg) skewY(-20deg);
+  }
+  100% {
+    transform: rotateY(180deg) skewY(0deg);
+  }
+}
+.text {
+  width: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 15px;
+  color: rgb(255, 255, 255);
+}
+
+/* ========== CONTATO ========== */
 .contato {
-    background-color: var(--color-preto);
-    text-align: center;
-    padding: 50px 20px;
+  background-color: var(--color-preto);
+  text-align: center;
+  padding: 50px 20px;
 }
-
 .contato-box {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4rem;
-    justify-content: center;
-    align-items: flex-start;
-    max-width: 1500px;
-    margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1500px;
+  margin: auto;
 }
-
 .form-contato {
-    background-color: var(--color-azul-noturno);
-    padding: 2rem;
-    border-radius: 8px;
-    flex: 1;
-    min-width: 320px; /* Ajustado */
-    max-width: 420px; /* Ajustado */
-    box-shadow: 0px 4px 15px rgba(138, 10, 148, 0.3);
+  background-color: var(--color-azul-noturno);
+  padding: 2rem;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 320px;
+  max-width: 420px;
+  box-shadow: 0px 4px 15px rgba(138, 10, 148, 0.3);
 }
-
-/* Ajuste para os inputs e textarea */
 .form-group input,
 .form-group textarea {
-    background: #1A1A2E !important; /* Fundo escuro */
-    border: 1px solid #6A0572; /* Borda roxa */
-    color: #fff !important; /* Texto branco */
-    padding: 12px;
-    border-radius: 6px;
-    width: 100%;
-    font-size: 16px;
-    box-shadow: none;
-    outline: none;
+  background: #1A1A2E !important;
+  border: 1px solid #6A0572;
+  color: #fff !important;
+  padding: 12px;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 16px;
+  box-shadow: none;
+  outline: none;
 }
-
-/* Remove a borda branca quando focado */
 .form-group input:focus,
 .form-group textarea:focus {
-    border: 1px solid #B554FF;
+  border: 1px solid #B554FF;
 }
-
-/* Ajuste do botão Enviar */
 .btn-contato {
   font-size: 16px;
   background: linear-gradient(90deg, #8A0A94, #B554FF);
@@ -509,205 +658,160 @@ section {
   cursor: pointer;
   box-shadow: 0px 4px 10px rgba(138, 10, 148, 0.4);
 }
-
 .btn-contato svg {
   width: 18px;
   height: 18px;
   transition: transform 0.3s ease-in-out;
 }
-
 .btn-contato:hover svg {
   transform: translateX(5px) rotate(45deg);
 }
-
 .btn-contato:hover span {
   transform: translateX(3px);
 }
-
 .btn-contato:active {
   transform: scale(0.95);
 }
-
-/* Ajustando a parte do contato */
 .contato-info {
-    flex: 1;
-    min-width: 300px;
-    max-width: 400px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/* Ajustando o botão do WhatsApp */
-.btn-whatsapp {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #25D366;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-    width: fit-content;
-}
-
-.btn-whatsapp:hover {
-    background-color: #1EBE5D;
-}
-
-.btn-whatsapp img {
-    width: 20px;
-    margin-right: 10px;
-}
-
-
-@keyframes fly-1 {
-  from {
-    transform: translateY(0.1em);
-  }
-  to {
-    transform: translateY(-0.1em);
-  }
-}
-
-.contato-info {
-    flex: 1;
-    max-width: 400px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .contato-info h3 {
-    margin-bottom: 1rem;
-    color: var(--color-roxo-dark);
+  margin-bottom: 1rem;
+  color: var(--color-roxo-dark);
 }
 .btn-whatsapp {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: #28a155;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    margin-top: 1rem;
-    transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #28a155;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
 }
 .btn-whatsapp:hover {
-    background-color: #1ac159;
+  background-color: #1ac159;
 }
-.btn-whatsapp img, .btn-whatsapp svg {
-    width: 24px;
-    height: 24px;
+.btn-whatsapp img {
+  width: 20px;
+  height: 20px;
 }
 
-/* ======================== FOOTER ======================== */
+/* ========== FOOTER ========== */
 .footer {
-    background-color: var(--color-cinza-escuro);
-    text-align: center;
-    padding: 1.5rem 0;
+  background-color: var(--color-cinza-escuro);
+  text-align: center;
+  padding: 1.5rem 0;
 }
 .footer-content p {
-    margin: 0.5rem 0;
+  margin: 0.5rem 0;
 }
 .footer-content a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 400;
-    margin: 0 0.5rem;
+  color: #fff;
+  text-decoration: none; /* remove sublinhado no rodapé */
+  font-weight: 400;
+  margin: 0 0.5rem;
 }
 .footer-content a:hover {
-    color: var(--color-roxo-dark);
+  color: var(--color-roxo-dark);
 }
 
-/* ======================== BOTÃO FLUTUANTE DO WHATSAPP ======================== */
+/* ========== BOTÃO FLUTUANTE DO WHATSAPP ========== */
 .whatsapp-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 .whatsapp-float img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* ======================== RESPONSIVIDADE ======================== */
+/* ========== MEDIA QUERIES / RESPONSIVIDADE EXTRA ========== */
 @media (max-width: 768px) {
-    /* Faz o header acomodar melhor logo e menu empilhados */
-    .header .container {
-        flex-wrap: wrap;               
-        justify-content: center;       
-        padding: 0 1rem;              
-    }
-    /* Diminui o tamanho da logo no mobile */
-    .logo a {
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;         
-    }
-    /* Deixa o menu em coluna no celular */
-    .nav ul {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    /* Evita forçar o header ficar muito alto no mobile */
-    .header {
-        height: auto;
-        padding: 1rem 0;
-    }
-    /* Garante que imagens no "Sobre" e "Projetos" não estourem a tela */
-    .sobre-imagem img,
-    .projetos .carousel-item img {
-        max-width: 100%;
-        height: auto;
-    }
-    /* Ajusta o tamanho dos botões do carrossel para ficarem menores */
-    .carousel-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 1rem;
-        padding: 0;
-    }
-    /* Se quiser reposicionar os botões para baixo */
-    .carousel-btn.prev {
-        left: 10px;
-        top: auto;
-        bottom: 10px;
-        transform: none;
-    }
-    .carousel-btn.next {
-        right: 10px;
-        top: auto;
-        bottom: 10px;
-        transform: none;
-    }
-    /* HERO menor no mobile */
-    .hero-animado {
-        height: 60vh;
-    }
-    .hero-content h1 {
-        font-size: 2rem;
-    }
+  /* Ajustar header no mobile */
+  .header .container {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 1rem;
+  }
+  .logo a {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  .header {
+    height: auto;
+    padding: 1rem 0;
+  }
+
+  /* Ajustar hero no mobile */
+  .hero-animado {
+    height: 60vh;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  #typed-text {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    display: block;
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  /* Ajustar secao "sobre" no mobile */
+  .sobre .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .sobre-texto, .sobre-imagem {
+    flex: none;
+    max-width: 100%;
+  }
+
+  /* Ajustar botões carrossel no mobile */
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    padding: 0;
+  }
+  .carousel-btn.prev {
+    left: 10px;
+    top: auto;
+    bottom: 10px;
+    transform: none;
+  }
+  .carousel-btn.next {
+    right: 10px;
+    top: auto;
+    bottom: 10px;
+    transform: none;
+  }
 }
 
-/*BOTAO BANNER*/
-
+/* Efeito de "pulse" no CTA do banner */
 .cta-button:hover {
   box-shadow: 0 0 15px rgba(164, 14, 176, 0.6), 0 0 5px rgba(164, 14, 176, 0.8);
-  animation: pulse 1.2s infinite; /* efeito de pulsar */
+  animation: pulse 1.2s infinite;
 }
-
 @keyframes pulse {
   0% {
     transform: scale(1.05);
@@ -717,257 +821,5 @@ section {
   }
   100% {
     transform: scale(1.05);
-  }
-}
-
-
-    .blog-section {
-        text-align: center;
-        padding: 50px 20px;
-        background-color: #1A1A2E;
-        color: white;
-    }
-    .section-title {
-        color: #b983ff;
-        font-size: 28px;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-    .blog-grid {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-    }
-    .blog-card {
-    background: #25254b;
-    padding: 20px;
-    border-radius: 8px;
-    width: 320px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-}
-    .blog-card:hover {
-        transform: translateY(-5px);
-    }
-    .blog-img {
-        width: 100%;
-        border-radius: 8px;
-        margin-bottom: 15px;
-    }
-    .blog-title {
-        color: #b983ff;
-        margin-bottom: 10px;
-        text-align: center;
-    }
-    .blog-meta {
-        font-size: 12px;
-        color: #ccc;
-        margin-bottom: 10px;
-        text-align: center;
-    }
-    .blog-tag {
-        font-size: 14px;
-    }
-    .blog-card p {
-        color: #ddd;
-        text-align: center;
-    }
-    .read-more {
-        display: block;
-        width: max-content;
-        margin: 10px auto;
-        padding: 8px 12px;
-        background: #8A0A94;
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background 0.3s;
-            margin-top: auto; /* Garante que o botão fique no final */
-    }
-
-    .read-more:hover {
-        background: #9c6efb;
-    }
-    .view-all {
-        display: inline-block;
-        margin: 30px auto;
-        padding: 10px 15px;
-        background: #b983ff;
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        text-align: center;
-    }
-
-
-/* From Uiverse.io by vinodjangid07 */ 
-.readmore-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background-color: rgb(138, 10, 148);
-  border: none;
-  border-radius: 10px;
-  padding: 10px 15px;
-  gap: 10px; /* Espaço de 10px entre os elementos internos */
-  transition: all 0.4s;
-  margin: 30px auto;
-  text-decoration: none; /* Remove o sublinhado */
-}
-
-
-.book-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  position: relative;
-  width: 45px;
-  height: 100%;
-}
-.book-wrapper .book-page {
-  width: 50%;
-  height: auto;
-  position: absolute;
-}
-.readmore-btn:hover .book-page {
-  animation: paging 0.4s linear infinite;
-  transform-origin: left;
-}
-.readmore-btn:hover {
-  background-color: rgb(159, 74, 255);
-}
-@keyframes paging {
-  0% {
-    transform: rotateY(0deg) skewY(0deg);
-  }
-  50% {
-    transform: rotateY(90deg) skewY(-20deg);
-  }
-  100% {
-    transform: rotateY(180deg) skewY(0deg);
-  }
-}
-.text {
-  /* width: 105px; */ /* Removido para permitir ajuste automático */
-  width: auto;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 15px;
-  color: rgb(255, 255, 255);
-}
-
-/* ... seu RESET e variáveis ... */
-
-/* ========== HEADER ========== */
-.header {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  background: rgba(26, 26, 46, 0.95);
-  backdrop-filter: blur(4px);
-  transition: background 0.3s;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  height: 70px;
-  display: flex;
-  align-items: center;
-}
-.header .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* Se desejar, adicione flex-wrap se precisar */
-}
-
-.logo a {
-  font-size: 1.7rem;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-}
-.logo span {
-  color: var(--color-roxo-dark);
-}
-
-/* O menu em telas grandes */
-.nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-.nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 400;
-  transition: color 0.3s ease;
-}
-.nav ul li a:hover {
-  color: var(--color-roxo-dark);
-}
-
-/* O ícone hamburguer, escondido no desktop */
-.menu-toggle {
-  display: none;
-  color: #fff;
-  font-size: 1.8rem;
-  cursor: pointer;
-}
-
-/* ========== MEDIA QUERIES PARA MOBILE ========== */
-@media (max-width: 768px) {
-  /* Torna o .menu-toggle visível e o .nav ul escondido por padrão */
-  .menu-toggle {
-    display: block; /* Mostra o hamburger no mobile */
-    z-index: 1001;  /* acima do .nav ul */
-  }
-
-  /* Em telas pequenas, vamos esconder o ul do menu e exibir só o ícone */
-  .nav ul {
-    position: absolute;
-    top: 70px;          /* abaixo do header */
-    right: 0;
-    background: rgba(26, 26, 46, 0.95);
-    backdrop-filter: blur(4px);
-    flex-direction: column;
-    gap: 1rem;
-    width: 180px;
-    padding: 1rem;
-    transform: translateX(100%); /* some da tela */
-    transition: transform 0.3s ease-in-out;
-  }
-
-  /* Sempre que tiver .active, aparece na tela */
-  .nav ul.active {
-    transform: translateX(0%);
-  }
-
-  /* Ajuste o link para ocupar a linha toda no mobile */
-  .nav ul li {
-    margin: 0;
-  }
-  .nav ul li a {
-    display: block;
-    padding: 0.5rem;
-  }
-}
-
-/* Ajuste do typed-text para não sumir nem criar barra horizontal no mobile */
-@media (max-width: 768px) {
-  #typed-text {
-    white-space: normal;       /* Permite quebrar linha */
-    overflow-wrap: break-word; /* Quebra palavras longas */
-    word-break: break-word;    /* Quebra se texto for gigante */
-    display: block;            /* Bloqueia para quebrar linha fácil */
-    font-size: 1.8rem;         /* Menor fonte no celular */
-    line-height: 1.2;
   }
 }
