@@ -133,7 +133,7 @@ body {
 #typed-text {
     white-space: nowrap; /* Impede que o texto quebre */
     display: inline-block; /* Mantém a estrutura alinhada */
-    font-size: 3rem; /* Ajusta o tamanho da fonte */
+    font-size: 2.5rem; /* Ajusta o tamanho da fonte */
     text-align: center; /* Centraliza o texto */
 }
 
@@ -927,5 +927,17 @@ section {
   .nav ul li a {
     display: block;
     padding: 0.5rem;
+  }
+}
+
+/* Ajuste do typed-text para não sumir nem criar barra horizontal no mobile */
+@media (max-width: 768px) {
+  #typed-text {
+    white-space: normal;       /* Permite quebrar linha */
+    overflow-wrap: break-word; /* Quebra palavras longas */
+    word-break: break-word;    /* Quebra se texto for gigante */
+    display: block;            /* Bloqueia para quebrar linha fácil */
+    font-size: 1.8rem;         /* Menor fonte no celular */
+    line-height: 1.2;
   }
 }
