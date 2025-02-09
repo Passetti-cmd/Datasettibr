@@ -196,6 +196,23 @@ section {
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+@media (max-width: 768px) {
+  .sobre .container {
+    flex-direction: column;   /* empilha imagem e texto */
+    text-align: center;       /* se quiser centralizar no mobile */
+  }
+  .sobre-texto, .sobre-imagem {
+    flex: none;
+    max-width: 100%;
+  }
+
+  /* Aumentar a fonte no celular (opcional) */
+  .sobre-texto p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+}
+
 
 /* ======================== SEÇÃO SERVIÇOS ======================== */
 .servicos {
@@ -323,12 +340,25 @@ section {
 }
 
 
+/* No estilo global (se não usa text-overflow fixo) */
 .banner-meio-title {
-    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Ajusta a fonte conforme o tamanho da tela */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* Remova estas linhas se existirem */
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
 }
+
+/* Ou então, especificamente no mobile, sobrescreva */
+@media (max-width: 768px) {
+  .banner-meio-title {
+    white-space: normal;       /* permite quebrar linha */
+    overflow: visible;         /* não corta texto */
+    text-overflow: unset;      /* não mostra ... */
+    font-size: 1.8rem;         /* ajuste de fonte no mobile */
+    line-height: 1.2;
+  }
+}
+
 
 .banner-meio-title {
     font-size: 2.5rem;
