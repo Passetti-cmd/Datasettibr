@@ -2,12 +2,13 @@
   SCRIPT PRINCIPAL - script.js
 ************************************************/
 
-// Inicialização do EmailJS (se ainda não estiver inicializado no head)
-emailjs.init("service_dzchx7m"); 
-// Substitua pelo seu PUBLIC KEY do EmailJS
-// ou remova caso já tenha feito no <head>.
+// Se você usar EmailJS, pode inicializar assim (já visto no <head>):
+// emailjs.init("service_dzchx7m"); 
+// Substitua pelo seu PUBLIC KEY do EmailJS, ou remova se não usar.
 
-// Carrossel de Projetos
+/* -----------------------------
+   Carrossel de Projetos
+------------------------------ */
 const carouselProj = document.getElementById('carouselProj');
 const prevProj = document.getElementById('prevProj');
 const nextProj = document.getElementById('nextProj');
@@ -20,11 +21,13 @@ nextProj.addEventListener('click', () => {
   moveCarousel(carouselProj, 1, 'projeto');
 });
 
-// Carrossel de Depoimentos
+/* -----------------------------
+   Carrossel de Depoimentos
+------------------------------ */
 const carouselDepo = document.getElementById('carouselDepo');
 const prevDepo = document.getElementById('prevDepo');
 const nextDepo = document.getElementById('nextDepo');
-let currentDepoIndex = 0; // índice do slide atual
+let currentDepoIndex = 0;
 
 prevDepo.addEventListener('click', () => {
   moveCarousel(carouselDepo, -1, 'depoimento');
@@ -33,7 +36,9 @@ nextDepo.addEventListener('click', () => {
   moveCarousel(carouselDepo, 1, 'depoimento');
 });
 
-// Função genérica para mover o carrossel
+/* -----------------------------
+   Função genérica para mover carrossel
+------------------------------ */
 function moveCarousel(carousel, direction, tipo) {
   const items = carousel.querySelectorAll('.carousel-item');
   let currentIndex = (tipo === 'projeto') ? currentProjIndex : currentDepoIndex;
@@ -47,7 +52,6 @@ function moveCarousel(carousel, direction, tipo) {
     currentIndex = 0;
   }
 
-  // atualiza a posição
   const newTransform = `translateX(-${currentIndex * 100}%)`;
   carousel.style.transform = newTransform;
 
@@ -59,30 +63,30 @@ function moveCarousel(carousel, direction, tipo) {
   }
 }
 
-// Envio de formulário (EmailJS)
+/* -----------------------------
+   Exemplo de Envio de Formulário via EmailJS
+------------------------------ */
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelector(".btn-enviar").addEventListener("click", function (event) {
-    event.preventDefault(); // Evita o recarregamento da página
-
-    // Coletando os dados do formulário
-    let params = {
-      nome: document.getElementById("nome").value,
-      email: document.getElementById("email").value,
-      empresa: document.getElementById("empresa").value,
-      mensagem: document.getElementById("mensagem").value
-    };
-
-    // Enviando e-mail via EmailJS
-    emailjs.send("service_dzchx7m", "SEU_TEMPLATE_ID", params)
-      .then(function (response) {
-        alert("E-mail enviado com sucesso!");
-        console.log("SUCCESS!", response.status, response.text);
-      }, function (error) {
-        alert("Ocorreu um erro ao enviar o e-mail.");
-        console.log("FAILED...", error);
-      });
-  });
+  const btnEnviar = document.querySelector(".btn-enviar");
+  if(btnEnviar) {
+    btnEnviar.addEventListener("click", function (event) {
+      event.preventDefault(); 
+      let params = {
+        nome: document.getElementById("nome").value,
+        email: document.getElementById("email").value,
+        empresa: document.getElementById("empresa").value,
+        mensagem: document.getElementById("mensagem").value
+      };
+      // Exemplo: emailjs.send("service_xxx", "template_xxx", params)
+      //   .then(...).catch(...);
+      alert("E-mail enviado (exemplo). Implemente seu EmailJS aqui!");
+    });
+  }
 });
+
+/* -----------------------------
+   Troca automática do texto (bannerText) se quiser
+------------------------------ */
 document.addEventListener("DOMContentLoaded", function() {
     const frases = [
         "Maximize Suas Oportunidades",
@@ -104,14 +108,25 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     setInterval(mudarTexto, 3000); // Troca a cada 3 segundos
-
 });
-document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = document.getElementById("menu-toggle");
-  const navUl = document.querySelector(".nav ul");
 
-  menuToggle.addEventListener("click", () => {
-    // Ativa ou desativa a classe .active em .nav ul
-    navUl.classList.toggle("active");
-  });
+/* -----------------------------
+   Lógica do menu hamburguer e side-menu (MOBILE)
+------------------------------ */
+const hamburger = document.getElementById("hamburger");
+const sideMenu = document.getElementById("sideMenu");
+const closeBtn = document.getElementById("closeBtn");
+const overlay = document.getElementById("overlay");
+
+// Abre o side menu
+hamburger?.addEventListener("click", () => {
+  sideMenu?.classList.add("active");
+  overlay?.classList.add("active");
 });
+
+// Fecha ao clicar no X
+closeBtn?.addEventListener("click", () => {
+  sideMenu?.classList.remove("active");
+  overlay?.classList.remove("active");
+});
+
