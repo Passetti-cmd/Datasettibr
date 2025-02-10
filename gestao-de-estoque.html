@@ -679,6 +679,42 @@
   background-size: 16px 16px;
   filter: invert(1); /* garante que o ícone fique claro */
 }
+@media (max-width: 768px) {
+  /* Reposiciona os botões do carrossel para que fiquem visíveis dentro do container */
+  .company-carousel .carousel-control-prev {
+    left: 10px !important;
+  }
+  .company-carousel .carousel-control-next {
+    right: 10px !important;
+  }
+
+  /* Caso os botões não estejam aparecendo, force sua exibição */
+  .company-carousel .carousel-control-prev,
+  .company-carousel .carousel-control-next {
+    display: block;
+  }
+
+  /* Adiciona espaçamento entre os itens do carrossel (os cards) quando empilhados */
+  .company-carousel .row > [class*="col-"] {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .company-carousel .carousel-control-prev,
+  .company-carousel .carousel-control-next {
+    top: auto;         /* Remove o posicionamento superior */
+    bottom: 10px;      /* Define a distância do fundo */
+    transform: none;   /* Remove o translateY que centraliza verticalmente */
+  }
+  
+  .company-carousel .carousel-control-prev {
+    left: 10px !important;  /* Posiciona o botão esquerdo à esquerda */
+  }
+  
+  .company-carousel .carousel-control-next {
+    right: 10px !important; /* Posiciona o botão direito à direita */
+  }
+}
 
   </style>
 </head>
