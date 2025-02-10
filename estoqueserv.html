@@ -442,7 +442,11 @@
         transform: translateY(0);
       }
     }
-
+    @media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem !important; /* ajuste esse valor conforme necessário */
+  }
+}
     /* ============== COMPANY CAROUSEL ============== */
     .company-carousel {
       background-color: var(--cor-fundo);
@@ -717,6 +721,11 @@
     right: 10px !important; /* Posiciona o botão direito à direita */
   }
 }
+@media (max-width: 768px) {
+  .hero-content .hero-subtitle {
+    font-size: 1rem !important; /* ajuste o valor conforme o desejado */
+  }
+}
 
   </style>
 </head>
@@ -771,7 +780,7 @@
   </video>
   <div class="hero-content">
     <h1>Gestão de Estoque Inteligente</h1>
-    <p>
+    <p class="hero-subtitle">
       Garanta alta disponibilidade de produtos, elimine perdas por validade e 
       impulsione lucros com uma solução que une IA, automação e relatórios dinâmicos.
     </p>
