@@ -5,44 +5,67 @@
   <meta name="description" content="Gestão de Estoque Inteligente: Solução completa para reduzir perdas, aumentar lucros e otimizar seu estoque com inteligência artificial.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestão de Estoque Inteligente | Data Setti</title>
-  
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
+  <!-- // Ajuste: Forçamos a mesma família em todos os pesos para manter consistência de fontes -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
   <!-- Font Awesome para ícones -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
   <!-- GSAP Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"
+  ></script>
   <!-- GSAP ScrollTrigger Plugin -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
-  
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"
+  ></script>
+
   <style>
     :root {
+      /* Principais cores */
       --color-roxo-dark: #6A0572;
       --color-azul-noite: #1F2937;
       --cor-fundo: #121212;
       --cor-card: #1e1e2e;
+
+      /* Fonte base (Poppins) - já carregamos acima com pesos 300..700 */
+      --fonte-principal: 'Poppins', sans-serif;
     }
-    /* Reset básico */
+
+    /* RESET BÁSICO */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
-      font-family: 'Poppins', sans-serif;
+      /* // Ajuste: garante uso total da fonte Poppins em todo lugar */
+      font-family: var(--fonte-principal), sans-serif;
       background-color: var(--cor-fundo);
       color: #fff;
       line-height: 1.6;
       padding-top: 70px; /* espaço para o header fixo */
-      overflow-x: hidden; /* garante que não apareça scroll horizontal indesejado */
+      overflow-x: hidden; /* evita barra horizontal */
+      /* // Ajuste: Reduzimos o line-height padrão para 1.6 (anteriormente 1.6, mas confirmando) */
     }
+
     a {
       text-decoration: none;
       color: inherit;
@@ -51,20 +74,18 @@
       width: 90%;
       max-width: 1200px;
       margin: auto;
-      padding: 30px 0;
+      padding: 30px 0; /* se quiser reduzir este padding, por ex: 20px 0 */
     }
 
-    /************************************************************
-     *                     CABEÇALHO (HEADER)
-     ************************************************************/
+    /* ================== HEADER ================== */
     .header {
       position: fixed;
       width: 100%;
       top: 0;
       left: 0;
       z-index: 999;
-      background: rgba(26,26,46,0.95);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      background: rgba(26, 26, 46, 0.95);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
       height: 70px;
       display: flex;
       align-items: center;
@@ -85,9 +106,7 @@
       color: var(--color-roxo-dark);
     }
 
-    /************************************************************
-     *     MENU DESKTOP (nav-desktop) -> visível em telas grandes
-     ************************************************************/
+    /* =============== MENU DESKTOP (nav-desktop) =============== */
     .nav-desktop ul {
       list-style: none;
       display: flex;
@@ -103,18 +122,15 @@
     .nav-desktop ul li a:hover {
       color: var(--color-roxo-dark);
     }
-    /* Esconde no mobile */
     @media (max-width: 768px) {
       .nav-desktop {
-        display: none; /* some no mobile */
+        display: none;
       }
     }
 
-    /************************************************************
-     *           BOTÃO DE HAMBÚRGUER (SOMENTE MOBILE)
-     ************************************************************/
+    /* ============== BOTÃO HAMBURGUER (MOBILE) ============== */
     .hamburger {
-      display: none; /* não aparece em desktop */
+      display: none; /* desktop some */
       font-size: 1.8rem;
       background: none;
       border: none;
@@ -123,27 +139,24 @@
     }
     @media (max-width: 768px) {
       .hamburger {
-        display: block; /* aparece no mobile */
+        display: block; 
         background-color: var(--color-roxo-dark);
         padding: 8px 12px;
         border-radius: 5px;
       }
     }
 
-    /************************************************************
-     *                       OVERLAY E SIDE MENU
-     ************************************************************/
+    /* ============== OVERLAY E SIDE MENU ============== */
     .overlay {
-      /* fica sobre todo o conteúdo, mas inicialmente escondida */
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0, 0, 0, 0.7);
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+      transition: 0.3s ease;
       z-index: 998;
     }
     .overlay.active {
@@ -152,26 +165,23 @@
     }
 
     .side-menu {
-      /* painel lateral que entra da direita */
       position: fixed;
       top: 0;
-      right: -250px; /* fica fora da tela */
+      right: -250px; 
       width: 250px;
       height: 100%;
       background-color: #1A1A2E;
-      box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
       transition: right 0.3s ease;
-      z-index: 999; /* acima do overlay */
+      z-index: 999;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       padding: 40px 20px;
     }
     .side-menu.active {
-      right: 0; /* entra na tela */
+      right: 0;
     }
-
-    /* Botão fechar (x) dentro do menu */
     .close-btn {
       align-self: flex-end;
       background: none;
@@ -181,8 +191,6 @@
       cursor: pointer;
       margin-bottom: 20px;
     }
-
-    /* Lista de navegação dentro do side menu */
     .side-menu nav ul {
       list-style: none;
       width: 100%;
@@ -192,24 +200,20 @@
       padding: 10px 0;
       font-size: 1.1rem;
       color: #fff;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       transition: color 0.3s;
     }
     .side-menu nav ul li a:hover {
       color: var(--color-roxo-dark);
     }
-
-    /* Esconde o side-menu em desktop */
     @media (min-width: 769px) {
       .side-menu,
       .overlay {
-        display: none; /* não mostra nada em desktop */
+        display: none;
       }
     }
 
-    /************************************************************
-     *                 HERO (BANNER COM VÍDEO)
-     ************************************************************/
+    /* ============== HERO (BANNER COM VÍDEO) ============== */
     .hero {
       position: relative;
       height: 60vh;
@@ -231,14 +235,14 @@
       transform: translate(-50%, -50%);
       object-fit: cover;
     }
-    /* Overlay um pouco mais claro para não ficar tão escuro */
     .hero::after {
       content: "";
       position: absolute;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0, 0, 0, 0.6);
       z-index: 1;
     }
     .hero-content {
@@ -249,20 +253,22 @@
       text-align: center;
     }
     .hero-content h1 {
-      font-size: 3rem;
+      font-size: 2.4rem; /* // Ajuste: Diminuí um pouco no desktop */
       margin-bottom: 20px;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--fonte-principal);
+      font-weight: 700; 
     }
     .hero-content p {
-      font-size: 1.2rem;
+      font-size: 1.1rem; /* // Ajuste: levemente menor */
       margin-bottom: 30px;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--fonte-principal);
+      font-weight: 300; 
     }
     .hero-content .cta-btn {
       background-color: var(--color-roxo-dark);
-      padding: 15px 30px;
+      padding: 14px 24px;
       border-radius: 30px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
       color: #fff;
       transition: background 0.3s;
@@ -271,35 +277,38 @@
       background-color: #a40eb0;
     }
 
-    /************************************************************
-     *           SEÇÕES (INTRO, FUNCIONALIDADES, BENEFÍCIOS, etc.)
-     ************************************************************/
+    /* ============== INTRO SECTION ============== */
     .intro {
-      padding: 40px 0;
+      padding: 40px 0; /* se quiser reduzir, ex: 30px 0 */
       text-align: center;
     }
     .intro h2 {
       color: var(--color-roxo-dark);
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+      font-size: 2rem; /* // Ajuste: um pouco menor no desktop */
+      margin-bottom: 1rem;
+      font-weight: 600;
     }
     .intro p {
-      font-size: 1.1rem;
+      font-size: 1rem; /* // Ajuste: levemente menor */
       max-width: 800px;
-      margin: auto;
-      margin-bottom: 20px;
+      margin: 0 auto;
+      margin-bottom: 1.5rem; /* ajustei para 1.5rem */
       text-align: justify;
+      line-height: 1.5; 
     }
 
+    /* ============== FEATURES SECTION ============== */
     .features {
       background-color: #1A1A2E;
       padding: 40px 0;
+      text-align: center;
     }
     .features h2 {
       text-align: center;
       color: var(--color-roxo-dark);
-      font-size: 2.5rem;
-      margin-bottom: 30px;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
     }
     .features-grid {
       display: grid;
@@ -312,55 +321,61 @@
       border-radius: 10px;
       text-align: center;
       transition: transform 0.3s;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
     .feature-card:hover {
       transform: translateY(-5px);
     }
     .feature-card i {
-      font-size: 3rem;
+      font-size: 2rem; /* // Ajuste: Menor icone */
       color: var(--color-roxo-dark);
       margin-bottom: 15px;
     }
     .feature-card h3 {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       margin-bottom: 10px;
     }
     .feature-card p {
-      font-size: 1rem;
+      font-size: 0.95rem;
       line-height: 1.4;
+      font-weight: 300; /* leveza */
     }
 
+    /* ============== BENEFITS SECTION ============== */
     .benefits {
       padding: 40px 0;
       text-align: center;
     }
     .benefits h2 {
       color: var(--color-roxo-dark);
-      font-size: 2.5rem;
-      margin-bottom: 30px;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
     }
     .benefits p {
-      font-size: 1.1rem;
+      font-size: 1rem;
       max-width: 800px;
-      margin: auto;
-      margin-bottom: 40px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.4;
+      font-weight: 300;
     }
     .benefits-list {
       list-style: none;
       max-width: 800px;
-      margin: auto;
+      margin: 0 auto;
       text-align: left;
+      padding: 0; 
     }
     .benefits-list li {
-      font-size: 1.1rem;
-      margin-bottom: 15px;
-      padding-left: 35px;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      padding-left: 30px;
       position: relative;
+      line-height: 1.4;
     }
     .benefits-list li::before {
-      content: "\f00c";
+      content: "\f00c"; 
       font-family: "Font Awesome 6 Free";
       font-weight: 900;
       position: absolute;
@@ -368,6 +383,7 @@
       color: var(--color-roxo-dark);
     }
 
+    /* ============== ACTION GALLERY ============== */
     .action-gallery {
       background-color: #1A1A2E;
       padding: 40px 0;
@@ -375,8 +391,9 @@
     .action-gallery h2 {
       text-align: center;
       color: var(--color-roxo-dark);
-      font-size: 2.5rem;
-      margin-bottom: 30px;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
     }
     .action-item {
       display: flex;
@@ -402,20 +419,79 @@
       transform: scale(1.05);
     }
     .action-text h3 {
-      font-size: 1.8rem;
+      font-size: 1.6rem; 
       color: var(--color-roxo-dark);
       margin-bottom: 15px;
+      font-weight: 600;
     }
     .action-text p {
-      font-size: 1.1rem;
+      font-size: 1rem;
       line-height: 1.5;
       text-align: justify;
+      font-weight: 300;
     }
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
+    /* ============== COMPANY CAROUSEL ============== */
+    .company-carousel {
+      background-color: var(--cor-fundo);
+      padding: 30px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .company-carousel h2 {
+      text-align: center;
+      color: var(--color-roxo-dark);
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .carousel-card {
+      background-color: var(--cor-card);
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s;
+    }
+    .carousel-card:hover {
+      transform: translateY(-5px);
+    }
+    .carousel-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .carousel-card h5 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .carousel-card p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: #fff;
+      flex-grow: 1;
+      font-weight: 300;
+    }
+
+    /* ============== PROCESS SECTION ============== */
     .process {
       background-color: #1A1A2E;
       padding: 40px 0;
@@ -423,8 +499,9 @@
     .process h2 {
       text-align: center;
       color: var(--color-roxo-dark);
-      font-size: 2.5rem;
-      margin-bottom: 30px;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
     }
     .process-steps {
       display: flex;
@@ -439,89 +516,31 @@
       border-radius: 10px;
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
     .process-step:hover {
       transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
     .process-step i {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: var(--color-roxo-dark);
       margin-bottom: 15px;
     }
     .process-step h3 {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       margin-bottom: 10px;
+      font-weight: 600;
     }
     .process-step p {
-      font-size: 1rem;
+      font-size: 0.95rem;
       line-height: 1.4;
+      font-weight: 300;
+      padding: 0 5px;
     }
 
-    .company-carousel {
-      background-color: var(--cor-fundo);
-      padding: 30px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .company-carousel h2 {
-      text-align: center;
-      color: var(--color-roxo-dark);
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-    .carousel-card {
-      background-color: var(--cor-card);
-      border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-      height: 360px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-      transition: transform 0.3s;
-    }
-    .carousel-card:hover {
-      transform: translateY(-5px);
-    }
-    .carousel-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-    .carousel-card h5 {
-      font-size: 1.2rem;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-    .carousel-card p {
-      font-size: 1rem;
-      line-height: 1.4;
-      color: #fff;
-      flex-grow: 1;
-    }
-    .carousel-control-prev,
-    .carousel-control-next {
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-      filter: invert(1);
-      width: 20px;
-      height: 20px;
-    }
-
+    /* ============== BANNER FINAL (CTA) ============== */
     .banner-final {
       background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(106,5,114,1) 50%, rgba(26,26,46,1) 100%);
       color: #fff;
@@ -535,36 +554,40 @@
       z-index: 2;
     }
     .banner-final-title {
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-size: clamp(1.4rem, 4vw, 2.3rem);
       margin-bottom: 5px;
       font-weight: 600;
     }
     .banner-final-subtitle {
-      font-size: 1.2rem;
+      font-size: 1rem;
       margin-bottom: 30px;
       line-height: 1.5;
+      font-weight: 300;
+      max-width: 650px;
+      margin: 0 auto 30px;
     }
     .banner-final .btn-primario {
       background: linear-gradient(90deg, #B554FF, #470457);
       color: #fff;
       padding: 14px 24px;
       border-radius: 30px;
-      font-weight: bold;
+      font-weight: 700;
       text-decoration: none;
       transition: background 0.3s ease, transform 0.2s ease-in-out;
-      box-shadow: 0px 4px 10px rgba(138,10,148,0.5);
+      box-shadow: 0px 4px 10px rgba(138, 10, 148, 0.5);
       display: inline-block;
     }
     .banner-final .btn-primario:hover {
       background: linear-gradient(90deg, #8A0A94, #D774FF);
       transform: scale(1.05);
-      box-shadow: 0px 6px 15px rgba(138,10,148,0.7);
+      box-shadow: 0px 6px 15px rgba(138, 10, 148, 0.7);
     }
 
     #banner-text {
       transition: opacity 0.5s ease-in-out;
     }
 
+    /* ============== FOOTER ============== */
     footer {
       background-color: #2E2E2E;
       padding: 10px 0;
@@ -580,55 +603,96 @@
       color: var(--color-roxo-dark);
     }
 
+    /* ============== AJUSTES / MEDIA QUERIES ============== */
     @media (max-width: 768px) {
+      /* Ajusta hero no mobile */
+      .hero {
+        height: 50vh; /* se quiser menor altura no mobile */
+      }
       .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 1.8rem; /* menor no mobile */
       }
       .hero-content p {
-        font-size: 1rem;
+        font-size: 0.95rem;
       }
+
+      /* Sessões como .intro, etc. => Reduz padding vertical */
+      .intro, .features, .benefits, .action-gallery, .process {
+        padding: 30px 0;
+      }
+
+      .intro p {
+        font-size: 0.95rem;
+      }
+
+      .action-item,
+      .action-item.reverse {
+        flex-direction: column !important;
+        text-align: center;
+      }
+      .action-image {
+        margin-bottom: 15px; 
+      }
+      .action-text h3 {
+        font-size: 1.4rem; 
+      }
+      .action-text p {
+        font-size: 0.95rem;
+      }
+
       .features-grid, .gallery-grid, .process-steps, .testimonial-cards {
         grid-template-columns: 1fr;
       }
-      .action-item {
-        flex-direction: column;
+      .feature-card p {
+        font-size: 0.9rem; 
       }
-      .carousel-card {
-        height: auto;
+      .benefits-list li {
+        font-size: 0.9rem; 
       }
-    }
+      
+    }/* Ajustes para os botões do carrossel na seção "company-carousel" */
+.company-carousel .carousel-control-prev,
+.company-carousel .carousel-control-next {
+  background-color: rgba(254, 251, 251, 0.9); /* fundo com boa opacidade */
+  width: 40px;  /* botões um pouco menores */
+  height: 40px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
 
-    /* Ajuste para col dentro do carousel (espaçamento vertical) */
-    .company-carousel .carousel-item .row > [class*="col-"] {
-      margin-bottom: 20px;
-    }
-    .company-carousel .carousel-item {
-      margin-bottom: 20px;
-    }
-@media (max-width: 768px) {
-  .action-item,
-  .action-item.reverse {
-    flex-direction: column !important;
-    text-align: center;
-  }
+/* Reposiciona os botões para fora da área dos cards */
+.company-carousel .carousel-control-prev {
+  left: -55px; /* move para fora à esquerda */
+}
 
-  .action-image {
-    margin-bottom: 20px; /* opcional, para dar um espaçamento entre a imagem e o texto */
-  }
+.company-carousel .carousel-control-next {
+  right: -55px; /* move para fora à direita */
+}
+
+/* Ajuste dos ícones */
+.company-carousel .carousel-control-prev-icon,
+.company-carousel .carousel-control-next-icon {
+  width: 16px;
+  height: 16px;
+  background-size: 16px 16px;
+  filter: invert(1); /* garante que o ícone fique claro */
 }
 
   </style>
 </head>
+
 <body>
 
 <!-- Header -->
 <header class="header" id="header">
   <div class="container">
     <div class="logo">
-      <a href="#home">Data <span>Setti</span></a>
+      <a href="index.html">Data <span>Setti</span></a>
     </div>
 
-    <!-- MENU DESKTOP (somente em telas >= 769px) -->
+    <!-- MENU DESKTOP -->
     <nav class="nav-desktop">
       <ul>
         <li><a href="index.html#home">Home</a></li>
@@ -639,14 +703,14 @@
       </ul>
     </nav>
 
-    <!-- BOTÃO DE HAMBÚRGUER (MOBILE) -->
+    <!-- BOTÃO HAMBURGER (MOBILE) -->
     <button class="hamburger" id="hamburger">
       <i class="fas fa-bars"></i>
     </button>
   </div>
 </header>
 
-<!-- OVERLAY e SIDE-MENU (apenas mobile) -->
+<!-- OVERLAY E SIDE-MENU (apenas mobile) -->
 <div class="overlay" id="overlay"></div>
 <div class="side-menu" id="sideMenu">
   <button class="close-btn" id="closeBtn"><i class="fas fa-times"></i></button>
@@ -669,7 +733,10 @@
   </video>
   <div class="hero-content">
     <h1>Gestão de Estoque Inteligente</h1>
-    <p>Garanta alta disponibilidade de produtos, elimine perdas por validade e impulsione lucros com uma solução que une IA, automação e relatórios dinâmicos.</p>
+    <p>
+      Garanta alta disponibilidade de produtos, elimine perdas por validade e 
+      impulsione lucros com uma solução que une IA, automação e relatórios dinâmicos.
+    </p>
     <a href="#banner-final" class="cta-btn">Solicite sua Demonstração</a>
   </div>
 </section>
@@ -678,7 +745,10 @@
 <section class="intro container" id="intro">
   <h2>O Futuro do Controle de Estoque</h2>
   <p>
-    Em um cenário onde cada detalhe faz diferença no resultado final, a forma como você gerencia seu estoque pode definir o sucesso ou fracasso do seu negócio. Nossa plataforma foi desenvolvida para ajudar você a evitar desperdícios, prevenir rupturas e tomar decisões estratégicas embasadas em dados, tudo de maneira simples e automatizada.
+    Em um cenário onde cada detalhe faz diferença no resultado final, a forma como você gerencia 
+    seu estoque pode definir o sucesso ou fracasso do seu negócio. Nossa plataforma foi desenvolvida 
+    para ajudar você a evitar desperdícios, prevenir rupturas e tomar decisões estratégicas embasadas 
+    em dados, tudo de maneira simples e automatizada.
   </p>
 </section>
 
@@ -690,42 +760,66 @@
       <div class="feature-card">
         <i class="fa-solid fa-clock"></i>
         <h3>Controle de Validade</h3>
-        <p>Mantenha-se sempre à frente, identificando e removendo produtos próximos ao vencimento, reduzindo perdas e garantindo qualidade.</p>
+        <p>
+          Mantenha-se sempre à frente, identificando e removendo produtos próximos ao vencimento, 
+          reduzindo perdas e garantindo qualidade.
+        </p>
       </div>
       <div class="feature-card">
         <i class="fa-solid fa-bell"></i>
         <h3>Alertas de Reposição</h3>
-        <p>Receba notificações instantâneas sobre baixo nível de estoque, evitando a falta de produtos nas prateleiras e garantindo vendas contínuas.</p>
+        <p>
+          Receba notificações instantâneas sobre baixo nível de estoque, 
+          evitando a falta de produtos nas prateleiras e garantindo vendas contínuas.
+        </p>
       </div>
       <div class="feature-card">
         <i class="fa-solid fa-chart-line"></i>
         <h3>Previsões de Demanda</h3>
-        <p>Use algoritmos de Inteligência Artificial para identificar tendências de vendas e ajustar a quantidade de itens de acordo com a demanda real.</p>
+        <p>
+          Use algoritmos de Inteligência Artificial para identificar tendências de vendas 
+          e ajustar a quantidade de itens de acordo com a demanda real.
+        </p>
       </div>
       <div class="feature-card">
         <i class="fa-solid fa-file-lines"></i>
         <h3>Relatórios Detalhados</h3>
-        <p>Avalie rapidamente o desempenho do estoque, descubra produtos com baixa rotatividade e tome decisões embasadas em dados concretos.</p>
+        <p>
+          Avalie rapidamente o desempenho do estoque, descubra produtos com baixa rotatividade 
+          e tome decisões embasadas em dados concretos.
+        </p>
       </div>
       <div class="feature-card">
         <i class="fa-solid fa-arrows-rotate"></i>
         <h3>Integração Total</h3>
-        <p>Conecte nossa solução ao seu ERP e outras plataformas para um fluxo contínuo de informações e processos enxutos.</p>
+        <p>
+          Conecte nossa solução ao seu ERP e outras plataformas para um fluxo contínuo 
+          de informações e processos enxutos.
+        </p>
       </div>
       <div class="feature-card">
         <i class="fa-solid fa-mobile-screen"></i>
         <h3>Acesso Remoto</h3>
-        <p>Gerencie seu estoque de qualquer lugar, acompanhando movimentações e recebendo alertas direto no seu celular.</p>
+        <p>
+          Gerencie seu estoque de qualquer lugar, acompanhando movimentações e recebendo alertas 
+          direto no seu celular.
+        </p>
       </div>
       <div class="feature-card">
         <i class="fa-solid fa-lock"></i>
         <h3>Segurança de Dados</h3>
-        <p>Mantenha seus registros protegidos com criptografia e backups automáticos, garantindo tranquilidade e confiabilidade.</p>
+        <p>
+          Mantenha seus registros protegidos com criptografia e backups automáticos, 
+          garantindo tranquilidade e confiabilidade.
+        </p>
       </div>
       <div class="feature-card">
         <i class="fa-solid fa-chart-pie"></i>
         <h3>Análises de Performance</h3>
-        <p>Visualize métricas essenciais em dashboards intuitivos, identificando oportunidades de redução de custos e aumento de vendas.</p>
+        <p>
+          Visualize métricas essenciais em dashboards intuitivos, identificando oportunidades 
+          de redução de custos e aumento de vendas.
+        </p>
       </div>
     </div>
   </div>
@@ -736,7 +830,8 @@
   <div class="container">
     <h2>Benefícios Comprovados</h2>
     <p>
-      Desde pequenos comércios até grandes redes varejistas, nossa solução traz resultados expressivos que tornam o gerenciamento de estoque mais simples, eficaz e lucrativo.
+      Desde pequenos comércios até grandes redes varejistas, nossa solução traz resultados 
+      expressivos que tornam o gerenciamento de estoque mais simples, eficaz e lucrativo.
     </p>
     <ul class="benefits-list">
       <li>Redução de até 30% em perdas relacionadas a validade de produtos.</li>
@@ -752,6 +847,7 @@
 <section class="action-gallery" id="action-gallery">
   <div class="container">
     <h2>Veja Nossa Solução em Ação</h2>
+
     <div class="action-item">
       <div class="action-image">
         <img src="img/dash.png" alt="Dashboard de Estoque">
@@ -759,10 +855,13 @@
       <div class="action-text">
         <h3>Dashboard de Estoque</h3>
         <p>
-          Visualize o status completo do seu estoque em tempo real, com gráficos modernos, indicadores de desempenho e alertas automáticos. Tenha um controle preciso, evitando desperdícios e garantindo reposições no momento certo.
+          Visualize o status completo do seu estoque em tempo real, com gráficos modernos,
+          indicadores de desempenho e alertas automáticos. Tenha um controle preciso,
+          evitando desperdícios e garantindo reposições no momento certo.
         </p>
       </div>
     </div>
+
     <div class="action-item reverse">
       <div class="action-image">
         <img src="img/productanalys.png" alt="Relatórios Inteligentes">
@@ -770,10 +869,13 @@
       <div class="action-text">
         <h3>Relatórios Inteligentes</h3>
         <p>
-          Obtenha análises detalhadas sobre giro de produtos, histórico de consumo e tendências de vendas. Descubra oportunidades de promoções para itens parados, otimize reposições e tome decisões estratégicas baseadas em dados precisos.
+          Obtenha análises detalhadas sobre giro de produtos, histórico de consumo 
+          e tendências de vendas. Descubra oportunidades de promoções para itens parados, 
+          otimize reposições e tome decisões estratégicas baseadas em dados precisos.
         </p>
       </div>
     </div>
+
     <div class="action-item">
       <div class="action-image">
         <img src="img/monit.png" alt="Monitoramento em Tempo Real">
@@ -781,10 +883,14 @@
       <div class="action-text">
         <h3>Monitoramento em Tempo Real</h3>
         <p>
-          Acompanhe cada movimentação do seu estoque com atualizações instantâneas e notificações automáticas. Identifique rapidamente variações incomuns, evite rupturas e garanta que os níveis críticos de produtos sejam ajustados antes que impactem suas operações.
+          Acompanhe cada movimentação do seu estoque com atualizações instantâneas 
+          e notificações automáticas. Identifique rapidamente variações incomuns, 
+          evite rupturas e garanta que os níveis críticos de produtos sejam ajustados 
+          antes que impactem suas operações.
         </p>
       </div>
     </div>
+
     <div class="action-item reverse">
       <div class="action-image">
         <img src="img/ERP.png" alt="Integração com ERP">
@@ -792,10 +898,14 @@
       <div class="action-text">
         <h3>Integração com ERP</h3>
         <p>
-          Conecte nosso sistema ao seu ERP e mantenha todos os setores da empresa alinhados com dados atualizados em tempo real. Automatize processos, reduza erros manuais e otimize a reposição de produtos, garantindo uma gestão mais eficiente e estratégica.
+          Conecte nosso sistema ao seu ERP e mantenha todos os setores da empresa 
+          alinhados com dados atualizados em tempo real. Automatize processos, 
+          reduza erros manuais e otimize a reposição de produtos, garantindo 
+          uma gestão mais eficiente e estratégica.
         </p>
       </div>
     </div>
+
     <div class="action-item">
       <div class="action-image">
         <img src="img/finalest.jpg" alt="Objetivo Final">
@@ -803,10 +913,15 @@
       <div class="action-text">
         <h3>Objetivo Final</h3>
         <p>
-          Nosso objetivo é desenvolver um sistema de estoque inteligente que ajude as empresas a prever a demanda, reduzir perdas e otimizar a reposição de produtos. Com isso, garantimos maior lucratividade e menos desperdícios, evitando tanto rupturas quanto excessos, além de eliminar processos manuais na gestão do estoque.
+          Nosso objetivo é desenvolver um sistema de estoque inteligente que ajude 
+          as empresas a prever a demanda, reduzir perdas e otimizar a reposição 
+          de produtos. Com isso, garantimos maior lucratividade e menos desperdícios, 
+          evitando tanto rupturas quanto excessos, além de eliminar processos 
+          manuais na gestão do estoque.
         </p>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -814,43 +929,65 @@
 <section class="company-carousel" id="company-carousel">
   <div class="container">
     <h2 class="text-center text-primary mb-4">Empresas que Podemos Ajudar</h2>
-    <div id="empresaCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000">
+    <div
+      id="empresaCarousel"
+      class="carousel slide"
+      data-bs-ride="carousel"
+      data-bs-interval="8000"
+    >
       <div class="carousel-inner">
+        <!-- Primeiro Slide -->
         <div class="carousel-item active">
           <div class="row">
             <div class="col-12 col-md-6 col-lg-3">
               <div class="card bg-secondary border-0 carousel-card">
-                <img src="img/posto.png" class="card-img-top" alt="Postos de Gasolina">
+                <img
+                  src="img/posto.png"
+                  class="card-img-top"
+                  alt="Postos de Gasolina"
+                />
                 <div class="card-body">
                   <h5 class="card-title text-white">Postos de Gasolina</h5>
-                  <p class="card-text text-white">Controle o consumo e otimize o reabastecimento de combustíveis em cada bomba.</p>
+                  <p class="card-text text-white">
+                    Controle o consumo e otimize o reabastecimento de 
+                    combustíveis em cada bomba.
+                  </p>
                 </div>
               </div>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
               <div class="card bg-secondary border-0 carousel-card">
-                <img src="img/padaria.jpg" class="card-img-top" alt="Padarias">
+                <img src="img/padaria.jpg" class="card-img-top" alt="Padarias" />
                 <div class="card-body">
                   <h5 class="card-title text-white">Padarias</h5>
-                  <p class="card-text text-white">Garanta insumos frescos e reduza sobras que afetam a qualidade dos produtos.</p>
+                  <p class="card-text text-white">
+                    Garanta insumos frescos e reduza sobras que afetam 
+                    a qualidade dos produtos.
+                  </p>
                 </div>
               </div>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
               <div class="card bg-secondary border-0 carousel-card">
-                <img src="img/mercado.png" class="card-img-top" alt="Mercados">
+                <img src="img/mercado.png" class="card-img-top" alt="Mercados" />
                 <div class="card-body">
                   <h5 class="card-title text-white">Mercados</h5>
-                  <p class="card-text text-white">Evite rupturas nas prateleiras e mantenha sempre os itens mais vendidos em estoque.</p>
+                  <p class="card-text text-white">
+                    Evite rupturas nas prateleiras e mantenha sempre 
+                    os itens mais vendidos em estoque.
+                  </p>
                 </div>
               </div>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
               <div class="card bg-secondary border-0 carousel-card">
-                <img src="img/varejo.png" class="card-img-top" alt="Lojas de Varejo">
+                <img src="img/varejo.png" class="card-img-top" alt="Lojas de Varejo" />
                 <div class="card-body">
                   <h5 class="card-title text-white">Lojas de Varejo</h5>
-                  <p class="card-text text-white">Melhore a experiência do cliente com produtos organizados e reposições oportunas.</p>
+                  <p class="card-text text-white">
+                    Melhore a experiência do cliente com produtos organizados 
+                    e reposições oportunas.
+                  </p>
                 </div>
               </div>
             </div>
@@ -861,37 +998,65 @@
           <div class="row">
             <div class="col-12 col-md-6 col-lg-3">
               <div class="card bg-secondary border-0 carousel-card">
-                <img src="img/restaurante.png" class="card-img-top" alt="Restaurantes">
+                <img
+                  src="img/restaurante.png"
+                  class="card-img-top"
+                  alt="Restaurantes"
+                />
                 <div class="card-body">
                   <h5 class="card-title text-white">Restaurantes</h5>
-                  <p class="card-text text-white">Gerencie insumos com precisão e mantenha a qualidade dos pratos servidos.</p>
+                  <p class="card-text text-white">
+                    Gerencie insumos com precisão e mantenha a qualidade 
+                    dos pratos servidos.
+                  </p>
                 </div>
               </div>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
               <div class="card bg-secondary border-0 carousel-card">
-                <img src="img/farmacia.png" class="card-img-top" alt="Farmácias">
+                <img
+                  src="img/farmacia.png"
+                  class="card-img-top"
+                  alt="Farmácias"
+                />
                 <div class="card-body">
                   <h5 class="card-title text-white">Farmácias</h5>
-                  <p class="card-text text-white">Evite vencimentos de medicamentos e controle rigorosamente cada lote recebido.</p>
+                  <p class="card-text text-white">
+                    Evite vencimentos de medicamentos e controle rigorosamente 
+                    cada lote recebido.
+                  </p>
                 </div>
               </div>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
               <div class="card bg-secondary border-0 carousel-card">
-                <img src="img/distruibuidorapng.avif" class="card-img-top" alt="Distribuidoras">
+                <img
+                  src="img/distruibuidorapng.avif"
+                  class="card-img-top"
+                  alt="Distribuidoras"
+                />
                 <div class="card-body">
                   <h5 class="card-title text-white">Distribuidoras</h5>
-                  <p class="card-text text-white">Gerencie grandes quantidades de produtos com monitoramento e alertas automatizados.</p>
+                  <p class="card-text text-white">
+                    Gerencie grandes quantidades de produtos com monitoramento
+                    e alertas automatizados.
+                  </p>
                 </div>
               </div>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
               <div class="card bg-secondary border-0 carousel-card">
-                <img src="img/estoquese.avif" class="card-img-top" alt="E-Commerce">
+                <img
+                  src="img/estoquese.avif"
+                  class="card-img-top"
+                  alt="E-Commerce"
+                />
                 <div class="card-body">
                   <h5 class="card-title text-white">E-Commerce</h5>
-                  <p class="card-text text-white">Controle cada etapa do fulfillment e reduza erros em diversos centros de distribuição.</p>
+                  <p class="card-text text-white">
+                    Controle cada etapa do fulfillment e reduza erros 
+                    em diversos centros de distribuição.
+                  </p>
                 </div>
               </div>
             </div>
@@ -899,11 +1064,21 @@
         </div>
       </div>
       <!-- Controles do Carrossel -->
-      <button class="carousel-control-prev" type="button" data-bs-target="#empresaCarousel" data-bs-slide="prev">
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#empresaCarousel"
+        data-bs-slide="prev"
+      >
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Anterior</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#empresaCarousel" data-bs-slide="next">
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#empresaCarousel"
+        data-bs-slide="next"
+      >
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Próximo</span>
       </button>
@@ -919,22 +1094,34 @@
       <div class="process-step">
         <i class="fa-solid fa-magnifying-glass"></i>
         <h3>Análise Inicial</h3>
-        <p>Fazemos um mapeamento completo do seu estoque e processos, identificando gargalos e oportunidades de economia com base em dados históricos.</p>
+        <p>
+          Fazemos um mapeamento completo do seu estoque e processos, identificando gargalos 
+          e oportunidades de economia com base em dados históricos.
+        </p>
       </div>
       <div class="process-step">
         <i class="fa-solid fa-gear"></i>
         <h3>Implementação Personalizada</h3>
-        <p>Integramos nossa solução de IA ao seu sistema de forma fluida, garantindo continuidade operacional e evitando qualquer interrupção nas vendas.</p>
+        <p>
+          Integramos nossa solução de IA ao seu sistema de forma fluida, garantindo 
+          continuidade operacional e evitando qualquer interrupção nas vendas.
+        </p>
       </div>
       <div class="process-step alert">
         <i class="fa-solid fa-bell"></i>
         <h3>Alertas &amp; Ações Oportunas</h3>
-        <p>Receba avisos em tempo real para repor produtos, ofertar promoções pontuais e gerenciar validade, evitando perdas e maximizando lucros.</p>
+        <p>
+          Receba avisos em tempo real para repor produtos, ofertar promoções pontuais 
+          e gerenciar validade, evitando perdas e maximizando lucros.
+        </p>
       </div>
       <div class="process-step">
         <i class="fa-solid fa-chart-pie"></i>
         <h3>Monitoramento &amp; Análise</h3>
-        <p>Acompanhe KPIs essenciais em dashboards interativos, ajustando sua estratégia conforme as variações de mercado e o feedback dos clientes.</p>
+        <p>
+          Acompanhe KPIs essenciais em dashboards interativos, ajustando sua estratégia 
+          conforme as variações de mercado e o feedback dos clientes.
+        </p>
       </div>
     </div>
   </div>
@@ -947,9 +1134,11 @@
       <span id="banner-text">Transforme Seu Estoque Agora!</span>
     </h2>
     <p class="banner-final-subtitle">
-      Deixe nos ajudar a controla seu estoque, prevenindo perdas e aumentando os lucros.
+      Deixe nos ajudar a controlar seu estoque, prevenindo perdas e aumentando os lucros.
     </p>
-    <a href="mailto:contato@datasetti.com.br" class="btn-primario">Solicite Sua Demonstração</a>
+    <a href="mailto:contato@datasetti.com.br" class="btn-primario">
+      Solicite Sua Demonstração
+    </a>
   </div>
 </section>
 
@@ -966,7 +1155,9 @@
 </footer>
 
 <!-- Bootstrap JS Bundle (inclui Popper) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+></script>
 
 <!-- GSAP Scripts -->
 <script>
@@ -1003,7 +1194,7 @@
   const closeBtn = document.getElementById("closeBtn");
   const overlay = document.getElementById("overlay");
 
-  // Abre o menu lateral
+  // Abre o side menu
   hamburger.addEventListener("click", () => {
     sideMenu.classList.add("active");
     overlay.classList.add("active");
