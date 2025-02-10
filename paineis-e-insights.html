@@ -2,411 +2,894 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="Painéis de Power BI, Insights Estratégicos, Growth Marketing e Crescimento de Marca - Data Setti">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestão de Estoque Inteligente | Data Setti</title>
+  <title>Power BI, Insights e Growth | Data Setti</title>
 
-  <!-- Google Font: Poppins -->
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" 
-    rel="stylesheet"
-  />
-  <!-- (Opcional) Font Awesome -->
+  <!-- Bootstrap 5 CSS -->
   <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
+  <!-- Font Awesome (opcional) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <!-- Google Fonts (Poppins) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
   />
 
   <style>
     :root {
-      --color-azul-noite: #1A1A2E;
-      --color-roxo: #6A0572;
+      --color-roxo-dark: #6A0572;
       --color-preto: #121212;
       --color-cinza-escuro: #2E2E2E;
-      --color-branco: #ffffff;
-      --font-base: 'Poppins', sans-serif;
-      --gradient-roxo: linear-gradient(135deg, #6A0572, #1A1A2E);
+      --color-branco: #fff;
+      --gradient-roxo: linear-gradient(135deg, rgba(106,5,114,1) 0%, rgba(26,26,46,1) 100%);
       --color-roxo-claro: #a86ac8;
       --color-roxo-intermed: #9145a6;
+      --font-base: 'Poppins', sans-serif;
     }
+
+    /* RESET */
     * {
-      margin: 0; 
+      margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
     body {
       font-family: var(--font-base);
-      background-color: var(--color-azul-noite);
+      background: var(--color-preto);
       color: var(--color-branco);
-      line-height: 1.5;
-      overflow-x: hidden;
+      line-height: 1.6;
+      padding-top: 70px; /* Espaço para header fixo */
+      overflow-x: hidden; 
     }
-    /* HEADER FIXO + HAMBURGER */
-    header {
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER */
+    .header {
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
-      height: 60px;
-      background: rgba(26,26,46,0.95);
-      backdrop-filter: blur(5px);
+      z-index: 999;
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(4px);
+      height: 70px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 0 2rem;
-      z-index: 999;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
-    .logo {
-      font-size: 1.4rem;
-      font-weight: 600;
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     .logo a {
-      text-decoration: none;
+      font-size: 1.7rem;
+      font-weight: 600;
       color: var(--color-branco);
+      line-height: 70px;
     }
     .logo span {
-      color: var(--color-roxo);
+      color: var(--color-roxo-dark);
     }
-    .nav-desktop {
+
+    /* MENU DESKTOP (nav-desktop) */
+    .nav-desktop ul {
+      list-style: none;
       display: flex;
       gap: 1.5rem;
     }
-    .nav-desktop a {
+    .nav-desktop ul li a {
       color: var(--color-branco);
-      text-decoration: none;
-      transition: 0.3s;
+      transition: color 0.3s;
+      line-height: 70px;
     }
-    .nav-desktop a:hover {
-      color: var(--color-roxo);
+    .nav-desktop ul li a:hover {
+      color: var(--color-roxo-dark);
     }
+    @media (max-width: 768px) {
+      .nav-desktop {
+        display: none; /* Some no mobile */
+      }
+    }
+
+    /* BOTÃO HAMBURGUER (MOBILE) */
     .hamburger {
-      display: none;
-      background: var(--color-roxo);
+      display: none; /* não aparece em desktop */
+      font-size: 1.8rem;
+      background: var(--color-roxo-dark);
       border: none;
       color: #fff;
-      font-size: 1.4rem;
+      cursor: pointer;
       padding: 8px 12px;
       border-radius: 5px;
-      cursor: pointer;
     }
-    @media(max-width:768px){
-      .nav-desktop {
-        display: none;
-      }
+    @media (max-width: 768px) {
       .hamburger {
-        display: block;
+        display: block; /* aparece no mobile */
       }
     }
+
+    /* OVERLAY E SIDE MENU (MOBILE) */
     .overlay {
       position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
       background: rgba(0,0,0,0.7);
-      opacity:0;
-      visibility:hidden;
-      transition:0.3s;
-      z-index:998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 998;
     }
     .overlay.active {
-      opacity:1;
-      visibility:visible;
+      opacity: 1;
+      visibility: visible;
     }
     .side-menu {
       position: fixed;
-      top:0; right:-250px;
-      width:250px; height:100%;
-      background:#1A1A2E;
-      box-shadow:-2px 0 5px rgba(0,0,0,0.3);
-      transition:0.3s;
-      z-index:999;
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-      padding:40px 20px;
+      top: 0;
+      right: -250px; 
+      width: 250px;
+      height: 100%;
+      background-color: #1A1A2E;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+      transition: right 0.3s ease;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 40px 20px;
     }
     .side-menu.active {
-      right:0;
+      right: 0; 
     }
     .close-btn {
-      align-self:flex-end;
-      background:none;
-      border:none;
-      font-size:1.5rem;
-      color:#fff;
-      margin-bottom:20px;
-      cursor:pointer;
+      align-self: flex-end;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+      margin-bottom: 20px;
     }
     .side-menu nav ul {
-      list-style:none;
-      width:100%;
-    }
-    .side-menu nav ul li {
-      margin-bottom:1rem;
+      list-style: none;
+      width: 100%;
     }
     .side-menu nav ul li a {
-      text-decoration:none;
-      color:#fff;
-      transition:0.3s;
+      display: block;
+      padding: 10px 0;
+      font-size: 1.1rem;
+      color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: color 0.3s;
     }
     .side-menu nav ul li a:hover {
-      color:var(--color-roxo);
+      color: var(--color-roxo-dark);
     }
-
-    body::before {
-      content:"";
-      display:block;
-      height:60px;
-      width:100%;
-    }
-
-    /* BANNER (inner-banner) */
-    .inner-banner {
-      background: var(--gradient-roxo);
-      padding:40px 20px;
-      text-align:center;
-    }
-    .inner-banner h1 {
-      font-size:2rem;
-      font-weight:600;
-      margin-bottom:0.5rem;
-    }
-
-    /* CONTAINER */
-    .container {
-      display:flex;
-      gap:2rem;
-      max-width:1200px;
-      margin:2rem auto;
-      padding:0 1rem;
-    }
-    .post-content {
-      flex:3;
-      background:#2E2E2E;
-      border-radius:8px;
-      padding:2rem;
-      box-shadow:0 2px 6px rgba(0,0,0,0.3);
-    }
-    .post-meta {
-      font-size:0.9rem;
-      color:#ccc;
-      margin-bottom:1rem;
-    }
-    .post-content p {
-      margin-bottom:1.2rem;
-      color:#ccc;
-      line-height:1.5;
-    }
-    .post-content h2 {
-      font-size:1.3rem;
-      margin-bottom:0.8rem;
-      color:var(--color-roxo-claro);
-    }
-    .sidebar {
-      flex:1;
-      display:flex;
-      flex-direction:column;
-      gap:2rem;
-    }
-    .sidebar section {
-      background:#2E2E2E;
-      border-radius:8px;
-      padding:1.5rem;
-      box-shadow:0 2px 6px rgba(0,0,0,0.3);
-    }
-    .sidebar h3 {
-      font-size:1.2rem;
-      color:var(--color-roxo);
-      margin-bottom:1rem;
-    }
-    .sidebar .widget p,
-    .sidebar .widget li {
-      font-size:0.95rem;
-      color:#ccc;
-    }
-    .sidebar .widget a {
-      color:var(--color-roxo-claro);
-      text-decoration:underline;
-      transition:0.3s;
-    }
-    .sidebar .widget a:hover {
-      color:#8A0A94;
-    }
-    footer {
-      text-align:center;
-      padding:1rem 0;
-      margin-top:2rem;
-      background:#2E2E2E;
-      color:#fff;
-    }
-
-    @media(max-width:992px){
-      .container {
-        flex-direction:column;
-      }
-      .post-content {
-        margin-bottom:2rem;
+    @media (min-width: 769px) {
+      .side-menu,
+      .overlay {
+        display: none; 
       }
     }
-    @media(max-width:600px){
-      .inner-banner h1 {
-        font-size:1.6rem;
-      }
+
+    /* HERO */
+    .hero-powerbi {
+      position: relative;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
     }
-    .post-content img {
-      display: block;
-      max-width: 100%;
-      height: auto;
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 1;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 2;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    .btn-primario {
+      background-color: var(--color-roxo-dark);
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-branco);
+      transition: 0.3s;
+      display: inline-block;
+    }
+    .btn-primario:hover {
+      background-color: #8A0A94;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(138,10,148,0.4);
+    }
+
+    /* Section: Painéis e Growth (bullets) */
+    .powerbi-section {
+      padding: 60px 20px;
+    }
+    .powerbi-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--color-roxo-intermed);
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+    .powerbi-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .powerbi-card {
+      background: #1A1A2E;
       border-radius: 8px;
-      margin: 1.2rem 0;
+      padding: 1.5rem;
+      flex: 1 1 270px;
+      max-width: 320px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      transition: 0.3s;
     }
+    .powerbi-card:hover {
+      transform: translateY(-5px);
+    }
+    .powerbi-card i {
+      font-size: 3rem;
+      color: var(--color-roxo-intermed);
+      margin-bottom: 1rem;
+    }
+    .powerbi-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+      font-weight: 600;
+    }
+    .powerbi-card p {
+      font-size: 0.95rem;
+      color: #ccc;
+      line-height: 1.4;
+    }
+
+    /* Seção curta "O que é Growth Marketing" */
+    .growth-short {
+      background-color: #121212;
+      padding: 60px 20px;
+    }
+    .growth-short .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .growth-short h2 {
+      color: var(--color-roxo-intermed);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    .growth-short p {
+      color: #ccc;
+      max-width: 900px;
+      margin: 0 auto 1.5rem;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Galeria de Ação (slides alternados) */
+    .action-gallery {
+      background-color: #121212;
+      padding: 60px 20px;
+    }
+    .action-gallery .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .action-gallery h2 {
+      text-align: center; 
+      color: var(--color-roxo-intermed);
+      font-size: 2rem; 
+      margin-bottom: 2rem; 
+      font-weight: 600;
+    }
+    .action-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      transition: 0.3s;
+    }
+    .action-item.reverse {
+      flex-direction: row-reverse;
+    }
+    .action-image, .action-text {
+      flex: 1; 
+      padding: 20px;
+    }
+    .action-image img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+    .action-image img:hover {
+      transform: scale(1.05);
+    }
+    .action-text h3 {
+      font-size: 1.8rem; 
+      color: var(--color-roxo-claro);
+      margin-bottom: 15px;
+    }
+    .action-text p {
+      font-size: 1.1rem; 
+      line-height: 1.5; 
+      color: #ccc; 
+      text-align: justify;
+    }
+
+    /* Carrossel de Dashboards */
+    .carousel-dashboards {
+      background: #1A1A2E;
+      padding: 60px 20px;
+    }
+    .carousel-dashboards h2 {
+      text-align: center;
+      color: var(--color-roxo-intermed);
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+    .carousel-dashboards .carousel-item img {
+      max-height: 450px; 
+      object-fit: contain; 
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .carousel-dashboards .carousel-item img {
+        max-height: 300px;
+      }
+    }
+
+    /* Seção Benefícios Leigos */
+    .beneficios-leigos {
+      background: #1A1A2E;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .beneficios-leigos h2 {
+      color: var(--color-roxo-intermed);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .beneficio-card {
+      background: var(--color-preto);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .beneficio-card:hover {
+      transform: translateY(-5px);
+    }
+    .beneficio-card i {
+      font-size: 2rem;
+      color: var(--color-roxo-claro);
+      margin-bottom: 1rem;
+    }
+    .beneficio-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+      font-weight: 600;
+    }
+    .beneficio-card p {
+      font-size: 0.95rem;
+      color: #ccc;
+      line-height: 1.4;
+      padding: 0 10px;
+    }
+
+    /* CTA Final */
+    .cta-final-growth {
+      background: var(--gradient-roxo);
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .cta-final-growth h2 {
+      color: #fff;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    .cta-final-growth p {
+      color: #fff;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .cta-final-growth .btn-primario {
+      background: #fff;
+      color: var(--color-roxo-dark);
+      font-weight: 700;
+    }
+    .cta-final-growth .btn-primario:hover {
+      background: #eee;
+      color: #333;
+    }
+
+    /* FOOTER */
+    .footer {
+      background-color: var(--color-cinza-escuro);
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.85rem;
+    }
+    .footer-content p a {
+      color: #fff;
+      margin: 0 5px;
+      transition: color 0.3s;
+    }
+    .footer-content p a:hover {
+      color: var(--color-roxo-dark);
+    }
+@media (max-width: 768px) {
+  .action-item,
+  .action-item.reverse {
+    flex-direction: column !important;
+    text-align: center;
+  }
+  
+  /* Opcional: adicione um espaçamento entre a imagem e o texto */
+  .action-image {
+    margin-bottom: 20px;
+  }
+}
+
   </style>
 </head>
 <body>
+<!-- Header -->
+<header class="header" id="header">
+  <div class="container">
+    <div class="logo">
+      <a href="#home">Data <span>Setti</span></a>
+    </div>
 
-<!-- HEADER + HAMBURGER -->
-<header>
-  <div class="logo">
-    <a href="index.html">Data <span>Setti</span></a>
+    <!-- Menu Desktop (telas grandes) -->
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#sobre">Sobre</a></li>
+        <li><a href="index.html#servicos">Serviços</a></li>
+        <li><a href="index.html#projetos">Projetos</a></li>
+        <li><a href="index.html#contato">Contato</a></li>
+      </ul>
+    </nav>
+
+    <!-- Ícone hamburguer (mobile) -->
+    <button class="hamburger" id="hamburger">
+      <i class="fas fa-bars"></i>
+    </button>
   </div>
-  <!-- MENU DESKTOP -->
-  <nav class="nav-desktop">
-    <a href="index.html#sobre">Sobre</a>
-    <a href="index.html#servicos">Serviços</a>
-    <a href="index.html#projetos">Projetos</a>
-    <a href="index.html#contato">Contato</a>
-    <a href="blog_template.html">Blog</a>
-  </nav>
-  <button class="hamburger" id="hamburger">
-    <i class="fas fa-bars"></i>
-  </button>
 </header>
 
-<!-- OVERLAY E SIDE-MENU (MOBILE) -->
+<!-- Overlay e Side Menu (Mobile) -->
 <div class="overlay" id="overlay"></div>
 <div class="side-menu" id="sideMenu">
-  <button class="close-btn" id="closeBtn"><i class="fas fa-times"></i></button>
+  <button class="close-btn" id="closeBtn">
+    <i class="fas fa-times"></i>
+  </button>
   <nav>
     <ul>
+      <li><a href="index.html#home">Home</a></li>
       <li><a href="index.html#sobre">Sobre</a></li>
       <li><a href="index.html#servicos">Serviços</a></li>
       <li><a href="index.html#projetos">Projetos</a></li>
       <li><a href="index.html#contato">Contato</a></li>
-      <li><a href="blog_template.html">Blog</a></li>
     </ul>
   </nav>
 </div>
 
-<!-- BANNER -->
-<section class="inner-banner">
-  <h1>Gestão de Estoque Inteligente</h1>
+<!-- Hero: Power BI & Growth -->
+<section class="hero-powerbi">
+  <video class="hero-video" autoplay muted loop>
+    <source src="videos/data.mp4" type="video/mp4">
+    Seu navegador não suporta vídeo.
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Power BI, Insights & Growth Marketing</h1>
+    <p>
+      Transforme dados em estratégias de crescimento com dashboards interativos, 
+      análises avançadas e planos de marketing que fortalecem sua marca 
+      e impulsionam vendas.
+    </p>
+    <a href="#contato" class="btn-primario">Explorar Agora</a>
+  </div>
 </section>
 
-<!-- CONTAINER PRINCIPAL -->
-<div class="container">
-  <!-- POST -->
-  <div class="post-content">
-    <div class="post-meta">
-      <span>Publicado em 01/02/2025</span> • 
-      <span>Categoria: <strong>Automação</strong></span>
+<!-- Seção Principais Funcionalidades -->
+<section class="powerbi-section">
+  <h2>Painéis, Insights & Crescimento Estratégico</h2>
+  <div class="powerbi-cards">
+    <div class="powerbi-card">
+      <i class="fa-solid fa-chart-column"></i>
+      <h3>Painéis Interativos</h3>
+      <p>
+        Visualize KPIs de vendas, marketing e operações em tempo real, 
+        personalizando cada painel no Power BI.
+      </p>
     </div>
+    <div class="powerbi-card">
+      <i class="fa-solid fa-lightbulb"></i>
+      <h3>Insights Estratégicos</h3>
+      <p>
+        Otimize campanhas, identifique oportunidades de cross-selling 
+        e descubra onde cortar custos para maximizar lucros.
+      </p>
+    </div>
+    <div class="powerbi-card">
+      <i class="fa-solid fa-rocket"></i>
+      <h3>Growth Marketing</h3>
+      <p>
+        Planeje ações de marketing baseadas em dados, usando técnicas 
+        de experimentação e funis inteligentes que impulsionam 
+        crescimento exponencial.
+      </p>
+    </div>
+    <div class="powerbi-card">
+      <i class="fa-solid fa-user-check"></i>
+      <h3>Segmentação Avançada</h3>
+      <p>
+        Identifique o perfil ideal do cliente e crie campanhas 
+        personalizadas para aumentar conversão e fidelização.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Galeria de Ação (slides alternados) -->
+<section class="action-gallery">
+  <div class="container">
+    <h2>Veja Nossa Solução em Ação</h2>
+    <!-- Slide 1 -->
+    <div class="action-item">
+      <div class="action-image">
+        <img src="img/dashh.png" alt="Dashboard Interativo">
+      </div>
+      <div class="action-text">
+        <h3>Dashboards Dinâmicos</h3>
+        <p>
+          Acesse relatórios interativos que revelam tendências de vendas, comportamento do cliente e performance de marketing. Tome decisões ágeis com dados atualizados em tempo real para maximizar seus resultados.
+        </p>
+      </div>
+    </div>
+    <!-- Slide 2 (reverse) -->
+    <div class="action-item reverse">
+      <div class="action-image">
+        <img src="img/ra.jpg" alt="Insights Estratégicos">
+      </div>
+      <div class="action-text">
+        <h3>Insights Estratégicos</h3>
+        <p>
+          Descubra oportunidades estratégicas para promoções, crie campanhas altamente segmentadas e identifique os canais com maior ROI. Com dados confiáveis e visualizações intuitivas, transforme insights em ações para maximizar seus resultados!
+        </p>
+      </div>
+    </div>
+    <!-- Slide 3 -->
+    <div class="action-item">
+      <div class="action-image">
+        <img src="img/mark.png" alt="Campanhas de Growth Marketing">
+      </div>
+      <div class="action-text">
+        <h3>Campanhas de Growth Marketing</h3>
+        <p>
+          Estruture funis de vendas e marketing eficientes, otimize campanhas de Ads, teste estratégias de aquisição e retenção de clientes e valide rapidamente as táticas que geram os melhores resultados para o seu público. Com dados precisos, maximize o impacto dos seus anúncios e aumente a conversão!
+        </p>
+      </div>
+    </div>
+    <!-- Slide 4 (reverse) -->
+    <div class="action-item reverse">
+      <div class="action-image">
+        <img src="img/relat.png" alt="Relatórios Automatizados">
+      </div>
+      <div class="action-text">
+        <h3>Relatórios Automatizados</h3>
+        <p>
+          Elimine o trabalho manual e otimize sua gestão! Receba relatórios mensais ou semanais com métricas detalhadas de crescimento, identificando oportunidades, pontos fortes e gargalos em suas estratégias para tomada de decisão mais assertiva.
+        </p>
+      </div>
+    </div>
+    <!-- Slide 5 -->
+    <div class="action-item">
+      <div class="action-image">
+        <img src="img/marca.jpg" alt="Crescimento de Marca">
+      </div>
+      <div class="action-text">
+        <h3>Crescimento de Marca</h3>
+        <p>
+          Compreenda a percepção do público sobre sua marca, identifique oportunidades de branding e fortaleça seu posicionamento no mercado. Utilize dados estratégicos para criar uma identidade sólida e se destacar da concorrência.
+        </p>
+      </div>
+    </div>
+    <!-- Slide 6 (reverse) -->
+    <div class="action-item reverse">
+      <div class="action-image">
+        <img src="img/finace.png" alt="Otimização Financeira">
+      </div>
+      <div class="action-text">
+        <h3>Otimização Financeira</h3>
+        <p>
+          Identifique desperdícios e oportunidades de alto retorno, ajustando orçamentos e investimentos de forma estratégica. Maximize seus resultados, otimize recursos e amplie sua margem de lucro com decisões baseadas em dados.
+        </p>
+      </div>
+    </div>
+    <!-- Slide 7 -->
+    <div class="action-item">
+      <div class="action-image">
+        <img src="img/goal.png" alt="Objetivo Final">
+      </div>
+      <div class="action-text">
+        <h3>Objetivo Final</h3>
+        <p>
+          Fornecemos às empresas ações assertivas e estratégicas para maximizar lucros, fortalecer a marca e eliminar desperdícios. Com dados precisos e automação inteligente, direcionamos investimentos para o que realmente impulsiona crescimento e resultados.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Seção explicando Growth Marketing de forma breve -->
+<section class="growth-short">
+  <div class="container">
+    <h2>O que é Growth Marketing?</h2>
     <p>
-      Controlar estoques de forma inteligente é fundamental para empresas que buscam 
-      minimizar desperdícios e maximizar lucros. Processos manuais estão sujeitos 
-      a erros e pouco fornecem de previsibilidade. Já uma <strong>Gestão de Estoque Inteligente</strong> 
-      se baseia em dados para antecipar demandas e reduzir custos.
+      Growth Marketing é uma abordagem voltada a acelerar o crescimento do seu negócio, 
+      unindo análise de dados, criatividade e testes rápidos (A/B testing). 
+      Diferente do marketing tradicional, ele se concentra em todo o funil de vendas, 
+      buscando oportunidades de aquisição, retenção e aumento de receita de forma 
+      contínua e escalável.
     </p>
-    <img src="img/estq.jpg" alt="Ilustração da Inteligência Artificial">
-    <h2>1. Previsão de Demanda</h2>
     <p>
-      Com algoritmos de <em>Inteligência Artificial</em>, é possível analisar 
-      históricos de vendas e sazonalidades, ajustando o estoque exato que precisa ser 
-      reposto. Isso evita a falta de produtos e o acúmulo desnecessário de itens.
-    </p>
-    <h2>2. Redução de Custos e Perdas</h2>
-    <p>
-      Um dos maiores gastos em operações é o desperdício causado por produtos que vencem 
-      ou ficam obsoletos. Ao monitorar a rotatividade de cada item e usar alertas automáticos, 
-      sua empresa pode agir com antecedência, evitando prejuízos significativos.
-    </p>
-    <h2>3. Integração com Sistemas e ERP</h2>
-    <p>
-      Outra vantagem é integrar a gestão de estoque ao seu ERP ou sistemas de vendas,
-      garantindo que os dados estejam sempre atualizados. Isso evita duplicidades 
-      e melhora a comunicação entre setores.
-    </p>
-    <h2>4. Aumento de Produtividade</h2>
-    <p>
-      Com processos automatizados, a equipe se dedica a tarefas mais estratégicas, deixando 
-      que a tecnologia cuide de aspectos repetitivos. Isso libera tempo para a busca de novas 
-      oportunidades e melhorias internas.
-    </p>
-    <h2>Conclusão</h2>
-    <p>
-      A <strong>Gestão de Estoque Inteligente</strong> é um passo essencial para empresas que 
-      visam eficiência e competitividade. Seja para reduzir perdas, antecipar demandas 
-      ou otimizar processos, esse tipo de automação baseada em dados traz retornos 
-      imediatos e duradouros.
-    </p>
-    <p>
-      <strong>Quer implementar uma gestão de estoque inteligente?</strong> 
-      Fale com a <em>Data Setti</em> e solicite um <strong>diagnóstico gratuito</strong> 
-      para descobrir como modernizar seu estoque e impulsionar suas vendas!
+      Ao implementar Growth Marketing, você experimenta técnicas inovadoras, 
+      mensura resultados e ajusta campanhas com agilidade. 
+      Assim, cada investimento em marketing se torna mais assertivo, 
+      impactando diretamente o faturamento e a percepção da sua marca. 
+      Na Data Setti, unimos esses conceitos a dashboards e insights avançados 
+      para que suas decisões sejam sempre embasadas em dados reais.
     </p>
   </div>
+</section>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <section>
-      <h3>Sobre a Data Setti</h3>
-      <div class="widget">
+<!-- Carrossel de Dashboards (Portfólio) -->
+<section class="carousel-dashboards">
+  <div class="container">
+    <h2>Dashboards Interativos</h2>
+    <!-- Bootstrap Carousel -->
+    <div id="dashboardsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000">
+      <!-- Indicadores (bolinhas) -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#dashboardsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#dashboardsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#dashboardsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="img/dash.png" class="d-block mx-auto w-100" alt="Dashboard 1" />
+        </div>
+        <div class="carousel-item">
+          <img src="img/renda.png" class="d-block mx-auto w-100" alt="Dashboard 2" />
+        </div>
+        <div class="carousel-item">
+          <img src="img/primeiro.png" class="d-block mx-auto w-100" alt="Dashboard 3" />
+        </div>
+      </div>
+
+      <!-- Controles de navegação -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#dashboardsCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#dashboardsCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+      </button>
+    </div>
+    <!-- Botão CTA adicional abaixo do carrossel -->
+    <div class="text-center mt-4">
+      <a href="#contato" class="btn-primario">
+        Venha ter relatórios da sua empresa de graça
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Seção de Benefícios (para leigos) -->
+<section class="beneficios-leigos">
+  <div class="container">
+    <h2>Benefícios Reais para sua Empresa</h2>
+    <div class="beneficios-grid">
+      <div class="beneficio-card">
+        <i class="fa-solid fa-arrow-trend-up"></i>
+        <h3>Mais Vendas</h3>
         <p>
-          A Data Setti é referência em soluções de IA e automação. 
-          Nossa missão é eliminar processos manuais, reduzir custos e aumentar 
-          a competitividade de sua empresa.
-        </p>
-        <p>
-          <a href="index.html#servicos">Veja nossos serviços</a>
+          Ao identificar produtos mais lucrativos e oportunidades de 
+          campanhas, você potencializa as vendas e aproveita cada 
+          chance de crescimento.
         </p>
       </div>
-    </section>
-    <section>
-      <h3>Posts Recentes</h3>
-      <div class="widget">
-        <ul>
-          <li><a href="post1.html">Como a IA Pode Reduzir Custos</a></li>
-          <li><a href="post2.html">5 Motivos Para Usar Power BI</a></li>
-        </ul>
+      <div class="beneficio-card">
+        <i class="fa-solid fa-handshake"></i>
+        <h3>Melhor Relacionamento</h3>
+        <p>
+          Fidelize clientes ao entender o que eles realmente querem, 
+          oferecendo promoções e conteúdos direcionados.
+        </p>
       </div>
-    </section>
-  </aside>
+      <div class="beneficio-card">
+        <i class="fa-solid fa-clock"></i>
+        <h3>Economia de Tempo</h3>
+        <p>
+          Relatórios automatizados e dashboards prontos evitam horas 
+          de trabalho manual, liberando sua equipe para focar em 
+          decisões estratégicas.
+        </p>
+      </div>
+      <div class="beneficio-card">
+        <i class="fa-solid fa-route"></i>
+        <h3>Estratégia Clara</h3>
+        <p>
+          Tenha uma visão unificada da jornada do cliente, desde 
+          a prospecção até a recompra, facilitando o planejamento 
+          de ações de marketing mais eficazes.
+        </p>
+      </div>
+      <!-- NOVOS CARDS -->
+      <div class="beneficio-card">
+        <i class="fa-solid fa-bullhorn"></i>
+        <h3>Fortalecimento de Marca</h3>
+        <p>
+          Use análises de mercado e estratégias de branding para 
+          destacar sua marca e conquistar a confiança do cliente 
+          em cada ponto de contato.
+        </p>
+      </div>
+      <div class="beneficio-card">
+        <i class="fa-solid fa-briefcase"></i>
+        <h3>Planos de Marketing Integrados</h3>
+        <p>
+          Desenvolva campanhas que sincronizam vendas, redes sociais 
+          e publicidade de forma orquestrada, garantindo maior alcance 
+          e engajamento do público.
+        </p>
+      </div>
+      <div class="beneficio-card">
+        <i class="fa-solid fa-comments-dollar"></i>
+        <h3>Controle Financeiro</h3>
+        <p>
+          Acompanhe o ROI de cada ação, identificando 
+          onde seu dinheiro traz maior retorno e minimizando perdas.
+        </p>
+      </div>
+      <div class="beneficio-card">
+        <i class="fa-solid fa-globe"></i>
+        <h3>Expansão de Mercado</h3>
+        <p>
+          Descubra novas regiões e nichos promissores, expandindo seus 
+          horizontes de forma segura e planejada.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div>
-<!-- Botão de contato no final do blog -->
-<div class="contact-button" style="text-align: center; margin: 2rem 0;">
-  <a href="index.html#contato" class="btn-primario" style="background-color: var(--color-roxo-intermed); padding: 14px 24px; border-radius: 30px; font-weight: 600; color: #fff; text-decoration: none;">
-    Entre em contato com a Data Setti
-  </a>
-</div>
+<!-- CTA Final -->
+<section class="cta-final-growth">
+  <div class="container">
+    <h2>Pronto para Crescer de Forma Inteligente?</h2>
+    <p>
+      Entre em contato com a Data Setti e descubra como nosso mix de Painéis 
+      em Power BI, Insights Estratégicos, Growth Marketing e fortalecimento de marca 
+      pode elevar o potencial do seu negócio.
+    </p>
+    <a href="#contato" class="btn-primario">Fale com a Data Setti</a>
+  </div>
+</section>
 
-<footer>
-  &copy; 2025 Data Setti. Todos os direitos reservados.
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-content">
+    <p>Data Setti – Inteligência em Dados &copy; 2025. Todos os direitos reservados.</p>
+    <p>
+      <a href="index.html#sobre">Sobre</a> | 
+      <a href="index.html#servicos">Serviços</a> | 
+      <a href="index.html#projetos">Projetos</a> | 
+      <a href="index.html#depoimentos">Depoimentos</a> | 
+      <a href="index.html#contato">Contato</a>
+    </p>
+  </div>
 </footer>
 
-<!-- SCRIPT HAMBURGER -->
+<!-- Bootstrap JS (inclui Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- SCRIPT PARA O MENU LATERAL (MOBILE) -->
 <script>
   const hamburger = document.getElementById("hamburger");
-  const overlay = document.getElementById("overlay");
   const sideMenu = document.getElementById("sideMenu");
   const closeBtn = document.getElementById("closeBtn");
+  const overlay = document.getElementById("overlay");
 
+  // Abre o side menu
   hamburger.addEventListener("click", () => {
     sideMenu.classList.add("active");
     overlay.classList.add("active");
   });
+
+  // Fecha ao clicar no X
   closeBtn.addEventListener("click", () => {
     sideMenu.classList.remove("active");
     overlay.classList.remove("active");
   });
+
+  // Fecha ao clicar fora (overlay)
   overlay.addEventListener("click", () => {
     sideMenu.classList.remove("active");
     overlay.classList.remove("active");
