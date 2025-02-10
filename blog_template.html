@@ -2,38 +2,36 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Como a Inteligência Artificial Pode Reduzir Custos | Data Setti</title>
-  
+  <meta name="description" content="Blog - Data Setti | IA, Automação e Insights para Negócios" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Data Setti</title>
+
   <!-- Google Font: Poppins -->
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" 
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
     rel="stylesheet"
   />
-  <!-- Observação: Font Awesome, se quiser usar ícones -->
+  <!-- Font Awesome p/ ícones -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
   />
 
-  <!-- Estilos internos + Hamburguer + Overlay + Script inline no final -->
   <style>
     :root {
-      --color-azul-noite: #1A1A2E; 
+      --color-azul-noite: #1A1A2E;
       --color-roxo: #6A0572;
       --color-preto: #121212;
-      --color-cinza-escuro: #2E2E2E;
       --color-branco: #ffffff;
-      --font-base: 'Poppins', sans-serif;
+      --color-cinza-escuro: #2E2E2E;
       --gradient-roxo: linear-gradient(135deg, #6A0572, #1A1A2E);
+      --font-base: "Poppins", sans-serif;
     }
-
     * {
       margin: 0; 
-      padding: 0; 
+      padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: var(--font-base);
       background-color: var(--color-azul-noite);
@@ -42,14 +40,13 @@
       overflow-x: hidden;
     }
 
-    /* HEADER FIXO */
+    /* HEADER */
     header {
       position: fixed;
-      top: 0; 
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
       height: 60px;
-      background: rgba(26, 26, 46, 0.95);
+      background: rgba(26,26,46,0.95);
       backdrop-filter: blur(5px);
       display: flex;
       align-items: center;
@@ -69,7 +66,6 @@
     .logo span {
       color: var(--color-roxo);
     }
-    /* MENU DESKTOP (simples) */
     .nav-desktop {
       display: flex;
       gap: 1.5rem;
@@ -82,10 +78,8 @@
     .nav-desktop a:hover {
       color: var(--color-roxo);
     }
-
-    /* HAMBURGER (MOBILE) + SIDE MENU */
     .hamburger {
-      display: none; /* some no desktop */
+      display: none;
       background: var(--color-roxo);
       border: none;
       color: #fff;
@@ -94,138 +88,143 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    @media(max-width: 768px){
+    @media(max-width:768px){
       .nav-desktop {
-        display: none; /* some no mobile */
+        display:none;
       }
       .hamburger {
-        display: block; /* aparece no mobile */
+        display:block;
       }
     }
 
-    /* OVERLAY */
     .overlay {
       position: fixed;
-      top: 0; 
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      opacity: 0;
-      visibility: hidden;
-      transition: 0.3s ease;
-      z-index: 998;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.7);
+      opacity:0;
+      visibility:hidden;
+      transition:0.3s;
+      z-index:998;
     }
     .overlay.active {
-      opacity: 1;
-      visibility: visible;
+      opacity:1; visibility:visible;
     }
-
-    /* SIDE MENU */
     .side-menu {
-      position: fixed;
-      top: 0;
-      right: -250px;
-      width: 250px;
-      height: 100%;
-      background-color: #1A1A2E;
-      box-shadow: -2px 0 5px rgba(0,0,0,0.3);
-      transition: 0.3s ease;
-      z-index: 999;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 40px 20px;
+      position:fixed;
+      top:0; right:-250px;
+      width:250px; height:100%;
+      background:#1A1A2E;
+      box-shadow:-2px 0 5px rgba(0,0,0,0.3);
+      transition:0.3s;
+      z-index:999;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      padding:40px 20px;
     }
     .side-menu.active {
-      right: 0;
+      right:0;
     }
     .close-btn {
-      align-self: flex-end;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: #fff;
-      margin-bottom: 20px;
-      cursor: pointer;
+      align-self:flex-end;
+      background:none;
+      border:none;
+      font-size:1.5rem;
+      color:#fff;
+      margin-bottom:20px;
+      cursor:pointer;
     }
     .side-menu nav ul {
-      list-style: none;
-      width: 100%;
+      list-style:none;
+      width:100%;
     }
     .side-menu nav ul li {
-      margin-bottom: 1rem;
+      margin-bottom:1rem;
     }
     .side-menu nav ul li a {
-      text-decoration: none;
-      color: #fff;
-      transition: 0.3s;
+      text-decoration:none;
+      color:#fff;
+      transition:0.3s;
     }
     .side-menu nav ul li a:hover {
-      color: var(--color-roxo);
+      color:var(--color-roxo);
     }
 
-    /* Espaço abaixo do header fixo */
     body::before {
-      content: "";
-      display: block;
-      height: 60px;
-      width: 100%;
+      content:"";
+      display:block;
+      height:60px;
+      width:100%;
     }
 
-    /* BANNER (inner-banner) */
-    .inner-banner {
-      background: var(--gradient-roxo);
-      padding: 40px 20px;
+    /* BANNER */
+    .banner {
+      background: linear-gradient(90deg, #6A0572, #1A1A2E);
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
     }
-    .inner-banner .banner-text h1 {
+    .banner-text {
+      max-width: 700px;
+      margin: auto;
+    }
+    .banner-text h1 {
       font-size: 2rem;
-      font-weight: 600;
       margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .banner-text p {
+      font-size: 1.1rem;
+      opacity: 0.9;
     }
 
-    /* CONTAINER PRINCIPAL */
-    .container {
+    /* CONTEÚDO GERAL */
+    .content-container {
       display: flex;
       gap: 2rem;
       max-width: 1200px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
-
-    /* POST (COLUNA PRINCIPAL) */
-    .post-content {
+    /* POSTS (COLUNA ESQUERDA) */
+    .blog-posts {
       flex: 3;
-      background: #2E2E2E;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .blog-posts article {
+      background-color: #2E2E2E;
       border-radius: 8px;
-      padding: 2rem;
+      padding: 1.5rem;
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
-    .post-meta {
-      font-size: 0.9rem;
-      color: #ccc;
-      margin-bottom: 1rem;
-    }
-    .post-meta span {
-      margin-right: 1rem;
-    }
-    .post-content p {
-      margin-bottom: 1.2rem;
-      color: #ccc;
-      line-height: 1.5;
-    }
-    .post-content img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin: 1.2rem 0;
-    }
-    .post-content h2 {
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
+    .blog-posts article h2 {
+      font-size: 1.4rem;
       color: var(--color-roxo);
+      margin-bottom: 0.5rem;
+    }
+    .blog-posts article p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #ccc;
+    }
+    .blog-posts article a {
+      background: none;
+      border: 1px solid var(--color-roxo);
+      color: var(--color-roxo);
+      padding: 6px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s;
+    }
+    .blog-posts article a:hover {
+      background: var(--color-roxo);
+      color: #fff;
     }
 
     /* SIDEBAR (COLUNA DIREITA) */
@@ -246,71 +245,59 @@
       margin-bottom: 1rem;
       color: var(--color-roxo);
     }
-    .sidebar .widget p,
-    .sidebar .widget li {
+    .widget p, .widget li {
       font-size: 0.95rem;
       color: #ccc;
+      line-height: 1.4;
     }
-    .sidebar .widget a {
+    .widget a {
       color: var(--color-roxo);
       text-decoration: underline;
       transition: color 0.3s;
     }
-    .sidebar .widget a:hover {
+    .widget a:hover {
       color: #8A0A94;
     }
 
     /* FOOTER */
     footer {
+      background: #2E2E2E;
       text-align: center;
       padding: 1rem 0;
-      margin-top: 2rem;
-      background: #2E2E2E;
       color: #fff;
+      margin-top: 2rem;
     }
 
-    /* RESPONSIVIDADE */
+    /* RESPONSIVO */
     @media (max-width: 992px) {
-      .container {
-        flex-direction: column;
-      }
-      .post-content {
-        margin-bottom: 2rem;
-      }
-      .sidebar {
+      .content-container {
         flex-direction: column;
       }
     }
-    @media (max-width: 600px) {
-      .inner-banner .banner-text h1 {
-        font-size: 1.6rem;
+    @media (max-width: 768px) {
+      .banner {
+        height:180px;
       }
-      .post-content h2 {
-        font-size: 1.15rem;
+      .banner-text h1 {
+        font-size:1.8rem;
       }
     }
   </style>
 </head>
 <body>
 
-<!-- HEADER + HAMBURGER + SIDE MENU -->
+<!-- HEADER + HAMBURGER -->
 <header>
   <div class="logo">
     <a href="index.html">Data <span>Setti</span></a>
   </div>
-
-  <!-- MENU DESKTOP -->
   <nav class="nav-desktop">
     <a href="index.html#home">Home</a>
     <a href="Blog template.html">Blog</a>
     <a href="index.html#contato">Contato</a>
     <a href="index.html#servicos">Serviços</a>
   </nav>
-
-  <!-- BOTÃO HAMBURGER (MOBILE) -->
-  <button class="hamburger" id="hamburger">
-    <i class="fas fa-bars"></i>
-  </button>
+  <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
 </header>
 
 <!-- OVERLAY E SIDE-MENU (MOBILE) -->
@@ -322,91 +309,65 @@
   <nav>
     <ul>
       <li><a href="index.html#home">Home</a></li>
-      <li><a href="Blog_template.html">Blog</a></li>
+      <li><a href="Blog template.html">Blog</a></li>
       <li><a href="index.html#contato">Contato</a></li>
       <li><a href="index.html#servicos">Serviços</a></li>
     </ul>
   </nav>
 </div>
 
-<!-- BANNER INTERNO -->
-<section class="inner-banner">
+<!-- BANNER -->
+<section class="banner">
   <div class="banner-text">
-    <h1>Como a Inteligência Artificial Pode Reduzir Custos</h1>
-  </div>
+    <h1>Destaque da Semana</h1>
+    <p>Confira a novidade que está transformando o mercado.</p>
+  </section>
 </section>
 
 <!-- CONTAINER PRINCIPAL -->
-<div class="container">
-  <!-- COLUNA PRINCIPAL (POST) -->
-  <div class="post-content">
-    <div class="post-meta">
-      <span>Publicado em 05/02/2025</span> • 
-      <span>Categoria: Tecnologia</span>
-    </div>
-    
-    <p>
-      A inteligência artificial (IA) está revolucionando a forma como as empresas operam.
-      Com a automação de processos, análise preditiva e aprendizado de máquina, a IA tem se
-      tornado uma ferramenta indispensável para reduzir custos e aumentar a eficiência 
-      operacional. Mas como exatamente essa tecnologia impacta os negócios?
-    </p>
-    
-    <img src="img/blogia.png" alt="Ilustração da Inteligência Artificial">
-    
-    <h2>1. Automação de Processos e Eficiência Operacional</h2>
-    <p>
-      Um dos principais benefícios da IA é a automação de tarefas repetitivas e burocráticas.
-      Empresas que adotam IA em setores administrativos conseguem reduzir custos com mão de obra 
-      e minimizar erros humanos, tornando os processos mais ágeis e precisos.
-    </p>
-    
-    <h2>2. Redução de Desperdícios e Otimização de Recursos</h2>
-    <p>
-      No setor industrial e varejista, a IA é usada para prever demanda, ajustar estoques
-      e evitar desperdícios. Empresas que implementaram sistemas de IA relataram uma redução
-      média de 30% nos custos operacionais graças a uma alocação de recursos mais eficaz.
-    </p>
-    
-    <h2>3. Análise de Dados para Tomada de Decisão Estratégica</h2>
-    <p>
-      A IA possibilita a coleta e análise de grandes volumes de dados em tempo real. 
-      Isso permite que gestores tomem decisões mais assertivas, prevendo tendências 
-      e ajustando estratégias de maneira ágil e eficiente.
-    </p>
-    
-    <h2>4. Atendimento ao Cliente Inteligente</h2>
-    <p>
-      Com o uso de chatbots e assistentes virtuais, as empresas conseguem reduzir custos
-      e melhorar a experiência do cliente. A IA proporciona um atendimento ágil e disponível
-      24/7, sem necessidade de uma grande equipe de suporte.
-    </p>
-    
-    <h2>Conclusão</h2>
-    <p>
-      A Inteligência Artificial é um investimento estratégico para empresas que buscam
-      reduzir custos e melhorar sua competitividade. Com soluções personalizadas, 
-      é possível otimizar processos, prever cenários e garantir maior eficiência operacional.
-    </p>
-    <p>
-       <strong>Quer implementar IA no seu negócio?</strong> Entre em contato com a 
-      Data Setti e descubra como podemos ajudar!
-    </p>
+<div class="content-container">
+  <!-- COLUNA ESQUERDA: POSTS -->
+  <div class="blog-posts">
+    <article>
+      <h2>Como a Inteligência Artificial Pode Reduzir Custos</h2>
+      <p>
+        Descubra como a IA pode otimizar processos e reduzir desperdícios 
+        no seu negócio, gerando maiores lucros e competitividade...
+      </p>
+      <a href="post1.html">Leia Mais</a>
+    </article>
+    <article>
+      <h2>5 Motivos Para Usar Power BI na Gestão</h2>
+      <p>
+        Veja como o Power BI pode transformar sua análise de dados,
+        facilitar decisões estratégicas e impulsionar resultados...
+      </p>
+      <a href="post2.html">Leia Mais</a>
+    </article>
+    <article>
+      <h2>Gestão de Estoque Inteligente</h2>
+      <p>
+        Saiba como prever a demanda, reduzir perdas e otimizar a reposição de produtos, 
+        garantindo maior lucratividade e menos desperdícios, evitando tanto rupturas 
+        quanto excessos...
+      </p>
+      <a href="post3.html">Leia Mais</a>
+    </article>
   </div>
-  
-  <!-- SIDEBAR (coluna direita) -->
+
+  <!-- COLUNA DIREITA: SIDEBAR -->
   <aside class="sidebar">
     <section class="about-widget">
       <h3>Sobre a Data Setti</h3>
       <div class="widget">
         <p>
-          A Data Setti é referência em tecnologia e insights para transformar 
-          o seu negócio. Conheça mais sobre nossos serviços e inovações.
+          A Data Setti é referência em tecnologia e insights para 
+          transformar seu negócio. Conheça mais sobre nossos serviços 
+          e inovações.
         </p>
-        <a href="index.html#home">Conheça Mais</a>
+        <a href="#">Saiba mais</a>
       </div>
     </section>
-    
     <section class="recent-widget">
       <h3>Posts Recentes</h3>
       <div class="widget">
@@ -417,14 +378,14 @@
         </ul>
       </div>
     </section>
-    
     <section class="categories-widget">
       <h3>Categorias</h3>
       <div class="widget">
         <ul>
-          <li><a href="index.html#home">Data Setti</a></li>
-          <li><a href="index.html#servicos">Conheça Nossos Serviços</a></li>
-          <li><a href="index.html#contato">Insights</a></li>
+          <li><a href="#">Tecnologia</a></li>
+          <li><a href="#">Inovação</a></li>
+          <li><a href="#">Negócios</a></li>
+          <li><a href="#">Insights</a></li>
         </ul>
       </div>
     </section>
@@ -436,12 +397,12 @@
   &copy; 2025 Data Setti. Todos os direitos reservados.
 </footer>
 
-<!-- SCRIPT JS (Hamburger) -->
+<!-- SCRIPT HAMBURGER -->
 <script>
   const hamburger = document.getElementById("hamburger");
-  const overlay   = document.getElementById("overlay");
-  const sideMenu  = document.getElementById("sideMenu");
-  const closeBtn  = document.getElementById("closeBtn");
+  const overlay = document.getElementById("overlay");
+  const sideMenu = document.getElementById("sideMenu");
+  const closeBtn = document.getElementById("closeBtn");
 
   hamburger.addEventListener("click", () => {
     sideMenu.classList.add("active");
