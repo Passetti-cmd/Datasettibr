@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestão de Estoque Inteligente | Data Setti</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>5 Motivos Para Usar Power BI na Gestão | Data Setti</title>
+  
   <!-- Google Font: Poppins -->
   <link 
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" 
     rel="stylesheet"
   />
-  <!-- (Opcional) Font Awesome -->
+  <!-- Font Awesome (opcional) -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -25,12 +25,16 @@
       --color-branco: #ffffff;
       --font-base: 'Poppins', sans-serif;
       --gradient-roxo: linear-gradient(135deg, #6A0572, #1A1A2E);
+      --color-roxo-claro: #a86ac8;
+      --color-roxo-intermed: #9145a6;
     }
+
     * {
       margin: 0; 
-      padding: 0;
+      padding: 0; 
       box-sizing: border-box;
     }
+
     body {
       font-family: var(--font-base);
       background-color: var(--color-azul-noite);
@@ -38,10 +42,11 @@
       line-height: 1.5;
       overflow-x: hidden;
     }
-    /* HEADER FIXO + HAMBURGER */
+
+    /* HEADER FIXO */
     header {
       position: fixed;
-      top: 0;
+      top: 0; 
       left: 0;
       width: 100%;
       height: 60px;
@@ -72,11 +77,12 @@
     .nav-desktop a {
       color: var(--color-branco);
       text-decoration: none;
-      transition: 0.3s;
+      transition: color 0.3s;
     }
     .nav-desktop a:hover {
       color: var(--color-roxo);
     }
+    /* Hamburguer */
     .hamburger {
       display: none;
       background: var(--color-roxo);
@@ -95,159 +101,167 @@
         display: block;
       }
     }
+
     .overlay {
       position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(0,0,0,0.7);
-      opacity:0;
-      visibility:hidden;
-      transition:0.3s;
-      z-index:998;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 998;
     }
     .overlay.active {
-      opacity:1;
-      visibility:visible;
+      opacity: 1;
+      visibility: visible;
     }
     .side-menu {
       position: fixed;
-      top:0; right:-250px;
-      width:250px; height:100%;
-      background:#1A1A2E;
-      box-shadow:-2px 0 5px rgba(0,0,0,0.3);
-      transition:0.3s;
-      z-index:999;
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-      padding:40px 20px;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #1A1A2E;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 40px 20px;
     }
     .side-menu.active {
-      right:0;
+      right: 0;
     }
     .close-btn {
-      align-self:flex-end;
-      background:none;
-      border:none;
-      font-size:1.5rem;
-      color:#fff;
-      margin-bottom:20px;
-      cursor:pointer;
+      align-self: flex-end;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 20px;
+      cursor: pointer;
     }
     .side-menu nav ul {
-      list-style:none;
-      width:100%;
+      list-style: none;
+      width: 100%;
     }
     .side-menu nav ul li {
-      margin-bottom:1rem;
+      margin-bottom: 1rem;
     }
     .side-menu nav ul li a {
-      text-decoration:none;
-      color:#fff;
-      transition:0.3s;
+      text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
     }
     .side-menu nav ul li a:hover {
-      color:var(--color-roxo);
+      color: var(--color-roxo);
     }
 
     body::before {
-      content:"";
-      display:block;
-      height:60px;
-      width:100%;
+      content: "";
+      display: block;
+      height: 60px;
+      width: 100%;
     }
 
-    /* BANNER (inner-banner) */
+    /* BANNER INTERNO */
     .inner-banner {
       background: var(--gradient-roxo);
-      padding:40px 20px;
-      text-align:center;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 0; 
     }
     .inner-banner h1 {
-      font-size:2rem;
-      font-weight:600;
-      margin-bottom:0.5rem;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
     }
 
     /* CONTAINER */
     .container {
-      display:flex;
-      gap:2rem;
-      max-width:1200px;
-      margin:2rem auto;
-      padding:0 1rem;
+      display: flex;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
+    /* POST */
     .post-content {
-      flex:3;
-      background:#2E2E2E;
-      border-radius:8px;
-      padding:2rem;
-      box-shadow:0 2px 6px rgba(0,0,0,0.3);
+      flex: 3;
+      background: #2E2E2E;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
     .post-meta {
-      font-size:0.9rem;
-      color:#ccc;
-      margin-bottom:1rem;
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-bottom: 1rem;
     }
     .post-content p {
-      margin-bottom:1.2rem;
-      color:#ccc;
-      line-height:1.5;
+      margin-bottom: 1.2rem;
+      color: #ccc;
+      line-height: 1.5;
     }
     .post-content h2 {
-      font-size:1.3rem;
-      margin-bottom:0.8rem;
-      color:var(--color-roxo);
+      font-size: 1.3rem;
+      color: var(--color-roxo-claro);
+      margin-bottom: 0.8rem;
     }
+    /* SIDEBAR */
     .sidebar {
-      flex:1;
-      display:flex;
-      flex-direction:column;
-      gap:2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
     .sidebar section {
-      background:#2E2E2E;
-      border-radius:8px;
-      padding:1.5rem;
-      box-shadow:0 2px 6px rgba(0,0,0,0.3);
+      background: #2E2E2E;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
     .sidebar h3 {
-      font-size:1.2rem;
-      color:var(--color-roxo);
-      margin-bottom:1rem;
+      font-size: 1.2rem;
+      color: var(--color-roxo);
+      margin-bottom: 1rem;
     }
     .sidebar .widget p,
     .sidebar .widget li {
-      font-size:0.95rem;
-      color:#ccc;
+      font-size: 0.95rem;
+      color: #ccc;
     }
     .sidebar .widget a {
-      color:var(--color-roxo);
-      text-decoration:underline;
-      transition:0.3s;
+      color: var(--color-roxo-claro);
+      text-decoration: underline;
+      transition: color 0.3s;
     }
     .sidebar .widget a:hover {
-      color:#8A0A94;
-    }
-    footer {
-      text-align:center;
-      padding:1rem 0;
-      margin-top:2rem;
-      background:#2E2E2E;
-      color:#fff;
+      color: #8A0A94;
     }
 
-    @media(max-width:992px){
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+      background: #2E2E2E;
+      color: #fff;
+    }
+
+    /* RESPONSIVIDADE */
+    @media(max-width:992px) {
       .container {
-        flex-direction:column;
-      }
-      .post-content {
-        margin-bottom:2rem;
+        flex-direction: column;
       }
     }
-    @media(max-width:600px){
+    @media(max-width:600px) {
       .inner-banner h1 {
-        font-size:1.6rem;
+        font-size: 1.6rem;
       }
     }
     .post-content img {
@@ -279,13 +293,15 @@
   </button>
 </header>
 
-<!-- OVERLAY E SIDE-MENU (MOBILE) -->
+<!-- OVERLAY E SIDE-MENU -->
 <div class="overlay" id="overlay"></div>
 <div class="side-menu" id="sideMenu">
-  <button class="close-btn" id="closeBtn"><i class="fas fa-times"></i></button>
+  <button class="close-btn" id="closeBtn">
+    <i class="fas fa-times"></i>
+  </button>
   <nav>
     <ul>
-      <li><a href="index.html#sobre">Sobre</a></li>
+      <li><a href="index.html#sobre">Sobre</a></li
       <li><a href="index.html#servicos">Serviços</a></li>
       <li><a href="index.html#projetos">Projetos</a></li>
       <li><a href="index.html#contato">Contato</a></li>
@@ -294,61 +310,59 @@
   </nav>
 </div>
 
-<!-- BANNER -->
+<!-- BANNER INTERNO -->
 <section class="inner-banner">
-  <h1>Gestão de Estoque Inteligente</h1>
+  <h1>5 Motivos Para Usar Power BI na Gestão</h1>
 </section>
 
-<!-- CONTAINER PRINCIPAL -->
+<!-- CONTEÚDO PRINCIPAL -->
 <div class="container">
   <!-- POST -->
   <div class="post-content">
     <div class="post-meta">
-      <span>Publicado em 01/02/2025</span> • 
-      <span>Categoria: <strong>Automação</strong></span>
+      <span>Publicado em 03/02/2025</span> • 
+      <span>Categoria: <strong>Power BI</strong></span>
     </div>
     <p>
-      Controlar estoques de forma inteligente é fundamental para empresas que buscam 
-      minimizar desperdícios e maximizar lucros. Processos manuais estão sujeitos 
-      a erros e pouco fornecem de previsibilidade. Já uma <strong>Gestão de Estoque Inteligente</strong> 
-      se baseia em dados para antecipar demandas e reduzir custos.
+      O Power BI tornou-se uma das principais ferramentas de Business Intelligence
+      para empresas que desejam tomar decisões baseadas em dados. Com relatórios interativos 
+      e recursos robustos de análise, ele simplifica a visualização de indicadores,
+      ajudando gestores a enxergar oportunidades de economia, crescimento e inovação.
     </p>
-    <img src="img/estq.jpg" alt="Ilustração da Inteligência Artificial">
-    <h2>1. Previsão de Demanda</h2>
+    <img src="img/blowo.jpg" alt="Ilustração da Inteligência Artificial">
+
+    <h2>1. Visualização de Dados Intuitiva</h2>
     <p>
-      Com algoritmos de <em>Inteligência Artificial</em>, é possível analisar 
-      históricos de vendas e sazonalidades, ajustando o estoque exato que precisa ser 
-      reposto. Isso evita a falta de produtos e o acúmulo desnecessário de itens.
+      O Power BI oferece dashboards dinâmicos que qualquer colaborador — mesmo sem 
+      background técnico — consegue interpretar. Dessa forma, a empresa ganha agilidade 
+      ao reagir a tendências do mercado.
     </p>
-    <h2>2. Redução de Custos e Perdas</h2>
+    <h2>2. Conexão com Diversas Fontes</h2>
     <p>
-      Um dos maiores gastos em operações é o desperdício causado por produtos que vencem 
-      ou ficam obsoletos. Ao monitorar a rotatividade de cada item e usar alertas automáticos, 
-      sua empresa pode agir com antecedência, evitando prejuízos significativos.
+      Ele se conecta facilmente a bancos de dados, planilhas e sistemas de CRM, 
+      consolidando todas as informações em um só lugar e evitando retrabalhos.
     </p>
-    <h2>3. Integração com Sistemas e ERP</h2>
+    <h2>3. Tomada de Decisão Baseada em Dados</h2>
     <p>
-      Outra vantagem é integrar a gestão de estoque ao seu ERP ou sistemas de vendas,
-      garantindo que os dados estejam sempre atualizados. Isso evita duplicidades 
-      e melhora a comunicação entre setores.
+      Ao transformar dados brutos em relatórios claros, o Power BI fortalece a 
+      cultura de Data-Driven, significando decisões mais embasadas e maior competitividade.
     </p>
-    <h2>4. Aumento de Produtividade</h2>
+    <h2>4. Mobilidade e Acesso Remoto</h2>
     <p>
-      Com processos automatizados, a equipe se dedica a tarefas mais estratégicas, deixando 
-      que a tecnologia cuide de aspectos repetitivos. Isso libera tempo para a busca de novas 
-      oportunidades e melhorias internas.
+      É possível acessar seus relatórios em qualquer lugar, agilizando tomadas de decisão 
+      e facilitando o trabalho remoto.
     </p>
+    <h2>5. Integrações com IA e Ferramentas Avançadas</h2>
+    <p>
+      A ferramenta permite integrar algoritmos de Inteligência Artificial, 
+      levando as análises a outro nível de profundidade e automação.
+    </p>
+
     <h2>Conclusão</h2>
     <p>
-      A <strong>Gestão de Estoque Inteligente</strong> é um passo essencial para empresas que 
-      visam eficiência e competitividade. Seja para reduzir perdas, antecipar demandas 
-      ou otimizar processos, esse tipo de automação baseada em dados traz retornos 
-      imediatos e duradouros.
-    </p>
-    <p>
-      <strong>Quer implementar uma gestão de estoque inteligente?</strong> 
-      Fale com a <em>Data Setti</em> e solicite um <strong>diagnóstico gratuito</strong> 
-      para descobrir como modernizar seu estoque e impulsionar suas vendas!
+      O Power BI é uma solução completa para quem quer aperfeiçoar a gestão de dados 
+      e tomar decisões mais assertivas. Deseja implementar no seu negócio? 
+      <strong>Fale agora com a Data Setti</strong> e solicite um diagnóstico gratuito.
     </p>
   </div>
 
@@ -358,26 +372,30 @@
       <h3>Sobre a Data Setti</h3>
       <div class="widget">
         <p>
-          A Data Setti é referência em soluções de IA e automação. 
-          Nossa missão é eliminar processos manuais, reduzir custos e aumentar 
-          a competitividade de sua empresa.
+          A Data Setti é especialista em transformar dados em resultados concretos. 
+          De IA até Power BI, oferecemos soluções sob medida para cada negócio.
         </p>
-        <p>
-          <a href="index.html#servicos">Veja nossos serviços</a>
-        </p>
+        <a href="index.html#servicos">Conheça nossos serviços</a>
       </div>
     </section>
     <section>
       <h3>Posts Recentes</h3>
       <div class="widget">
         <ul>
-          <li><a href="post_ia_custos.html">Como a IA Pode Reduzir Custos</a></li>
-          <li><a href="post_estoque_inteligente.html">Gestão de Estoque Inteligente</a></li>
-          <li><a href="post_powerbi.html">5 Motivos Para Usar Power BI</a></li>
+         <li><a href="post1.html">Como a IA Pode Reduzir Custos</a></li>
+         <li><a href="post3.html">Gestão de Estoque Inteligente</a></li>
+         
         </ul>
       </div>
     </section>
   </aside>
+</div>
+
+<!-- Botão de contato no final do blog -->
+<div class="contact-button" style="text-align: center; margin: 2rem 0;">
+  <a href="index.html#contato" class="btn-primario" style="background-color: var(--color-roxo-intermed); padding: 14px 24px; border-radius: 30px; font-weight: 600; color: #fff; text-decoration: none;">
+    Entre em contato com a Data Setti
+  </a>
 </div>
 
 <footer>
@@ -404,6 +422,5 @@
     overlay.classList.remove("active");
   });
 </script>
-
 </body>
 </html>
