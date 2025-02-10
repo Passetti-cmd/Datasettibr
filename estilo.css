@@ -823,3 +823,10 @@ section {
     transform: scale(1.05);
   }
 }
+@media (max-width: 768px) {
+  .sobre-imagem img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+}
