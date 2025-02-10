@@ -186,57 +186,57 @@
 
     /* HERO */
     .hero-dev {
-      position: relative; 
-      height: 60vh; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
+      position: relative;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       overflow: hidden;
     }
     .hero-video {
-      position: absolute; 
-      top: 50%; 
+      position: absolute;
+      top: 50%;
       left: 50%;
-      min-width: 100%; 
+      min-width: 100%;
       min-height: 100%;
+      width: auto;
+      height: auto;
       transform: translate(-50%, -50%);
-      object-fit: cover; 
+      object-fit: cover;
       z-index: 1;
     }
     .hero-overlay {
-      position: absolute; 
-      top: 0; 
-      left: 0;
-      width: 100%; 
-      height: 100%;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: rgba(0,0,0,0.6);
       z-index: 2;
     }
     .hero-content {
-      position: relative; 
-      z-index: 3; 
+      position: relative;
+      z-index: 3;
       max-width: 850px;
-      margin: 0 auto; 
+      margin: 0 auto;
       padding: 0 20px;
     }
     .hero-content h1 {
-      font-size: 2.5rem; 
-      margin-bottom: 1rem; 
+      font-size: 3rem;
+      margin-bottom: 1rem;
       font-weight: 700;
     }
     .hero-content p {
-      font-size: 1.1rem; 
+      font-size: 1.2rem;
       margin-bottom: 2rem;
     }
     .btn-primario {
       background-color: var(--color-roxo-dark);
-      padding: 14px 28px; 
+      padding: 14px 28px;
       border-radius: 30px;
-      font-size: 1rem; 
-      font-weight: 600; 
+      font-size: 1rem;
+      font-weight: 600;
       color: var(--color-branco);
-      transition: 0.3s; 
+      transition: all 0.3s ease;
       display: inline-block;
     }
     .btn-primario:hover {
@@ -573,7 +573,11 @@
         min-height: 300px; 
       }
     }
-
+    @media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem !important; /* ajuste esse valor conforme necessário */
+  }
+}
   </style>
 </head>
 <body>
