@@ -26,6 +26,8 @@
       --color-branco: #ffffff;
       --font-base: 'Poppins', sans-serif;
       --gradient-roxo: linear-gradient(135deg, #6A0572, #1A1A2E);
+      --color-roxo-claro: #a86ac8;
+      --color-roxo-intermed: #9145a6;
     }
 
     * {
@@ -225,7 +227,7 @@
     .post-content h2 {
       font-size: 1.3rem;
       margin-bottom: 0.8rem;
-      color: var(--color-roxo);
+      color: var(--color-roxo-claro);
     }
 
     /* SIDEBAR (COLUNA DIREITA) */
@@ -244,7 +246,7 @@
     .sidebar h3 {
       font-size: 1.2rem;
       margin-bottom: 1rem;
-      color: var(--color-roxo);
+      color: var(--color-roxo-c);
     }
     .sidebar .widget p,
     .sidebar .widget li {
@@ -252,7 +254,7 @@
       color: #ccc;
     }
     .sidebar .widget a {
-      color: var(--color-roxo);
+      color: var(--color-roxo-claro);
       text-decoration: underline;
       transition: color 0.3s;
     }
@@ -289,6 +291,7 @@
         font-size: 1.15rem;
       }
     }
+    
   </style>
 </head>
 <body>
@@ -302,7 +305,7 @@
   <!-- MENU DESKTOP -->
   <nav class="nav-desktop">
     <a href="index.html#home">Home</a>
-    <a href="Blog template.html">Blog</a>
+    <a href="Blog_template.html">Blog</a>
     <a href="index.html#contato">Contato</a>
     <a href="index.html#servicos">Serviços</a>
   </nav>
@@ -322,7 +325,7 @@
   <nav>
     <ul>
       <li><a href="index.html#home">Home</a></li>
-      <li><a href="Blog template.html">Blog</a></li>
+      <li><a href="Blog_template.html">Blog</a></li>
       <li><a href="index.html#contato">Contato</a></li>
       <li><a href="index.html#servicos">Serviços</a></li>
     </ul>
@@ -410,25 +413,31 @@
     <section class="recent-widget">
       <h3>Posts Recentes</h3>
       <div class="widget">
-        <ul>
-          <li><a href="#">Novas tendências em IA</a></li>
-          <li><a href="#">Como otimizar processos com tecnologia</a></li>
-          <li><a href="#">Inovações que estão mudando o mercado</a></li>
+        <li><a href="post2.html">5 Motivos Para Usar Power BI na Gestão</a></li>
+        <li><a href="post3.html">Gestão de Estoque Inteligente</a></li>
         </ul>
       </div>
     </section>
     
-    <section class="categories-widget">
-      <h3>Categorias</h3>
-      <div class="widget">
-        <ul>
-          <li><a href="index.html#home">Data Setti</a></li>
-          <li><a href="index.html#servicos">Conheça Nossos Serviços</a></li>
-          <li><a href="index.html#contato">Insights</a></li>
-        </ul>
-      </div>
-    </section>
-  </aside>
+  </section>
+  <section class="categories-widget">
+    <h3>Serviços</h3>
+    <div class="widget">
+      <ul>
+        <li><a href="gestao-de-estoque.html">Estoque Inteligiente</a></li>
+        <li><a href="paineis-e-insights.html">Paineis, Insigths e Growth Marketing</a></li>
+        <li><a href="estrategias-ia.html">Estrategias com IA</a></li>
+        <li><a href="desenvolvimento-software.html">Desvolvimento de Software</a></li>
+      </ul>
+    </div>
+  </section>
+</aside>
+</div>
+<!-- Botão de contato no final do blog -->
+<div class="contact-button" style="text-align: center; margin: 2rem 0;">
+  <a href="index.html#contato" class="btn-primario" style="background-color: var(--color-roxo-intermed); padding: 14px 24px; border-radius: 30px; font-weight: 600; color: #fff; text-decoration: none;">
+    Entre em contato com a Data Setti
+  </a>
 </div>
 
 <!-- FOOTER -->
