@@ -25,6 +25,8 @@
       --color-branco: #ffffff;
       --color-cinza-escuro: #2E2E2E;
       --gradient-roxo: linear-gradient(135deg, #6A0572, #1A1A2E);
+      --color-roxo-claro: #a86ac8;
+      --color-roxo-intermed: #9145a6;
       --font-base: "Poppins", sans-serif;
     }
     * {
@@ -204,7 +206,7 @@
     }
     .blog-posts article h2 {
       font-size: 1.4rem;
-      color: var(--color-roxo);
+      color: var(--color-roxo-claro);
       margin-bottom: 0.5rem;
     }
     .blog-posts article p {
@@ -214,8 +216,8 @@
     }
     .blog-posts article a {
       background: none;
-      border: 1px solid var(--color-roxo);
-      color: var(--color-roxo);
+      border: 1px solid var(--color-roxo-claro);
+      color: var(--color-roxo-claro);
       padding: 6px 12px;
       border-radius: 4px;
       text-decoration: none;
@@ -243,7 +245,7 @@
     .sidebar h3 {
       font-size: 1.2rem;
       margin-bottom: 1rem;
-      color: var(--color-roxo);
+      color: var(--color-branco);
     }
     .widget p, .widget li {
       font-size: 0.95rem;
@@ -251,7 +253,7 @@
       line-height: 1.4;
     }
     .widget a {
-      color: var(--color-roxo);
+      color: var(--color-roxo-claro);
       text-decoration: underline;
       transition: color 0.3s;
     }
@@ -293,7 +295,7 @@
   </div>
   <nav class="nav-desktop">
     <a href="index.html#home">Home</a>
-    <a href="Blog template.html">Blog</a>
+    <a href="blog_template.html">Blog</a>
     <a href="index.html#contato">Contato</a>
     <a href="index.html#servicos">Serviços</a>
   </nav>
@@ -309,7 +311,7 @@
   <nav>
     <ul>
       <li><a href="index.html#home">Home</a></li>
-      <li><a href="Blog template.html">Blog</a></li>
+      <li><a href="blog_template.html">Blog</a></li>
       <li><a href="index.html#contato">Contato</a></li>
       <li><a href="index.html#servicos">Serviços</a></li>
     </ul>
@@ -365,27 +367,27 @@
           transformar seu negócio. Conheça mais sobre nossos serviços 
           e inovações.
         </p>
-        <a href="#">Saiba mais</a>
+        <a href="index.html#servicos">Saiba mais</a>
       </div>
     </section>
     <section class="recent-widget">
       <h3>Posts Recentes</h3>
       <div class="widget">
         <ul>
-          <li><a href="#">Novas tendências em IA</a></li>
-          <li><a href="#">Como otimizar processos com tecnologia</a></li>
-          <li><a href="#">Inovações que estão mudando o mercado</a></li>
+          <li><a href="post1.html">Novas tendências em IA</a></li>
+         <li><a href="post2.html">Como otimizar processos com tecnologia</a></li>
+         <li><a href="post3.html">Inovações que estão mudando o mercado</a></li>
         </ul>
       </div>
     </section>
     <section class="categories-widget">
-      <h3>Categorias</h3>
+      <h3>Serviços</h3>
       <div class="widget">
         <ul>
-          <li><a href="#">Tecnologia</a></li>
-          <li><a href="#">Inovação</a></li>
-          <li><a href="#">Negócios</a></li>
-          <li><a href="#">Insights</a></li>
+          <li><a href="gestao-de-estoque.html">Estoque Inteligiente</a></li>
+          <li><a href="paineis-e-insights.html">Paineis, Insigths e Growth Marketing</a></li>
+          <li><a href="estrategias-ia.html">Estrategias com IA</a></li>
+          <li><a href="desenvolvimento-software.html">Desvolvimento de Software</a></li>
         </ul>
       </div>
     </section>
