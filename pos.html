@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Página de Agradecimento - Data Setti">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obrigado - Data Setti</title>
+  
+  <!-- Fonte Poppins -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --color-roxo-dark: #6A0572;
+      --color-azul-noite: #1F2937;
+      --color-preto: #121212;
+      --color-cinza-escuro: #2E2E2E;
+      --color-branco: #ffffff;
+      --color-gradiente: linear-gradient(135deg, rgba(106,5,114,1) 0%, rgba(26,26,46,1) 100%);
+      --color-roxo-claro: #a86ac8;
+      --color-roxo-intermed: #9145a6;
+      --font-base: 'Poppins', sans-serif;
+    }
+    
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: var(--font-base);
+      background: var(--color-gradiente);
+      color: var(--color-branco);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .container {
+      background: var(--color-azul-noite);
+      padding: 40px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      width: 100%;
+      animation: fadeIn 1s ease-in-out;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--color-roxo-claro);
+    }
+    
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    
+    a.btn {
+      display: inline-block;
+      background: var(--color-roxo-dark);
+      color: var(--color-branco);
+      padding: 12px 25px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+      margin: 5px;
+    }
+    
+    a.btn:hover {
+      background: var(--color-roxo-intermed);
+    }
+    
+    .social-links {
+      margin-bottom: 20px;
+    }
+    
+    /* Animação de Fade In */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Obrigado!</h1>
+    <p>Sua mensagem foi enviada com sucesso.<br>Em breve entraremos em contato.</p>
+    
+    <div class="social-links">
+      <a href="https://www.instagram.com/datasetti" class="btn" target="_blank">Instagram</a>
+      <a href="https://wa.link/myved1" class="btn" target="_blank">WhatsApp</a>
+    </div>
+    
+    <a href="index.html" class="btn">Voltar para a Página Inicial</a>
+  </div>
+</body>
+</html>
