@@ -151,23 +151,27 @@ document.getElementById("form-contato").addEventListener("submit", function(even
     alert("Erro ao enviar o formulário. Verifique sua conexão.");
   });
 });
-document.getElementById("form-contato").addEventListener("submit", function(event){
-  event.preventDefault(); // Impede o envio imediato do formulário
+document.getElementById("form-contato").addEventListener("submit", function(event) {
+  event.preventDefault(); // Evita o redirecionamento padrão
 
-  // Define o campo _replyto com o e-mail do usuário
+  // Atribui o valor do input "email" para o campo oculto _replyto
   document.getElementById("replyto").value = document.getElementById("email").value;
-  
-  let form = this;
-  fetch(form.action, {
-      method: "POST",
-      body: new FormData(form),
-      headers: { "Accept": "application/json" }
+
+  // Captura os dados do formulário e os envia via fetch para o FormSubmit
+  let formData = new FormData(this);
+
+  fetch(this.action, {
+    method: "POST",
+    body: formData,
   }).then(response => {
-      if (response.ok) {
-          document.getElementById("mensagem-sucesso").style.display = "block"; // Mostra mensagem de sucesso
-          form.reset(); // Reseta os campos do formulário
-      } else {
-          alert("Erro ao enviar mensagem. Tente novamente.");
-      }
-  }).catch(error => alert("Erro de conexão!"));
+    if (response.ok) {
+      // Esconde o formulário e exibe a mensagem de sucesso
+      document.getElementById("form-contato").style.display = "none";
+      document.getElementById("mensagem-sucesso").style.display = "block";
+    } else {
+      alert("Erro ao enviar o formulário. Tente novamente.");
+    }
+  }).catch(error => {
+    alert("Erro ao enviar o formulário. Verifique sua conexão.");
+  });
 });
