@@ -68,7 +68,7 @@ function moveCarousel(carousel, direction, tipo) {
 ------------------------------ */
 document.addEventListener("DOMContentLoaded", function () {
   const btnEnviar = document.querySelector(".btn-enviar");
-  if (btnEnviar) {
+  if(btnEnviar) {
     btnEnviar.addEventListener("click", function (event) {
       event.preventDefault(); 
       let params = {
@@ -88,26 +88,26 @@ document.addEventListener("DOMContentLoaded", function () {
    Troca automática do texto (bannerText) se quiser
 ------------------------------ */
 document.addEventListener("DOMContentLoaded", function() {
-  const frases = [
-    "Maximize Suas Oportunidades",
-    "Seja Inovador no Mercado",
-    "Aumente Seus Lucros com a Data Setti",
-    "Passe a Concorrencia com Tecnoliga de Ponta"
-  ];
+    const frases = [
+        "Maximize Suas Oportunidades",
+        "Seja Inovador no Mercado",
+        "Aumente Seus Lucros com a Data Setti",
+        "Passe a Concorrencia com Tecnoliga de Ponta"
+    ];
 
-  let index = 0;
-  const bannerText = document.getElementById("banner-text");
+    let index = 0;
+    const bannerText = document.getElementById("banner-text");
 
-  function mudarTexto() {
-    index = (index + 1) % frases.length;
-    bannerText.style.opacity = 0; // Efeito fade-out
-    setTimeout(() => {
-      bannerText.textContent = frases[index];
-      bannerText.style.opacity = 1; // Efeito fade-in
-    }, 500);
-  }
+    function mudarTexto() {
+        index = (index + 1) % frases.length;
+        bannerText.style.opacity = 0; // Efeito fade-out
+        setTimeout(() => {
+            bannerText.textContent = frases[index];
+            bannerText.style.opacity = 1; // Efeito fade-in
+        }, 500);
+    }
 
-  setInterval(mudarTexto, 3000); // Troca a cada 3 segundos
+    setInterval(mudarTexto, 3000); // Troca a cada 3 segundos
 });
 
 /* -----------------------------
@@ -130,19 +130,12 @@ closeBtn?.addEventListener("click", () => {
   overlay?.classList.remove("active");
 });
 
-/* -----------------------------
-   Envio do Formulário via FormSubmit com Auto-Resposta
------------------------------- */
 document.getElementById("form-contato").addEventListener("submit", function(event) {
-  event.preventDefault(); // Evita o redirecionamento padrão
+  event.preventDefault(); // Evita o redirecionamento
 
-  // Atribui o valor do input "email" ao campo oculto _replyto
-  document.getElementById("replyto").value = document.getElementById("email").value;
-
-  // Captura os dados do formulário
+  // Captura os dados do formulário e os envia via fetch para o FormSubmit
   let formData = new FormData(this);
 
-  // Envia os dados via fetch para o FormSubmit
   fetch(this.action, {
     method: "POST",
     body: formData,
