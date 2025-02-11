@@ -452,10 +452,14 @@
     <br><br>
 
     <div class="contato-box">
-      <form action="https://formsubmit.co/6d33d4113281a5ecd104ed93228f8e31" method="POST" class="form-contato">
+      <!-- Mensagem de Sucesso (inicialmente oculta) -->
+      <div id="mensagem-sucesso" style="display: none; text-align: center; color: #4CAF50; font-size: 18px; font-weight: bold;">
+        ✅ Enviado com sucesso! Em breve entraremos em contato.
+      </div>
+
+      <form id="form-contato" action="https://formsubmit.co/6d33d4113281a5ecd104ed93228f8e31" method="POST" class="form-contato">
         <input type="hidden" name="_captcha" value="false"> <!-- Desativa o Captcha -->
-        <input type="hidden" name="_next" value="https://seusite.com/obrigado.html"> <!-- Redirecionamento após envio -->
-        
+
         <div class="form-group">
           <label for="nome">Nome</label>
           <input type="text" id="nome" name="name" placeholder="Seu Nome" required />
@@ -491,22 +495,6 @@
           <span>Enviar</span>
         </button>
       </form>
-      
-      <div class="contato-info">
-        <h3>Vamos conversar?</h3>
-        <p><strong>E-mail:</strong> contato@datasetti.com</p>
-        <p><strong>Telefone:</strong> +55 (14) 98835-4859</p>
-        <p>Ou mande uma mensagem no WhatsApp!</p>
-        <a 
-          href="https://wa.link/myved1" 
-          class="btn-whatsapp" 
-          target="_blank"
-          rel="noopener"
-        >
-          <img src="img/whatsapp_verde.svg" alt="WhatsApp">
-          Fale Agora
-        </a>
-      </div>
     </div>
   </div>
 </section>
