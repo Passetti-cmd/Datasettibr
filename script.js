@@ -151,3 +151,23 @@ document.getElementById("form-contato").addEventListener("submit", function(even
     alert("Erro ao enviar o formulário. Verifique sua conexão.");
   });
 });
+document.getElementById("form-contato").addEventListener("submit", function(event){
+  event.preventDefault(); // Impede o envio imediato do formulário
+
+  // Define o campo _replyto com o e-mail do usuário
+  document.getElementById("replyto").value = document.getElementById("email").value;
+  
+  let form = this;
+  fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { "Accept": "application/json" }
+  }).then(response => {
+      if (response.ok) {
+          document.getElementById("mensagem-sucesso").style.display = "block"; // Mostra mensagem de sucesso
+          form.reset(); // Reseta os campos do formulário
+      } else {
+          alert("Erro ao enviar mensagem. Tente novamente.");
+      }
+  }).catch(error => alert("Erro de conexão!"));
+});
