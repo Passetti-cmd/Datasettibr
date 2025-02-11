@@ -452,29 +452,37 @@
     <br><br>
 
     <div class="contato-box">
-      <form action="#" method="post" class="form-contato">
+      <form action="https://formsubmit.co/contato@datasetti.com" method="POST" class="form-contato">
+        <input type="hidden" name="_captcha" value="false"> <!-- Desativa o Captcha -->
+        <input type="hidden" name="_next" value="https://seusite.com/obrigado.html"> <!-- Redirecionamento após envio -->
+        
         <div class="form-group">
           <label for="nome">Nome</label>
-          <input type="text" id="nome" name="nome" required />
+          <input type="text" id="nome" name="name" placeholder="Seu Nome" required />
         </div><br>
+
         <div class="form-group">
           <label for="email">E-mail</label>
-          <input type="email" id="email" name="email" required />
+          <input type="email" id="email" name="email" placeholder="Seu E-mail" required />
         </div><br>
+
         <div class="form-group">
-          <label for="Telefone">Telefone</label>
-          <input type="Telefone" id="Telefone" name="Telefone" required />
+          <label for="telefone">Telefone</label>
+          <input type="text" id="telefone" name="phone" placeholder="Seu Telefone" required />
         </div><br>
+
         <div class="form-group">
           <label for="empresa">Empresa</label>
-          <input type="text" id="empresa" name="empresa" />
+          <input type="text" id="empresa" name="empresa" placeholder="Nome da Empresa (Opcional)" />
         </div><br>
+
         <div class="form-group">
           <label for="mensagem">Mensagem</label>
-          <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+          <textarea id="mensagem" name="message" rows="4" placeholder="Sua Mensagem" required></textarea>
         </div>
-        <!-- Botão de Enviar (SVG animado) -->
-        <button class="btn-contato">
+
+        <!-- Botão de Enviar -->
+        <button type="submit" class="btn-contato">
           <div class="svg-wrapper">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
               <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="white"/>
@@ -502,6 +510,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- ==================== FOOTER ==================== -->
 <footer class="footer">
