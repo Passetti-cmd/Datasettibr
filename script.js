@@ -130,3 +130,24 @@ closeBtn?.addEventListener("click", () => {
   overlay?.classList.remove("active");
 });
 
+document.getElementById("form-contato").addEventListener("submit", function(event) {
+  event.preventDefault(); // Evita o redirecionamento
+
+  // Captura os dados do formulário e os envia via fetch para o FormSubmit
+  let formData = new FormData(this);
+
+  fetch(this.action, {
+    method: "POST",
+    body: formData,
+  }).then(response => {
+    if (response.ok) {
+      // Esconde o formulário e exibe a mensagem de sucesso
+      document.getElementById("form-contato").style.display = "none";
+      document.getElementById("mensagem-sucesso").style.display = "block";
+    } else {
+      alert("Erro ao enviar o formulário. Tente novamente.");
+    }
+  }).catch(error => {
+    alert("Erro ao enviar o formulário. Verifique sua conexão.");
+  });
+});
