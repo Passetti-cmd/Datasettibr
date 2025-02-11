@@ -90,9 +90,9 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function() {
     const frases = [
         "Maximize Suas Oportunidades",
-        "Transforme Dados em Estratégia",
+        "Seja Inovador no Mercado",
         "Aumente Seus Lucros com a Data Setti",
-        "Decisões Mais Inteligentes com Automação"
+        "Passe a Concorrencia com Tecnoliga de Ponta"
     ];
 
     let index = 0;
