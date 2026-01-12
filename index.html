@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <!-- ==================== META TAGS ==================== -->
   <meta charset="UTF-8" />
   <meta name="description" content="Data Setti - Inteligência em Dados e Automação para Empresas" />
   <meta name="keywords" content="Data Setti, Análise de Dados, IA, Automação, Power BI" />
   <meta name="author" content="Data Setti" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data Setti</title>
+  <meta name="robots" content="index, follow" />
+  <title>Data Setti - Inteligência em Dados e Automação</title>
   
   <!-- Google Font (Poppins) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -47,34 +49,33 @@
 <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 <link rel="manifest" href="img/site.webmanifest">
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3C88BN1R3T">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-3C88BN1R3T');
-</script>
-  
+  <!-- ==================== GOOGLE ANALYTICS ==================== -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3C88BN1R3T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3C88BN1R3T');
+  </script>
 </head>
 <body>
-<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-<!-- ==================== HEADER ==================== -->
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+<!-- ==================== HEADER / NAVIGATION ==================== -->
 <header class="header" id="header">
   <div class="container">
+    <!-- Logo -->
     <div class="logo">
-      <a href="#">Data <span>Setti</span></a>
+      <a href="#" aria-label="Data Setti - Home">Data <span>Setti</span></a>
     </div>
 
-    <!-- BOTÃO HAMBÚRGUER (MOBILE) -->
-    <button class="hamburger" id="hamburger">
+    <!-- Mobile Menu Toggle Button -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <i class="fas fa-bars"></i>
     </button>
 
-    <!-- MENU DESKTOP (telas grandes) -->
-    <nav class="nav-desktop">
+    <!-- Desktop Navigation Menu -->
+    <nav class="nav-desktop" aria-label="Main navigation">
       <ul>
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#servicos">Serviços</a></li>
@@ -87,13 +88,13 @@
   </div>
 </header>
 
-<!-- OVERLAY + SIDE MENU (MOBILE) -->
-<div class="overlay" id="overlay"></div>
-<div class="side-menu" id="sideMenu">
-  <button class="close-btn" id="closeBtn">
+<!-- ==================== MOBILE MENU OVERLAY & SIDE MENU ==================== -->
+<div class="overlay" id="overlay" aria-hidden="true"></div>
+<div class="side-menu" id="sideMenu" aria-label="Mobile navigation menu">
+  <button class="close-btn" id="closeBtn" aria-label="Close menu">
     <i class="fas fa-times"></i>
   </button>
-  <nav>
+  <nav aria-label="Mobile navigation">
     <ul>
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#servicos">Serviços</a></li>
@@ -117,20 +118,24 @@
   </div>
 </section>
 
-<!-- SCRIPT do Typed.js (hero) -->
+<!-- ==================== TYPED.JS INITIALIZATION (Hero Text Animation) ==================== -->
 <script>
   document.addEventListener("DOMContentLoaded", function(){
-    var typed = new Typed("#typed-text", {
-      strings: [
-        "Lucre mais com nossos serviços",
-        "Tenha melhor gestão e reduza gastos",
-        "Aproveite insights e inove com IA"
-      ],
-      typeSpeed: 50,
-      backSpeed: 70,
-      loop: false,
-      showCursor: false
-    });
+    try {
+      var typed = new Typed("#typed-text", {
+        strings: [
+          "Lucre mais com nossos serviços",
+          "Tenha melhor gestão e reduza gastos",
+          "Aproveite insights e inove com IA"
+        ],
+        typeSpeed: 50,
+        backSpeed: 70,
+        loop: false,
+        showCursor: false
+      });
+    } catch (error) {
+      console.error("Error initializing Typed.js:", error);
+    }
   });
 </script>
 
@@ -558,18 +563,26 @@
 <!-- Script JS principal (script.js) -->
 <script src="script.js"></script>
 
-<!-- Animação do banner-meio (GSAP) -->
+<!-- ==================== GSAP ANIMATION (Banner Middle Section) ==================== -->
 <script>
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.from(".banner-meio-content", {
-    scrollTrigger: {
-      trigger: ".banner-meio",
-      start: "top 80%",
-    },
-    duration: 1,
-    opacity: 0,
-    y: 50,
-    ease: "power2.out"
+  document.addEventListener("DOMContentLoaded", function() {
+    try {
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from(".banner-meio-content", {
+          scrollTrigger: {
+            trigger: ".banner-meio",
+            start: "top 80%",
+          },
+          duration: 1,
+          opacity: 0,
+          y: 50,
+          ease: "power2.out"
+        });
+      }
+    } catch (error) {
+      console.error("Error initializing GSAP animation:", error);
+    }
   });
 </script>
 </body>
